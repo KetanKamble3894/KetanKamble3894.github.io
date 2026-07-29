@@ -28,7 +28,7 @@ sanitized, pre-aggregated snapshots; the agent answers only from those.
 
 It trades freshness for containment — snapshots are as current as the last run, not live. That trade is the whole point.
 
-## The nine collectors
+## The ten collectors
 
 Each is a real read-only runbook, and each pairs with a script page and a Power BI report in the library.
 
@@ -42,6 +42,7 @@ Each is a real read-only runbook, and each pairs with a script page and a Power 
     <a class="za-card" href="collectors/windows11-readiness/"><b>Windows 11 Readiness</b><span>Hardware-readiness across the estate — TPM, CPU, RAM — so the Windows 11 plan is grounded in data.</span></a>
     <a class="za-card" href="collectors/autopilot-operations/"><b>Autopilot Operations</b><span>Autopilot registrations, profiles and deployment health — the enrolment funnel, made visible.</span></a>
     <a class="za-card" href="collectors/local-ai-agent-inventory/"><b>Local AI Agent Inventory</b><span>Inventories local AI-agent tooling across managed devices — a modern-workspace signal most fleets can't see yet.</span></a>
+    <a class="za-card" href="collectors/noncompliant-devices/"><b>Non-Compliant Devices</b><span>Every non-compliant Windows device and the exact settings that failed — the flagship report.</span></a>
 </div>
 
 ## Start with the walkthrough

@@ -15,6 +15,7 @@ same collectors that **club together** into [Zero-Access Agent](../projects/zero
 
 | Script | What it does | Topics |
 |---|---|---|
+| [Non-Compliant Devices](./noncompliant-devices.md) | Every non-compliant Windows device and the exact failing settings. | Intune · Microsoft Graph · Defender / Security |
 | [Device Inventory](./device-inventory.md) | The simplest end-to-end collector — a clean starting point to learn the read-only pattern before the bigger ones. | Intune · Microsoft Graph · Azure Automation |
 | [Inventory — All Devices](./inventory-all-devices.md) | Full managed-device inventory across the fleet — the backbone dataset every other report leans on. | Intune · Microsoft Graph · Azure Automation |
 | [Intune Documentation](./intune-documentation.md) | Snapshots your Intune configuration — profiles, policies and settings — as documentation you can diff over time. | Intune · Microsoft Graph |

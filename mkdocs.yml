@@ -103,6 +103,7 @@ nav:
               - Windows 11 Readiness: projects/zero-access-agent/collectors/windows11-readiness.md
               - Autopilot Operations: projects/zero-access-agent/collectors/autopilot-operations.md
               - Local AI Agent Inventory: projects/zero-access-agent/collectors/local-ai-agent-inventory.md
+              - Non-Compliant Devices: projects/zero-access-agent/collectors/noncompliant-devices.md
           - Enrichment tool: projects/zero-access-agent/lenovo-warranty-enrichment.md
       - Jarvis: projects/jarvis.md
   - Scripts:
@@ -117,6 +118,7 @@ nav:
       - Windows 11 Readiness: scripts/windows11-readiness.md
       - Autopilot Operations: scripts/autopilot-operations.md
       - Local AI Agent Inventory: scripts/local-ai-agent-inventory.md
+      - Non-Compliant Devices: scripts/noncompliant-devices.md
       - Synthetic Fleet Generator: scripts/synthetic-fleet.md
   - Power BI:
       - Overview: powerbi/index.md
@@ -130,6 +132,7 @@ nav:
       - Windows 11 Readiness report: powerbi/windows11-readiness-report.md
       - Autopilot Operations report: powerbi/autopilot-operations-report.md
       - Local AI Agent Inventory report: powerbi/local-ai-agent-inventory-report.md
+      - Non-Compliant Devices report: powerbi/noncompliant-devices-report.md
   - About: about/index.md
   - Work with me: work-with-me.md
   - Topics: tags.md
