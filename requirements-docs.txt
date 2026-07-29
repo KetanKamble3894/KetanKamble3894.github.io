@@ -1,0 +1,7 @@
+# Pinned to the last cleanly-MIT-licensed line, on purpose.
+# MkDocs core 2.0 shipped without a clear license, and mkdocs-material 9.7+
+# flags builds on it as "unsuitable for production." Staying on 9.6.x + mkdocs
+# 1.6.x keeps the build MIT-clean and warning-free. Re-evaluate before bumping.
+mkdocs==1.6.1
+mkdocs-material==9.6.14
+mkdocs-rss-plugin==1.19.0

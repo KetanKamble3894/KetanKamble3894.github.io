@@ -1,0 +1,34 @@
+
+:root {
+  --md-primary-fg-color: #0EA5A0;
+  --md-accent-fg-color: #0EA5A0;
+}
+[data-md-color-scheme="slate"] {
+  --md-primary-fg-color: #2DD4BF;
+  --md-accent-fg-color: #2DD4BF;
+}
+/* project / collector card grid */
+.za-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: .8rem; margin: 1rem 0 1.5rem; }
+.za-card {
+  display: block; padding: 1rem 1.1rem; border-radius: 12px;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  background: var(--md-default-bg-color);
+  transition: transform .15s, border-color .15s, box-shadow .15s;
+}
+.za-card:hover { transform: translateY(-3px); border-color: var(--md-accent-fg-color); box-shadow: 0 10px 24px -14px rgba(0,0,0,.35); }
+.za-card b { display: block; font-size: .95rem; margin-bottom: .25rem; }
+.za-card span { display: block; font-size: .8rem; color: var(--md-default-fg-color--light); line-height: 1.45; }
+.za-card.soon { opacity: .82; }
+/* tag chips a touch rounder */
+.md-typeset .md-tag { border-radius: 999px; }
+
+/* engagement: share buttons + newsletter */
+.page-actions { margin-top: 2rem; padding-top: 1.2rem; border-top: 1px solid var(--md-default-fg-color--lightest); }
+.share { display: flex; gap: .5rem; align-items: center; flex-wrap: wrap; font-size: .8rem; }
+.share > span { color: var(--md-default-fg-color--light); font-weight: 600; }
+.share a, .share button { display: inline-flex; align-items: center; gap: .35rem; padding: .4rem .7rem; border-radius: 8px; border: 1px solid var(--md-default-fg-color--lightest); background: var(--md-default-bg-color); color: var(--md-default-fg-color--light); cursor: pointer; font: inherit; font-size: .8rem; text-decoration: none; }
+.share a:hover, .share button:hover { border-color: var(--md-accent-fg-color); color: var(--md-accent-fg-color); }
+.nl { display: flex; gap: .5rem; flex-wrap: wrap; margin: 1rem 0 .3rem; }
+.nl input { flex: 1; min-width: 220px; padding: .7rem .9rem; border-radius: 10px; border: 1px solid var(--md-default-fg-color--lighter); background: var(--md-default-bg-color); color: var(--md-default-fg-color); font: inherit; }
+.nl button { padding: .7rem 1.3rem; border: none; border-radius: 10px; background: var(--md-primary-fg-color); color: #fff; font-weight: 700; cursor: pointer; }
+.nl button:hover { filter: brightness(1.06); }

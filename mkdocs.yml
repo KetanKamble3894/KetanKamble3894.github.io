@@ -1,0 +1,151 @@
+site_name: Ketan Kamble
+site_description: Microsoft Modern Workspace, in the open — Intune, Entra, Graph, and how it actually works underneath the portal.
+site_url: https://ketankamble.com/
+site_author: Ketan Kamble
+
+repo_url: https://github.com/KetanKamble3894/zero-access-agent
+repo_name: KetanKamble3894
+edit_uri: ""
+
+theme:
+  name: material
+  custom_dir: overrides
+  language: en
+  icon:
+    repo: fontawesome/brands/github
+  features:
+    - navigation.sections
+    - navigation.top
+    - navigation.instant
+    - navigation.tracking
+    - navigation.footer
+    - toc.follow
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.code.annotate
+  palette:
+    - media: "(prefers-color-scheme)"
+      toggle:
+        icon: material/brightness-auto
+        name: Switch to light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: teal
+      accent: teal
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: teal
+      accent: teal
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to system preference
+
+extra_css:
+  - stylesheets/extra.css
+
+plugins:
+  - search
+  - tags: {}
+  - blog:
+      blog_dir: blog
+      post_readtime: true
+      post_url_format: "{slug}"
+  - rss:
+      match_path: "blog/posts/.*"
+      date_from_meta:
+        as_creation: date
+      categories:
+        - categories
+        - tags
+
+markdown_extensions:
+  - attr_list
+  - md_in_html
+  - admonition
+  - footnotes
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.snippets:
+      base_path: docs
+      check_paths: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - toc:
+      permalink: true
+
+nav:
+  - Home: index.md
+  - Blog:
+      - blog/index.md
+  - Projects:
+      - Overview: projects/index.md
+      - Zero-Access Agent:
+          - Overview: projects/zero-access-agent/index.md
+          - Build it yourself: projects/zero-access-agent/build-it-yourself.md
+          - Collection layer setup: projects/zero-access-agent/azure-automation-setup.md
+          - Collectors:
+              - Inventory — All Devices: projects/zero-access-agent/collectors/inventory-all-devices.md
+              - Intune Documentation: projects/zero-access-agent/collectors/intune-documentation.md
+              - Policy Assignments: projects/zero-access-agent/collectors/policy-assignments.md
+              - Device Hygiene: projects/zero-access-agent/collectors/device-hygiene.md
+              - App Deployment Failures: projects/zero-access-agent/collectors/app-deployment-failures.md
+              - License Compliance: projects/zero-access-agent/collectors/license-compliance.md
+              - Windows 11 Readiness: projects/zero-access-agent/collectors/windows11-readiness.md
+              - Autopilot Operations: projects/zero-access-agent/collectors/autopilot-operations.md
+              - Local AI Agent Inventory: projects/zero-access-agent/collectors/local-ai-agent-inventory.md
+          - Enrichment tool: projects/zero-access-agent/lenovo-warranty-enrichment.md
+      - Jarvis: projects/jarvis.md
+  - Scripts:
+      - Library: scripts/index.md
+      - Device Inventory: scripts/device-inventory.md
+      - Inventory — All Devices: scripts/inventory-all-devices.md
+      - Intune Documentation: scripts/intune-documentation.md
+      - Policy Assignments: scripts/policy-assignments.md
+      - Device Hygiene: scripts/device-hygiene.md
+      - App Deployment Failures: scripts/app-deployment-failures.md
+      - License Compliance: scripts/license-compliance.md
+      - Windows 11 Readiness: scripts/windows11-readiness.md
+      - Autopilot Operations: scripts/autopilot-operations.md
+      - Local AI Agent Inventory: scripts/local-ai-agent-inventory.md
+      - Synthetic Fleet Generator: scripts/synthetic-fleet.md
+  - Power BI:
+      - Overview: powerbi/index.md
+      - Device Inventory report: powerbi/device-inventory-report.md
+      - Inventory — All Devices report: powerbi/inventory-all-devices-report.md
+      - Intune Documentation report: powerbi/intune-documentation-report.md
+      - Policy Assignments report: powerbi/policy-assignments-report.md
+      - Device Hygiene report: powerbi/device-hygiene-report.md
+      - App Deployment Failures report: powerbi/app-deployment-failures-report.md
+      - License Compliance report: powerbi/license-compliance-report.md
+      - Windows 11 Readiness report: powerbi/windows11-readiness-report.md
+      - Autopilot Operations report: powerbi/autopilot-operations-report.md
+      - Local AI Agent Inventory report: powerbi/local-ai-agent-inventory-report.md
+  - About: about/index.md
+  - Work with me: work-with-me.md
+  - Topics: tags.md
+  - ☕ Support: https://www.buymeacoffee.com/ketankamble
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/KetanKamble3894
+  # ---- Analytics-ready (turn on to collect traffic data for sponsors/ad networks) ----
+  # 1) Create a free Google Analytics 4 property, get its ID (looks like G-XXXXXXXXXX).
+  # 2) Uncomment the block below and paste your ID. The cookie-consent banner is included.
+  # analytics:
+  #   provider: google
+  #   property: G-XXXXXXXXXX
+  # consent:
+  #   title: Cookie consent
+  #   description: >-
+  #     We use analytics cookies to understand how you use the site and make it better.

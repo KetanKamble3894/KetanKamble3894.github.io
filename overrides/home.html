@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ketan Kamble — Microsoft Modern Workspace, in the open</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F6F8FC;--surface:#FFFFFF;--surface-2:#F0F4FA;
+    --border:#E4EAF2;--border-2:#D6DEEA;
+    --text:#0E1A2B;--muted:#4B586F;--muted-2:#7A869C;
+    --brand:#0EA5A0;--brand-2:#2563EB;--brand-3:#10B981;
+    --ink:#0B1220;--radius:18px;--maxw:1160px;
+    --shadow:0 20px 50px -24px rgba(20,40,80,.28);--shadow-sm:0 8px 24px -14px rgba(20,40,80,.25);
+  }
+  body.dark{
+    --bg:#070B16;--surface:#0F172A;--surface-2:#0B1120;--border:#1E2A44;--border-2:#26324f;
+    --text:#E8EDF6;--muted:#93A2BE;--muted-2:#6B7A96;--brand:#2DD4BF;--brand-2:#38BDF8;--brand-3:#34D399;
+    --shadow:0 40px 80px -40px rgba(0,0,0,.7);--shadow-sm:0 20px 40px -28px rgba(0,0,0,.7);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--text);font-family:'Inter',system-ui,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;transition:background .3s,color .3s}
+  .mono{font-family:'JetBrains Mono',monospace}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 26px}
+  .grad{background:linear-gradient(120deg,var(--brand),var(--brand-2) 55%,var(--brand-3));-webkit-background-clip:text;background-clip:text;color:transparent}
+
+  .nav-outer{position:sticky;top:14px;z-index:60;padding:0 20px;margin-top:14px}
+  nav{max-width:var(--maxw);margin:0 auto;display:flex;align-items:center;justify-content:space-between;background:color-mix(in srgb,var(--surface) 82%,transparent);backdrop-filter:blur(16px);border:1px solid var(--border);border-radius:16px;padding:11px 16px 11px 18px;box-shadow:var(--shadow-sm)}
+  .brand{display:flex;align-items:center;gap:11px;font-weight:800;letter-spacing:-.02em;font-size:16px}
+  .brandmark{width:30px;height:30px;flex:none;border-radius:9px;display:grid;place-items:center;color:#fff;font-weight:900;font-size:13px;background:linear-gradient(135deg,var(--brand),var(--brand-2));letter-spacing:-.03em}
+  .nav-links{display:flex;align-items:center;gap:22px;font-size:14.5px;color:var(--muted);font-weight:500}
+  .nav-links a:hover{color:var(--text)}
+  .nav-right{display:flex;align-items:center;gap:12px}
+  .theme-btn{width:38px;height:38px;border-radius:11px;border:1px solid var(--border);background:var(--surface-2);display:grid;place-items:center;cursor:pointer;color:var(--muted)}
+  .theme-btn:hover{color:var(--text);border-color:var(--brand)}
+  .nav-cta{padding:10px 17px;border-radius:11px;font-weight:700;font-size:14px;color:#fff;background:linear-gradient(135deg,var(--brand),var(--brand-2));box-shadow:0 8px 20px -10px rgba(37,99,235,.6)}
+  .nav-cta:hover{filter:brightness(1.06)}
+  @media(max-width:880px){.nav-links{display:none}}
+
+  .hero{position:relative;padding:76px 0 30px;overflow:hidden}
+  .hero-bg{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+  .blob{position:absolute;border-radius:50%;filter:blur(90px);opacity:.5}
+  .blob.a{width:560px;height:560px;top:-220px;left:-120px;background:radial-gradient(circle,rgba(14,165,160,.5),transparent 62%)}
+  .blob.b{width:520px;height:520px;top:-160px;right:-120px;background:radial-gradient(circle,rgba(37,99,235,.4),transparent 62%)}
+  body.dark .blob.a{background:radial-gradient(circle,#0e5b57,transparent 62%)}
+  body.dark .blob.b{background:radial-gradient(circle,#0b3a63,transparent 62%)}
+  .grid-lines{position:absolute;inset:0;opacity:.5;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:54px 54px;mask-image:radial-gradient(ellipse 75% 55% at 50% 0%,#000 35%,transparent 76%);-webkit-mask-image:radial-gradient(ellipse 75% 55% at 50% 0%,#000 35%,transparent 76%)}
+  .hero-in{position:relative;z-index:1;display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center}
+  @media(max-width:920px){.hero-in{grid-template-columns:1fr;gap:34px}}
+  .eyebrow{display:inline-flex;align-items:center;gap:9px;padding:7px 14px;border-radius:999px;border:1px solid var(--border);background:var(--surface);font-size:12.5px;font-weight:600;color:var(--brand);margin-bottom:22px;box-shadow:var(--shadow-sm)}
+  .dot{width:7px;height:7px;border-radius:50%;background:var(--brand);box-shadow:0 0 0 4px color-mix(in srgb,var(--brand) 22%,transparent)}
+  h1{font-size:clamp(38px,5.2vw,58px);line-height:1.03;font-weight:900;letter-spacing:-.03em;margin-bottom:20px}
+  .lede{font-size:18px;color:var(--muted);max-width:560px;margin-bottom:28px}
+  .cta-row{display:flex;flex-wrap:wrap;gap:13px;margin-bottom:24px}
+  .btn{display:inline-flex;align-items:center;gap:9px;padding:14px 24px;border-radius:13px;font-weight:700;font-size:15px;transition:transform .15s,filter .15s,border-color .15s}
+  .btn:hover{transform:translateY(-2px)}
+  .btn-primary{color:#fff;background:linear-gradient(135deg,var(--brand),var(--brand-2));box-shadow:0 14px 34px -14px rgba(37,99,235,.65)}
+  .btn-primary:hover{filter:brightness(1.06)}
+  .btn-ghost{color:var(--text);border:1px solid var(--border-2);background:var(--surface)}
+  .btn-ghost:hover{border-color:var(--brand)}
+  .tags{display:flex;flex-wrap:wrap;gap:8px}
+  .tags span{font-size:12.5px;font-weight:600;color:var(--muted);background:var(--surface);border:1px solid var(--border);padding:5px 11px;border-radius:999px}
+
+  /* profile card */
+  .profile{background:var(--surface);border:1px solid var(--border);border-radius:22px;padding:30px 28px;box-shadow:var(--shadow);text-align:center;position:relative;overflow:hidden}
+  .profile::before{content:"";position:absolute;top:0;left:0;right:0;height:82px;background:linear-gradient(135deg,var(--brand),var(--brand-2));opacity:.14}
+  .pfp{width:104px;height:104px;border-radius:50%;margin:6px auto 14px;position:relative;display:grid;place-items:center;color:#fff;font-weight:900;font-size:34px;background:linear-gradient(135deg,var(--brand),var(--brand-2));border:4px solid var(--surface);box-shadow:var(--shadow-sm);overflow:hidden;letter-spacing:-.03em}
+  .pfp img{width:100%;height:100%;object-fit:cover}
+  .profile .nm{font-size:20px;font-weight:800;letter-spacing:-.02em}
+  .profile .role{font-size:13.5px;color:var(--muted);margin-top:3px}
+  .profile .loc{font-size:12.5px;color:var(--muted-2);margin-top:8px;display:inline-flex;align-items:center;gap:6px}
+  .socials{display:flex;justify-content:center;gap:9px;margin-top:18px}
+  .soc{width:38px;height:38px;border-radius:11px;border:1px solid var(--border);background:var(--surface-2);display:grid;place-items:center;color:var(--muted);transition:all .15s}
+  .soc:hover{color:var(--text);border-color:var(--brand);transform:translateY(-2px)}
+  .nowline{margin-top:18px;padding-top:16px;border-top:1px solid var(--border);font-size:12.5px;color:var(--muted-2)}
+  .nowline b{color:var(--brand);font-weight:700}
+
+  section{padding:60px 0}
+  .sec-head{max-width:660px;margin:0 auto 40px;text-align:center}
+  .sec-head.left{text-align:left;margin-left:0}
+  .kicker{font-size:13px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--brand)}
+  h2{font-size:clamp(26px,3.4vw,38px);font-weight:900;letter-spacing:-.025em;margin:12px 0 12px}
+  .sec-head p{color:var(--muted);font-size:16.5px}
+
+  /* featured project */
+  .feat{background:var(--surface);border:1px solid var(--border);border-radius:24px;overflow:hidden;box-shadow:var(--shadow-sm)}
+  .feat-in{display:grid;grid-template-columns:1fr 1fr;gap:0}
+  @media(max-width:880px){.feat-in{grid-template-columns:1fr}}
+  .feat-txt{padding:40px}
+  .feat-badge{display:inline-flex;align-items:center;gap:7px;font-size:11.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--brand);background:color-mix(in srgb,var(--brand) 10%,var(--surface));border:1px solid color-mix(in srgb,var(--brand) 28%,var(--surface));padding:5px 12px;border-radius:999px;margin-bottom:16px}
+  .feat-txt h3{font-size:27px;font-weight:900;letter-spacing:-.025em;margin-bottom:12px}
+  .feat-txt p{color:var(--muted);font-size:15px;margin-bottom:14px}
+  .feat-list{list-style:none;margin:0 0 22px;padding:0;display:flex;flex-direction:column;gap:8px}
+  .feat-list li{font-size:14px;color:var(--muted);display:flex;gap:10px;align-items:flex-start}
+  .feat-list .ck{color:var(--brand-3);flex:none;margin-top:3px}
+  .feat-visual{padding:30px;background:var(--surface-2);border-left:1px solid var(--border);display:flex;align-items:center}
+  @media(max-width:880px){.feat-visual{border-left:none;border-top:1px solid var(--border)}}
+  .panel{width:100%;background:var(--surface);border:1px solid var(--border);border-radius:15px;box-shadow:var(--shadow-sm);overflow:hidden}
+  .panel-top{display:flex;align-items:center;gap:8px;padding:12px 15px;border-bottom:1px solid var(--border)}
+  .tl{width:10px;height:10px;border-radius:50%}.tl.r{background:#ff5f57}.tl.y{background:#febc2e}.tl.g{background:#28c840}
+  .panel-title{margin-left:8px;font-size:12px;color:var(--muted-2)}
+  .flow{padding:16px;display:flex;flex-direction:column;gap:8px;position:relative}
+  .stage{display:flex;align-items:center;gap:12px;padding:11px 13px;border-radius:11px;border:1px solid var(--border);background:var(--surface-2);transition:border-color .3s,background .3s,transform .3s}
+  .stage.lit{border-color:var(--brand);background:color-mix(in srgb,var(--brand) 8%,var(--surface));transform:translateX(3px)}
+  .stage .n{width:25px;height:25px;flex:none;border-radius:7px;display:grid;place-items:center;font-size:11px;font-weight:700;color:#fff;background:linear-gradient(135deg,var(--brand),var(--brand-2))}
+  .stage .lbl{font-weight:600;font-size:13px}
+  .stage .meta{margin-left:auto;font-size:10.5px;color:var(--muted-2);font-weight:600}
+  .stage .meta.ro{color:var(--brand-3)}
+  .arrow{height:8px;display:grid;place-items:center;color:var(--border-2);font-size:11px}
+  .packet{position:absolute;left:29px;width:10px;height:10px;border-radius:50%;background:var(--brand);box-shadow:0 0 12px 3px color-mix(in srgb,var(--brand) 70%,transparent);z-index:3;opacity:0;animation:travel 5s linear infinite}
+  @keyframes travel{0%{top:26px;opacity:0}5%{opacity:1}95%{opacity:1}100%{top:300px;opacity:0}}
+
+  /* explore cards */
+  .explore{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  @media(max-width:900px){.explore{grid-template-columns:1fr 1fr}}
+  @media(max-width:620px){.explore{grid-template-columns:1fr}}
+  .gcard{position:relative;border-radius:20px;padding:26px;min-height:200px;display:flex;flex-direction:column;justify-content:space-between;color:#fff;overflow:hidden;box-shadow:var(--shadow-sm);transition:transform .2s,box-shadow .2s}
+  .gcard:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+  .gcard::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 80% 15%,rgba(255,255,255,.22),transparent 45%);pointer-events:none}
+  .g1{background:linear-gradient(140deg,#0EA5A0,#2563EB)}
+  .g2{background:linear-gradient(140deg,#6D28D9,#9333EA)}
+  .g3{background:linear-gradient(140deg,#0F766E,#10B981)}
+  .g4{background:linear-gradient(140deg,#B45309,#F59E0B)}
+  .g5{background:linear-gradient(140deg,#1E3A8A,#3B82F6)}
+  .g6{background:linear-gradient(140deg,#B91C4E,#E11D48)}
+  .gcard .cat{font-size:11.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;opacity:.9}
+  .gcard h3{font-size:21px;font-weight:800;letter-spacing:-.02em;margin:auto 0 8px;line-height:1.15}
+  .gcard p{font-size:13.5px;opacity:.92;line-height:1.5}
+  .gcard .go{position:absolute;top:22px;right:22px;width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.18);display:grid;place-items:center;transition:background .2s}
+  .gcard:hover .go{background:rgba(255,255,255,.32)}
+  .gcard .soon{position:absolute;top:24px;right:24px;font-size:10.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;background:rgba(255,255,255,.2);padding:4px 9px;border-radius:999px}
+
+  /* posts */
+  .posts{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  @media(max-width:860px){.posts{grid-template-columns:1fr}}
+  .post{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:24px;transition:transform .18s,border-color .18s,box-shadow .18s}
+  .post:hover{transform:translateY(-4px);border-color:color-mix(in srgb,var(--brand) 45%,var(--border));box-shadow:var(--shadow-sm)}
+  .post .meta{font-size:12px;color:var(--muted-2);font-weight:600;letter-spacing:.03em;text-transform:uppercase}
+  .post h4{font-size:17px;font-weight:800;margin:10px 0 8px;letter-spacing:-.01em}
+  .post p{font-size:13.5px;color:var(--muted)}
+  .post .soon{display:inline-block;margin-top:14px;font-size:11.5px;font-weight:700;color:var(--brand);background:color-mix(in srgb,var(--brand) 10%,var(--surface));border:1px solid color-mix(in srgb,var(--brand) 26%,var(--surface));padding:3px 10px;border-radius:999px}
+
+  .final-card{max-width:900px;margin:0 auto;border-radius:24px;padding:52px 32px;text-align:center;position:relative;overflow:hidden;color:#fff;background:linear-gradient(135deg,var(--ink),#132a4d)}
+  body.dark .final-card{background:linear-gradient(135deg,#0b1120,#10233f);border:1px solid var(--border)}
+  .final-card::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 80% 120% at 50% -10%,rgba(45,212,191,.28),transparent 60%);pointer-events:none}
+  .final-card .kicker{color:var(--brand-3)}
+  .final-card h2{color:#fff;position:relative}
+  .final-card p{color:rgba(255,255,255,.8);max-width:520px;margin:12px auto 26px;position:relative}
+  .final-card .cta-row{justify-content:center;position:relative}
+  .final-card .btn-ghost{color:#fff;border-color:rgba(255,255,255,.28);background:rgba(255,255,255,.06)}
+
+  footer{border-top:1px solid var(--border);padding:38px 0;color:var(--muted-2);font-size:13px}
+  .foot-in{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:center}
+  .disc{max-width:640px;line-height:1.55}
+</style>
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Ketan Kamble">
+<meta property="og:title" content="Ketan Kamble — Modern Workspace, in the open">
+<meta property="og:description" content="I build Microsoft endpoint-management tooling in the open, and write about how it actually works underneath the portal.">
+<meta property="og:image" content="https://ketankamble.com/assets/img/social-card.png">
+<meta property="og:url" content="https://ketankamble.com/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Ketan Kamble — Modern Workspace, in the open">
+<meta name="twitter:description" content="Microsoft endpoint-management tooling, built and explained first-hand.">
+<meta name="twitter:image" content="https://ketankamble.com/assets/img/social-card.png">
+</head>
+<body>
+
+<div class="nav-outer">
+  <nav>
+    <a class="brand" href=".">
+      <span class="brandmark">KK</span>
+      <span>Ketan Kamble</span>
+    </a>
+    <div class="nav-links">
+      <a href="blog/">Blog</a>
+      <a href="projects/">Projects</a>
+      <a href="scripts/">Scripts</a>
+      <a href="powerbi/">Power BI</a>
+      <a href="about/">About</a>
+    </div>
+    <div class="nav-right">
+      <a class="soc" href="https://www.buymeacoffee.com/ketankamble" title="Buy me a coffee" style="margin-right:4px">☕</a>
+      <button class="theme-btn" id="themeBtn" title="Toggle light / dark" aria-label="Toggle theme"><svg id="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1111.2 3 7 7 0 0021 12.8z"/></svg></button>
+      <a class="nav-cta" href="blog/">Read the blog →</a>
+    </div>
+  </nav>
+</div>
+
+<header class="hero">
+  <div class="hero-bg"><div class="grid-lines"></div><div class="blob a"></div><div class="blob b"></div></div>
+  <div class="wrap">
+    <div class="hero-in">
+      <div>
+        <span class="eyebrow"><span class="dot"></span>Microsoft Modern Workspace · Intune · Entra · Graph</span>
+        <h1>Modern Workspace,<br><span class="grad">decoded in the open</span>.</h1>
+        <p class="lede">I'm Ketan — a Microsoft Modern Workspace architect. I build endpoint-management tooling in the open, and write about how it actually works underneath the portal.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="blog/">Read the blog →</a>
+          <a class="btn btn-ghost" href="projects/">Browse projects</a>
+        </div>
+        <div class="tags"><span>Intune</span><span>Entra ID</span><span>Microsoft Graph</span><span>Autopilot</span><span>Defender</span><span>Azure Automation</span><span>Power BI</span></div>
+      </div>
+
+      <div class="profile">
+        <!-- Swap the file docs/assets/headshot/ketan.jpg with your own photo (square, ~440px). -->
+        <div class="pfp"><img src="assets/headshot/ketan.jpg" alt="Ketan Kamble"></div>
+        <div class="nm">Ketan Kamble</div>
+        <div class="role">Microsoft Modern Workspace Architect</div>
+        <div class="loc"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Düsseldorf, Germany</div>
+        <div class="socials">
+          <a class="soc" href="https://github.com/KetanKamble3894" title="GitHub"><svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 014 0c1.53-1.03 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0016 8c0-4.42-3.58-8-8-8z"/></svg></a>
+          <a class="soc" href="#" title="LinkedIn"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 110-4.13 2.06 2.06 0 010 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg></a>
+          <a class="soc" href="#" title="Newsletter"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></a>
+        </div>
+        <div class="nowline">Currently building <b>Zero-Access Agent</b> — open source (MIT)</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- FEATURED PROJECT -->
+<section id="projects">
+  <div class="wrap">
+    <div class="sec-head"><span class="kicker">Flagship project</span><h2>Zero-Access Agent</h2><p>The project I'm best known for — an AI agent that answers questions about an endpoint fleet while holding no access to any live system.</p></div>
+    <div class="feat">
+      <div class="feat-in">
+        <div class="feat-txt">
+          <span class="feat-badge">Open source · MIT</span>
+          <h3>Give the AI the reports, never the systems</h3>
+          <p>Scheduled read-only jobs export sanitized, pre-aggregated snapshots. The agent answers only from those — the permission boundary is enforced by architecture, not by asking a model to behave.</p>
+          <ul class="feat-list">
+            <li><span class="ck">✓</span> Read-only by construction — the agent holds no tenant scopes and no keys.</li>
+            <li><span class="ck">✓</span> Run the whole pattern with <b>no tenant</b>, via a synthetic fleet generator.</li>
+            <li><span class="ck">✓</span> Nine real read-only collectors, each with a plain-language teardown.</li>
+          </ul>
+          <div class="cta-row"><a class="btn btn-primary" href="projects/zero-access-agent/">Explore the project →</a><a class="btn btn-ghost" href="https://github.com/KetanKamble3894/zero-access-agent">GitHub</a></div>
+        </div>
+        <div class="feat-visual">
+          <div class="panel">
+            <div class="panel-top"><span class="tl r"></span><span class="tl y"></span><span class="tl g"></span><span class="panel-title mono">zero-access-pattern.flow</span></div>
+            <div class="flow">
+              <div class="packet"></div>
+              <div class="stage"><span class="n">1</span><span class="lbl">Source — Intune / Entra</span><span class="meta ro">GET-only</span></div>
+              <div class="arrow">↓</div>
+              <div class="stage"><span class="n">2</span><span class="lbl">Collect — runbooks</span><span class="meta ro">read-only</span></div>
+              <div class="arrow">↓</div>
+              <div class="stage"><span class="n">3</span><span class="lbl">Store — snapshots</span><span class="meta">sanitized CSV</span></div>
+              <div class="arrow">↓</div>
+              <div class="stage"><span class="n">4</span><span class="lbl">Retrieve — AI Search</span><span class="meta ro">RBAC read</span></div>
+              <div class="arrow">↓</div>
+              <div class="stage"><span class="n">5</span><span class="lbl">Answer — AI agent</span><span class="meta ro">no scopes · no keys</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPLORE / SECTIONS -->
+<section id="explore">
+  <div class="wrap">
+    <div class="sec-head"><span class="kicker">Explore</span><h2>Everything I'm building</h2><p>Posts, tools and projects — all in one place, added as I go.</p></div>
+    <div class="explore">
+      <a class="gcard g5" href="blog/">
+        <div class="go"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+        <span class="cat">Writing</span>
+        <div><h3>The blog</h3><p>"The Graph call behind the portal click" — decoding what the portal actually fires, and the permission it needs.</p></div>
+      </a>
+      <a class="gcard g1" href="projects/zero-access-agent/">
+        <div class="go"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+        <span class="cat">Flagship</span>
+        <div><h3>Zero-Access Agent</h3><p>The read-only AI agent pattern — full docs, nine collectors, and a synthetic fleet you can run with no tenant.</p></div>
+      </a>
+      <a class="gcard g3" href="scripts/">
+        <div class="go"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+        <span class="cat">Reusable</span>
+        <div><h3>Scripts library</h3><p>Battle-tested PowerShell for Intune, Entra and Graph — each script standalone, each explained.</p></div>
+      </a>
+      <a class="gcard g4" href="powerbi/">
+        <div class="go"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+        <span class="cat">Reporting</span>
+        <div><h3>Power BI reports</h3><p>The endpoint reports I build on top of the read-only snapshots — screenshots, templates and how they're wired.</p></div>
+      </a>
+      <a class="gcard g2" href="#">
+        <span class="soon">Soon</span>
+        <span class="cat">Signal, not noise</span>
+        <div><h3>Newsletter</h3><p>An occasional note when something's worth your time — new posts, new tools, lessons learned.</p></div>
+      </a>
+      <a class="gcard g6" href="about/">
+        <div class="go"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+        <span class="cat">Who</span>
+        <div><h3>About me</h3><p>What I work on, how I work in the open, and how to get in touch.</p></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- BLOG PREVIEW -->
+<section id="blog">
+  <div class="wrap">
+    <div class="sec-head"><span class="kicker">From the blog</span><h2>Latest writing</h2><p>First posts landing soon — here's what's on deck.</p></div>
+    <div class="posts">
+      <div class="post"><div class="meta">Series · Zero-Access</div><h4>The Sites.Selected 403 that started it all</h4><p>How one stubborn permission error led to an architecture where the AI never touches a live system.</p><span class="soon">Coming soon</span></div>
+      <div class="post"><div class="meta">Series · Behind the portal</div><h4>The Graph call behind the portal click</h4><p>Decoding what the Intune / Entra portal actually fires against Microsoft Graph — and which permission it needs.</p><span class="soon">Coming soon</span></div>
+      <div class="post"><div class="meta">How-to · Power BI</div><h4>An endpoint report from read-only snapshots</h4><p>Building a Power BI report on sanitized CSVs — no live tenant connection required.</p><span class="soon">Coming soon</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap">
+    <div class="final-card">
+      <span class="kicker">Working in the open</span>
+      <h2>Let's build endpoint tooling that's honest about how it works</h2>
+      <p>Everything here comes from a personal lab, reproduced before it's published — including what I got wrong. Follow along on GitHub, or subscribe for the occasional signal.</p>
+      <div class="cta-row"><a class="btn btn-primary" href="blog/">Read the blog →</a><a class="btn btn-ghost" href="https://github.com/KetanKamble3894">GitHub</a></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-in">
+    <div class="brand" style="font-size:14px"><span class="brandmark" style="width:24px;height:24px;font-size:11px">KK</span><span>Ketan Kamble</span></div>
+    <p class="disc">Independent content — not affiliated with, sponsored by, or endorsed by Microsoft. Microsoft, Intune, Entra, Microsoft Graph, Azure and Power BI are trademarks of the Microsoft group of companies. Everything here comes from a personal lab.</p>
+  </div>
+</footer>
+
+<script>
+  var b=document.body,btn=document.getElementById('themeBtn'),ico=document.getElementById('ico');
+  var SUN='<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>';
+  var MOON='<path d="M21 12.8A9 9 0 1111.2 3 7 7 0 0021 12.8z"/>';
+  function apply(dark){ if(dark){b.classList.add('dark');ico.innerHTML=SUN;} else {b.classList.remove('dark');ico.innerHTML=MOON;} }
+  var stored=null; try{stored=localStorage.getItem('kk-theme');}catch(e){}
+  var sysDark=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches;
+  apply(stored ? stored==='dark' : sysDark);
+  btn.addEventListener('click',function(){ var dark=!b.classList.contains('dark'); apply(dark); try{localStorage.setItem('kk-theme',dark?'dark':'light');}catch(e){} });
+  var stages=document.querySelectorAll('.flow .stage'),i=0;
+  setInterval(function(){ stages.forEach(function(s){s.classList.remove('lit');}); if(stages[i])stages[i].classList.add('lit'); i=(i+1)%stages.length; },1000);
+</script>
+</body>
+</html>
