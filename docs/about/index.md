@@ -6,7 +6,7 @@ description: Ketan Kamble — Microsoft Modern Workspace architect.
 
 # About
 
-I'm **Ketan Kamble**, a Microsoft Modern Workspace architect based in Düsseldorf. I work across Intune,
+I'm **Ketan Kamble**, a Microsoft Modern Workspace architect based in Finland — originally from Pune, India. I work across Intune,
 Entra ID, Microsoft Graph, Autopilot, Defender, Azure Automation and Power BI — and I build tooling in the
 open, writing about how it actually works underneath the portal.
 
