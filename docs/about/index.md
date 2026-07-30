@@ -12,7 +12,7 @@ hide:
     <span class="ah-eyebrow">About</span>
     <h1 class="ah-name">Ketan Kamble</h1>
     <div class="ah-role">Microsoft endpoint-management architect · Intune · Entra · Graph</div>
-    <div class="ah-loc">📍 Finland — originally from Pune, India · मराठी माणूс</div>
+    <div class="ah-loc">📍 Finland — originally from Pune, India · मराठी माणूस</div>
     <div class="ah-socials">
       <a href="https://www.linkedin.com/in/ketan-kamble-012a1582" target="_blank" rel="noopener">LinkedIn</a>
       <a href="https://github.com/KetanKamble3894" target="_blank" rel="noopener">GitHub</a>
@@ -55,7 +55,16 @@ Microsoft Intune · Microsoft Entra ID · Microsoft Graph (v1.0 + beta) · Windo
   </div>
 </div>
 
-## Community & speaking
+## Community, speaking & events
+
+Staying close to the Intune and Entra community is a big part of how the work here stays grounded. I speak at user-group events, attend the conferences where the field is actually moving, and publish everything I build — including what I got wrong — in the open.
+
+From presenting to the Workplace Ninja community in Finland to sitting in the audience at Microsoft's own AI Tour, time in the room with other practitioners is where the honest, real-world lessons come from — and where a lot of what ends up on this site starts.
+
+- **Speaker** — Workplace Ninja User Group, Finland: *"The Automation Evolution: From Ideas to Impact"*
+- **Attendee** — Workplace Ninjas Belgium 2026
+- **Attendee** — Microsoft AI Tour, Helsinki 2026
+- **In the open** — scripts, Power BI reports and behind-the-portal deep-dives, all on ketankamble.com
 
 <div class="community">
   <img src="../assets/img/about/wnug-finland.jpg" alt="Ketan Kamble speaking at Workplace Ninja User Group Finland" class="comm-photo">
@@ -72,6 +81,15 @@ Microsoft Intune · Microsoft Entra ID · Microsoft Graph (v1.0 + beta) · Windo
     <span class="comm-badge alt">Attendee</span>
     <h3>Workplace Ninjas Belgium 2026</h3>
     <p>I attended Workplace Ninjas Belgium 2026 — one of Europe's sharpest gatherings for Intune, Entra and endpoint-security practitioners. Staying close to how the best in the field actually solve these problems is how the writing here stays current and honest.</p>
+  </div>
+</div>
+
+<div class="community">
+  <img src="../assets/img/about/msft-aitour-helsinki.jpg" alt="Ketan Kamble at Microsoft AI Tour, Helsinki 2026" class="comm-photo">
+  <div class="comm-body">
+    <span class="comm-badge alt">Attendee</span>
+    <h3>Microsoft AI Tour — Helsinki 2026</h3>
+    <p>I attended Microsoft AI Tour in Helsinki — Microsoft's own look at where AI and the Modern Workspace are heading. Hearing the platform direction first-hand, straight from the source, is part of keeping the tooling and writing here aligned with where Intune, Entra and Copilot are actually going.</p>
   </div>
 </div>
 
