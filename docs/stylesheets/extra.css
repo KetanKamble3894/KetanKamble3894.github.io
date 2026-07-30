@@ -281,3 +281,42 @@
 .community .comm-body p{font-size:.85rem;color:var(--md-default-fg-color--light);line-height:1.6;margin:0}
 /* attendee badge — outline style to distinguish from the teal speaker badge */
 .community .comm-badge.alt{background:transparent;color:var(--md-default-fg-color--light);border:1px solid var(--md-default-fg-color--lighter)}
+
+/* ============================================================
+   BLOG POST RIGHT-HAND RAIL (scloud-style)
+   Author + badges + sponsor in the right sidebar, focused reading.
+   The secondary sidebar is hidden globally (line ~74); re-show it
+   only when it carries our .post-rail, and clear the left sidebar
+   on those pages so the reading column is centered.
+   ============================================================ */
+.md-sidebar--secondary:has(.post-rail){ display:block !important; }
+/* focused reading: hide the left post-metadata rail (top nav still available) */
+.md-sidebar--post{ display:none !important; }
+
+.post-rail{ padding:.4rem .2rem; }
+.post-rail .pr-card{
+  border:1px solid var(--md-default-fg-color--lightest); border-radius:16px;
+  background:var(--md-default-bg-color); padding:1.1rem 1.1rem 1.2rem; text-align:center;
+}
+.post-rail .pr-photo{ width:76px; height:76px; border-radius:50%; object-fit:cover;
+  border:2px solid var(--md-primary-fg-color); margin:0 auto .6rem; display:block; }
+.post-rail .pr-name{ font-weight:800; font-size:1rem; color:var(--md-default-fg-color); }
+.post-rail .pr-role{ font-size:.74rem; color:var(--md-default-fg-color--light); margin-top:.15rem; line-height:1.4; }
+.post-rail .pr-bio{ font-size:.76rem; color:var(--md-default-fg-color--light); line-height:1.55; margin:.7rem 0 .8rem; }
+.post-rail .pr-links{ display:flex; gap:.5rem; justify-content:center; flex-wrap:wrap; }
+.post-rail .pr-links a{ font-size:.74rem; font-weight:600; color:var(--md-primary-fg-color);
+  border:1px solid var(--md-default-fg-color--lightest); border-radius:999px; padding:.22rem .6rem; }
+.post-rail .pr-badges{ display:flex; gap:.35rem; flex-wrap:wrap; justify-content:center; margin:.9rem 0; }
+.post-rail .pr-badge{ font-size:.64rem; font-weight:700; letter-spacing:.04em; color:var(--md-default-fg-color--light);
+  border:1px solid var(--md-default-fg-color--lighter); border-radius:6px; padding:.2rem .45rem; }
+.post-rail .pr-sponsor{ display:block; border:1px dashed var(--md-default-fg-color--lighter); border-radius:14px;
+  padding:.9rem 1rem; text-decoration:none; background:var(--md-default-bg-color); }
+.post-rail .prs-eyebrow{ display:block; font-size:.6rem; font-weight:800; letter-spacing:.14em; text-transform:uppercase; color:var(--md-primary-fg-color); }
+.post-rail .prs-title{ display:block; font-size:.82rem; font-weight:700; color:var(--md-default-fg-color); margin:.3rem 0 .25rem; line-height:1.35; }
+.post-rail .prs-sub{ display:block; font-size:.72rem; color:var(--md-default-fg-color--light); }
+
+/* the bottom author + sponsor cards are redundant on desktop (now in the rail);
+   keep them only for narrow screens where the right rail collapses */
+@media screen and (min-width:76.25em){
+  .post-author, .post-sponsor{ display:none !important; }
+}
