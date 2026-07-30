@@ -155,14 +155,5 @@ extra:
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/KetanKamble3894
-  analytics:
-    provider: google
-    property: G-Y976D39YCE
-  consent:
-    title: Cookie consent
-    description: >-
-      We use analytics cookies to understand how the site is used, so I can make it
-      better. You can accept or decline — the site works either way.
-    actions:
-      - accept
-      - reject
+  # Analytics + cookie consent are handled by docs/javascripts/consent.js
+  # (one unified banner; Google Analytics loads ONLY after the visitor clicks Accept).

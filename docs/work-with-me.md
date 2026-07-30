@@ -1,15 +1,37 @@
 ---
-title: Work with me
-description: Sponsorship, advertising, and consulting — reach a focused audience of Microsoft Modern Workplace professionals.
+title: Contact
+description: Work with Ketan Kamble — sponsorship, collaboration, speaking, and consulting for Intune, Entra and endpoint teams.
 hide:
-  - tags
+  - navigation
+  - toc
 ---
 
-# Work with me
+# Contact
 
-This site reaches people who run and design **Microsoft Modern Workplace** environments — Intune,
-Entra ID, Microsoft Graph, Autopilot, Defender, Windows 365 — admins, engineers, consultants and
-architects making real tooling decisions. If that's your audience, here are the ways we can work together.
+<div class="term-contact">
+  <div class="tc-bar">
+    <i class="tc-dot"></i><i class="tc-dot"></i><i class="tc-dot"></i>
+    <span class="tc-title">connect.ps1</span>
+  </div>
+  <div class="tc-body">
+    <div class="tc-line"><span class="tc-prompt">PS&gt;</span> Get-Contact <span class="tc-str">"Ketan Kamble"</span></div>
+    <div class="tc-line"><span class="tc-key">Role</span> Modern Workplace Architect</div>
+    <div class="tc-line"><span class="tc-key">Focus</span> Intune · Entra · Graph · read-only tooling</div>
+    <div class="tc-line"><span class="tc-key">Where</span> Finland <span class="tc-cmt"># originally from Pune, India</span></div>
+    <div class="tc-line tc-gap"><span class="tc-cmt"># pick a channel — I actually reply</span></div>
+    <div class="tc-line"><span class="tc-arrow">→</span> <a class="tc-link" href="https://www.linkedin.com/in/ketan-kamble-012a1582" target="_blank" rel="noopener">LinkedIn</a> <span class="tc-badge">fastest</span></div>
+    <div class="tc-line"><span class="tc-arrow">→</span> <a class="tc-link" href="https://github.com/KetanKamble3894" target="_blank" rel="noopener">GitHub</a></div>
+  </div>
+</div>
+
+## What you can reach out about
+
+This is where the meaningful conversations start. I regularly hear from IT teams and organisations modernising endpoint management, tightening their security posture, or planning Intune and Windows 365 rollouts — and I'm always happy to talk shop.
+
+- **Speaking & conference sessions** — Intune, Entra, Automation, and the read-only / zero-access approach.
+- **Intune, Windows 365 & security discussions** — real-world architecture, reporting, and what the portal is actually doing underneath.
+- **Content collaborations & community projects** — in the open, always.
+- **Selective partnerships & sponsorship** — if your product genuinely helps EUC and security teams.
 
 ## Ways to partner
 
@@ -25,10 +47,5 @@ architects making real tooling decisions. If that's your audience, here are the 
 - **Typical reader:** endpoint admin / EUC engineer / consultant — often the person who chooses the tools.
 - **What they come for:** first-hand, reproduced-in-a-lab detail they can't get from the portal docs.
 - **Traffic & reach:** shared on request as the audience grows.
-
-## Get in touch
-
-- :material-linkedin: **[LinkedIn](https://www.linkedin.com/in/ketan-kamble-012a1582)** — the fastest way to reach me
-- :material-github: **[GitHub](https://github.com/KetanKamble3894)** — every script and project
 
 *All sponsored content is clearly labelled. I only take on partners whose product I'd be comfortable recommending to my own readers.*

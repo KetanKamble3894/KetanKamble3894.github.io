@@ -449,3 +449,81 @@
   }
   .md-sidebar--secondary:has(.post-rail) .md-sidebar__inner { position: sticky; top: 8rem; }
 }
+
+/* centre the whole content area on every page (kills the dead right-hand margin
+   on posts, About, Scripts, etc.). The content row is a flex container that stays
+   wide; centring its items balances content — and the author rail where present. */
+@media screen and (min-width: 76.25em) {
+  .md-main__inner { justify-content: center !important; }
+  .md-content { flex-grow: 0 !important; }
+}
+/* consent banner never overlaps the lightbox close, etc. — handled inline in consent.js */
+
+/* ---- blog index: centred, comfortable column + centred intro (Florian-style) ---- */
+@media screen and (min-width: 76.25em) {
+  [data-md-color-scheme] .md-content:has(.md-post--excerpt) { max-width: 66rem !important; flex-grow: 0 !important; }
+}
+.md-content__inner:has(.md-post--excerpt) > h1,
+.md-content__inner:has(.md-post--excerpt) > p { text-align: center !important; }
+.md-content__inner:has(.md-post--excerpt) > p { max-width: 44rem !important; margin-left: auto !important; margin-right: auto !important; }
+.md-content__inner:has(.md-post--excerpt) > nav.topic-chips { justify-content: center; }
+
+/* blog index intro sits inside a .md-typeset wrapper — centre it there (Florian-style) */
+.md-content__inner:has(.md-post--excerpt) > .md-typeset { text-align: center; }
+.md-content__inner:has(.md-post--excerpt) > .md-typeset > p { max-width: 46rem; margin-left: auto; margin-right: auto; }
+.md-content__inner:has(.md-post--excerpt) > .md-typeset .topic-chips { justify-content: center; }
+
+/* ---- Contact page — connect.ps1 terminal window ---- */
+.term-contact {
+  max-width: 42rem;
+  margin: .6rem 0 2.4rem;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #0b1120;
+  border: 1px solid rgba(148,163,184,.22);
+  box-shadow: 0 30px 70px -34px rgba(2,6,23,.75), 0 2px 8px rgba(2,6,23,.4);
+  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+.term-contact .tc-bar {
+  display: flex; align-items: center; gap: 8px;
+  padding: 11px 15px;
+  background: linear-gradient(180deg, #1b2536, #141c2b);
+  border-bottom: 1px solid rgba(148,163,184,.16);
+}
+.term-contact .tc-dot { width: 12px; height: 12px; border-radius: 50%; display: inline-block; }
+.term-contact .tc-dot:nth-child(1) { background: #ff5f56; }
+.term-contact .tc-dot:nth-child(2) { background: #ffbd2e; }
+.term-contact .tc-dot:nth-child(3) { background: #27c93f; }
+.term-contact .tc-title {
+  margin-left: 6px; color: #94a3b8; font-size: .78rem; letter-spacing: .02em;
+}
+.term-contact .tc-body {
+  padding: 20px 20px 22px;
+  overflow-x: auto;
+  color: #cbd5e1;
+  font-size: .86rem;
+  line-height: 1.95;
+}
+.term-contact .tc-line { white-space: nowrap; }
+.term-contact .tc-gap { margin-top: .55rem; }
+.term-contact .tc-prompt { color: #27c93f; font-weight: 700; margin-right: .35rem; }
+.term-contact .tc-str { color: #fbbf24; }
+.term-contact .tc-key {
+  display: inline-block; min-width: 4.2rem; color: #2dd4bf; font-weight: 700;
+}
+.term-contact .tc-cmt { color: #64748b; font-style: italic; }
+.term-contact .tc-arrow { color: #2dd4bf; margin-right: .5rem; font-weight: 700; }
+.md-typeset .term-contact .tc-link {
+  color: #e2e8f0; font-weight: 700; text-decoration: none;
+  border-bottom: 1px solid rgba(45,212,191,.5); transition: color .15s, border-color .15s;
+}
+.md-typeset .term-contact .tc-link:hover { color: #5eead4; border-bottom-color: #5eead4; }
+.term-contact .tc-badge {
+  margin-left: .55rem; font-size: .62rem; font-weight: 800; letter-spacing: .08em;
+  text-transform: uppercase; color: #0b1120; background: #2dd4bf;
+  padding: 1px 7px; border-radius: 999px; vertical-align: middle;
+}
+@media (max-width: 640px) {
+  .term-contact .tc-body { font-size: .78rem; padding: 16px 16px 18px; }
+  .term-contact .tc-key { min-width: 3.6rem; }
+}
