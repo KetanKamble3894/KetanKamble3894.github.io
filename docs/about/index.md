@@ -1,6 +1,6 @@
 ---
 title: About
-description: Ketan Kamble — Microsoft endpoint-management architect. 10 years in EUC, MD-102 & SC-200, speaker at Workplace Ninja User Group Finland. Building Intune, Entra and the Zero-Access AI agent in the open.
+description: Ketan Kamble — Modern Workplace Architect. 10 years in EUC, MD-102 & SC-200, speaker at Workplace Ninja User Group Finland. Building Intune, Entra and the Zero-Access AI agent in the open.
 hide:
   - navigation
   - toc
@@ -11,7 +11,7 @@ hide:
   <div class="ah-body">
     <span class="ah-eyebrow">About</span>
     <h1 class="ah-name">Ketan Kamble</h1>
-    <div class="ah-role">Microsoft endpoint-management architect · Intune · Entra · Graph</div>
+    <div class="ah-role">Modern Workplace Architect · Intune · Entra · Graph</div>
     <div class="ah-loc">📍 Finland — originally from Pune, India · मराठी माणूस</div>
     <div class="ah-socials">
       <a href="https://www.linkedin.com/in/ketan-kamble-012a1582" target="_blank" rel="noopener">LinkedIn</a>
@@ -28,7 +28,7 @@ hide:
   <div class="stat"><b>Speaker</b><span>WNUG Finland</span></div>
 </div>
 
-I'm **Ketan Kamble**, a Microsoft endpoint-management architect with **10 years** across End-User Computing and IT — designing and running Intune, Entra ID, Microsoft Graph, Autopilot, Defender, Azure Automation and Power BI environments. I build tooling **in the open** and write about what the portal is actually doing underneath: the Graph calls it fires and the permission each one needs.
+I'm **Ketan Kamble**, a Modern Workplace Architect with **10 years** across End-User Computing and IT — designing and running Intune, Entra ID, Microsoft Graph, Autopilot, Defender, Azure Automation and Power BI environments. I build tooling **in the open** and write about what the portal is actually doing underneath: the Graph calls it fires and the permission each one needs.
 
 <div class="pillars">
   <div class="pillar"><span class="pi-k">Practical</span><p>Everything comes from a personal lab, reproduced before it's published — including the parts I got wrong. No theory-only posts.</p></div>
@@ -89,7 +89,7 @@ From presenting to the Workplace Ninja community in Finland to sitting in the au
   <div class="comm-body">
     <span class="comm-badge alt">Attendee</span>
     <h3>Microsoft AI Tour — Helsinki 2026</h3>
-    <p>I attended Microsoft AI Tour in Helsinki — Microsoft's own look at where AI and the Modern Workspace are heading. Hearing the platform direction first-hand, straight from the source, is part of keeping the tooling and writing here aligned with where Intune, Entra and Copilot are actually going.</p>
+    <p>I attended Microsoft AI Tour in Helsinki — Microsoft's own look at where AI and the Modern Workplace are heading. Hearing the platform direction first-hand, straight from the source, is part of keeping the tooling and writing here aligned with where Intune, Entra and Copilot are actually going.</p>
   </div>
 </div>
 
@@ -105,14 +105,6 @@ Open to **speaking, collaboration, and sponsorship**. If your product helps EUC 
 
 - :material-linkedin: **[LinkedIn](https://www.linkedin.com/in/ketan-kamble-012a1582)** — say hello
 - :material-github: **[GitHub](https://github.com/KetanKamble3894)** — every script and project
-- :material-email-outline: **Newsletter** — subscribe below
-
-<form class="nl" action="https://buttondown.email/api/emails/embed-subscribe/YOUR-BUTTONDOWN-USERNAME" method="post" target="popupwindow" onsubmit="window.open('https://buttondown.email/YOUR-BUTTONDOWN-USERNAME','popupwindow')">
-  <input type="email" name="email" placeholder="you@work.com" aria-label="Email address" required>
-  <button type="submit">Subscribe</button>
-</form>
-
-<small>Free, powered by Buttondown. Unsubscribe anytime.</small>
 
 ---
 

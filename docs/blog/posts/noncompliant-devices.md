@@ -25,6 +25,9 @@ model they're on. To learn that, you open the device. Then the next one. Then th
 
 <!-- more -->
 
+!!! tip "The short version"
+    Intune tells you a device is non-compliant — not *which setting*. This is a scheduled, read-only collector that turns setting-level failures into a sliceable Power BI report: **no write access, no standing credentials, no live tenant connection.**
+
 ## Non-compliant, but on *what*?
 
 Here's the view every Intune admin knows. A device shows a red **Not compliant** badge, you open it,
@@ -57,7 +60,7 @@ So the question becomes: can I get the failing **settings** — for every non-co
 
 The approach is a scheduled **Azure Automation runbook**. It authenticates with a **Managed
 Identity** — no stored secrets, no app registration keys — and calls **Microsoft Graph with GET
-only**. Nothing is ever written back to the tenant. It walks three levels:
+only**. Nothing is ever written back to the tenant. The shape is **list → per-device → per-policy** — three levels:
 
 1. **Find the non-compliant Windows devices** (paged):
 
@@ -98,8 +101,6 @@ calls — which is exactly why setting-level detail lives on a **beta** endpoint
 surfaces it. The payoff is the thing the portal won't give you: *"device X is non-compliant
 **specifically** on Firewall and Real-time protection."*
 
-<img src="../../assets/img/media/mascot-zero-sm.png" alt="Zero, the read-only agent" width="70" align="left" style="margin:4px 14px 6px 0">
-
 **One number everyone gets wrong.** A device that fails three settings across two policies produces
 *several rows*. Count rows and your "non-compliant devices" number is inflated. The report counts
 **distinct `DeviceName`**, never rows — for the total, and for every per-setting, per-country and
@@ -119,8 +120,8 @@ top and run it as a runbook on a schedule.
 
 ## The report
 
-Point Power BI at the CSV the runbook writes — no live tenant connection — and the whole
-per-device afternoon becomes a page you read in a second.
+The afternoon of per-device clicking becomes one page. Point Power BI at the CSV the runbook
+writes — no live tenant connection — and every question answers itself.
 
 ![Non-Compliant Windows Devices — the Power BI report built on the read-only snapshot](../../assets/img/noncompliant-report.png)
 

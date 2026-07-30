@@ -1,9 +1,5 @@
 {% extends "base.html" %}
 
-{% block announce %}
-  🚀 <strong>New</strong> — <a href="{{ 'projects/zero-access-agent/' | url }}">Zero-Access Agent</a> is live: read-only AI for endpoint intelligence.
-{% endblock %}
-
 {% block extrahead %}
   {% set _title = config.site_name %}
   {% if page and page.title and not page.is_homepage %}{% set _title = page.title ~ " · " ~ config.site_name %}{% endif %}

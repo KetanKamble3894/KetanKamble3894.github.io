@@ -1,6 +1,6 @@
 ---
 title: Scripts
-description: A library of standalone, read-only PowerShell for the Modern Workspace.
+description: A library of standalone, read-only PowerShell for the Modern Workplace.
 ---
 
 

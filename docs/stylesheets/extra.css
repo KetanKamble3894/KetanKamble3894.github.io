@@ -289,7 +289,11 @@
    only when it carries our .post-rail, and clear the left sidebar
    on those pages so the reading column is centered.
    ============================================================ */
-.md-sidebar--secondary:has(.post-rail){ display:block !important; }
+/* show the right author rail ONLY on wide screens; on mobile it stays hidden
+   and the author/sponsor cards fall to the bottom of the post instead */
+@media screen and (min-width:76.25em){
+  .md-sidebar--secondary:has(.post-rail){ display:block !important; }
+}
 /* focused reading: hide the left post-metadata rail (top nav still available) */
 .md-sidebar--post{ display:none !important; }
 
@@ -319,4 +323,129 @@
    keep them only for narrow screens where the right rail collapses */
 @media screen and (min-width:76.25em){
   .post-author, .post-sponsor{ display:none !important; }
+}
+
+/* ============================================================
+   IMAGE LIGHTBOX (click-to-zoom for content images)
+   ============================================================ */
+.kk-lightbox{position:fixed;inset:0;z-index:9999;display:none;align-items:center;justify-content:center;
+  padding:24px;background:rgba(6,10,20,.9);cursor:zoom-out;}
+.kk-lightbox.open{display:flex;}
+.kk-lightbox img{max-width:96vw;max-height:92vh;border-radius:10px;box-shadow:0 30px 90px -20px rgba(0,0,0,.85);}
+
+/* board fix: Material renders h1 in a muted gray by default — make page titles full-contrast */
+.md-typeset h1 { color: var(--md-default-fg-color); }
+
+/* ============================================================
+   PREMIUM LIGHT THEME — make inner pages match the home look.
+   Scoped to the default (light) scheme; dark (slate) keeps its
+   existing dark-premium treatment.
+   ============================================================ */
+/* light canvas (home uses #F6F8FC); keep card bg white for contrast */
+[data-md-color-scheme="default"] body,
+[data-md-color-scheme="default"] .md-main { background: #F6F8FC; }
+
+/* header + tabs: clean frosted light bar, dark text, teal active */
+[data-md-color-scheme="default"] .md-header {
+  background: rgba(246,248,252,.86) !important; color: #0E1A2B;
+  box-shadow: 0 1px 0 #E4EAF2, 0 6px 20px -16px rgba(20,40,80,.35);
+  -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
+}
+[data-md-color-scheme="default"] .md-header__title { color: #0E1A2B; font-weight: 800; }
+[data-md-color-scheme="default"] .md-header__button { color: #4B586F; }
+[data-md-color-scheme="default"] .md-tabs {
+  background: rgba(246,248,252,.86) !important; color: #0E1A2B;
+  border-bottom: 1px solid #E4EAF2;
+  -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
+}
+[data-md-color-scheme="default"] .md-tabs__link { color: #4B586F; font-weight: 600; opacity: 1; }
+[data-md-color-scheme="default"] .md-tabs__link:hover,
+[data-md-color-scheme="default"] .md-tabs__link--active { color: #0EA5A0; }
+/* search field in the light header */
+[data-md-color-scheme="default"] .md-header .md-search__input { color: #0E1A2B; background: rgba(14,26,43,.05); }
+[data-md-color-scheme="default"] .md-header .md-search__input::placeholder { color: #7A869C; }
+[data-md-color-scheme="default"] .md-search__icon { color: #4B586F; }
+
+/* article on a soft white card (premium) — but not the blog card grid */
+[data-md-color-scheme="default"] .md-content {
+  background: #fff; border: 1px solid #E7ECF4; border-radius: 18px;
+  box-shadow: 0 24px 60px -34px rgba(20,40,80,.28);
+  padding: 1.4rem 2rem 2rem; margin: 1.1rem 0 2rem;
+}
+[data-md-color-scheme="default"] .md-content:has(.md-post--excerpt) {
+  background: transparent; border: none; box-shadow: none; padding: 0; margin: .6rem 0 2rem;
+}
+/* the post cover banner sits flush inside the card */
+[data-md-color-scheme="default"] .md-content .md-typeset img.post-cover { margin-top: .3rem; }
+
+/* gradient primary buttons + author-rail sponsor accent, like the home */
+.md-typeset .md-button--primary {
+  background: linear-gradient(135deg, #0EA5A0, #2563EB); border: none; color: #fff;
+  border-radius: 11px; box-shadow: 0 12px 26px -12px rgba(37,99,235,.55);
+}
+.md-typeset .md-button--primary:hover { filter: brightness(1.06); }
+
+/* soft shadow on the author rail card to match home surfaces */
+[data-md-color-scheme="default"] .post-rail .pr-card,
+[data-md-color-scheme="default"] .md-post--excerpt {
+  box-shadow: 0 16px 40px -28px rgba(20,40,80,.25);
+}
+
+/* crisp titles in dark mode too */
+[data-md-color-scheme="slate"] .md-typeset h1 { color: #E8EDF6; }
+
+/* ============================================================
+   10/10 PASS — accessibility, centered blog grid, floating header
+   ============================================================ */
+/* a11y: darken muted secondary text for AA contrast on the light canvas */
+[data-md-color-scheme="default"] { --md-default-fg-color--light: #47536A; }
+/* a11y: visible focus ring on links */
+.md-typeset a:focus-visible { outline: 2px solid var(--md-accent-fg-color); outline-offset: 2px; border-radius: 2px; }
+
+/* lightbox close button */
+.kk-lightbox__close {
+  position: fixed; top: 18px; right: 22px; width: 44px; height: 44px; border-radius: 50%;
+  border: none; background: rgba(255,255,255,.16); color: #fff; font-size: 28px; line-height: 1;
+  cursor: pointer; display: grid; place-items: center; z-index: 10000;
+}
+.kk-lightbox__close:hover { background: rgba(255,255,255,.28); }
+.kk-lightbox__close:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+
+/* centre the blog card grid so a single post doesn't float left */
+@media screen and (min-width: 50em) {
+  .md-content__inner:has(.md-post--excerpt) {
+    display: flex !important; flex-wrap: wrap; justify-content: center; gap: 1.3rem;
+  }
+  .md-content__inner:has(.md-post--excerpt) > :not(.md-post--excerpt) { flex: 0 0 100%; width: 100%; }
+  .md-post--excerpt { flex: 0 0 340px; width: 340px !important; max-width: 340px; }
+}
+
+/* floating frosted pill header on inner pages (desktop, light) — match the home nav */
+@media screen and (min-width: 76.25em) {
+  [data-md-color-scheme="default"] .md-header {
+    background: transparent !important; box-shadow: none; padding-top: 12px;
+  }
+  [data-md-color-scheme="default"] .md-header__inner {
+    max-width: 68rem; margin: 0 auto; border-radius: 16px;
+    background: rgba(255,255,255,.88); -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px);
+    border: 1px solid #E4EAF2; box-shadow: 0 10px 26px -16px rgba(20,40,80,.28);
+    padding-left: 1rem; padding-right: .5rem;
+  }
+  [data-md-color-scheme="default"] .md-tabs {
+    background: transparent !important; border-bottom: none;
+  }
+  [data-md-color-scheme="default"] .md-tabs__inner {
+    max-width: 68rem; margin: .5rem auto 0; border-radius: 14px;
+    background: rgba(255,255,255,.88); -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px);
+    border: 1px solid #E4EAF2; box-shadow: 0 10px 26px -16px rgba(20,40,80,.28);
+    padding: 0 .8rem;
+  }
+}
+
+/* board fixes: single floating pill (demote the nav-tabs pill to a clean row) + sticky rail */
+@media screen and (min-width: 76.25em) {
+  [data-md-color-scheme="default"] .md-tabs__inner {
+    background: transparent !important; border: none !important; box-shadow: none !important; margin-top: .15rem !important;
+  }
+  .md-sidebar--secondary:has(.post-rail) .md-sidebar__inner { position: sticky; top: 8rem; }
 }

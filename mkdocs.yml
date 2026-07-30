@@ -1,16 +1,17 @@
 site_name: Ketan Kamble
-site_description: Microsoft Modern Workspace, in the open — Intune, Entra, Graph, and how it actually works underneath the portal.
+site_description: Microsoft Modern Workplace, in the open — Intune, Entra, Graph, and how it actually works underneath the portal.
 site_url: https://ketankamble.com/
 site_author: Ketan Kamble
+copyright: "© 2026 Ketan Kamble · Independent content, built in the open."
 
-repo_url: https://github.com/KetanKamble3894/zero-access-agent
-repo_name: KetanKamble3894
 edit_uri: ""
 
 theme:
   name: material
   custom_dir: overrides
   language: en
+  logo: assets/logo.svg
+  favicon: assets/logo.svg
   font:
     text: Inter
     code: JetBrains Mono
@@ -49,6 +50,9 @@ theme:
 
 extra_css:
   - stylesheets/extra.css
+
+extra_javascript:
+  - javascripts/lightbox.js
 
 plugins:
   - search
@@ -145,20 +149,20 @@ nav:
           - Autopilot Operations report: powerbi/autopilot-operations-report.md
   - About: about/index.md
   - Contact: work-with-me.md
-  - Topics: tags.md
-  - Support: https://www.buymeacoffee.com/ketankamble
 
 extra:
+  generator: false
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/KetanKamble3894
-  # ---- Analytics-ready (turn on to collect traffic data for sponsors/ad networks) ----
-  # 1) Create a free Google Analytics 4 property, get its ID (looks like G-XXXXXXXXXX).
-  # 2) Uncomment the block below and paste your ID. The cookie-consent banner is included.
-  # analytics:
-  #   provider: google
-  #   property: G-XXXXXXXXXX
-  # consent:
-  #   title: Cookie consent
-  #   description: >-
-  #     We use analytics cookies to understand how you use the site and make it better.
+  analytics:
+    provider: google
+    property: G-Y976D39YCE
+  consent:
+    title: Cookie consent
+    description: >-
+      We use analytics cookies to understand how the site is used, so I can make it
+      better. You can accept or decline — the site works either way.
+    actions:
+      - accept
+      - reject
