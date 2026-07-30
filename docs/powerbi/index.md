@@ -14,7 +14,6 @@ No live tenant connection: connect to the CSV, refresh, done. Each report pairs 
 | [Non-Compliant Devices report](noncompliant-devices-report.md) | Built on the non-compliance snapshot | [script](../scripts/noncompliant-devices.md) |
 | [Device Inventory report](device-inventory-report.md) | Built on the Device Inventory snapshot | [script](../scripts/device-inventory.md) |
 | [Inventory — All Devices report](inventory-all-devices-report.md) | Built on the Inventory — All Devices snapshot | [script](../scripts/inventory-all-devices.md) |
-| [Intune Documentation report](intune-documentation-report.md) | Built on the Intune Documentation snapshot | [script](../scripts/intune-documentation.md) |
 | [Policy Assignments report](policy-assignments-report.md) | Built on the Policy Assignments snapshot | [script](../scripts/policy-assignments.md) |
 | [Device Hygiene report](device-hygiene-report.md) | Built on the Device Hygiene snapshot | [script](../scripts/device-hygiene.md) |
 | [App Deployment Failures report](app-deployment-failures-report.md) | Built on the App Deployment Failures snapshot | [script](../scripts/app-deployment-failures.md) |

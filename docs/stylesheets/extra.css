@@ -527,3 +527,26 @@
   .term-contact .tc-body { font-size: .78rem; padding: 16px 16px 18px; }
   .term-contact .tc-key { min-width: 3.6rem; }
 }
+
+/* ---- Mermaid diagrams — brand card container (self-contained render) ---- */
+.mermaid-live {
+  display: flex;
+  justify-content: center;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 20px 18px;
+  margin: 1.5rem 0;
+  box-shadow: 0 14px 34px -22px rgba(2, 6, 23, .28);
+  overflow-x: auto;
+}
+.mermaid-live svg { max-width: 100%; height: auto; }
+[data-md-color-scheme="slate"] .mermaid-live { background: #0f1a2e; border-color: #28364f; }
+/* while the vendored renderer runs, hide the raw source flash */
+pre.mermaid-src { visibility: hidden; }
+
+/* ---- Long post titles read better balanced, esp. on phones ---- */
+.md-typeset h1 { text-wrap: balance; }
+@media (max-width: 59.9em) {
+  .md-content__inner > .md-typeset h1:first-child { font-size: 1.72rem; line-height: 1.2; }
+}

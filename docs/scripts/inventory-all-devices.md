@@ -25,15 +25,16 @@ Read-only by construction — it authenticates with a Managed Identity, calls Mi
 
 ## 2 · The Power BI template
 
-!!! note "`.pbit` goes here"
-    Drop `inventory-all-devices.pbit` into `docs/assets/pbit/` and swap this note for a download button:
-    `[:material-download: Inventory — All Devices template](../assets/pbit/inventory-all-devices.pbit)`
+[:material-download: Inventory — All Devices template (.pbit)](../assets/pbit/inventory-all-devices.pbit){ .md-button .md-button--primary }
+
+Carries the parameterised CSV connection, the full schema, and every DAX measure. Full Power Query,
+DAX and visual layout live on the **[report page](../powerbi/inventory-all-devices-report.md)**.
 
 ## 3 · Example report
 
-![Inventory — All Devices — example Power BI report](../assets/img/report-placeholder.svg)
+![Inventory — All Devices — example Power BI report (synthetic lab data)](../assets/img/inventory-all-devices-report.png){ .kk-zoom }
 
-*Replace `report-placeholder.svg` with a screenshot of your own `Inventory — All Devices` report.*
+*Built on synthetic `@contoso.com` data. Point the template at your own snapshot to see your fleet.*
 
 ## Related
 

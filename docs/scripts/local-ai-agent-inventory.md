@@ -24,15 +24,16 @@ Read-only by construction — it authenticates with a Managed Identity, calls Mi
 
 ## 2 · The Power BI template
 
-!!! note "`.pbit` goes here"
-    Drop `local-ai-agent-inventory.pbit` into `docs/assets/pbit/` and swap this note for a download button:
-    `[:material-download: Local AI Agent Inventory template](../assets/pbit/local-ai-agent-inventory.pbit)`
+[:material-download: Local AI Agent Inventory template (.pbit)](../assets/pbit/local-ai-agent-inventory.pbit){ .md-button .md-button--primary }
+
+Carries the parameterised CSV connection, the full schema, and the governance DAX measures. Full
+Power Query, DAX and layout live on the **[report page](../powerbi/local-ai-agent-inventory-report.md)**.
 
 ## 3 · Example report
 
-![Local AI Agent Inventory — example Power BI report](../assets/img/report-placeholder.svg)
+![Local AI Agent Inventory — example shadow-AI governance report (synthetic lab data)](../assets/img/local-ai-agent-inventory-report.png){ .kk-zoom }
 
-*Replace `report-placeholder.svg` with a screenshot of your own `Local AI Agent Inventory` report.*
+*Built on synthetic `@contoso.com` data — 140 devices, 84 carrying unsanctioned AI.*
 
 ## Related
 
