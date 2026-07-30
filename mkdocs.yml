@@ -52,6 +52,8 @@ extra_css:
   - stylesheets/extra.css
 
 extra_javascript:
+  - javascripts/mermaid.min.js
+  - javascripts/mermaid-init.js
   - javascripts/lightbox.js
 
 plugins:
@@ -75,7 +77,11 @@ markdown_extensions:
   - admonition
   - footnotes
   - pymdownx.details
-  - pymdownx.superfences
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid-src
+          format: !!python/name:pymdownx.superfences.fence_code_format
   - pymdownx.snippets:
       base_path: docs
       check_paths: true
@@ -136,7 +142,6 @@ nav:
       - Inventory & documentation:
           - Device Inventory report: powerbi/device-inventory-report.md
           - Inventory — All Devices report: powerbi/inventory-all-devices-report.md
-          - Intune Documentation report: powerbi/intune-documentation-report.md
           - Policy Assignments report: powerbi/policy-assignments-report.md
           - Local AI Agent Inventory report: powerbi/local-ai-agent-inventory-report.md
       - Compliance & security:
