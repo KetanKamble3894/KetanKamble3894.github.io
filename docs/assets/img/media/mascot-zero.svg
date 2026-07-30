@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 340" font-family="'DejaVu Sans',Arial,sans-serif">
+  <defs>
+    <linearGradient id="body" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0EA5A0"/><stop offset="1" stop-color="#2563EB"/>
+    </linearGradient>
+    <linearGradient id="scr" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0b1120"/><stop offset="1" stop-color="#111a2e"/>
+    </linearGradient>
+    <filter id="sh" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#0EA5A0" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+  <!-- antenna -->
+  <line x1="150" y1="34" x2="150" y2="66" stroke="#5eead4" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="150" cy="26" r="11" fill="#10B981"/>
+  <!-- head -->
+  <g filter="url(#sh)">
+    <rect x="52" y="62" width="196" height="168" rx="40" fill="url(#body)"/>
+    <!-- face screen -->
+    <rect x="78" y="92" width="144" height="108" rx="26" fill="url(#scr)"/>
+    <!-- eyes -->
+    <circle cx="122" cy="140" r="15" fill="#5eead4"/>
+    <circle cx="178" cy="140" r="15" fill="#5eead4"/>
+    <circle cx="126" cy="136" r="5" fill="#0b1120"/>
+    <circle cx="182" cy="136" r="5" fill="#0b1120"/>
+    <!-- smile -->
+    <path d="M120 172 Q150 190 180 172" stroke="#5eead4" stroke-width="6" fill="none" stroke-linecap="round"/>
+    <!-- ears -->
+    <rect x="40" y="120" width="16" height="46" rx="8" fill="#2563EB"/>
+    <rect x="244" y="120" width="16" height="46" rx="8" fill="#0EA5A0"/>
+  </g>
+  <!-- body / read-only badge -->
+  <g filter="url(#sh)">
+    <rect x="86" y="238" width="128" height="72" rx="22" fill="url(#body)"/>
+    <!-- shield = read-only -->
+    <path d="M150 250 l26 10 v16 c0 18 -14 28 -26 32 c-12 -4 -26 -14 -26 -32 v-16 z" fill="#0b1120" opacity="0.9"/>
+    <path d="M139 276 l8 8 l16 -16" stroke="#5eead4" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <text x="150" y="332" text-anchor="middle" fill="#94a3b8" font-size="15" font-weight="700">read-only</text>
+</svg>

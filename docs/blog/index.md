@@ -7,6 +7,11 @@ description: Writing about the Modern Workspace, from a personal lab.
 
 Decoding the Modern Workspace from first principles — Intune, Entra, Graph, and what the portal actually does underneath. Everything reproduced in a personal lab before it's published, including what I got wrong.
 
+<nav class="topic-chips" markdown>
+[Behind the portal](category/behind-the-portal/){ .topic-chip }
+[Compliance](category/compliance/){ .topic-chip }
+[Power BI](category/power-bi/){ .topic-chip }
+</nav>
 
 ## Get the occasional signal
 

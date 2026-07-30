@@ -115,25 +115,19 @@
   .packet{position:absolute;left:29px;width:10px;height:10px;border-radius:50%;background:var(--brand);box-shadow:0 0 12px 3px color-mix(in srgb,var(--brand) 70%,transparent);z-index:3;opacity:0;animation:travel 5s linear infinite}
   @keyframes travel{0%{top:26px;opacity:0}5%{opacity:1}95%{opacity:1}100%{top:300px;opacity:0}}
 
-  /* explore cards */
-  .explore{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  /* explore cards — neutral surfaces, single teal accent (no rainbow) */
+  .explore{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
   @media(max-width:900px){.explore{grid-template-columns:1fr 1fr}}
-  @media(max-width:620px){.explore{grid-template-columns:1fr}}
-  .gcard{position:relative;border-radius:20px;padding:26px;min-height:200px;display:flex;flex-direction:column;justify-content:space-between;color:#fff;overflow:hidden;box-shadow:var(--shadow-sm);transition:transform .2s,box-shadow .2s}
-  .gcard:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
-  .gcard::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 80% 15%,rgba(255,255,255,.22),transparent 45%);pointer-events:none}
-  .g1{background:linear-gradient(140deg,#0EA5A0,#2563EB)}
-  .g2{background:linear-gradient(140deg,#6D28D9,#9333EA)}
-  .g3{background:linear-gradient(140deg,#0F766E,#10B981)}
-  .g4{background:linear-gradient(140deg,#B45309,#F59E0B)}
-  .g5{background:linear-gradient(140deg,#1E3A8A,#3B82F6)}
-  .g6{background:linear-gradient(140deg,#B91C4E,#E11D48)}
-  .gcard .cat{font-size:11.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;opacity:.9}
-  .gcard h3{font-size:21px;font-weight:800;letter-spacing:-.02em;margin:auto 0 8px;line-height:1.15}
-  .gcard p{font-size:13.5px;opacity:.92;line-height:1.5}
-  .gcard .go{position:absolute;top:22px;right:22px;width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.18);display:grid;place-items:center;transition:background .2s}
-  .gcard:hover .go{background:rgba(255,255,255,.32)}
-  .gcard .soon{position:absolute;top:24px;right:24px;font-size:10.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;background:rgba(255,255,255,.2);padding:4px 9px;border-radius:999px}
+  @media(max-width:560px){.explore{grid-template-columns:1fr}}
+  .gcard{position:relative;border-radius:16px;padding:24px 22px;min-height:170px;display:flex;flex-direction:column;justify-content:flex-start;color:var(--text);background:var(--surface);border:1px solid var(--border);overflow:hidden;box-shadow:var(--shadow-sm);transition:transform .2s,box-shadow .2s,border-color .2s}
+  .gcard:hover{transform:translateY(-6px);box-shadow:var(--shadow);border-color:var(--brand)}
+  .gcard::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--brand),var(--brand-2))}
+  .gcard .cat{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--brand)}
+  .gcard h3{font-size:18px;font-weight:800;letter-spacing:-.02em;margin:14px 0 7px;line-height:1.2}
+  .gcard p{font-size:13px;color:var(--muted);line-height:1.5}
+  .gcard .go{position:absolute;top:18px;right:18px;width:30px;height:30px;border-radius:50%;background:var(--surface-2);border:1px solid var(--border);display:grid;place-items:center;color:var(--muted);transition:all .2s}
+  .gcard:hover .go{color:var(--brand);border-color:var(--brand)}
+  .gcard .go svg{stroke:currentColor}
 
   /* posts */
   .posts{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
@@ -218,7 +212,7 @@
           <a class="soc" href="#" title="LinkedIn"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 110-4.13 2.06 2.06 0 010 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg></a>
           <a class="soc" href="#" title="Newsletter"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></a>
         </div>
-        <div class="nowline">Currently building <b>Zero-Access Agent</b> — open source (MIT)</div>
+        <div class="nowline"><b>Zero-Access Agent</b> — live · open source (MIT)</div>
       </div>
     </div>
   </div>
@@ -266,37 +260,27 @@
 <!-- EXPLORE / SECTIONS -->
 <section id="explore">
   <div class="wrap">
-    <div class="sec-head"><span class="kicker">Explore</span><h2>Everything I'm building</h2><p>Posts, tools and projects — all in one place, added as I go.</p></div>
+    <div class="sec-head"><span class="kicker">Explore</span><h2>Everything I ship, in one place</h2><p>Posts, scripts, reports and the flagship project — all in the open.</p></div>
     <div class="explore">
-      <a class="gcard g5" href="blog/">
-        <div class="go"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+      <a class="gcard" href="blog/">
+        <div class="go"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
         <span class="cat">Writing</span>
-        <div><h3>The blog</h3><p>"The Graph call behind the portal click" — decoding what the portal actually fires, and the permission it needs.</p></div>
+        <h3>The blog</h3><p>Deep-dives into what the portal actually fires against Graph — and the permission each call needs.</p>
       </a>
-      <a class="gcard g1" href="projects/zero-access-agent/">
-        <div class="go"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
-        <span class="cat">Flagship</span>
-        <div><h3>Zero-Access Agent</h3><p>The read-only AI agent pattern — full docs, ten collectors, and a synthetic fleet you can run with no tenant.</p></div>
-      </a>
-      <a class="gcard g3" href="scripts/">
-        <div class="go"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+      <a class="gcard" href="scripts/">
+        <div class="go"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
         <span class="cat">Reusable</span>
-        <div><h3>Scripts library</h3><p>Battle-tested PowerShell for Intune, Entra and Graph — each script standalone, each explained.</p></div>
+        <h3>Scripts library</h3><p>Read-only PowerShell for Intune, Entra and Graph — each script standalone, each explained.</p>
       </a>
-      <a class="gcard g4" href="powerbi/">
-        <div class="go"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+      <a class="gcard" href="powerbi/">
+        <div class="go"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
         <span class="cat">Reporting</span>
-        <div><h3>Power BI reports</h3><p>The endpoint reports I build on top of the read-only snapshots — screenshots, templates and how they're wired.</p></div>
+        <h3>Power BI reports</h3><p>Endpoint reports built on the sanitized snapshots — screenshots, templates and how they're wired.</p>
       </a>
-      <a class="gcard g2" href="#">
-        <span class="soon">Soon</span>
-        <span class="cat">Signal, not noise</span>
-        <div><h3>Newsletter</h3><p>An occasional note when something's worth your time — new posts, new tools, lessons learned.</p></div>
-      </a>
-      <a class="gcard g6" href="about/">
-        <div class="go"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+      <a class="gcard" href="about/">
+        <div class="go"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
         <span class="cat">Who</span>
-        <div><h3>About me</h3><p>What I work on, how I work in the open, and how to get in touch.</p></div>
+        <h3>About me</h3><p>What I work on, how I work in the open, and how to get in touch.</p>
       </a>
     </div>
   </div>
@@ -305,12 +289,11 @@
 <!-- BLOG PREVIEW -->
 <section id="blog">
   <div class="wrap">
-    <div class="sec-head"><span class="kicker">From the blog</span><h2>Latest writing</h2><p>First posts landing soon — here's what's on deck.</p></div>
-    <div class="posts">
-      <div class="post"><div class="meta">Series · Zero-Access</div><h4>The Sites.Selected 403 that started it all</h4><p>How one stubborn permission error led to an architecture where the AI never touches a live system.</p><span class="soon">Coming soon</span></div>
-      <div class="post"><div class="meta">Series · Behind the portal</div><h4>The Graph call behind the portal click</h4><p>Decoding what the Intune / Entra portal actually fires against Microsoft Graph — and which permission it needs.</p><span class="soon">Coming soon</span></div>
-      <div class="post"><div class="meta">How-to · Power BI</div><h4>An endpoint report from read-only snapshots</h4><p>Building a Power BI report on sanitized CSVs — no live tenant connection required.</p><span class="soon">Coming soon</span></div>
+    <div class="sec-head"><span class="kicker">From the blog</span><h2>Latest writing</h2><p>Every post is the deep-dive behind a script or report here — reproduced in a personal lab before it's published.</p></div>
+    <div class="posts" style="grid-template-columns:minmax(0,540px);justify-content:center">
+      <a class="post" href="blog/which-setting-actually-failed-turning-intune-non-compliance-into-a-report/"><div class="meta">Behind the portal · Jul 28 · 10 min</div><h4>Which setting actually failed? Turning Intune non-compliance into a report</h4><p>Intune tells you a device is Not compliant — but not which setting, at scale. Here's the read-only collector that does.</p></a>
     </div>
+    <div style="text-align:center;margin-top:28px"><a class="btn btn-ghost" href="blog/">View all posts →</a></div>
   </div>
 </section>
 

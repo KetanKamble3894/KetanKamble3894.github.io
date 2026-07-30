@@ -11,10 +11,14 @@ theme:
   name: material
   custom_dir: overrides
   language: en
+  font:
+    text: Inter
+    code: JetBrains Mono
   icon:
     repo: fontawesome/brands/github
   features:
-    - navigation.sections
+    - navigation.tabs
+    - navigation.tabs.sticky
     - navigation.top
     - navigation.instant
     - navigation.tracking
@@ -108,35 +112,42 @@ nav:
       - Jarvis: projects/jarvis.md
   - Scripts:
       - Library: scripts/index.md
-      - Device Inventory: scripts/device-inventory.md
-      - Inventory — All Devices: scripts/inventory-all-devices.md
-      - Intune Documentation: scripts/intune-documentation.md
-      - Policy Assignments: scripts/policy-assignments.md
-      - Device Hygiene: scripts/device-hygiene.md
-      - App Deployment Failures: scripts/app-deployment-failures.md
-      - License Compliance: scripts/license-compliance.md
-      - Windows 11 Readiness: scripts/windows11-readiness.md
-      - Autopilot Operations: scripts/autopilot-operations.md
-      - Local AI Agent Inventory: scripts/local-ai-agent-inventory.md
-      - Non-Compliant Devices: scripts/noncompliant-devices.md
-      - Synthetic Fleet Generator: scripts/synthetic-fleet.md
+      - Inventory & documentation:
+          - Device Inventory: scripts/device-inventory.md
+          - Inventory — All Devices: scripts/inventory-all-devices.md
+          - Intune Documentation: scripts/intune-documentation.md
+          - Policy Assignments: scripts/policy-assignments.md
+      - Compliance & security:
+          - Non-Compliant Devices: scripts/noncompliant-devices.md
+          - Device Hygiene: scripts/device-hygiene.md
+      - Apps, licensing & lifecycle:
+          - App Deployment Failures: scripts/app-deployment-failures.md
+          - License Compliance: scripts/license-compliance.md
+          - Windows 11 Readiness: scripts/windows11-readiness.md
+          - Autopilot Operations: scripts/autopilot-operations.md
+      - AI & data:
+          - Local AI Agent Inventory: scripts/local-ai-agent-inventory.md
+          - Synthetic Fleet Generator: scripts/synthetic-fleet.md
   - Power BI:
       - Overview: powerbi/index.md
-      - Device Inventory report: powerbi/device-inventory-report.md
-      - Inventory — All Devices report: powerbi/inventory-all-devices-report.md
-      - Intune Documentation report: powerbi/intune-documentation-report.md
-      - Policy Assignments report: powerbi/policy-assignments-report.md
-      - Device Hygiene report: powerbi/device-hygiene-report.md
-      - App Deployment Failures report: powerbi/app-deployment-failures-report.md
-      - License Compliance report: powerbi/license-compliance-report.md
-      - Windows 11 Readiness report: powerbi/windows11-readiness-report.md
-      - Autopilot Operations report: powerbi/autopilot-operations-report.md
-      - Local AI Agent Inventory report: powerbi/local-ai-agent-inventory-report.md
-      - Non-Compliant Devices report: powerbi/noncompliant-devices-report.md
+      - Inventory & documentation:
+          - Device Inventory report: powerbi/device-inventory-report.md
+          - Inventory — All Devices report: powerbi/inventory-all-devices-report.md
+          - Intune Documentation report: powerbi/intune-documentation-report.md
+          - Policy Assignments report: powerbi/policy-assignments-report.md
+          - Local AI Agent Inventory report: powerbi/local-ai-agent-inventory-report.md
+      - Compliance & security:
+          - Non-Compliant Devices report: powerbi/noncompliant-devices-report.md
+          - Device Hygiene report: powerbi/device-hygiene-report.md
+      - Apps, licensing & lifecycle:
+          - App Deployment Failures report: powerbi/app-deployment-failures-report.md
+          - License Compliance report: powerbi/license-compliance-report.md
+          - Windows 11 Readiness report: powerbi/windows11-readiness-report.md
+          - Autopilot Operations report: powerbi/autopilot-operations-report.md
   - About: about/index.md
-  - Work with me: work-with-me.md
+  - Contact: work-with-me.md
   - Topics: tags.md
-  - ☕ Support: https://www.buymeacoffee.com/ketankamble
+  - Support: https://www.buymeacoffee.com/ketankamble
 
 extra:
   social:

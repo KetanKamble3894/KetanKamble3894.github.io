@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 640" font-family="'DejaVu Sans','Segoe UI',Arial,sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0B1120"/>
+      <stop offset="1" stop-color="#0d1526"/>
+    </linearGradient>
+    <linearGradient id="brand" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#0EA5A0"/>
+      <stop offset="0.5" stop-color="#2563EB"/>
+      <stop offset="1" stop-color="#10B981"/>
+    </linearGradient>
+    <linearGradient id="glow" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0EA5A0" stop-opacity="0.16"/>
+      <stop offset="1" stop-color="#0EA5A0" stop-opacity="0"/>
+    </linearGradient>
+    <marker id="arw" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 Z" fill="#5eead4"/>
+    </marker>
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#000" flood-opacity="0.45"/>
+    </filter>
+  </defs>
+
+  <rect width="1280" height="640" fill="url(#bg)"/>
+  <rect width="1280" height="8" fill="url(#brand)"/>
+  <ellipse cx="230" cy="60" rx="520" ry="220" fill="url(#glow)"/>
+
+  <!-- title -->
+  <text x="48" y="74" fill="#E2E8F0" font-size="34" font-weight="800" letter-spacing="-0.5">The Zero-Access Pattern</text>
+  <text x="48" y="106" fill="#5eead4" font-size="19" font-weight="700">Give the AI the reports — never the systems.</text>
+
+  <!-- ===== main pipeline (y center 300) ===== -->
+  <!-- connectors first (under cards) -->
+  <g stroke="#334155" stroke-width="2.5" fill="none">
+    <line x1="205" y1="300" x2="243" y2="300" marker-end="url(#arw)"/>
+    <line x1="413" y1="300" x2="451" y2="300" marker-end="url(#arw)"/>
+    <line x1="621" y1="300" x2="659" y2="300" marker-end="url(#arw)"/>
+    <line x1="829" y1="300" x2="867" y2="300" marker-end="url(#arw)"/>
+    <line x1="1037" y1="300" x2="1075" y2="300" marker-end="url(#arw)"/>
+  </g>
+  <!-- node template: 168 wide x 96, top accent -->
+  <!-- 1 Tenant -->
+  <g filter="url(#soft)">
+    <rect x="37" y="252" width="168" height="96" rx="16" fill="#0f172a" stroke="#1e293b"/>
+    <rect x="37" y="252" width="168" height="5" rx="2.5" fill="#64748b"/>
+    <text x="121" y="292" text-anchor="middle" fill="#e2e8f0" font-size="16" font-weight="800">M365 Tenant</text>
+    <text x="121" y="316" text-anchor="middle" fill="#94a3b8" font-size="12">Intune · Entra</text>
+    <text x="121" y="332" text-anchor="middle" fill="#94a3b8" font-size="12">Defender</text>
+  </g>
+  <!-- 2 Collectors -->
+  <g filter="url(#soft)">
+    <rect x="245" y="252" width="168" height="96" rx="16" fill="#0f172a" stroke="#1e293b"/>
+    <rect x="245" y="252" width="168" height="5" rx="2.5" fill="#0EA5A0"/>
+    <text x="329" y="290" text-anchor="middle" fill="#e2e8f0" font-size="15.5" font-weight="800">Read-only</text>
+    <text x="329" y="308" text-anchor="middle" fill="#e2e8f0" font-size="15.5" font-weight="800">Collectors</text>
+    <text x="329" y="332" text-anchor="middle" fill="#94a3b8" font-size="11.5">Automation · Managed ID</text>
+  </g>
+  <!-- 3 Snapshots -->
+  <g filter="url(#soft)">
+    <rect x="453" y="252" width="168" height="96" rx="16" fill="#0f172a" stroke="#1e293b"/>
+    <rect x="453" y="252" width="168" height="5" rx="2.5" fill="#10B981"/>
+    <text x="537" y="290" text-anchor="middle" fill="#e2e8f0" font-size="16" font-weight="800">Sanitized CSV</text>
+    <text x="537" y="314" text-anchor="middle" fill="#94a3b8" font-size="12">snapshots</text>
+    <text x="537" y="332" text-anchor="middle" fill="#6ee7b7" font-size="11.5" font-weight="700">no identifiers</text>
+  </g>
+  <!-- 4 Blob -->
+  <g filter="url(#soft)">
+    <rect x="661" y="252" width="168" height="96" rx="16" fill="#0f172a" stroke="#1e293b"/>
+    <rect x="661" y="252" width="168" height="5" rx="2.5" fill="#2563EB"/>
+    <text x="745" y="290" text-anchor="middle" fill="#e2e8f0" font-size="16" font-weight="800">Blob Storage</text>
+    <text x="745" y="314" text-anchor="middle" fill="#94a3b8" font-size="12">immutable</text>
+    <text x="745" y="332" text-anchor="middle" fill="#94a3b8" font-size="12">snapshots</text>
+  </g>
+  <!-- 5 AI Search -->
+  <g filter="url(#soft)">
+    <rect x="869" y="252" width="168" height="96" rx="16" fill="#0f172a" stroke="#1e293b"/>
+    <rect x="869" y="252" width="168" height="5" rx="2.5" fill="#0EA5A0"/>
+    <text x="953" y="290" text-anchor="middle" fill="#e2e8f0" font-size="15.5" font-weight="800">Azure AI Search</text>
+    <text x="953" y="314" text-anchor="middle" fill="#94a3b8" font-size="12">semantic index</text>
+    <text x="953" y="332" text-anchor="middle" fill="#94a3b8" font-size="12">over snapshots</text>
+  </g>
+  <!-- 6 Agent -->
+  <g filter="url(#soft)">
+    <rect x="1077" y="252" width="168" height="96" rx="16" fill="#0f172a" stroke="url(#brand)" stroke-width="2"/>
+    <rect x="1077" y="252" width="168" height="5" rx="2.5" fill="url(#brand)"/>
+    <text x="1161" y="290" text-anchor="middle" fill="#e2e8f0" font-size="16" font-weight="800">AI Agent</text>
+    <text x="1161" y="314" text-anchor="middle" fill="#94a3b8" font-size="12">AI Foundry</text>
+    <text x="1161" y="332" text-anchor="middle" fill="#5eead4" font-size="11.5" font-weight="700">ask in plain English</text>
+  </g>
+
+  <!-- Power BI branch from Blob down -->
+  <g stroke="#334155" stroke-width="2.5" fill="none">
+    <path d="M745,348 L745,430 L661,430" marker-end="url(#arw)"/>
+  </g>
+  <g filter="url(#soft)">
+    <rect x="493" y="404" width="168" height="80" rx="16" fill="#0f172a" stroke="#1e293b"/>
+    <rect x="493" y="404" width="168" height="5" rx="2.5" fill="#f59e0b"/>
+    <text x="577" y="440" text-anchor="middle" fill="#e2e8f0" font-size="16" font-weight="800">Power BI</text>
+    <text x="577" y="462" text-anchor="middle" fill="#94a3b8" font-size="12">published reports</text>
+  </g>
+  <text x="690" y="416" fill="#64748b" font-size="12.5" font-weight="700">same snapshot</text>
+
+  <!-- guarantees bar -->
+  <g>
+    <rect x="48" y="536" width="1184" height="60" rx="14" fill="#0f172a" stroke="#1e293b"/>
+    <text x="72" y="563" fill="#94a3b8" font-size="13.5" font-weight="700">THE GUARANTEE</text>
+    <text x="72" y="583" fill="#cbd5e1" font-size="14.5">
+      <tspan fill="#5eead4" font-weight="700">Read-only</tspan>  ·  Managed Identity, no secrets  ·  GET-only Microsoft Graph  ·  <tspan fill="#6ee7b7" font-weight="700">zero write access</tspan>  ·  the AI never touches a live system
+    </text>
+  </g>
+</svg>
