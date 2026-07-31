@@ -1,6 +1,6 @@
 ---
 title: About
-description: Ketan Kamble — Modern Workplace Architect. 10 years in EUC, MD-102 & SC-200, speaker at Workplace Ninja User Group Finland. Building Intune, Entra and the Zero-Access AI agent in the open.
+description: Ketan Kamble — Modern Workplace Architect. 10 years in EUC, MD-102 & SC-300, speaker at Workplace Ninja User Group Finland. Building Intune, Entra and the Zero-Access AI agent in the open.
 hide:
   - navigation
   - toc
@@ -24,7 +24,7 @@ hide:
 <div class="stat-pills">
   <div class="stat"><b>10 yrs</b><span>in EUC / IT</span></div>
   <div class="stat"><b>MD-102</b><span>Endpoint Admin</span></div>
-  <div class="stat"><b>SC-200</b><span>Security Ops</span></div>
+  <div class="stat"><b>SC-300</b><span>Identity &amp; Access</span></div>
   <div class="stat"><b>Speaker</b><span>WNUG Finland</span></div>
 </div>
 
@@ -32,7 +32,7 @@ I'm **Ketan Kamble**, a Modern Workplace Architect with **10 years** across End-
 
 <div class="pillars">
   <div class="pillar"><span class="pi-k">Practical</span><p>Everything comes from a personal lab, reproduced before it's published — including the parts I got wrong. No theory-only posts.</p></div>
-  <div class="pillar"><span class="pi-k">Read-only by design</span><p>Every script is parameterised, GET-only, and Managed-Identity based. No stored secrets, no write access, nothing that can touch production.</p></div>
+  <div class="pillar"><span class="pi-k">Read-only by design</span><p>Every script is parameterised, uses only <code>.Read.All</code> Graph scopes, and runs under a Managed Identity. No stored secrets, no write access, nothing that can touch production.</p></div>
   <div class="pillar"><span class="pi-k">In the open</span><p>Scripts, reports and the flagship project are open source (MIT) on GitHub. If it helps you ship with more confidence, that's the point.</p></div>
 </div>
 
@@ -40,7 +40,9 @@ I'm **Ketan Kamble**, a Modern Workplace Architect with **10 years** across End-
 
 Microsoft Intune · Microsoft Entra ID · Microsoft Graph (v1.0 + beta) · Windows Autopilot · Windows 365 · Microsoft Defender for Endpoint · Azure Automation & Managed Identity · Power BI reporting · PowerShell 7.
 
-## Certifications
+## Certifications & continued learning
+
+The Microsoft associate track is the technical backbone — endpoint and identity, the core of the Modern Workplace:
 
 <div class="cert-grid">
   <div class="cert">
@@ -49,11 +51,17 @@ Microsoft Intune · Microsoft Entra ID · Microsoft Graph (v1.0 + beta) · Windo
     <span class="cert-sub">Intune, Autopilot, compliance, app deployment, endpoint security.</span>
   </div>
   <div class="cert">
-    <span class="cert-code">SC-200</span>
-    <span class="cert-name">Microsoft Certified: Security Operations Analyst Associate</span>
-    <span class="cert-sub">Microsoft Defender, threat detection & response, security posture.</span>
+    <span class="cert-code">SC-300</span>
+    <span class="cert-name">Microsoft Certified: Identity and Access Administrator Associate</span>
+    <span class="cert-sub">Entra ID identity, access management and hybrid identity.</span>
   </div>
 </div>
+
+Alongside the Microsoft track, I keep sharpening the architecture, delivery and analysis side of the craft — the part that turns tooling into outcomes:
+
+**Architecture & leadership** — Enterprise Architecture in Practice (PMI) · Enterprise Architecture Foundations · Leadership in Tech · Managing Project Stakeholders (PMI)
+
+**Business analysis & agile** — Agile Foundations (IIBA) · Business Analysis Foundations (IIBA) · Business Analysis for Project Managers (IIBA) · Business Analysis for Busy Professionals (IIBA)
 
 ## Community, speaking & events
 
