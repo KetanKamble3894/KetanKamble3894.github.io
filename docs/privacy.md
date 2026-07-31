@@ -44,9 +44,7 @@ Pages may link to third-party sites such as **LinkedIn** and **GitHub**. Once yo
 
 ## Your rights
 
-Under the EU General Data Protection Regulation (GDPR), you have rights over any personal data relating to you — including access, correction, erasure, and objection. Because this site is designed not to collect identifying personal data, there is little to act on, but if you have any question or request, please reach out (see below).
-
-If you are in the EU/EEA and believe your data rights have been infringed, you may lodge a complaint with your local supervisory authority. In Finland this is the **Office of the Data Protection Ombudsman** (tietosuoja.fi).
+Depending on where you live, data-protection laws may give you rights over any personal data relating to you — typically access, correction, erasure, and objection. Because this site is designed not to collect identifying personal data, there is little to act on. If you have any question or request about your data, just reach out (see below) and I'll help.
 
 ## Contact
 
