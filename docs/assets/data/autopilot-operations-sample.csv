@@ -1,0 +1,151 @@
+DeviceName,DeploymentStatus,FailureCategory,ESPPhase,PotentialFailureCause,CurrentAppFailureCount,AutopilotLatestEventState,IsInFlightAtSnapshot,SnapshotDate
+WIN-NL-1000,Success,None,Complete,,0,success,false,2026-07-15
+WIN-NL-1001,Success,None,Complete,,0,success,false,2026-07-15
+WIN-FI-1002,Failed,App install timeout,Account setup,App install timeout,2,failure,false,2026-07-15
+WIN-IN-1003,Failed,Cert / enrollment,Complete,Cert / enrollment,2,failure,false,2026-07-15
+WIN-IN-1004,Success,None,Complete,,0,success,false,2026-07-15
+WIN-NL-1005,In progress,None,Device setup,,2,inProgress,true,2026-07-15
+WIN-NL-1006,Success,None,Complete,,0,success,false,2026-07-15
+WIN-CA-1007,Success,None,Complete,,0,success,false,2026-07-15
+WIN-CA-1008,Success,None,Complete,,0,success,false,2026-07-15
+WIN-FI-1009,Success,None,Complete,,0,success,false,2026-07-15
+WIN-IN-1010,Failed,ESP timeout,Account setup,ESP timeout,3,failure,false,2026-07-15
+WIN-NL-1011,Success,None,Complete,,0,success,false,2026-07-15
+WIN-US-1012,Success,None,Complete,,0,success,false,2026-07-15
+WIN-NL-1013,Success,None,Complete,,0,success,false,2026-07-15
+WIN-CA-1014,Success,None,Complete,,0,success,false,2026-07-15
+WIN-FI-1015,Failed,ESP timeout,Account setup,ESP timeout,1,failure,false,2026-07-15
+WIN-IN-1016,Success,None,Complete,,0,success,false,2026-07-15
+WIN-ES-1017,Success,None,Complete,,0,success,false,2026-07-15
+WIN-US-1018,Success,None,Complete,,0,success,false,2026-07-15
+WIN-DE-1019,Failed,ESP timeout,Account setup,ESP timeout,2,failure,false,2026-07-15
+WIN-FI-1020,Failed,Unknown,Complete,Unknown,2,failure,false,2026-07-15
+WIN-CA-1021,In progress,None,Account setup,,2,inProgress,true,2026-07-15
+WIN-ES-1022,Success,None,Complete,,0,success,false,2026-07-15
+WIN-CA-1023,Success,None,Complete,,0,success,false,2026-07-15
+WIN-CA-1024,Success,None,Complete,,0,success,false,2026-07-15
+WIN-SE-1025,Failed,Cert / enrollment,Complete,Cert / enrollment,4,failure,false,2026-07-15
+WIN-IN-1026,In progress,None,Device setup,,2,inProgress,true,2026-07-15
+WIN-CA-1027,Success,None,Complete,,0,success,false,2026-07-15
+WIN-FI-1028,Success,None,Complete,,0,success,false,2026-07-15
+WIN-SE-1029,Success,None,Complete,,0,success,false,2026-07-15
+WIN-CA-1030,Success,None,Complete,,0,success,false,2026-07-15
+WIN-FI-1031,Failed,Unknown,Account setup,Unknown,2,failure,false,2026-07-15
+WIN-CA-1032,In progress,None,Device setup,,2,inProgress,true,2026-07-15
+WIN-SE-1033,Success,None,Complete,,0,success,false,2026-07-15
+WIN-SE-1034,Success,None,Complete,,0,success,false,2026-07-15
+WIN-CA-1035,Success,None,Complete,,0,success,false,2026-07-15
+WIN-SE-1036,Success,None,Complete,,0,success,false,2026-07-15
+WIN-FI-1037,Failed,Network / proxy,Complete,Network / proxy,4,failure,false,2026-07-15
+WIN-CA-1038,Success,None,Complete,,0,success,false,2026-07-15
+WIN-IN-1039,Failed,ESP timeout,Complete,ESP timeout,3,failure,false,2026-07-15
+WIN-IN-1040,Success,None,Complete,,0,success,false,2026-07-15
+WIN-IN-1041,Failed,Cert / enrollment,Device setup,Cert / enrollment,1,failure,false,2026-07-15
+WIN-SE-1042,Failed,Driver failure,Device setup,Driver failure,2,failure,false,2026-07-15
+WIN-IN-1043,In progress,None,Device setup,,2,inProgress,true,2026-07-15
+WIN-FI-1044,Success,None,Complete,,0,success,false,2026-07-15
+WIN-IN-1045,Failed,Unknown,Complete,Unknown,2,failure,false,2026-07-15
+WIN-NL-1046,Success,None,Complete,,0,success,false,2026-07-15
+WIN-ES-1047,Failed,Driver failure,Account setup,Driver failure,4,failure,false,2026-07-15
+WIN-FI-1048,Failed,Network / proxy,Device setup,Network / proxy,2,failure,false,2026-07-15
+WIN-ES-1049,Failed,ESP timeout,Account setup,ESP timeout,2,failure,false,2026-07-15
+WIN-IN-1050,Success,None,Complete,,0,success,false,2026-07-15
+WIN-IN-1051,In progress,None,Device setup,,2,inProgress,true,2026-07-15
+WIN-IN-1052,Success,None,Complete,,0,success,false,2026-07-15
+WIN-CA-1053,Success,None,Complete,,0,success,false,2026-07-15
+WIN-FI-1054,Success,None,Complete,,0,success,false,2026-07-15
+WIN-CA-1055,Success,None,Complete,,0,success,false,2026-07-15
+WIN-US-1056,Success,None,Complete,,0,success,false,2026-07-15
+WIN-SE-1057,Success,None,Complete,,0,success,false,2026-07-15
+WIN-CA-1058,Failed,Network / proxy,Device setup,Network / proxy,3,failure,false,2026-07-15
+WIN-CA-1059,Success,None,Complete,,0,success,false,2026-07-15
+WIN-DE-1060,Success,None,Complete,,0,success,false,2026-07-15
+WIN-CA-1061,In progress,None,Account setup,,1,inProgress,true,2026-07-15
+WIN-NL-1062,Success,None,Complete,,0,success,false,2026-07-15
+WIN-US-1063,In progress,None,Device setup,,0,inProgress,true,2026-07-15
+WIN-NL-1064,In progress,None,Device setup,,1,inProgress,true,2026-07-15
+WIN-CA-1065,Failed,Driver failure,Complete,Driver failure,1,failure,false,2026-07-15
+WIN-US-1066,Success,None,Complete,,0,success,false,2026-07-15
+WIN-FI-1067,Success,None,Complete,,0,success,false,2026-07-15
+WIN-IN-1068,Success,None,Complete,,0,success,false,2026-07-15
+WIN-CA-1069,Success,None,Complete,,0,success,false,2026-07-15
+WIN-NL-1070,Success,None,Complete,,0,success,false,2026-07-15
+WIN-SE-1071,Success,None,Complete,,0,success,false,2026-07-15
+WIN-NL-1072,Success,None,Complete,,0,success,false,2026-07-15
+WIN-NL-1073,Success,None,Complete,,0,success,false,2026-07-15
+WIN-ES-1074,Success,None,Complete,,0,success,false,2026-07-15
+WIN-DE-1075,In progress,None,Account setup,,2,inProgress,true,2026-07-15
+WIN-NL-1076,Failed,Network / proxy,Device setup,Network / proxy,3,failure,false,2026-07-15
+WIN-US-1077,Success,None,Complete,,0,success,false,2026-07-15
+WIN-SE-1078,In progress,None,Device setup,,2,inProgress,true,2026-07-15
+WIN-ES-1079,Failed,Cert / enrollment,Complete,Cert / enrollment,4,failure,false,2026-07-15
+WIN-US-1080,Success,None,Complete,,0,success,false,2026-07-15
+WIN-FI-1081,Success,None,Complete,,0,success,false,2026-07-15
+WIN-ES-1082,Failed,Network / proxy,Complete,Network / proxy,1,failure,false,2026-07-15
+WIN-ES-1083,In progress,None,Account setup,,2,inProgress,true,2026-07-15
+WIN-DE-1084,Success,None,Complete,,0,success,false,2026-07-15
+WIN-IN-1085,Success,None,Complete,,0,success,false,2026-07-15
+WIN-FI-1086,Failed,App install timeout,Account setup,App install timeout,1,failure,false,2026-07-15
+WIN-IN-1087,Success,None,Complete,,0,success,false,2026-07-15
+WIN-IN-1088,Success,None,Complete,,0,success,false,2026-07-15
+WIN-SE-1089,In progress,None,Account setup,,0,inProgress,true,2026-07-15
+WIN-NL-1090,Failed,Cert / enrollment,Device setup,Cert / enrollment,2,failure,false,2026-07-15
+WIN-CA-1091,Success,None,Complete,,0,success,false,2026-07-15
+WIN-SE-1092,Success,None,Complete,,0,success,false,2026-07-15
+WIN-IN-1093,Success,None,Complete,,0,success,false,2026-07-15
+WIN-ES-1094,Success,None,Complete,,0,success,false,2026-07-15
+WIN-FI-1095,Success,None,Complete,,0,success,false,2026-07-15
+WIN-IN-1096,Success,None,Complete,,0,success,false,2026-07-15
+WIN-IN-1097,Success,None,Complete,,0,success,false,2026-07-15
+WIN-ES-1098,Success,None,Complete,,0,success,false,2026-07-15
+WIN-DE-1099,Success,None,Complete,,0,success,false,2026-07-15
+WIN-US-1100,Failed,Cert / enrollment,Complete,Cert / enrollment,3,failure,false,2026-07-15
+WIN-FI-1101,Success,None,Complete,,0,success,false,2026-07-15
+WIN-IN-1102,Success,None,Complete,,0,success,false,2026-07-15
+WIN-US-1103,Success,None,Complete,,0,success,false,2026-07-15
+WIN-CA-1104,Success,None,Complete,,0,success,false,2026-07-15
+WIN-CA-1105,Success,None,Complete,,0,success,false,2026-07-15
+WIN-US-1106,Success,None,Complete,,0,success,false,2026-07-15
+WIN-SE-1107,Success,None,Complete,,0,success,false,2026-07-15
+WIN-DE-1108,Success,None,Complete,,0,success,false,2026-07-15
+WIN-NL-1109,Success,None,Complete,,0,success,false,2026-07-15
+WIN-FI-1110,Success,None,Complete,,0,success,false,2026-07-15
+WIN-CA-1111,Success,None,Complete,,0,success,false,2026-07-15
+WIN-ES-1112,Success,None,Complete,,0,success,false,2026-07-15
+WIN-FI-1113,Success,None,Complete,,0,success,false,2026-07-15
+WIN-ES-1114,Success,None,Complete,,0,success,false,2026-07-15
+WIN-ES-1115,In progress,None,Account setup,,0,inProgress,true,2026-07-15
+WIN-SE-1116,Success,None,Complete,,0,success,false,2026-07-15
+WIN-NL-1117,Failed,Driver failure,Complete,Driver failure,2,failure,false,2026-07-15
+WIN-FI-1118,Success,None,Complete,,0,success,false,2026-07-15
+WIN-DE-1119,Success,None,Complete,,0,success,false,2026-07-15
+WIN-SE-1120,Failed,Unknown,Device setup,Unknown,3,failure,false,2026-07-15
+WIN-NL-1121,Success,None,Complete,,0,success,false,2026-07-15
+WIN-DE-1122,Success,None,Complete,,0,success,false,2026-07-15
+WIN-CA-1123,Success,None,Complete,,0,success,false,2026-07-15
+WIN-FI-1124,Success,None,Complete,,0,success,false,2026-07-15
+WIN-CA-1125,Success,None,Complete,,0,success,false,2026-07-15
+WIN-SE-1126,In progress,None,Device setup,,1,inProgress,true,2026-07-15
+WIN-FI-1127,Success,None,Complete,,0,success,false,2026-07-15
+WIN-ES-1128,Success,None,Complete,,0,success,false,2026-07-15
+WIN-NL-1129,Failed,Driver failure,Account setup,Driver failure,1,failure,false,2026-07-15
+WIN-FI-1130,Success,None,Complete,,0,success,false,2026-07-15
+WIN-CA-1131,Success,None,Complete,,0,success,false,2026-07-15
+WIN-CA-1132,In progress,None,Account setup,,1,inProgress,true,2026-07-15
+WIN-US-1133,In progress,None,Account setup,,0,inProgress,true,2026-07-15
+WIN-US-1134,Success,None,Complete,,0,success,false,2026-07-15
+WIN-SE-1135,Success,None,Complete,,0,success,false,2026-07-15
+WIN-SE-1136,Failed,ESP timeout,Device setup,ESP timeout,3,failure,false,2026-07-15
+WIN-FI-1137,Success,None,Complete,,0,success,false,2026-07-15
+WIN-CA-1138,Failed,App install timeout,Complete,App install timeout,1,failure,false,2026-07-15
+WIN-US-1139,Failed,Unknown,Device setup,Unknown,4,failure,false,2026-07-15
+WIN-CA-1140,Success,None,Complete,,0,success,false,2026-07-15
+WIN-NL-1141,Success,None,Complete,,0,success,false,2026-07-15
+WIN-FI-1142,Success,None,Complete,,0,success,false,2026-07-15
+WIN-NL-1143,Success,None,Complete,,0,success,false,2026-07-15
+WIN-US-1144,Success,None,Complete,,0,success,false,2026-07-15
+WIN-FI-1145,Success,None,Complete,,0,success,false,2026-07-15
+WIN-SE-1146,Success,None,Complete,,0,success,false,2026-07-15
+WIN-ES-1147,Success,None,Complete,,0,success,false,2026-07-15
+WIN-CA-1148,Success,None,Complete,,0,success,false,2026-07-15
+WIN-ES-1149,In progress,None,Device setup,,2,inProgress,true,2026-07-15

@@ -1,4 +1,5 @@
 ---
+description: A read-only inventory of local AI tools (Ollama, LM Studio, Copilot) by device and user — flagging leavers who still have shadow AI installed.
 date: 2026-08-18
 draft: false
 comments: true
@@ -16,7 +17,7 @@ tags:
 
 # Who's running Ollama on your fleet? A read-only shadow-AI inventory
 
-![local-ai-agent-inventory](../../assets/img/banners/local-ai-agent-inventory.png){ .post-cover }
+![Cover: read-only shadow-AI inventory flagging unsanctioned local AI tools and leavers](../../assets/img/banners/local-ai-agent-inventory.webp){ .post-cover width="1200" height="630" fetchpriority=high }
 
 Somewhere on your fleet right now, someone has quietly installed a local LLM. Maybe it's Ollama
 pulling a model, maybe LM Studio, maybe a coding assistant quietly indexing your repos into a local
@@ -66,25 +67,13 @@ pile of per-device script output into governance:
 - **Counting guards built in** — the table is tall (one row per device per tool), so an
   `IsPrimaryDeviceRow` marker means device counts stay honest instead of multiplying by tool count.
 
+For example, a row might read **LAT-2093 · Ollama (llama3) · shadow / unsanctioned · Engineering · owner account: disabled** — a local LLM on a leaver's laptop. That single row is the one that belongs in front of your security team.
+
 ## How it works: a read-only collector
 
-```mermaid
-sequenceDiagram
-    autonumber
-    participant D as Device<br/>(Proactive Remediation)
-    participant I as Intune / Graph
-    participant R as Runbook<br/>(Managed Identity)
-    participant E as Entra ID
-    participant B as Blob Storage
-    D->>I: detection script reports installed AI tools
-    R->>I: GET deviceHealthScripts/{id}/deviceRunStates (read-only)
-    I-->>R: per-device detection output
-    R->>E: GET /users/{id} — department, location, accountEnabled
-    E-->>R: user context (read-only)
-    R->>R: parse tools · join account status · count devices, not rows
-    R->>B: write AIAgentInventory.csv + stats
-    Note over R,B: detection runs on the device · collector only reads · GET-only
-```
+<div class="mermaid-live" markdown="0">
+--8<-- "assets/diagrams/local-ai-agent-inventory.svg"
+</div>
 
 ??? note "Want a prettier diagram? Paste this into eraser.io"
     Eraser's AI turns this prompt into an editable cloud-architecture diagram:
@@ -131,7 +120,7 @@ Point Power BI at the CSV and the governance questions answer themselves: how ma
 unsanctioned AI, which tools lead, which departments concentrate the risk, and the leaver count that
 belongs in front of your security team.
 
-![Local AI Agent Inventory — example shadow-AI governance report (synthetic lab data)](../../assets/img/local-ai-agent-inventory-report.png){ .kk-zoom }
+![Power BI report: devices carrying unsanctioned AI, the leading tools, risk by department, and the disabled-account leaver count (synthetic lab data)](../../assets/img/local-ai-agent-inventory-report.webp){ .kk-zoom loading=lazy width="1512" height="880" }
 
 *Template + build kit on the **[report page](../../powerbi/local-ai-agent-inventory-report.md)**.*
 
@@ -152,8 +141,63 @@ The [synthetic fleet generator](../../scripts/synthetic-fleet.md) can emit a rea
 fictional `AIAgentInventory.csv` so you can build and demo the whole governance report before pointing
 it at real detection data.
 
+!!! question "Want a shadow-AI inventory for your fleet?"
+    Turning on-device detection into a governance report — leaver join and all — is read-only Intune/Entra work I build hands-on. This runs today across real multi-thousand-device fleets. **[Work with me →](../../work-with-me.md)**
+
+## FAQ
+
+**Does the collector scan my endpoints?** No. Detection runs on-device as a Proactive Remediation you deploy separately; this collector only reads the reported results through Graph, read-only.
+
+**What counts as "unsanctioned"?** That's your policy, defined in the detection script — the report just reflects the sanctioned/unsanctioned split you set.
+
+**What's the single most useful view?** "Disabled account + unsanctioned AI" — a leaver whose laptop still has a local model and cached data. That's the slide that gets budget.
+
+## More in this series
+
+- [The devices no one owns](../device-hygiene/)
+- [Which setting actually failed?](../noncompliant-devices/)
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Does the collector scan my endpoints?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Detection runs on-device as a Proactive Remediation you deploy separately; this collector only reads the reported results through Graph, read-only."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What counts as \"unsanctioned\"?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "That's your policy, defined in the detection script — the report just reflects the sanctioned/unsanctioned split you set."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What's the single most useful view?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "\"Disabled account + unsanctioned AI\" — a leaver whose laptop still has a local model and cached data. That's the slide that gets budget."
+      }
+    }
+  ]
+}
+</script>
+
 ## Related
 
 - :material-script-text: **The script** → [Local AI Agent Inventory](../../scripts/local-ai-agent-inventory.md)
 - :material-chart-box: **The report + template** → [Local AI Agent Inventory report](../../powerbi/local-ai-agent-inventory-report.md)
 - :material-shield-lock: **The bigger picture** → [Zero-Access Agent](../../projects/zero-access-agent/index.md)
+
+---
+
+*Screenshots use synthetic data from a personal lab — no real tenant, users, or devices. Independent
+content, not affiliated with, sponsored by, or endorsed by Microsoft. Microsoft, Intune, Entra,
+Microsoft Graph, Azure, Defender and Power BI are trademarks of the Microsoft group of companies.*

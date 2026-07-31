@@ -1,21 +1,22 @@
 ---
 title: App Deployment Failures
-description: Surfaces app installs that failed and where, so remediation targets the real devices, not the whole ring.
+description: Every Intune app failure rolled up per app — failed vs targeted, a rate, and a triage category.
 tags:
   - Intune
   - Microsoft Graph
+  - Power BI
 ---
 
 # App Deployment Failures
 
-Surfaces app installs that failed and where, so remediation targets the real devices, not the whole ring.
+Every Intune app failure rolled up per app — failed vs targeted, a rate, and a triage category.
 
 [:material-download: Download the script](https://github.com/KetanKamble3894/zero-access-agent/blob/main/scripts/Collect-AppDeploymentFailures.ps1){ .md-button .md-button--primary }
 [:material-github: View on GitHub](https://github.com/KetanKamble3894/zero-access-agent/blob/main/scripts/Collect-AppDeploymentFailures.ps1){ .md-button }
 
 ## 1 · The script
 
-Read-only by construction — it authenticates with a Managed Identity, calls Microsoft Graph with GET only, and writes a sanitized CSV snapshot. Set the three CONFIG values at the top, then run.
+Read-only by construction — it authenticates with a Managed Identity, calls Microsoft Graph with GET only, and writes a sanitized CSV snapshot. Set the CONFIG values at the top, then run.
 
 ??? example "View the full script (57 KB)"
     ```powershell
@@ -24,18 +25,18 @@ Read-only by construction — it authenticates with a Managed Identity, calls Mi
 
 ## 2 · The Power BI template
 
-!!! note "`.pbit` goes here"
-    Drop `app-deployment-failures.pbit` into `docs/assets/pbit/` and swap this note for a download button:
-    `[:material-download: App Deployment Failures template](../assets/pbit/app-deployment-failures.pbit)`
+[:material-download: App Deployment Failures template (.pbit)](../assets/pbit/app-deployment-failures.pbit){ .md-button .md-button--primary }
+
+Opens to a **pre-built report** — KPI cards, charts, a detail table and slicers, already wired. On open it prompts for your **Storage account / container / file**, then loads from Blob. Full details on the **[report page](../powerbi/app-deployment-failures-report.md)**.
 
 ## 3 · Example report
 
-![App Deployment Failures — example Power BI report](../assets/img/report-placeholder.svg)
+![App Deployment Failures — example report (synthetic lab data)](../assets/img/app-deployment-failures-report.png){ .kk-zoom }
 
-*Replace `report-placeholder.svg` with a screenshot of your own `App Deployment Failures` report.*
+*Built on synthetic `@contoso.com` data. Point the template at your own snapshot to see your fleet.*
 
 ## Related
 
+- :material-book-open-variant: **The story** → [Which app is failing, and why](../blog/posts/app-deployment-failures.md)
 - :material-chart-box: **Power BI report** → [App Deployment Failures report](../powerbi/app-deployment-failures-report.md)
-- :material-book-open-variant: **Deep-dive teardown** → [in the Zero-Access Agent project](../projects/zero-access-agent/collectors/app-deployment-failures.md)
-
+- :material-shield-lock: **Part of** → [Zero-Access Agent](../projects/zero-access-agent/index.md)

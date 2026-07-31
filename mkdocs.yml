@@ -48,16 +48,23 @@ theme:
         icon: material/weather-sunny
         name: Switch to system preference
 
+hooks:
+  - hooks/og_banner.py
+
 extra_css:
   - stylesheets/extra.css
 
 extra_javascript:
-  - javascripts/mermaid.min.js
-  - javascripts/mermaid-init.js
   - javascripts/lightbox.js
 
 plugins:
   - search
+  - social:
+      cards: true
+      cards_layout_options:
+        background_color: "#0b1120"
+        color: "#e9eef7"
+        font_family: Inter
   - tags: {}
   - blog:
       blog_dir: blog

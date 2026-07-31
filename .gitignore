@@ -1,0 +1,15 @@
+# MkDocs build output — generated on CI, never committed
+/site/
+
+# Plugin caches (social-card renders, fetched fonts, etc.)
+/.cache/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db

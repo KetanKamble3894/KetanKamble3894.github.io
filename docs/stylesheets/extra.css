@@ -532,8 +532,8 @@
 .mermaid-live {
   display: flex;
   justify-content: center;
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
+  background: #0f1a2e;
+  border: 1px solid #28364f;
   border-radius: 14px;
   padding: 20px 18px;
   margin: 1.5rem 0;
@@ -541,9 +541,28 @@
   overflow-x: auto;
 }
 .mermaid-live svg { max-width: 100%; height: auto; }
-[data-md-color-scheme="slate"] .mermaid-live { background: #0f1a2e; border-color: #28364f; }
-/* while the vendored renderer runs, hide the raw source flash */
-pre.mermaid-src { visibility: hidden; }
+.mermaid-live figure, .mermaid-live { margin-inline: 0; }
+
+/* Click-to-play before/after animation — static by default, no auto-motion (WCAG 2.2.2) */
+.kk-anim { display: block; }
+/* keep the toggle visually hidden but KEYBOARD-FOCUSABLE (not display:none) — WCAG 2.1.1 */
+.kk-anim-toggle { position: absolute; width: 1px; height: 1px; overflow: hidden;
+  clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; }
+.kk-anim-toggle:focus-visible ~ .kk-anim-btn { outline: 2px solid #2dd4bf; outline-offset: 2px; }
+.kk-anim-motion { display: none; }
+.kk-anim-toggle:checked ~ .kk-anim-motion { display: block; }
+.kk-anim-toggle:checked ~ .kk-anim-static { display: none; }
+.kk-anim-btn {
+  display: inline-block; margin-top: 8px; cursor: pointer;
+  font: 600 13px/1 "Inter", system-ui, sans-serif; color: #0f766e;
+  background: #ccfbf1; border: 1px solid #5eead4; border-radius: 999px; padding: 6px 14px;
+}
+.kk-anim-btn:hover { background: #99f6e4; }
+[data-md-color-scheme="slate"] .kk-anim-btn { color: #5eead4; background: #0f2b2a; border-color: #164e46; }
+@media (prefers-reduced-motion: reduce) {
+  .kk-anim-toggle:checked ~ .kk-anim-motion { display: none; }
+  .kk-anim-toggle:checked ~ .kk-anim-static { display: block; }
+}
 
 /* ---- Long post titles read better balanced, esp. on phones ---- */
 .md-typeset h1 { text-wrap: balance; }

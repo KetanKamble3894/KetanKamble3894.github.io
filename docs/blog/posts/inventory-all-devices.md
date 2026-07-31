@@ -1,4 +1,5 @@
 ---
+description: Build the enriched inventory Intune's All-devices list won't give you — device, Entra location, OEM warranty and Defender health, per device.
 date: 2026-08-04
 draft: false
 comments: true
@@ -15,7 +16,7 @@ tags:
 
 # One row per device: building the inventory Intune won't hand you
 
-![inventory-all-devices](../../assets/img/banners/inventory-all-devices.png){ .post-cover }
+![Cover: joining scattered Intune, Entra, warranty and Defender data into one device inventory row](../../assets/img/banners/inventory-all-devices.webp){ .post-cover width="1200" height="630" fetchpriority=high }
 
 Every fleet question starts the same way — *how many devices, running what, owned by whom, and
 where do they sit?* Intune knows all of it. The problem is it knows each part in a **different
@@ -73,12 +74,14 @@ The collector produces **one row per device** with the scattered facts already j
 | OEM warranty start / end / state | Device **Notes** field | ✅ `WarrantyState`, dates |
 | Defender agent state, real-time, tamper, signature age | Intune **security report** | ✅ `Defender*` columns |
 
-And crucially, it also writes a second file — **pre-aggregated summary stats** — that count
-**devices, not rows**. (Group a joined table naïvely and one laptop with two policies becomes "two
-devices"; the runbook does the distinct-count *before* the AI or the report ever sees it.)
+And crucially, it also writes a second file — **pre-aggregated summary stats** with the distinct-device
+counts already computed. (Group a joined table naïvely and one laptop with two policies becomes "two
+devices"; the runbook does that distinct-count *before* the AI or the report ever sees it.)
 
 The result is a table you can pivot any direction: devices by country, by manufacturer, by warranty
 state, by OS build, by office × ownership — the slices are yours, because the joins already happened.
+
+For example, a single row might read **CTS-4471 · Lenovo ThinkPad X1 · Windows 11 23H2 · Madrid, ES · warranty expires 2026-03 · Defender: healthy** — the device, its owner's location, its OEM warranty and its security posture on one line. That's the row the All devices list can't assemble, and every chart in the report is just a `GROUP BY` on a column of it.
 
 ## How it works: a read-only collector
 
@@ -86,28 +89,22 @@ The shape is the same zero-access pattern as every collector in this series — 
 only ever reads**, pre-shapes the data, and drops a sanitized CSV where a report (or the agent) can
 pick it up. Nothing is written back to the tenant.
 
-```mermaid
-sequenceDiagram
-    autonumber
-    participant R as Runbook<br/>(Managed Identity)
-    participant G as Microsoft Graph
-    participant E as Entra ID
-    participant B as Blob Storage
-    R->>G: GET /deviceManagement/managedDevices (read-only)
-    G-->>R: device list (paged)
-    R->>G: POST reports/exportJobs → DefenderAgents
-    G-->>R: agent health export (read-only)
-    R->>E: POST /$batch → GET /users/{id} (city, country, office)
-    E-->>R: user location context
-    R->>R: join + pre-aggregate (count devices, not rows)
-    R->>B: write Inventory_AllDevices.csv + Summary_Stats.csv
-    Note over R,B: GET-only · no scopes to write · no live tenant in the report
-```
+<div class="mermaid-live" markdown="0">
+--8<-- "assets/diagrams/inventory-all-devices.svg"
+</div>
 
 The least-privilege scopes are read-only by design:
 `DeviceManagementManagedDevices.Read.All` for the devices, Notes and reports (confirm the Defender
 export-job scope in your own tenant), and `User.Read.All` for the location enrichment. Both are
 **`.Read.All`** — there is no write role anywhere in the chain.
+
+!!! note "Why a `POST` is still read-only"
+    Graph's reports come out through an **export job**: you `POST` to
+    `/deviceManagement/reports/exportJobs` to *request* a report, then `GET` the finished file. That
+    `POST` is how Intune hands you the report — it only describes which report you want and changes
+    nothing in the tenant; it's a read-*export*, not a configuration change. Graph's beta reporting
+    endpoints don't cleanly document the scope the export call maps to, so confirm which read role your
+    tenant grants it — the collector itself requests no write role.
 
 !!! warning "Verify before you trust it"
     Some device properties and the Defender export come from Graph's **beta** endpoint, which can
@@ -122,7 +119,7 @@ the CSV, refresh, slice. One page answers the fleet questions the All devices li
 device counts by country and office, the manufacturer and OS-build mix, warranty exposure, and
 Defender coverage — all cross-filterable from a single click.
 
-![Inventory — All Devices — example Power BI report built on the read-only snapshot](../../assets/img/inventory-all-devices-report.png){ .kk-zoom }
+![Power BI report: device counts by country and office, the manufacturer and OS-build mix, warranty exposure and Defender coverage (synthetic lab data)](../../assets/img/inventory-all-devices-report.webp){ .kk-zoom loading=lazy width="1512" height="880" }
 
 *Want the template? The **[Inventory — All Devices report page](../../powerbi/inventory-all-devices-report.md)**
 has the `.pbit` and the exact build kit.*
@@ -146,8 +143,63 @@ No tenant required. The [synthetic fleet generator](../../scripts/synthetic-flee
 realistic `Inventory_AllDevices.csv` — the same schema, entirely fictional — so you can build and
 test the whole report before you ever point it at real data.
 
+!!! question "Want this one-row-per-device inventory in your tenant?"
+    The enriched inventory table and its Power BI are the kind of read-only tooling I build hands-on for Intune/Entra teams. This runs in production against real fleets of several thousand devices. **[Work with me →](../../work-with-me.md)**
+
+## FAQ
+
+**Does this need write access to my tenant?** No. Every call is a read-only Graph GET (or a read-export job) under `.Read.All` scopes; nothing is written back.
+
+**Why not just export the All devices list?** The export gives you the same columns — it doesn't join in the Entra location, OEM warranty or Defender health, which is the whole value here.
+
+**How do I avoid double-counting devices?** Count distinct `DeviceName`, and do it before the visual — the collector also writes a pre-aggregated stats file with the distinct counts already done.
+
+## More in this series
+
+- [The devices no one owns](../device-hygiene/)
+- [Who's missing an Intune license](../license-compliance/)
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Does this need write access to my tenant?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Every call is a read-only Graph GET (or a read-export job) under .Read.All scopes; nothing is written back."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why not just export the All devices list?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The export gives you the same columns — it doesn't join in the Entra location, OEM warranty or Defender health, which is the whole value here."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I avoid double-counting devices?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Count distinct DeviceName, and do it before the visual — the collector also writes a pre-aggregated stats file with the distinct counts already done."
+      }
+    }
+  ]
+}
+</script>
+
 ## Related
 
 - :material-script-text: **The script** → [Inventory — All Devices](../../scripts/inventory-all-devices.md)
 - :material-chart-box: **The report + template** → [Inventory — All Devices report](../../powerbi/inventory-all-devices-report.md)
 - :material-shield-lock: **The bigger picture** → [Zero-Access Agent](../../projects/zero-access-agent/index.md) — where all ten snapshots come together.
+
+---
+
+*Screenshots use synthetic data from a personal lab — no real tenant, users, or devices. Independent
+content, not affiliated with, sponsored by, or endorsed by Microsoft. Microsoft, Intune, Entra,
+Microsoft Graph, Azure, Defender and Power BI are trademarks of the Microsoft group of companies.*

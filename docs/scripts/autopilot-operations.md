@@ -1,22 +1,22 @@
 ---
 title: Autopilot Operations
-description: Autopilot registrations, profiles and deployment health — the enrolment funnel, made visible.
+description: Autopilot / ESP deployments classified by phase, failure category and cause — per deployment.
 tags:
-  - Windows / Autopilot
   - Intune
   - Microsoft Graph
+  - Power BI
 ---
 
 # Autopilot Operations
 
-Autopilot registrations, profiles and deployment health — the enrolment funnel, made visible.
+Autopilot / ESP deployments classified by phase, failure category and cause — per deployment.
 
 [:material-download: Download the script](https://github.com/KetanKamble3894/zero-access-agent/blob/main/scripts/Collect-AutopilotOperations.ps1){ .md-button .md-button--primary }
 [:material-github: View on GitHub](https://github.com/KetanKamble3894/zero-access-agent/blob/main/scripts/Collect-AutopilotOperations.ps1){ .md-button }
 
 ## 1 · The script
 
-Read-only by construction — it authenticates with a Managed Identity, calls Microsoft Graph with GET only, and writes a sanitized CSV snapshot. Set the three CONFIG values at the top, then run.
+Read-only by construction — it authenticates with a Managed Identity, calls Microsoft Graph with GET only, and writes a sanitized CSV snapshot. Set the CONFIG values at the top, then run.
 
 ??? example "View the full script (68 KB)"
     ```powershell
@@ -25,18 +25,18 @@ Read-only by construction — it authenticates with a Managed Identity, calls Mi
 
 ## 2 · The Power BI template
 
-!!! note "`.pbit` goes here"
-    Drop `autopilot-operations.pbit` into `docs/assets/pbit/` and swap this note for a download button:
-    `[:material-download: Autopilot Operations template](../assets/pbit/autopilot-operations.pbit)`
+[:material-download: Autopilot Operations template (.pbit)](../assets/pbit/autopilot-operations.pbit){ .md-button .md-button--primary }
+
+Opens to a **pre-built report** — KPI cards, charts, a detail table and slicers, already wired. On open it prompts for your **Storage account / container / file**, then loads from Blob. Full details on the **[report page](../powerbi/autopilot-operations-report.md)**.
 
 ## 3 · Example report
 
-![Autopilot Operations — example Power BI report](../assets/img/report-placeholder.svg)
+![Autopilot Operations — example report (synthetic lab data)](../assets/img/autopilot-operations-report.png){ .kk-zoom }
 
-*Replace `report-placeholder.svg` with a screenshot of your own `Autopilot Operations` report.*
+*Built on synthetic `@contoso.com` data. Point the template at your own snapshot to see your fleet.*
 
 ## Related
 
+- :material-book-open-variant: **The story** → [Where Autopilot actually breaks](../blog/posts/autopilot-operations.md)
 - :material-chart-box: **Power BI report** → [Autopilot Operations report](../powerbi/autopilot-operations-report.md)
-- :material-book-open-variant: **Deep-dive teardown** → [in the Zero-Access Agent project](../projects/zero-access-agent/collectors/autopilot-operations.md)
-
+- :material-shield-lock: **Part of** → [Zero-Access Agent](../projects/zero-access-agent/index.md)

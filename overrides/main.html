@@ -1,19 +1,10 @@
 {% extends "base.html" %}
 
-{% block extrahead %}
-  {% set _title = config.site_name %}
-  {% if page and page.title and not page.is_homepage %}{% set _title = page.title ~ " · " ~ config.site_name %}{% endif %}
-  {% set _desc = config.site_description %}
-  {% if page and page.meta and page.meta.description %}{% set _desc = page.meta.description %}{% endif %}
-  {% set _img = config.site_url ~ "assets/img/social-card.png" %}
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="{{ config.site_name }}">
-  <meta property="og:title" content="{{ _title }}">
-  <meta property="og:description" content="{{ _desc }}">
-  <meta property="og:image" content="{{ _img }}">
-  {% if page %}<meta property="og:url" content="{{ page.canonical_url }}">{% endif %}
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="{{ _title }}">
-  <meta name="twitter:description" content="{{ _desc }}">
-  <meta name="twitter:image" content="{{ _img }}">
-{% endblock %}
+{#
+  OpenGraph / Twitter share tags are now owned by the `social` plugin
+  (per-page dark, on-brand cards) plus the `hooks/og_banner.py` hook, which
+  swaps blog posts to use their own Microsoft-icon cover banner as the share
+  image. The old manual block that hardcoded assets/img/social-card.png was
+  removed to avoid duplicate og:image tags. The custom homepage (home.html)
+  keeps its own bespoke card.
+#}

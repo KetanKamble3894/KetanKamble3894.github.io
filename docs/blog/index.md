@@ -6,7 +6,7 @@ hide:
   - toc
 ---
 
-# Blog
+# Intune, Entra & Graph — decoded in the open
 
 Decoding the Modern Workplace from first principles — Intune, Entra, Graph, and what the portal actually does underneath. Every claim is reproduced in a lab first.
 

@@ -1,0 +1,161 @@
+DeviceName,ReportType,RecommendedAction,ActionOwner,Manufacturer,ComplianceState,OwnerType,LastSyncDaysAgo,IsInactive,SnapshotDate
+WIN-ES-1000,Assigned,None,None,Lenovo,Not evaluated,company,7,false,2026-07-15
+WIN-SE-1001,Assigned,Remove orphaned record,Identity,Dell Inc.,Compliant,company,44,true,2026-07-15
+WIN-DE-1002,Assigned,Rotate BitLocker key,Identity,HP,Compliant,personal,125,true,2026-07-15
+WIN-IN-1003,Assigned,None,None,Lenovo,Compliant,personal,9,false,2026-07-15
+WIN-IN-1004,Assigned,None,None,Dell Inc.,Noncompliant,company,0,false,2026-07-15
+WIN-DE-1005,Assigned,None,None,Dell Inc.,Noncompliant,personal,13,false,2026-07-15
+WIN-DE-1006,Assigned,Remove orphaned record,Identity,Lenovo,Compliant,personal,9,false,2026-07-15
+WIN-NL-1007,Assigned,None,None,Lenovo,Compliant,company,9,false,2026-07-15
+WIN-DE-1008,Orphaned,Retire (stale),Security,HP,Compliant,personal,8,false,2026-07-15
+WIN-ES-1009,Assigned,None,None,Dell Inc.,Noncompliant,company,5,false,2026-07-15
+WIN-IN-1010,Assigned,Retire (stale),Service Desk,HP,Compliant,personal,4,false,2026-07-15
+WIN-SE-1011,Assigned,None,None,HP,Not evaluated,company,8,false,2026-07-15
+WIN-NL-1012,Assigned,None,None,HP,Compliant,personal,13,false,2026-07-15
+WIN-CA-1013,Assigned,Rotate BitLocker key,Security,Lenovo,Compliant,personal,8,false,2026-07-15
+WIN-FI-1014,Assigned,None,None,Lenovo,Compliant,personal,0,false,2026-07-15
+WIN-NL-1015,Assigned,Retire (stale),EUC Ops,Microsoft Corporation,Compliant,personal,41,true,2026-07-15
+WIN-ES-1016,Orphaned,Rotate BitLocker key,Identity,HP,Compliant,personal,5,false,2026-07-15
+WIN-IN-1017,Assigned,None,None,Lenovo,Compliant,company,13,false,2026-07-15
+WIN-NL-1018,Assigned,Review compliance,Service Desk,Microsoft Corporation,Compliant,company,63,true,2026-07-15
+WIN-DE-1019,Assigned,Retire (stale),Security,Lenovo,Compliant,personal,77,true,2026-07-15
+WIN-FI-1020,Assigned,Re-enroll,Identity,Lenovo,Compliant,company,11,false,2026-07-15
+WIN-FI-1021,Assigned,None,None,Apple,Not evaluated,personal,7,false,2026-07-15
+WIN-DE-1022,Assigned,None,None,Dell Inc.,Compliant,company,13,false,2026-07-15
+WIN-DE-1023,Assigned,Remove orphaned record,Service Desk,Microsoft Corporation,Noncompliant,company,3,false,2026-07-15
+WIN-US-1024,Assigned,Remove orphaned record,EUC Ops,HP,Compliant,company,12,false,2026-07-15
+WIN-DE-1025,Assigned,None,None,Microsoft Corporation,Compliant,company,4,false,2026-07-15
+WIN-NL-1026,Orphaned,Review compliance,EUC Ops,Dell Inc.,Compliant,company,2,false,2026-07-15
+WIN-FI-1027,Assigned,None,None,Lenovo,Compliant,company,9,false,2026-07-15
+WIN-DE-1028,Assigned,None,None,Apple,Compliant,personal,11,false,2026-07-15
+WIN-ES-1029,Assigned,None,None,HP,Compliant,personal,14,false,2026-07-15
+WIN-FI-1030,Assigned,Rotate BitLocker key,Security,Dell Inc.,Noncompliant,company,41,true,2026-07-15
+WIN-ES-1031,Assigned,Review compliance,Security,Lenovo,Compliant,personal,32,true,2026-07-15
+WIN-NL-1032,Assigned,None,None,Lenovo,Compliant,company,9,false,2026-07-15
+WIN-CA-1033,Assigned,Retire (stale),Security,Dell Inc.,Compliant,company,29,false,2026-07-15
+WIN-SE-1034,Assigned,None,None,HP,Noncompliant,personal,16,false,2026-07-15
+WIN-IN-1035,Assigned,Review compliance,Identity,Lenovo,Compliant,personal,8,false,2026-07-15
+WIN-DE-1036,Assigned,None,None,Lenovo,Noncompliant,company,19,false,2026-07-15
+WIN-FI-1037,Assigned,None,None,Dell Inc.,Not evaluated,company,14,false,2026-07-15
+WIN-DE-1038,Assigned,Investigate (inactive),Service Desk,Lenovo,Not evaluated,company,1,false,2026-07-15
+WIN-FI-1039,Assigned,Rotate BitLocker key,Security,Dell Inc.,Compliant,company,35,true,2026-07-15
+WIN-ES-1040,Assigned,Rotate BitLocker key,Security,Dell Inc.,Compliant,personal,0,false,2026-07-15
+WIN-NL-1041,Assigned,Investigate (inactive),Identity,Dell Inc.,Compliant,personal,35,true,2026-07-15
+WIN-US-1042,Orphaned,Remove orphaned record,Identity,Dell Inc.,Compliant,company,9,false,2026-07-15
+WIN-NL-1043,Assigned,Retire (stale),EUC Ops,Apple,Noncompliant,personal,0,false,2026-07-15
+WIN-IN-1044,Orphaned,Rotate BitLocker key,EUC Ops,Lenovo,Compliant,personal,25,false,2026-07-15
+WIN-FI-1045,Assigned,Re-enroll,Identity,Dell Inc.,Compliant,personal,8,false,2026-07-15
+WIN-US-1046,Assigned,Remove orphaned record,Identity,Dell Inc.,Compliant,personal,83,true,2026-07-15
+WIN-DE-1047,Assigned,None,None,HP,Compliant,company,5,false,2026-07-15
+WIN-NL-1048,Assigned,None,None,Lenovo,Noncompliant,personal,1,false,2026-07-15
+WIN-DE-1049,Assigned,None,None,Dell Inc.,Not evaluated,personal,4,false,2026-07-15
+WIN-CA-1050,Assigned,None,None,Dell Inc.,Noncompliant,company,3,false,2026-07-15
+WIN-US-1051,Orphaned,Review compliance,Service Desk,HP,Compliant,personal,12,false,2026-07-15
+WIN-IN-1052,Assigned,None,None,Microsoft Corporation,Compliant,personal,1,false,2026-07-15
+WIN-NL-1053,Assigned,Rotate BitLocker key,Service Desk,Lenovo,Compliant,company,128,true,2026-07-15
+WIN-CA-1054,Assigned,None,None,Lenovo,Compliant,company,5,false,2026-07-15
+WIN-ES-1055,Assigned,None,None,Dell Inc.,Noncompliant,company,23,false,2026-07-15
+WIN-SE-1056,Assigned,None,None,Lenovo,Compliant,company,4,false,2026-07-15
+WIN-NL-1057,Assigned,Re-enroll,EUC Ops,Lenovo,Compliant,company,46,true,2026-07-15
+WIN-US-1058,Assigned,None,None,HP,Compliant,company,1,false,2026-07-15
+WIN-SE-1059,Assigned,Remove orphaned record,Service Desk,Dell Inc.,Compliant,personal,37,true,2026-07-15
+WIN-DE-1060,Assigned,Review compliance,Security,Microsoft Corporation,Not evaluated,company,91,true,2026-07-15
+WIN-NL-1061,Assigned,None,None,Dell Inc.,Compliant,personal,7,false,2026-07-15
+WIN-NL-1062,Assigned,None,None,Dell Inc.,Compliant,company,11,false,2026-07-15
+WIN-US-1063,Orphaned,Rotate BitLocker key,Identity,HP,Compliant,personal,41,true,2026-07-15
+WIN-SE-1064,Assigned,Retire (stale),Identity,Dell Inc.,Not evaluated,company,6,false,2026-07-15
+WIN-NL-1065,Assigned,None,None,Lenovo,Compliant,company,6,false,2026-07-15
+WIN-FI-1066,Assigned,Retire (stale),Identity,Lenovo,Compliant,personal,183,true,2026-07-15
+WIN-SE-1067,Assigned,None,None,Dell Inc.,Compliant,personal,4,false,2026-07-15
+WIN-DE-1068,Assigned,None,None,Dell Inc.,Noncompliant,personal,12,false,2026-07-15
+WIN-ES-1069,Assigned,None,None,Lenovo,Compliant,personal,5,false,2026-07-15
+WIN-DE-1070,Assigned,Retire (stale),EUC Ops,Microsoft Corporation,Compliant,company,3,false,2026-07-15
+WIN-FI-1071,Assigned,Re-enroll,Identity,Lenovo,Compliant,personal,97,true,2026-07-15
+WIN-FI-1072,Assigned,None,None,Microsoft Corporation,Not evaluated,personal,9,false,2026-07-15
+WIN-FI-1073,Assigned,None,None,Lenovo,Compliant,personal,0,false,2026-07-15
+WIN-IN-1074,Assigned,None,None,HP,Compliant,company,0,false,2026-07-15
+WIN-CA-1075,Assigned,Re-enroll,Identity,Microsoft Corporation,Compliant,company,71,true,2026-07-15
+WIN-FI-1076,Assigned,None,None,Lenovo,Not evaluated,personal,25,false,2026-07-15
+WIN-US-1077,Assigned,Investigate (inactive),Security,Lenovo,Noncompliant,personal,1,false,2026-07-15
+WIN-DE-1078,Assigned,Retire (stale),EUC Ops,Dell Inc.,Compliant,company,1,false,2026-07-15
+WIN-US-1079,Orphaned,Investigate (inactive),Service Desk,Lenovo,Compliant,personal,13,false,2026-07-15
+WIN-ES-1080,Assigned,None,None,Microsoft Corporation,Compliant,personal,30,false,2026-07-15
+WIN-US-1081,Orphaned,Investigate (inactive),Identity,Microsoft Corporation,Compliant,personal,180,true,2026-07-15
+WIN-CA-1082,Orphaned,Retire (stale),EUC Ops,Microsoft Corporation,Compliant,personal,175,true,2026-07-15
+WIN-ES-1083,Assigned,None,None,Dell Inc.,Compliant,company,6,false,2026-07-15
+WIN-CA-1084,Assigned,Rotate BitLocker key,Identity,Lenovo,Compliant,personal,9,false,2026-07-15
+WIN-DE-1085,Assigned,Re-enroll,EUC Ops,Lenovo,Noncompliant,company,27,false,2026-07-15
+WIN-IN-1086,Assigned,None,None,HP,Compliant,personal,8,false,2026-07-15
+WIN-CA-1087,Assigned,Review compliance,Security,Lenovo,Compliant,personal,0,false,2026-07-15
+WIN-DE-1088,Assigned,Rotate BitLocker key,EUC Ops,HP,Compliant,personal,42,true,2026-07-15
+WIN-SE-1089,Assigned,Investigate (inactive),Service Desk,Lenovo,Compliant,personal,134,true,2026-07-15
+WIN-FI-1090,Assigned,None,None,Lenovo,Compliant,company,9,false,2026-07-15
+WIN-ES-1091,Assigned,None,None,HP,Compliant,company,25,false,2026-07-15
+WIN-SE-1092,Assigned,Retire (stale),Service Desk,Apple,Compliant,personal,2,false,2026-07-15
+WIN-NL-1093,Assigned,Remove orphaned record,Service Desk,HP,Compliant,company,37,true,2026-07-15
+WIN-NL-1094,Assigned,Retire (stale),EUC Ops,Dell Inc.,Noncompliant,company,13,false,2026-07-15
+WIN-CA-1095,Assigned,Retire (stale),Identity,Lenovo,Compliant,company,119,true,2026-07-15
+WIN-ES-1096,Assigned,Rotate BitLocker key,Identity,HP,Compliant,company,7,false,2026-07-15
+WIN-DE-1097,Assigned,Remove orphaned record,Identity,Dell Inc.,Compliant,company,197,true,2026-07-15
+WIN-IN-1098,Assigned,Rotate BitLocker key,Service Desk,Apple,Noncompliant,company,3,false,2026-07-15
+WIN-SE-1099,Assigned,None,None,HP,Compliant,company,5,false,2026-07-15
+WIN-FI-1100,Orphaned,Review compliance,EUC Ops,Apple,Compliant,personal,6,false,2026-07-15
+WIN-ES-1101,Assigned,Investigate (inactive),Identity,Dell Inc.,Compliant,personal,178,true,2026-07-15
+WIN-IN-1102,Assigned,Review compliance,Service Desk,HP,Not evaluated,personal,88,true,2026-07-15
+WIN-IN-1103,Assigned,None,None,Microsoft Corporation,Compliant,personal,15,false,2026-07-15
+WIN-ES-1104,Assigned,None,None,Lenovo,Compliant,company,8,false,2026-07-15
+WIN-IN-1105,Assigned,Re-enroll,Identity,Lenovo,Compliant,personal,24,false,2026-07-15
+WIN-SE-1106,Assigned,None,None,Lenovo,Compliant,company,19,false,2026-07-15
+WIN-ES-1107,Assigned,Investigate (inactive),EUC Ops,HP,Noncompliant,company,13,false,2026-07-15
+WIN-NL-1108,Assigned,None,None,Dell Inc.,Noncompliant,company,0,false,2026-07-15
+WIN-ES-1109,Assigned,None,None,Dell Inc.,Noncompliant,company,1,false,2026-07-15
+WIN-SE-1110,Assigned,Review compliance,Service Desk,Lenovo,Compliant,personal,8,false,2026-07-15
+WIN-ES-1111,Assigned,Rotate BitLocker key,EUC Ops,Lenovo,Compliant,personal,6,false,2026-07-15
+WIN-ES-1112,Assigned,None,None,Apple,Compliant,personal,10,false,2026-07-15
+WIN-FI-1113,Assigned,None,None,Apple,Compliant,personal,9,false,2026-07-15
+WIN-NL-1114,Assigned,None,None,Dell Inc.,Noncompliant,company,12,false,2026-07-15
+WIN-IN-1115,Assigned,None,None,Lenovo,Compliant,company,9,false,2026-07-15
+WIN-IN-1116,Assigned,Investigate (inactive),Service Desk,HP,Compliant,personal,3,false,2026-07-15
+WIN-FI-1117,Assigned,Review compliance,EUC Ops,Dell Inc.,Compliant,company,81,true,2026-07-15
+WIN-FI-1118,Assigned,None,None,Microsoft Corporation,Compliant,company,7,false,2026-07-15
+WIN-CA-1119,Assigned,None,None,Dell Inc.,Noncompliant,company,2,false,2026-07-15
+WIN-IN-1120,Orphaned,Review compliance,EUC Ops,Dell Inc.,Compliant,company,36,true,2026-07-15
+WIN-DE-1121,Assigned,Retire (stale),Security,Microsoft Corporation,Compliant,company,32,true,2026-07-15
+WIN-ES-1122,Orphaned,Review compliance,Identity,Dell Inc.,Compliant,company,3,false,2026-07-15
+WIN-US-1123,Assigned,None,None,Microsoft Corporation,Compliant,personal,5,false,2026-07-15
+WIN-CA-1124,Assigned,None,None,Lenovo,Compliant,personal,19,false,2026-07-15
+WIN-US-1125,Assigned,Remove orphaned record,Identity,Lenovo,Compliant,company,111,true,2026-07-15
+WIN-SE-1126,Orphaned,Retire (stale),Security,Lenovo,Compliant,personal,14,false,2026-07-15
+WIN-SE-1127,Assigned,None,None,Dell Inc.,Compliant,personal,11,false,2026-07-15
+WIN-NL-1128,Assigned,Rotate BitLocker key,Service Desk,Lenovo,Noncompliant,company,101,true,2026-07-15
+WIN-US-1129,Assigned,None,None,Apple,Compliant,personal,5,false,2026-07-15
+WIN-FI-1130,Assigned,None,None,Lenovo,Compliant,company,14,false,2026-07-15
+WIN-NL-1131,Assigned,None,None,Microsoft Corporation,Compliant,company,8,false,2026-07-15
+WIN-NL-1132,Assigned,None,None,Dell Inc.,Compliant,personal,6,false,2026-07-15
+WIN-DE-1133,Orphaned,Investigate (inactive),EUC Ops,Apple,Compliant,company,23,false,2026-07-15
+WIN-NL-1134,Orphaned,Investigate (inactive),Service Desk,Lenovo,Noncompliant,company,190,true,2026-07-15
+WIN-IN-1135,Assigned,Review compliance,EUC Ops,Dell Inc.,Compliant,company,82,true,2026-07-15
+WIN-US-1136,Assigned,None,None,Lenovo,Compliant,company,14,false,2026-07-15
+WIN-SE-1137,Orphaned,Investigate (inactive),Security,Microsoft Corporation,Not evaluated,company,25,false,2026-07-15
+WIN-CA-1138,Assigned,Retire (stale),Security,Apple,Compliant,company,126,true,2026-07-15
+WIN-NL-1139,Orphaned,Investigate (inactive),EUC Ops,Lenovo,Compliant,company,0,false,2026-07-15
+WIN-ES-1140,Assigned,None,None,Microsoft Corporation,Compliant,company,6,false,2026-07-15
+WIN-US-1141,Assigned,Re-enroll,Security,Lenovo,Compliant,personal,5,false,2026-07-15
+WIN-CA-1142,Assigned,None,None,Lenovo,Compliant,personal,14,false,2026-07-15
+WIN-FI-1143,Assigned,None,None,Lenovo,Compliant,company,3,false,2026-07-15
+WIN-IN-1144,Assigned,Rotate BitLocker key,Security,Dell Inc.,Compliant,company,12,false,2026-07-15
+WIN-ES-1145,Orphaned,Investigate (inactive),Identity,Microsoft Corporation,Compliant,company,6,false,2026-07-15
+WIN-CA-1146,Orphaned,Re-enroll,EUC Ops,Dell Inc.,Compliant,company,14,false,2026-07-15
+WIN-DE-1147,Assigned,Remove orphaned record,Security,Apple,Compliant,personal,103,true,2026-07-15
+WIN-FI-1148,Assigned,Review compliance,Identity,Dell Inc.,Noncompliant,personal,106,true,2026-07-15
+WIN-SE-1149,Orphaned,Retire (stale),Service Desk,Lenovo,Compliant,personal,1,false,2026-07-15
+WIN-CA-1150,Assigned,Retire (stale),Service Desk,Apple,Not evaluated,company,8,false,2026-07-15
+WIN-SE-1151,Orphaned,Rotate BitLocker key,Identity,Dell Inc.,Not evaluated,personal,10,false,2026-07-15
+WIN-CA-1152,Assigned,Retire (stale),Identity,HP,Compliant,company,166,true,2026-07-15
+WIN-NL-1153,Assigned,Retire (stale),Security,Dell Inc.,Not evaluated,company,100,true,2026-07-15
+WIN-CA-1154,Assigned,Remove orphaned record,Service Desk,HP,Compliant,personal,5,false,2026-07-15
+WIN-SE-1155,Assigned,None,None,Dell Inc.,Compliant,personal,14,false,2026-07-15
+WIN-DE-1156,Assigned,None,None,Microsoft Corporation,Noncompliant,personal,9,false,2026-07-15
+WIN-DE-1157,Assigned,Review compliance,EUC Ops,Dell Inc.,Compliant,personal,6,false,2026-07-15
+WIN-ES-1158,Assigned,None,None,Dell Inc.,Compliant,company,10,false,2026-07-15
+WIN-US-1159,Assigned,Remove orphaned record,Identity,Lenovo,Compliant,company,82,true,2026-07-15

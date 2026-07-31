@@ -1,0 +1,171 @@
+DeviceName,PrimaryUser,Country,OfficeLocation,Manufacturer,Model1,Windows11ReadinessState,Windows11ReadinessReason,TPMCheckFailed,SecureBootCheckFailed,RamCheckFailed,StorageCheckFailed,ProcessorFamilyCheckFailed,OperatingSystem,LastSyncDate,SnapshotDate
+WIN-US-1000,Emma Sharma,United States,Austin Office,Lenovo,ThinkPad X1 Carbon,Capable,Capable,false,false,false,false,false,Windows 10,2026-06-21,2026-07-15
+WIN-DE-1001,Emma Andersson,Germany,Munich Office,Lenovo,Surface Laptop 5,Capable,Capable,false,false,false,false,false,Windows 10,2026-06-21,2026-07-15
+WIN-IN-1002,Olivia Korhonen,India,Pune DC,Dell Inc.,EliteBook 840,Capable,Capable,false,false,false,false,false,Windows 10,2026-07-12,2026-07-15
+WIN-NL-1003,Liam Rossi,Netherlands,Amsterdam Hub,Dell Inc.,ThinkPad T14,Not capable,CPU not supported,false,false,false,false,true,Windows 10,2026-06-18,2026-07-15
+WIN-US-1004,Arjun Muller,United States,Austin Office,Lenovo,EliteBook 840,Not capable,TPM 2.0 not detected,true,false,false,false,false,Windows 10,2026-06-19,2026-07-15
+WIN-US-1005,Arjun Andersson,United States,Austin Office,Microsoft Corporation,ThinkPad T14,Capable,Capable,false,false,false,false,false,Windows 10,2026-07-06,2026-07-15
+WIN-NL-1006,Olivia Silva,Netherlands,Amsterdam Hub,Dell Inc.,ThinkPad X1 Carbon,Capable,Capable,false,false,false,false,false,Windows 10,2026-06-19,2026-07-15
+WIN-ES-1007,Liam Silva,Spain,Madrid Office,Lenovo,Precision 3591,Capable,Capable,false,false,false,false,false,Windows 10,2026-07-01,2026-07-15
+WIN-DE-1008,Diego Andersson,Germany,Munich Office,HP,EliteBook 840,Capable,Capable,false,false,false,false,false,Windows 10,2026-06-28,2026-07-15
+WIN-NL-1009,Yuki Rossi,Netherlands,Amsterdam Hub,Dell Inc.,Surface Laptop 5,Capable,Capable,false,false,false,false,false,Windows 10,2026-07-05,2026-07-15
+WIN-CA-1010,Yuki Andersson,Canada,Toronto Office,Lenovo,ThinkPad X1 Carbon,Capable,Capable,false,false,false,false,false,Windows 10,2026-06-21,2026-07-15
+WIN-NL-1011,Emma Garcia,Netherlands,Amsterdam Hub,Lenovo,Surface Laptop 5,Capable,Capable,false,false,false,false,false,Windows 10,2026-06-22,2026-07-15
+WIN-FI-1012,Ingrid Virtanen,Finland,Helsinki HQ,Dell Inc.,ThinkPad T14,Capable,Capable,false,false,false,false,false,Windows 10,2026-07-02,2026-07-15
+WIN-IN-1013,Yuki Costa,India,Pune DC,Lenovo,Surface Laptop 5,Not capable,Storage < 64GB,false,false,false,true,false,Windows 10,2026-07-03,2026-07-15
+WIN-SE-1014,Olivia Wang,Sweden,Stockholm Office,Microsoft Corporation,ThinkPad T14,Not capable,Storage < 64GB,false,false,false,true,false,Windows 10,2026-06-19,2026-07-15
+WIN-FI-1015,Marco Korhonen,Finland,Helsinki HQ,Dell Inc.,Latitude 7440,Capable,Capable,false,false,false,false,false,Windows 10,2026-06-15,2026-07-15
+WIN-SE-1016,Elin Smith,Sweden,Stockholm Office,Lenovo,Surface Laptop 5,Capable,Capable,false,false,false,false,false,Windows 10,2026-06-25,2026-07-15
+WIN-NL-1017,Omar Virtanen,Netherlands,Amsterdam Hub,Lenovo,Precision 3591,Capable,Capable,false,false,false,false,false,Windows 10,2026-06-23,2026-07-15
+WIN-NL-1018,Liam Silva,Netherlands,Amsterdam Hub,HP,Precision 3591,Not capable,Storage < 64GB,false,false,false,true,false,Windows 10,2026-06-16,2026-07-15
+WIN-IN-1019,Eero Wang,India,Pune DC,Dell Inc.,EliteBook 840,Capable,Capable,false,false,false,false,false,Windows 10,2026-06-27,2026-07-15
+WIN-ES-1020,Nina Garcia,Spain,Madrid Office,HP,Latitude 7440,Capable,Capable,false,false,false,false,false,Windows 10,2026-06-24,2026-07-15
+WIN-IN-1021,Emma Lehto,India,Pune DC,Dell Inc.,ThinkPad T14,Capable,Capable,false,false,false,false,false,Windows 10,2026-07-02,2026-07-15
+WIN-SE-1022,Marco Rossi,Sweden,Stockholm Office,Microsoft Corporation,Precision 3591,Not capable,Storage < 64GB,false,false,false,true,false,Windows 10,2026-07-08,2026-07-15
+WIN-DE-1023,Arjun Wang,Germany,Munich Office,Microsoft Corporation,Surface Laptop 5,Capable,Capable,false,false,false,false,false,Windows 10,2026-07-04,2026-07-15
+WIN-NL-1024,Olivia Virtanen,Netherlands,Amsterdam Hub,Lenovo,Latitude 7440,Not capable,TPM 2.0 not detected,true,false,false,false,false,Windows 10,2026-06-24,2026-07-15
+WIN-DE-1025,Sofia Muller,Germany,Munich Office,Lenovo,ThinkPad X1 Carbon,Not capable,Secure Boot off,false,true,false,false,false,Windows 10,2026-06-28,2026-07-15
+WIN-IN-1026,Nina Smith,India,Pune DC,Microsoft Corporation,Precision 3591,Capable,Capable,false,false,false,false,false,Windows 10,2026-07-11,2026-07-15
+WIN-US-1027,Sara Smith,United States,Austin Office,Microsoft Corporation,ThinkPad T14,Capable,Capable,false,false,false,false,false,Windows 10,2026-07-05,2026-07-15
+WIN-SE-1028,Noah Smith,Sweden,Stockholm Office,Microsoft Corporation,Latitude 7440,Capable,Capable,false,false,false,false,false,Windows 10,2026-06-22,2026-07-15
+WIN-IN-1029,Eero Silva,India,Pune DC,HP,EliteBook 840,Capable,Capable,false,false,false,false,false,Windows 10,2026-07-13,2026-07-15
+WIN-FI-1030,Eero Kaur,Finland,Helsinki HQ,Lenovo,Precision 3591,Not capable,TPM 2.0 not detected,true,false,false,false,false,Windows 10,2026-06-17,2026-07-15
+WIN-CA-1031,Arjun Lehto,Canada,Toronto Office,HP,EliteBook 840,Capable,Capable,false,false,false,false,false,Windows 10,2026-07-13,2026-07-15
+WIN-ES-1032,Yuki Wang,Spain,Madrid Office,Microsoft Corporation,Latitude 7440,Capable,Capable,false,false,false,false,false,Windows 10,2026-06-24,2026-07-15
+WIN-IN-1033,Emma Virtanen,India,Pune DC,Microsoft Corporation,Latitude 7440,Not capable,CPU not supported,false,false,false,false,true,Windows 10,2026-07-08,2026-07-15
+WIN-ES-1034,Elin Patel,Spain,Madrid Office,Dell Inc.,ThinkPad X1 Carbon,Capable,Capable,false,false,false,false,false,Windows 10,2026-06-23,2026-07-15
+WIN-SE-1035,Olivia Sharma,Sweden,Stockholm Office,Lenovo,EliteBook 840,Capable,Capable,false,false,false,false,false,Windows 10,2026-07-04,2026-07-15
+WIN-FI-1036,Ravi Korhonen,Finland,Helsinki HQ,Dell Inc.,ThinkPad T14,Capable,Capable,false,false,false,false,false,Windows 10,2026-07-13,2026-07-15
+WIN-CA-1037,Nina Virtanen,Canada,Toronto Office,Dell Inc.,ThinkPad T14,Capable,Capable,false,false,false,false,false,Windows 10,2026-06-18,2026-07-15
+WIN-US-1038,Ingrid Korhonen,United States,Austin Office,Lenovo,EliteBook 840,Capable,Capable,false,false,false,false,false,Windows 10,2026-06-30,2026-07-15
+WIN-DE-1039,Eero Jansen,Germany,Munich Office,Dell Inc.,Precision 3591,Capable,Capable,false,false,false,false,false,Windows 10,2026-07-15,2026-07-15
+WIN-US-1040,Ingrid Korhonen,United States,Austin Office,Microsoft Corporation,Surface Laptop 5,Capable,Capable,false,false,false,false,false,Windows 10,2026-07-13,2026-07-15
+WIN-IN-1041,Elin Rossi,India,Pune DC,HP,Precision 3591,Capable,Capable,false,false,false,false,false,Windows 10,2026-06-26,2026-07-15
+WIN-ES-1042,Ingrid Korhonen,Spain,Madrid Office,Lenovo,Precision 3591,Capable,Capable,false,false,false,false,false,Windows 10,2026-06-29,2026-07-15
+WIN-NL-1043,Priya Lehto,Netherlands,Amsterdam Hub,Lenovo,EliteBook 840,Capable,Capable,false,false,false,false,false,Windows 10,2026-06-23,2026-07-15
+WIN-NL-1044,Mateo Costa,Netherlands,Amsterdam Hub,HP,ThinkPad T14,Capable,Capable,false,false,false,false,false,Windows 10,2026-06-28,2026-07-15
+WIN-US-1045,Liam Silva,United States,Austin Office,Lenovo,EliteBook 840,Not capable,Storage < 64GB,false,false,false,true,false,Windows 10,2026-07-11,2026-07-15
+WIN-NL-1046,Yuki Korhonen,Netherlands,Amsterdam Hub,Lenovo,Latitude 7440,Not capable,Storage < 64GB,false,false,false,true,false,Windows 10,2026-06-21,2026-07-15
+WIN-SE-1047,Elin Garcia,Sweden,Stockholm Office,Dell Inc.,ThinkPad T14,Capable,Capable,false,false,false,false,false,Windows 10,2026-07-03,2026-07-15
+WIN-US-1048,Sara Smith,United States,Austin Office,Lenovo,Surface Laptop 5,Capable,Capable,false,false,false,false,false,Windows 10,2026-07-13,2026-07-15
+WIN-FI-1049,Lucas Garcia,Finland,Helsinki HQ,Lenovo,EliteBook 840,Capable,Capable,false,false,false,false,false,Windows 10,2026-07-02,2026-07-15
+WIN-US-1050,Ravi Jansen,United States,Austin Office,Microsoft Corporation,Precision 3591,Capable,Capable,false,false,false,false,false,Windows 10,2026-06-19,2026-07-15
+WIN-US-1051,Liam Andersson,United States,Austin Office,Dell Inc.,ThinkPad T14,Not capable,CPU not supported,false,false,false,false,true,Windows 10,2026-07-08,2026-07-15
+WIN-FI-1052,Noah Korhonen,Finland,Helsinki HQ,HP,Precision 3591,Capable,Capable,false,false,false,false,false,Windows 10,2026-07-01,2026-07-15
+WIN-CA-1053,Aino Wang,Canada,Toronto Office,HP,ThinkPad X1 Carbon,Capable,Capable,false,false,false,false,false,Windows 10,2026-07-15,2026-07-15
+WIN-CA-1054,Sofia Lehto,Canada,Toronto Office,HP,Precision 3591,Capable,Capable,false,false,false,false,false,Windows 10,2026-06-22,2026-07-15
+WIN-SE-1055,Omar Smith,Sweden,Stockholm Office,HP,Precision 3591,Not capable,Secure Boot off,false,true,false,false,false,Windows 10,2026-07-13,2026-07-15
+WIN-ES-1056,Ingrid Jansen,Spain,Madrid Office,Lenovo,ThinkPad X1 Carbon,Capable,Capable,false,false,false,false,false,Windows 10,2026-07-13,2026-07-15
+WIN-CA-1057,Eero Costa,Canada,Toronto Office,Lenovo,ThinkPad X1 Carbon,Not capable,Secure Boot off,false,true,false,false,false,Windows 10,2026-06-26,2026-07-15
+WIN-ES-1058,Olivia Smith,Spain,Madrid Office,Lenovo,Latitude 7440,Capable,Capable,false,false,false,false,false,Windows 10,2026-06-18,2026-07-15
+WIN-FI-1059,Emma Costa,Finland,Helsinki HQ,Dell Inc.,Surface Laptop 5,Capable,Capable,false,false,false,false,false,Windows 10,2026-06-15,2026-07-15
+WIN-US-1060,Olivia Jansen,United States,Austin Office,Dell Inc.,ThinkPad X1 Carbon,Capable,Capable,false,false,false,false,false,Windows 10,2026-07-04,2026-07-15
+WIN-FI-1061,Priya Patel,Finland,Helsinki HQ,Lenovo,Precision 3591,Not capable,CPU not supported,false,false,false,false,true,Windows 10,2026-07-08,2026-07-15
+WIN-NL-1062,Noah Costa,Netherlands,Amsterdam Hub,Microsoft Corporation,Latitude 7440,Capable,Capable,false,false,false,false,false,Windows 10,2026-07-14,2026-07-15
+WIN-US-1063,Arjun Andersson,United States,Austin Office,Lenovo,Precision 3591,Capable,Capable,false,false,false,false,false,Windows 10,2026-06-17,2026-07-15
+WIN-US-1064,Liam Berg,United States,Austin Office,Lenovo,Surface Laptop 5,Capable,Capable,false,false,false,false,false,Windows 10,2026-06-18,2026-07-15
+WIN-DE-1065,Sofia Berg,Germany,Munich Office,Dell Inc.,ThinkPad X1 Carbon,Capable,Capable,false,false,false,false,false,Windows 10,2026-07-12,2026-07-15
+WIN-NL-1066,Nina Garcia,Netherlands,Amsterdam Hub,Lenovo,Surface Laptop 5,Not capable,Secure Boot off,false,true,false,false,false,Windows 10,2026-07-15,2026-07-15
+WIN-ES-1067,Ravi Muller,Spain,Madrid Office,HP,Latitude 7440,Not capable,CPU not supported,false,false,false,false,true,Windows 10,2026-07-09,2026-07-15
+WIN-IN-1068,Diego Rossi,India,Pune DC,Lenovo,ThinkPad X1 Carbon,Capable,Capable,false,false,false,false,false,Windows 10,2026-07-04,2026-07-15
+WIN-ES-1069,Eero Garcia,Spain,Madrid Office,Lenovo,Precision 3591,Not capable,Insufficient RAM,false,false,true,false,false,Windows 10,2026-07-08,2026-07-15
+WIN-SE-1070,Liam Wang,Sweden,Stockholm Office,Microsoft Corporation,Latitude 7440,Not capable,CPU not supported,false,false,false,false,true,Windows 10,2026-07-11,2026-07-15
+WIN-CA-1071,Liam Berg,Canada,Toronto Office,HP,ThinkPad T14,Not capable,Insufficient RAM,false,false,true,false,false,Windows 10,2026-07-12,2026-07-15
+WIN-FI-1072,Noah Rossi,Finland,Helsinki HQ,Lenovo,ThinkPad T14,Capable,Capable,false,false,false,false,false,Windows 10,2026-06-17,2026-07-15
+WIN-SE-1073,Elin Rossi,Sweden,Stockholm Office,Dell Inc.,Surface Laptop 5,Capable,Capable,false,false,false,false,false,Windows 10,2026-07-15,2026-07-15
+WIN-SE-1074,Diego Sharma,Sweden,Stockholm Office,HP,Precision 3591,Not capable,CPU not supported,false,false,false,false,true,Windows 10,2026-07-05,2026-07-15
+WIN-US-1075,Arjun Korhonen,United States,Austin Office,Dell Inc.,Surface Laptop 5,Capable,Capable,false,false,false,false,false,Windows 10,2026-07-11,2026-07-15
+WIN-NL-1076,Lucas Silva,Netherlands,Amsterdam Hub,HP,EliteBook 840,Not capable,Secure Boot off,false,true,false,false,false,Windows 10,2026-07-06,2026-07-15
+WIN-IN-1077,Elin Patel,India,Pune DC,Dell Inc.,ThinkPad T14,Capable,Capable,false,false,false,false,false,Windows 10,2026-07-01,2026-07-15
+WIN-IN-1078,Omar Costa,India,Pune DC,HP,Precision 3591,Capable,Capable,false,false,false,false,false,Windows 10,2026-07-03,2026-07-15
+WIN-CA-1079,Sara Wang,Canada,Toronto Office,HP,ThinkPad X1 Carbon,Capable,Capable,false,false,false,false,false,Windows 10,2026-07-02,2026-07-15
+WIN-SE-1080,Nina Andersson,Sweden,Stockholm Office,Lenovo,ThinkPad T14,Capable,Capable,false,false,false,false,false,Windows 10,2026-07-02,2026-07-15
+WIN-IN-1081,Noah Garcia,India,Pune DC,HP,ThinkPad T14,Capable,Capable,false,false,false,false,false,Windows 10,2026-07-01,2026-07-15
+WIN-SE-1082,Lucas Korhonen,Sweden,Stockholm Office,Lenovo,EliteBook 840,Capable,Capable,false,false,false,false,false,Windows 10,2026-06-18,2026-07-15
+WIN-SE-1083,Elin Andersson,Sweden,Stockholm Office,Lenovo,ThinkPad X1 Carbon,Capable,Capable,false,false,false,false,false,Windows 10,2026-07-04,2026-07-15
+WIN-ES-1084,Sara Jansen,Spain,Madrid Office,Dell Inc.,Latitude 7440,Capable,Capable,false,false,false,false,false,Windows 10,2026-07-15,2026-07-15
+WIN-IN-1085,Yuki Patel,India,Pune DC,Dell Inc.,EliteBook 840,Capable,Capable,false,false,false,false,false,Windows 10,2026-07-08,2026-07-15
+WIN-SE-1086,Marco Jansen,Sweden,Stockholm Office,Microsoft Corporation,Precision 3591,Capable,Capable,false,false,false,false,false,Windows 10,2026-06-22,2026-07-15
+WIN-NL-1087,Lucas Jansen,Netherlands,Amsterdam Hub,Lenovo,Precision 3591,Capable,Capable,false,false,false,false,false,Windows 10,2026-06-28,2026-07-15
+WIN-US-1088,Emma Virtanen,United States,Austin Office,Lenovo,Precision 3591,Capable,Capable,false,false,false,false,false,Windows 10,2026-06-22,2026-07-15
+WIN-IN-1089,Eero Muller,India,Pune DC,Lenovo,ThinkPad X1 Carbon,Capable,Capable,false,false,false,false,false,Windows 10,2026-06-24,2026-07-15
+WIN-SE-1090,Nina Smith,Sweden,Stockholm Office,Lenovo,ThinkPad X1 Carbon,Not capable,CPU not supported,false,false,false,false,true,Windows 10,2026-06-26,2026-07-15
+WIN-DE-1091,Marco Muller,Germany,Munich Office,Dell Inc.,EliteBook 840,Capable,Capable,false,false,false,false,false,Windows 10,2026-06-26,2026-07-15
+WIN-NL-1092,Priya Kaur,Netherlands,Amsterdam Hub,HP,Precision 3591,Not capable,TPM 2.0 not detected,true,false,false,false,false,Windows 10,2026-07-08,2026-07-15
+WIN-US-1093,Sofia Silva,United States,Austin Office,Lenovo,ThinkPad T14,Capable,Capable,false,false,false,false,false,Windows 10,2026-06-17,2026-07-15
+WIN-FI-1094,Emma Muller,Finland,Helsinki HQ,Lenovo,ThinkPad T14,Capable,Capable,false,false,false,false,false,Windows 10,2026-06-17,2026-07-15
+WIN-IN-1095,Olivia Virtanen,India,Pune DC,Dell Inc.,ThinkPad T14,Not capable,Insufficient RAM,false,false,true,false,false,Windows 10,2026-07-10,2026-07-15
+WIN-IN-1096,Priya Smith,India,Pune DC,HP,ThinkPad X1 Carbon,Capable,Capable,false,false,false,false,false,Windows 10,2026-07-13,2026-07-15
+WIN-SE-1097,Sara Sharma,Sweden,Stockholm Office,Dell Inc.,Precision 3591,Capable,Capable,false,false,false,false,false,Windows 10,2026-06-26,2026-07-15
+WIN-CA-1098,Diego Patel,Canada,Toronto Office,Lenovo,Surface Laptop 5,Capable,Capable,false,false,false,false,false,Windows 10,2026-06-29,2026-07-15
+WIN-DE-1099,Lucas Garcia,Germany,Munich Office,Dell Inc.,EliteBook 840,Capable,Capable,false,false,false,false,false,Windows 10,2026-06-28,2026-07-15
+WIN-DE-1100,Olivia Rossi,Germany,Munich Office,Dell Inc.,Surface Laptop 5,Capable,Capable,false,false,false,false,false,Windows 10,2026-06-17,2026-07-15
+WIN-SE-1101,Ingrid Patel,Sweden,Stockholm Office,Microsoft Corporation,Surface Laptop 5,Capable,Capable,false,false,false,false,false,Windows 10,2026-07-05,2026-07-15
+WIN-SE-1102,Yuki Wang,Sweden,Stockholm Office,Lenovo,ThinkPad X1 Carbon,Capable,Capable,false,false,false,false,false,Windows 10,2026-06-21,2026-07-15
+WIN-DE-1103,Omar Costa,Germany,Munich Office,Dell Inc.,Precision 3591,Capable,Capable,false,false,false,false,false,Windows 10,2026-07-04,2026-07-15
+WIN-NL-1104,Liam Korhonen,Netherlands,Amsterdam Hub,Dell Inc.,Precision 3591,Capable,Capable,false,false,false,false,false,Windows 10,2026-07-10,2026-07-15
+WIN-ES-1105,Sara Berg,Spain,Madrid Office,Lenovo,ThinkPad X1 Carbon,Not capable,CPU not supported,false,false,false,false,true,Windows 10,2026-06-20,2026-07-15
+WIN-SE-1106,Emma Muller,Sweden,Stockholm Office,Microsoft Corporation,ThinkPad X1 Carbon,Capable,Capable,false,false,false,false,false,Windows 10,2026-07-01,2026-07-15
+WIN-FI-1107,Ravi Jansen,Finland,Helsinki HQ,Microsoft Corporation,Surface Laptop 5,Capable,Capable,false,false,false,false,false,Windows 10,2026-06-20,2026-07-15
+WIN-CA-1108,Emma Berg,Canada,Toronto Office,Dell Inc.,EliteBook 840,Not capable,TPM 2.0 not detected,true,false,false,false,false,Windows 10,2026-06-26,2026-07-15
+WIN-CA-1109,Ravi Virtanen,Canada,Toronto Office,HP,ThinkPad T14,Capable,Capable,false,false,false,false,false,Windows 10,2026-07-09,2026-07-15
+WIN-NL-1110,Mateo Korhonen,Netherlands,Amsterdam Hub,Microsoft Corporation,Latitude 7440,Capable,Capable,false,false,false,false,false,Windows 10,2026-07-06,2026-07-15
+WIN-CA-1111,Emma Wang,Canada,Toronto Office,Lenovo,Surface Laptop 5,Capable,Capable,false,false,false,false,false,Windows 10,2026-07-04,2026-07-15
+WIN-NL-1112,Nina Costa,Netherlands,Amsterdam Hub,Dell Inc.,Latitude 7440,Capable,Capable,false,false,false,false,false,Windows 10,2026-06-24,2026-07-15
+WIN-US-1113,Ingrid Smith,United States,Austin Office,Dell Inc.,Surface Laptop 5,Capable,Capable,false,false,false,false,false,Windows 10,2026-07-07,2026-07-15
+WIN-NL-1114,Yuki Wang,Netherlands,Amsterdam Hub,Dell Inc.,Surface Laptop 5,Capable,Capable,false,false,false,false,false,Windows 10,2026-06-29,2026-07-15
+WIN-ES-1115,Ravi Muller,Spain,Madrid Office,Microsoft Corporation,Precision 3591,Capable,Capable,false,false,false,false,false,Windows 10,2026-07-04,2026-07-15
+WIN-IN-1116,Aino Korhonen,India,Pune DC,HP,EliteBook 840,Not capable,CPU not supported,false,false,false,false,true,Windows 10,2026-06-16,2026-07-15
+WIN-CA-1117,Sofia Wang,Canada,Toronto Office,Lenovo,Latitude 7440,Capable,Capable,false,false,false,false,false,Windows 10,2026-06-24,2026-07-15
+WIN-FI-1118,Yuki Lehto,Finland,Helsinki HQ,Dell Inc.,ThinkPad T14,Capable,Capable,false,false,false,false,false,Windows 10,2026-06-18,2026-07-15
+WIN-DE-1119,Elin Garcia,Germany,Munich Office,Microsoft Corporation,Precision 3591,Capable,Capable,false,false,false,false,false,Windows 10,2026-06-30,2026-07-15
+WIN-US-1120,Ingrid Costa,United States,Austin Office,HP,Surface Laptop 5,Not capable,Insufficient RAM,false,false,true,false,false,Windows 10,2026-07-08,2026-07-15
+WIN-DE-1121,Emma Costa,Germany,Munich Office,HP,Surface Laptop 5,Capable,Capable,false,false,false,false,false,Windows 10,2026-06-27,2026-07-15
+WIN-FI-1122,Liam Muller,Finland,Helsinki HQ,Lenovo,EliteBook 840,Capable,Capable,false,false,false,false,false,Windows 10,2026-06-23,2026-07-15
+WIN-IN-1123,Priya Virtanen,India,Pune DC,HP,ThinkPad T14,Capable,Capable,false,false,false,false,false,Windows 10,2026-06-17,2026-07-15
+WIN-FI-1124,Mateo Muller,Finland,Helsinki HQ,Microsoft Corporation,Surface Laptop 5,Capable,Capable,false,false,false,false,false,Windows 10,2026-06-25,2026-07-15
+WIN-SE-1125,Lucas Andersson,Sweden,Stockholm Office,HP,ThinkPad X1 Carbon,Not capable,TPM 2.0 not detected,true,false,false,false,false,Windows 10,2026-07-13,2026-07-15
+WIN-FI-1126,Ravi Virtanen,Finland,Helsinki HQ,Lenovo,EliteBook 840,Not capable,Storage < 64GB,false,false,false,true,false,Windows 10,2026-07-01,2026-07-15
+WIN-US-1127,Noah Wang,United States,Austin Office,Dell Inc.,ThinkPad T14,Capable,Capable,false,false,false,false,false,Windows 10,2026-07-01,2026-07-15
+WIN-DE-1128,Omar Muller,Germany,Munich Office,Lenovo,ThinkPad X1 Carbon,Not capable,TPM 2.0 not detected,true,false,false,false,false,Windows 10,2026-06-29,2026-07-15
+WIN-DE-1129,Emma Smith,Germany,Munich Office,Lenovo,EliteBook 840,Capable,Capable,false,false,false,false,false,Windows 10,2026-06-19,2026-07-15
+WIN-CA-1130,Lucas Virtanen,Canada,Toronto Office,Dell Inc.,Surface Laptop 5,Capable,Capable,false,false,false,false,false,Windows 10,2026-07-03,2026-07-15
+WIN-US-1131,Omar Lehto,United States,Austin Office,Lenovo,EliteBook 840,Not capable,CPU not supported,false,false,false,false,true,Windows 10,2026-06-21,2026-07-15
+WIN-US-1132,Aino Costa,United States,Austin Office,Lenovo,Latitude 7440,Capable,Capable,false,false,false,false,false,Windows 10,2026-06-27,2026-07-15
+WIN-NL-1133,Yuki Virtanen,Netherlands,Amsterdam Hub,Lenovo,ThinkPad T14,Capable,Capable,false,false,false,false,false,Windows 10,2026-06-23,2026-07-15
+WIN-ES-1134,Sara Berg,Spain,Madrid Office,Dell Inc.,ThinkPad X1 Carbon,Capable,Capable,false,false,false,false,false,Windows 10,2026-06-26,2026-07-15
+WIN-NL-1135,Olivia Silva,Netherlands,Amsterdam Hub,Microsoft Corporation,Surface Laptop 5,Capable,Capable,false,false,false,false,false,Windows 10,2026-07-04,2026-07-15
+WIN-SE-1136,Elin Garcia,Sweden,Stockholm Office,Dell Inc.,Latitude 7440,Not capable,CPU not supported,false,false,false,false,true,Windows 10,2026-06-16,2026-07-15
+WIN-NL-1137,Ingrid Virtanen,Netherlands,Amsterdam Hub,HP,Surface Laptop 5,Capable,Capable,false,false,false,false,false,Windows 10,2026-07-14,2026-07-15
+WIN-CA-1138,Liam Wang,Canada,Toronto Office,Lenovo,ThinkPad T14,Not capable,CPU not supported,false,false,false,false,true,Windows 10,2026-07-01,2026-07-15
+WIN-FI-1139,Elin Sharma,Finland,Helsinki HQ,Dell Inc.,Latitude 7440,Capable,Capable,false,false,false,false,false,Windows 10,2026-06-21,2026-07-15
+WIN-DE-1140,Olivia Costa,Germany,Munich Office,Dell Inc.,Precision 3591,Capable,Capable,false,false,false,false,false,Windows 10,2026-06-27,2026-07-15
+WIN-CA-1141,Omar Wang,Canada,Toronto Office,HP,ThinkPad T14,Capable,Capable,false,false,false,false,false,Windows 10,2026-07-09,2026-07-15
+WIN-IN-1142,Ravi Muller,India,Pune DC,Dell Inc.,ThinkPad X1 Carbon,Capable,Capable,false,false,false,false,false,Windows 10,2026-07-08,2026-07-15
+WIN-SE-1143,Ravi Silva,Sweden,Stockholm Office,Dell Inc.,Surface Laptop 5,Not capable,CPU not supported,false,false,false,false,true,Windows 10,2026-07-06,2026-07-15
+WIN-FI-1144,Noah Lehto,Finland,Helsinki HQ,Dell Inc.,ThinkPad T14,Capable,Capable,false,false,false,false,false,Windows 10,2026-07-02,2026-07-15
+WIN-FI-1145,Ravi Silva,Finland,Helsinki HQ,Dell Inc.,Surface Laptop 5,Capable,Capable,false,false,false,false,false,Windows 10,2026-07-06,2026-07-15
+WIN-US-1146,Arjun Smith,United States,Austin Office,Dell Inc.,ThinkPad T14,Not capable,Insufficient RAM,false,false,true,false,false,Windows 10,2026-07-04,2026-07-15
+WIN-NL-1147,Aino Smith,Netherlands,Amsterdam Hub,Dell Inc.,ThinkPad T14,Not capable,CPU not supported,false,false,false,false,true,Windows 10,2026-07-13,2026-07-15
+WIN-IN-1148,Lucas Virtanen,India,Pune DC,Dell Inc.,Latitude 7440,Capable,Capable,false,false,false,false,false,Windows 10,2026-07-06,2026-07-15
+WIN-US-1149,Sara Sharma,United States,Austin Office,Microsoft Corporation,ThinkPad X1 Carbon,Not capable,CPU not supported,false,false,false,false,true,Windows 10,2026-06-30,2026-07-15
+WIN-US-1150,Olivia Patel,United States,Austin Office,Dell Inc.,ThinkPad X1 Carbon,Not capable,Storage < 64GB,false,false,false,true,false,Windows 10,2026-06-27,2026-07-15
+WIN-ES-1151,Diego Kaur,Spain,Madrid Office,HP,ThinkPad T14,Capable,Capable,false,false,false,false,false,Windows 10,2026-06-15,2026-07-15
+WIN-SE-1152,Sara Rossi,Sweden,Stockholm Office,HP,ThinkPad X1 Carbon,Capable,Capable,false,false,false,false,false,Windows 10,2026-06-15,2026-07-15
+WIN-US-1153,Diego Korhonen,United States,Austin Office,Microsoft Corporation,EliteBook 840,Capable,Capable,false,false,false,false,false,Windows 10,2026-07-09,2026-07-15
+WIN-SE-1154,Marco Smith,Sweden,Stockholm Office,Lenovo,Surface Laptop 5,Capable,Capable,false,false,false,false,false,Windows 10,2026-07-14,2026-07-15
+WIN-US-1155,Ravi Silva,United States,Austin Office,Lenovo,EliteBook 840,Capable,Capable,false,false,false,false,false,Windows 10,2026-07-03,2026-07-15
+WIN-FI-1156,Sara Wang,Finland,Helsinki HQ,HP,Surface Laptop 5,Not capable,CPU not supported,false,false,false,false,true,Windows 10,2026-06-26,2026-07-15
+WIN-US-1157,Mateo Rossi,United States,Austin Office,HP,EliteBook 840,Not capable,CPU not supported,false,false,false,false,true,Windows 10,2026-07-09,2026-07-15
+WIN-ES-1158,Yuki Sharma,Spain,Madrid Office,Lenovo,ThinkPad X1 Carbon,Capable,Capable,false,false,false,false,false,Windows 10,2026-07-03,2026-07-15
+WIN-US-1159,Yuki Muller,United States,Austin Office,Lenovo,EliteBook 840,Capable,Capable,false,false,false,false,false,Windows 10,2026-07-10,2026-07-15
+WIN-ES-1160,Liam Rossi,Spain,Madrid Office,HP,EliteBook 840,Capable,Capable,false,false,false,false,false,Windows 10,2026-07-10,2026-07-15
+WIN-ES-1161,Arjun Garcia,Spain,Madrid Office,HP,EliteBook 840,Not capable,Insufficient RAM,false,false,true,false,false,Windows 10,2026-07-02,2026-07-15
+WIN-SE-1162,Elin Wang,Sweden,Stockholm Office,Lenovo,EliteBook 840,Capable,Capable,false,false,false,false,false,Windows 10,2026-07-03,2026-07-15
+WIN-US-1163,Aino Costa,United States,Austin Office,Lenovo,Surface Laptop 5,Capable,Capable,false,false,false,false,false,Windows 10,2026-06-22,2026-07-15
+WIN-FI-1164,Liam Patel,Finland,Helsinki HQ,Microsoft Corporation,EliteBook 840,Capable,Capable,false,false,false,false,false,Windows 10,2026-06-26,2026-07-15
+WIN-SE-1165,Omar Wang,Sweden,Stockholm Office,Lenovo,ThinkPad T14,Capable,Capable,false,false,false,false,false,Windows 10,2026-06-15,2026-07-15
+WIN-US-1166,Ingrid Lehto,United States,Austin Office,Lenovo,ThinkPad T14,Not capable,TPM 2.0 not detected,true,false,false,false,false,Windows 10,2026-06-19,2026-07-15
+WIN-US-1167,Diego Andersson,United States,Austin Office,Dell Inc.,Precision 3591,Capable,Capable,false,false,false,false,false,Windows 10,2026-07-06,2026-07-15
+WIN-DE-1168,Emma Silva,Germany,Munich Office,Lenovo,ThinkPad X1 Carbon,Capable,Capable,false,false,false,false,false,Windows 10,2026-06-24,2026-07-15
+WIN-SE-1169,Sofia Costa,Sweden,Stockholm Office,Lenovo,Latitude 7440,Capable,Capable,false,false,false,false,false,Windows 10,2026-07-10,2026-07-15

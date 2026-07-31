@@ -1,0 +1,131 @@
+PolicyName,PolicyType,Intent,TargetType,TargetGroupName,IsDynamicGroup,TargetGroupStatus,SnapshotDate
+Settings Catalog - Eng,Settings Catalog,Exclude,Group,grp-kiosk-13,false,Active,2026-07-15
+Windows Update Ring - Eng,Windows Update Ring,Include,Group,grp-sales-10,false,Active,2026-07-15
+DeviceConfiguration - Standard,DeviceConfiguration,Include,All Devices,All Devices,false,Active,2026-07-15
+Endpoint Security - Exec,Endpoint Security,Include,Group,grp-kiosk-5,true,Active,2026-07-15
+DeviceCompliance - Corp,DeviceCompliance,Include,Group,grp-eng-38,true,Active,2026-07-15
+App (Win32) - Standard,App (Win32),Include,Group,grp-sales-27,true,Active,2026-07-15
+DeviceConfiguration - Sales,DeviceConfiguration,Include,Group,grp-kiosk-7,false,Active,2026-07-15
+Endpoint Security - Corp,Endpoint Security,Include,All Devices,All Devices,false,Active,2026-07-15
+DeviceCompliance - Eng,DeviceCompliance,Include,Group,grp-eng-26,false,Active,2026-07-15
+Endpoint Security - Corp,Endpoint Security,Include,Group,grp-sales-22,false,Active,2026-07-15
+DeviceCompliance - Exec,DeviceCompliance,Include,Group,grp-corp-30,true,Active,2026-07-15
+Settings Catalog - Pilot,Settings Catalog,Include,Group,grp-pilot-27,false,(deleted group),2026-07-15
+Endpoint Security - Corp,Endpoint Security,Exclude,Group,grp-kiosk-20,true,Active,2026-07-15
+DeviceCompliance - Pilot,DeviceCompliance,Exclude,Group,grp-corp-10,false,Active,2026-07-15
+App (Win32) - Exec,App (Win32),Include,Group,grp-corp-5,true,Active,2026-07-15
+DeviceConfiguration - Pilot,DeviceConfiguration,Include,Group,grp-eng-9,false,Active,2026-07-15
+Settings Catalog - Eng,Settings Catalog,Exclude,Group,grp-pilot-40,true,Active,2026-07-15
+App (Win32) - Sales,App (Win32),Include,Group,grp-eng-31,false,Active,2026-07-15
+DeviceConfiguration - Exec,DeviceConfiguration,Include,Group,grp-eng-17,false,Active,2026-07-15
+Endpoint Security - Eng,Endpoint Security,Include,All Devices,All Devices,false,Active,2026-07-15
+Windows Update Ring - Sales,Windows Update Ring,Include,All Users,All Users,false,Active,2026-07-15
+Settings Catalog - Standard,Settings Catalog,Include,Group,grp-pilot-2,true,Active,2026-07-15
+DeviceConfiguration - Kiosk,DeviceConfiguration,Include,Group,grp-kiosk-37,true,Active,2026-07-15
+Windows Update Ring - Corp,Windows Update Ring,Exclude,Group,grp-kiosk-38,false,Active,2026-07-15
+Windows Update Ring - Standard,Windows Update Ring,Include,Group,grp-corp-2,false,Active,2026-07-15
+DeviceConfiguration - Exec,DeviceConfiguration,Include,Group,grp-eng-35,true,Active,2026-07-15
+Autopilot Profile - Sales,Autopilot Profile,Exclude,Group,grp-sales-23,false,Active,2026-07-15
+DeviceConfiguration - Sales,DeviceConfiguration,Include,Group,grp-corp-32,false,(missing target),2026-07-15
+DeviceCompliance - Standard,DeviceCompliance,Include,Group,grp-corp-8,true,Active,2026-07-15
+App (Store) - Exec,App (Store),Include,Group,grp-eng-30,false,Active,2026-07-15
+DeviceConfiguration - Standard,DeviceConfiguration,Include,Group,grp-pilot-8,false,Active,2026-07-15
+Settings Catalog - Eng,Settings Catalog,Exclude,Group,grp-sales-10,true,Active,2026-07-15
+App (Win32) - Standard,App (Win32),Exclude,Group,grp-pilot-21,false,Active,2026-07-15
+Endpoint Security - Sales,Endpoint Security,Include,Group,grp-pilot-14,false,Active,2026-07-15
+Endpoint Security - Pilot,Endpoint Security,Include,Group,grp-corp-5,true,Active,2026-07-15
+App (Store) - Eng,App (Store),Include,Group,grp-eng-25,true,Active,2026-07-15
+Settings Catalog - Sales,Settings Catalog,Include,Group,grp-corp-3,false,Active,2026-07-15
+App (Store) - Eng,App (Store),Include,Group,grp-kiosk-2,true,Active,2026-07-15
+Windows Update Ring - Exec,Windows Update Ring,Include,Group,grp-pilot-4,false,Active,2026-07-15
+DeviceConfiguration - Exec,DeviceConfiguration,Include,Group,grp-corp-13,false,Active,2026-07-15
+App (Win32) - Eng,App (Win32),Include,Group,grp-corp-12,true,Active,2026-07-15
+App (Win32) - Kiosk,App (Win32),Include,Group,grp-pilot-26,false,Active,2026-07-15
+App (Win32) - Corp,App (Win32),Exclude,Group,grp-pilot-1,false,Active,2026-07-15
+Endpoint Security - Standard,Endpoint Security,Exclude,Group,grp-eng-21,false,(missing target),2026-07-15
+App (Win32) - Corp,App (Win32),Include,Group,grp-pilot-16,false,Active,2026-07-15
+Endpoint Security - Corp,Endpoint Security,Include,All Users,All Users,false,Active,2026-07-15
+App (Store) - Sales,App (Store),Include,All Devices,All Devices,false,Active,2026-07-15
+DeviceConfiguration - Corp,DeviceConfiguration,Include,Group,grp-corp-14,false,Active,2026-07-15
+DeviceConfiguration - Exec,DeviceConfiguration,Include,Group,grp-pilot-31,true,Active,2026-07-15
+Windows Update Ring - Standard,Windows Update Ring,Include,All Devices,All Devices,false,Active,2026-07-15
+Settings Catalog - Standard,Settings Catalog,Include,All Users,All Users,false,Active,2026-07-15
+Settings Catalog - Standard,Settings Catalog,Include,Group,grp-kiosk-36,false,Active,2026-07-15
+App (Store) - Kiosk,App (Store),Exclude,Group,grp-sales-10,false,Active,2026-07-15
+App (Store) - Standard,App (Store),Include,Group,grp-eng-2,true,Active,2026-07-15
+DeviceCompliance - Standard,DeviceCompliance,Include,All Devices,All Devices,false,Active,2026-07-15
+DeviceConfiguration - Exec,DeviceConfiguration,Include,Group,grp-eng-18,false,Active,2026-07-15
+App (Win32) - Exec,App (Win32),Include,Group,grp-eng-34,false,(missing target),2026-07-15
+Autopilot Profile - Corp,Autopilot Profile,Include,Group,grp-corp-3,false,Active,2026-07-15
+App (Win32) - Pilot,App (Win32),Include,Group,grp-kiosk-32,true,Active,2026-07-15
+DeviceConfiguration - Exec,DeviceConfiguration,Include,Group,grp-pilot-34,false,Active,2026-07-15
+Endpoint Security - Corp,Endpoint Security,Include,Group,grp-pilot-35,false,Active,2026-07-15
+App (Win32) - Standard,App (Win32),Include,Group,grp-sales-12,false,Active,2026-07-15
+Autopilot Profile - Standard,Autopilot Profile,Exclude,Group,grp-corp-9,true,(deleted group),2026-07-15
+App (Win32) - Pilot,App (Win32),Include,Group,grp-eng-35,true,Active,2026-07-15
+Windows Update Ring - Pilot,Windows Update Ring,Include,Group,grp-sales-24,true,Active,2026-07-15
+DeviceConfiguration - Sales,DeviceConfiguration,Include,Group,grp-pilot-5,false,Active,2026-07-15
+Settings Catalog - Corp,Settings Catalog,Include,Group,grp-eng-10,false,(missing target),2026-07-15
+App (Win32) - Pilot,App (Win32),Include,Group,grp-corp-38,true,Active,2026-07-15
+DeviceCompliance - Pilot,DeviceCompliance,Include,All Users,All Users,false,Active,2026-07-15
+DeviceConfiguration - Kiosk,DeviceConfiguration,Include,Group,grp-sales-1,false,Active,2026-07-15
+DeviceCompliance - Eng,DeviceCompliance,Include,Group,grp-pilot-39,false,Active,2026-07-15
+Windows Update Ring - Corp,Windows Update Ring,Include,Group,grp-eng-37,false,Active,2026-07-15
+App (Win32) - Standard,App (Win32),Include,Group,grp-corp-11,false,Active,2026-07-15
+Endpoint Security - Pilot,Endpoint Security,Include,All Devices,All Devices,false,Active,2026-07-15
+Endpoint Security - Eng,Endpoint Security,Include,Group,grp-sales-31,true,Active,2026-07-15
+DeviceConfiguration - Corp,DeviceConfiguration,Include,All Devices,All Devices,false,Active,2026-07-15
+App (Win32) - Kiosk,App (Win32),Include,All Users,All Users,false,Active,2026-07-15
+App (Win32) - Sales,App (Win32),Include,Group,grp-eng-14,true,Active,2026-07-15
+DeviceConfiguration - Eng,DeviceConfiguration,Include,Group,grp-pilot-17,true,Active,2026-07-15
+Settings Catalog - Exec,Settings Catalog,Include,Group,grp-sales-17,false,Active,2026-07-15
+App (Store) - Kiosk,App (Store),Include,Group,grp-corp-29,false,Active,2026-07-15
+DeviceConfiguration - Standard,DeviceConfiguration,Include,Group,grp-pilot-25,true,(missing target),2026-07-15
+Settings Catalog - Pilot,Settings Catalog,Include,All Devices,All Devices,false,Active,2026-07-15
+DeviceCompliance - Exec,DeviceCompliance,Include,All Users,All Users,false,Active,2026-07-15
+Endpoint Security - Standard,Endpoint Security,Include,Group,grp-sales-19,false,Active,2026-07-15
+DeviceCompliance - Corp,DeviceCompliance,Include,Group,grp-eng-4,false,Active,2026-07-15
+Autopilot Profile - Sales,Autopilot Profile,Include,Group,grp-pilot-28,false,Active,2026-07-15
+Settings Catalog - Kiosk,Settings Catalog,Include,All Users,All Users,false,Active,2026-07-15
+DeviceConfiguration - Eng,DeviceConfiguration,Include,Group,grp-kiosk-8,false,Active,2026-07-15
+DeviceCompliance - Standard,DeviceCompliance,Include,Group,grp-pilot-8,false,Active,2026-07-15
+Autopilot Profile - Exec,Autopilot Profile,Include,Group,grp-eng-24,false,Active,2026-07-15
+Windows Update Ring - Kiosk,Windows Update Ring,Include,Group,grp-kiosk-40,true,(missing target),2026-07-15
+Autopilot Profile - Kiosk,Autopilot Profile,Include,Group,grp-sales-16,false,Active,2026-07-15
+App (Win32) - Pilot,App (Win32),Include,Group,grp-corp-1,true,Active,2026-07-15
+App (Store) - Kiosk,App (Store),Include,Group,grp-corp-6,true,Active,2026-07-15
+Windows Update Ring - Standard,Windows Update Ring,Exclude,Group,grp-sales-22,false,Active,2026-07-15
+Settings Catalog - Sales,Settings Catalog,Exclude,Group,grp-kiosk-14,false,Active,2026-07-15
+Settings Catalog - Exec,Settings Catalog,Include,Group,grp-kiosk-21,true,Active,2026-07-15
+App (Store) - Standard,App (Store),Include,Group,grp-kiosk-7,true,Active,2026-07-15
+Settings Catalog - Kiosk,Settings Catalog,Include,Group,grp-eng-20,false,Active,2026-07-15
+DeviceCompliance - Corp,DeviceCompliance,Exclude,Group,grp-eng-21,false,Active,2026-07-15
+App (Store) - Pilot,App (Store),Include,Group,grp-sales-29,true,(missing target),2026-07-15
+App (Store) - Exec,App (Store),Exclude,Group,grp-kiosk-16,false,Active,2026-07-15
+DeviceConfiguration - Kiosk,DeviceConfiguration,Include,All Devices,All Devices,false,Active,2026-07-15
+Endpoint Security - Standard,Endpoint Security,Include,Group,grp-kiosk-10,false,Active,2026-07-15
+Windows Update Ring - Pilot,Windows Update Ring,Include,Group,grp-pilot-34,false,Active,2026-07-15
+DeviceCompliance - Standard,DeviceCompliance,Include,Group,grp-eng-5,true,Active,2026-07-15
+App (Store) - Eng,App (Store),Include,Group,grp-sales-6,true,Active,2026-07-15
+DeviceCompliance - Sales,DeviceCompliance,Include,Group,grp-pilot-32,false,Active,2026-07-15
+Autopilot Profile - Eng,Autopilot Profile,Include,Group,grp-pilot-32,false,Active,2026-07-15
+Settings Catalog - Standard,Settings Catalog,Include,All Devices,All Devices,false,Active,2026-07-15
+DeviceCompliance - Exec,DeviceCompliance,Exclude,Group,grp-eng-6,true,Active,2026-07-15
+Settings Catalog - Standard,Settings Catalog,Include,Group,grp-eng-27,false,Active,2026-07-15
+Windows Update Ring - Pilot,Windows Update Ring,Exclude,Group,grp-pilot-25,false,Active,2026-07-15
+Endpoint Security - Standard,Endpoint Security,Exclude,Group,grp-corp-20,true,Active,2026-07-15
+Windows Update Ring - Eng,Windows Update Ring,Include,All Devices,All Devices,false,Active,2026-07-15
+DeviceCompliance - Standard,DeviceCompliance,Include,Group,grp-sales-14,true,Active,2026-07-15
+App (Win32) - Standard,App (Win32),Include,Group,grp-sales-26,true,Active,2026-07-15
+Windows Update Ring - Eng,Windows Update Ring,Include,All Users,All Users,false,Active,2026-07-15
+Settings Catalog - Eng,Settings Catalog,Exclude,Group,grp-kiosk-6,false,Active,2026-07-15
+Settings Catalog - Eng,Settings Catalog,Include,Group,grp-eng-34,false,Active,2026-07-15
+App (Store) - Eng,App (Store),Include,All Users,All Users,false,Active,2026-07-15
+Settings Catalog - Kiosk,Settings Catalog,Include,Group,grp-eng-11,false,Active,2026-07-15
+Autopilot Profile - Pilot,Autopilot Profile,Exclude,Group,grp-kiosk-18,false,Active,2026-07-15
+DeviceCompliance - Pilot,DeviceCompliance,Include,Group,grp-pilot-9,true,(missing target),2026-07-15
+DeviceConfiguration - Kiosk,DeviceConfiguration,Include,Group,grp-eng-6,true,Active,2026-07-15
+App (Store) - Corp,App (Store),Include,Group,grp-eng-14,false,Active,2026-07-15
+DeviceCompliance - Standard,DeviceCompliance,Include,Group,grp-sales-20,false,(deleted group),2026-07-15
+Endpoint Security - Corp,Endpoint Security,Exclude,Group,grp-corp-9,false,Active,2026-07-15
+DeviceConfiguration - Sales,DeviceConfiguration,Include,Group,grp-eng-1,false,Active,2026-07-15

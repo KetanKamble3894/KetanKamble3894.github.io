@@ -1,4 +1,5 @@
 ---
+description: Intune says a device is non-compliant — not which setting failed. A read-only Graph collector turns setting-level failures into a Power BI report.
 date: 2026-07-28
 draft: false
 comments: true
@@ -16,7 +17,7 @@ tags:
 
 # Which setting actually failed? Turning Intune non-compliance into a report
 
-![noncompliant-devices](../../assets/img/banners/noncompliant-devices.png){ .post-cover }
+![Cover: turning Intune non-compliance into a setting-level Power BI report](../../assets/img/banners/noncompliant-devices.webp){ .post-cover width="1200" height="630" fetchpriority=high }
 
 
 Intune will happily tell you a device is **Not compliant**. What it won't hand you — as *data* you
@@ -34,7 +35,7 @@ Here's the view every Intune admin knows. A device shows a red **Not compliant**
 and you finally see the truth: it's the Firewall, and Real-time protection, and the Defender
 signature — but the OS version and BitLocker are fine.
 
-![Intune device compliance blade — one device, its failing settings, the user's location and the device make/model, all in a single blade](../../assets/img/media/intune-device-compliance.png)
+![Intune device compliance blade — one device, its failing settings, the user's location and the device make/model, all in a single blade](../../assets/img/media/intune-device-compliance.webp){ width="1240" height="806" loading=lazy }
 
 Look at everything that lives on this one blade: the **failing setting states**, the **primary
 user's location** (Madrid), the **manufacturer and model** (a Lenovo ThinkPad X1 Carbon Gen 11). It's
@@ -43,7 +44,12 @@ all *there* — for **one device**. To answer a question any manager actually as
 note it down, close it, and open the next device. Across a two-thousand-device fleet, that drill-down
 isn't a report. It's an afternoon. Several afternoons.
 
-![The manual grind versus a single read-only snapshot](../../assets/img/media/noncompliant-before-after.gif){ width="700" }
+<span class="kk-anim">
+  <input type="checkbox" id="anim-nc" class="kk-anim-toggle">
+  <img class="kk-anim-static" src="../../assets/img/media/noncompliant-before-after-static.webp" alt="Before and after: the manual per-device grind replaced by a single read-only snapshot" width="700" height="393" loading="lazy">
+  <img class="kk-anim-motion" src="../../assets/img/media/noncompliant-before-after.gif" alt="Animation: the manual per-device grind replaced by a single read-only snapshot" width="700" height="393" loading="lazy">
+  <label for="anim-nc" class="kk-anim-btn">▶ Play / pause animation</label>
+</span>
 
 ## Why the built-in report doesn't close the gap
 
@@ -86,7 +92,7 @@ Each failing `settingState` becomes **one row** — `DeviceName`, the failing `S
 plus the user's city, country, department, and the device's make and model, enriched from a single
 cached `users` lookup. The runbook writes the result to a sanitized CSV in Blob storage.
 
-![The read-only Graph calls behind the report — a GET-only sequence, Managed Identity, nothing written back](../../assets/img/noncompliant-graph-flow.png)
+![The read-only Graph calls behind the report — a GET-only sequence, Managed Identity, nothing written back](../../assets/img/noncompliant-graph-flow.webp){ width="1200" height="520" loading=lazy }
 
 ### The permissions (least-privilege, read-only)
 
@@ -100,6 +106,8 @@ device list, then **one** `deviceCompliancePolicyStates` call **per device**, th
 calls — which is exactly why setting-level detail lives on a **beta** endpoint and almost nobody
 surfaces it. The payoff is the thing the portal won't give you: *"device X is non-compliant
 **specifically** on Firewall and Real-time protection."*
+
+For example, one row might read **CTS-4471 · Firewall · Not compliant · Madrid, ES · Lenovo ThinkPad X1** — one device, one failing setting, with the location and model already attached. Slice thousands of these by setting or by country in a single click.
 
 **One number everyone gets wrong.** A device that fails three settings across two policies produces
 *several rows*. Count rows and your "non-compliant devices" number is inflated. The report counts
@@ -123,7 +131,7 @@ top and run it as a runbook on a schedule.
 The afternoon of per-device clicking becomes one page. Point Power BI at the CSV the runbook
 writes — no live tenant connection — and every question answers itself.
 
-![Non-Compliant Windows Devices — the Power BI report built on the read-only snapshot](../../assets/img/noncompliant-report.png)
+![Power BI report: non-compliant Windows devices by failing setting, by country and by manufacturer, on the read-only snapshot (synthetic lab data)](../../assets/img/noncompliant-report.webp){ width="1512" height="877" loading=lazy }
 
 The one clever bit is **friendly setting names**. Graph returns machine-readable values —
 `ActiveFirewallRequired`, `RtpEnabled`, `OsMinimumVersion`. The report maps them to what an admin
@@ -157,6 +165,47 @@ policy states but no setting states (the script handles that case).
 
 **Can I run it without Azure Automation?** Yes — it's plain PowerShell 7. Automation + Managed
 Identity is just the cleanest way to run it on a schedule with no secrets.
+
+!!! question "Want setting-level compliance in your tenant?"
+    Setting-level failure reporting like this is exactly the hands-on Intune/Entra work I take on — a limited amount at a time. These collectors run today against real multi-thousand-device tenants. **[Work with me →](../../work-with-me.md)**
+
+## More in this series
+
+- [The devices no one owns](../device-hygiene/)
+- [Every policy, every target](../policy-assignments/)
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Does this change anything in my tenant?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Every Graph call is a GET, the identity is read-only, and the output is a file. It cannot remediate, and it cannot be used to remediate."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why the /beta endpoint?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Setting-level compliance detail is only exposed on /beta. Beta shapes can change — reproduce it in a lab before you depend on it, and expect the odd device that returns policy states but no setting states (the script handles that case)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I run it without Azure Automation?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes — it's plain PowerShell 7. Automation + Managed Identity is just the cleanest way to run it on a schedule with no secrets."
+      }
+    }
+  ]
+}
+</script>
 
 ## Related
 

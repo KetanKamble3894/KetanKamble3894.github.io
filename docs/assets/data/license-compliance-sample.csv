@@ -1,0 +1,121 @@
+DeviceName,PrimaryUserEmail,ManagerDepartment,City,Country,AssignedLicenses,LicenseGap,LastIntuneSync,SnapshotDate
+WIN-DE-1000,marco.wang@contoso.com,Sales,Munich,Germany,Office 365 E3,Intune,2026-07-01,2026-07-15
+WIN-US-1001,elin.kaur@contoso.com,IT,Austin,United States,M365 Business Premium,Intune,2026-06-23,2026-07-15
+WIN-NL-1002,liam.kaur@contoso.com,HR,Amsterdam,Netherlands,M365 Business Premium,Intune,2026-06-26,2026-07-15
+WIN-ES-1003,eero.costa@contoso.com,Sales,Madrid,Spain,M365 E3 + EMS,Windows Enterprise,2026-06-20,2026-07-15
+WIN-US-1004,ingrid.costa@contoso.com,R&D,Austin,United States,(none),Intune,2026-06-19,2026-07-15
+WIN-SE-1005,aino.patel@contoso.com,R&D,Stockholm,Sweden,(none),Both,2026-06-25,2026-07-15
+WIN-FI-1006,lucas.lehto@contoso.com,Finance,Helsinki,Finland,M365 Business Premium,Windows Enterprise,2026-06-25,2026-07-15
+WIN-CA-1007,diego.rossi@contoso.com,Sales,Toronto,Canada,M365 Business Premium,Both,2026-07-06,2026-07-15
+WIN-FI-1008,nina.wang@contoso.com,Engineering,Helsinki,Finland,M365 Business Premium,Windows Enterprise,2026-06-09,2026-07-15
+WIN-NL-1009,ingrid.silva@contoso.com,Marketing,Amsterdam,Netherlands,M365 E3,Both,2026-07-15,2026-07-15
+WIN-SE-1010,ingrid.jansen@contoso.com,Legal,Stockholm,Sweden,Office 365 E3,Intune,2026-07-06,2026-07-15
+WIN-FI-1011,ravi.berg@contoso.com,Marketing,Helsinki,Finland,M365 Business Premium,Intune,2026-07-06,2026-07-15
+WIN-DE-1012,arjun.sharma@contoso.com,Engineering,Munich,Germany,M365 E3,Intune,2026-06-05,2026-07-15
+WIN-DE-1013,lucas.virtanen@contoso.com,Marketing,Munich,Germany,(none),Windows Enterprise,2026-07-14,2026-07-15
+WIN-US-1014,arjun.berg@contoso.com,Operations,Austin,United States,Office 365 E3,Windows Enterprise,2026-07-02,2026-07-15
+WIN-US-1015,aino.wang@contoso.com,R&D,Austin,United States,(none),Both,2026-06-27,2026-07-15
+WIN-US-1016,priya.muller@contoso.com,Legal,Austin,United States,Office 365 E3,Windows Enterprise,2026-07-06,2026-07-15
+WIN-CA-1017,omar.sharma@contoso.com,Operations,Toronto,Canada,(none),Both,2026-07-05,2026-07-15
+WIN-US-1018,marco.berg@contoso.com,Operations,Austin,United States,Office 365 E3,Intune,2026-07-01,2026-07-15
+WIN-US-1019,eero.muller@contoso.com,R&D,Austin,United States,M365 E3,Windows Enterprise,2026-07-11,2026-07-15
+WIN-FI-1020,sofia.lehto@contoso.com,R&D,Helsinki,Finland,Office 365 E3,Intune,2026-06-14,2026-07-15
+WIN-ES-1021,liam.garcia@contoso.com,R&D,Madrid,Spain,(none),Intune,2026-07-04,2026-07-15
+WIN-NL-1022,eero.patel@contoso.com,Operations,Amsterdam,Netherlands,Office 365 E3,Windows Enterprise,2026-07-12,2026-07-15
+WIN-NL-1023,priya.virtanen@contoso.com,HR,Amsterdam,Netherlands,Office 365 E3,Intune,2026-07-15,2026-07-15
+WIN-NL-1024,olivia.smith@contoso.com,IT,Amsterdam,Netherlands,Office 365 E3,Intune,2026-06-26,2026-07-15
+WIN-SE-1025,lucas.sharma@contoso.com,R&D,Stockholm,Sweden,M365 E3,Intune,2026-06-15,2026-07-15
+WIN-DE-1026,olivia.wang@contoso.com,IT,Munich,Germany,(none),Windows Enterprise,2026-06-30,2026-07-15
+WIN-ES-1027,ingrid.smith@contoso.com,R&D,Madrid,Spain,(none),Windows Enterprise,2026-06-09,2026-07-15
+WIN-DE-1028,olivia.virtanen@contoso.com,Engineering,Munich,Germany,M365 Business Premium,Intune,2026-07-13,2026-07-15
+WIN-CA-1029,olivia.jansen@contoso.com,Legal,Toronto,Canada,(none),Intune,2026-06-16,2026-07-15
+WIN-CA-1030,liam.kaur@contoso.com,HR,Toronto,Canada,M365 E3 + EMS,Windows Enterprise,2026-06-08,2026-07-15
+WIN-IN-1031,sofia.muller@contoso.com,IT,Pune,India,Office 365 E3,Windows Enterprise,2026-06-11,2026-07-15
+WIN-NL-1032,eero.rossi@contoso.com,Sales,Amsterdam,Netherlands,M365 E3,Windows Enterprise,2026-06-11,2026-07-15
+WIN-FI-1033,noah.kaur@contoso.com,R&D,Helsinki,Finland,M365 E3,Windows Enterprise,2026-06-17,2026-07-15
+WIN-ES-1034,elin.korhonen@contoso.com,Operations,Madrid,Spain,M365 E3 + EMS,Windows Enterprise,2026-07-11,2026-07-15
+WIN-DE-1035,diego.jansen@contoso.com,Engineering,Munich,Germany,(none),Both,2026-06-24,2026-07-15
+WIN-FI-1036,priya.jansen@contoso.com,Legal,Helsinki,Finland,M365 E3 + EMS,Windows Enterprise,2026-06-26,2026-07-15
+WIN-SE-1037,ravi.garcia@contoso.com,HR,Stockholm,Sweden,M365 E3 + EMS,Both,2026-06-29,2026-07-15
+WIN-DE-1038,emma.korhonen@contoso.com,Engineering,Munich,Germany,M365 E3 + EMS,Intune,2026-07-03,2026-07-15
+WIN-SE-1039,diego.lehto@contoso.com,Sales,Stockholm,Sweden,M365 E3 + EMS,Both,2026-06-25,2026-07-15
+WIN-FI-1040,eero.rossi@contoso.com,Finance,Helsinki,Finland,Office 365 E3,Intune,2026-06-21,2026-07-15
+WIN-ES-1041,diego.korhonen@contoso.com,HR,Madrid,Spain,Office 365 E3,Intune,2026-06-28,2026-07-15
+WIN-IN-1042,liam.smith@contoso.com,Marketing,Pune,India,M365 E3 + EMS,Intune,2026-06-21,2026-07-15
+WIN-IN-1043,yuki.lehto@contoso.com,Operations,Pune,India,M365 E3,Windows Enterprise,2026-06-19,2026-07-15
+WIN-ES-1044,sofia.smith@contoso.com,Legal,Madrid,Spain,M365 E3,Intune,2026-06-22,2026-07-15
+WIN-US-1045,yuki.patel@contoso.com,HR,Austin,United States,(none),Both,2026-07-04,2026-07-15
+WIN-FI-1046,diego.muller@contoso.com,Sales,Helsinki,Finland,M365 Business Premium,Intune,2026-07-13,2026-07-15
+WIN-FI-1047,noah.jansen@contoso.com,IT,Helsinki,Finland,M365 E3 + EMS,Intune,2026-06-18,2026-07-15
+WIN-SE-1048,ingrid.korhonen@contoso.com,Marketing,Stockholm,Sweden,M365 E3,Intune,2026-07-06,2026-07-15
+WIN-SE-1049,marco.korhonen@contoso.com,Finance,Stockholm,Sweden,M365 E3 + EMS,Both,2026-06-21,2026-07-15
+WIN-IN-1050,eero.patel@contoso.com,Sales,Pune,India,(none),Both,2026-07-13,2026-07-15
+WIN-DE-1051,olivia.sharma@contoso.com,HR,Munich,Germany,M365 E3,Intune,2026-06-18,2026-07-15
+WIN-IN-1052,sara.sharma@contoso.com,IT,Pune,India,(none),Intune,2026-06-21,2026-07-15
+WIN-SE-1053,yuki.garcia@contoso.com,Engineering,Stockholm,Sweden,M365 Business Premium,Intune,2026-06-26,2026-07-15
+WIN-FI-1054,arjun.lehto@contoso.com,IT,Helsinki,Finland,M365 Business Premium,Both,2026-06-08,2026-07-15
+WIN-NL-1055,ravi.rossi@contoso.com,IT,Amsterdam,Netherlands,M365 E3 + EMS,Both,2026-07-05,2026-07-15
+WIN-US-1056,sofia.korhonen@contoso.com,HR,Austin,United States,Office 365 E3,Intune,2026-06-27,2026-07-15
+WIN-IN-1057,emma.kaur@contoso.com,Sales,Pune,India,Office 365 E3,Both,2026-06-29,2026-07-15
+WIN-IN-1058,omar.berg@contoso.com,Marketing,Pune,India,(none),Windows Enterprise,2026-06-09,2026-07-15
+WIN-DE-1059,diego.smith@contoso.com,IT,Munich,Germany,M365 E3 + EMS,Both,2026-06-29,2026-07-15
+WIN-CA-1060,elin.andersson@contoso.com,Marketing,Toronto,Canada,M365 E3,Intune,2026-06-18,2026-07-15
+WIN-DE-1061,mateo.kaur@contoso.com,Marketing,Munich,Germany,M365 Business Premium,Intune,2026-07-14,2026-07-15
+WIN-SE-1062,ingrid.jansen@contoso.com,IT,Stockholm,Sweden,Office 365 E3,Windows Enterprise,2026-07-03,2026-07-15
+WIN-US-1063,aino.garcia@contoso.com,Legal,Austin,United States,M365 E3,Intune,2026-06-05,2026-07-15
+WIN-NL-1064,diego.virtanen@contoso.com,Finance,Amsterdam,Netherlands,M365 E3 + EMS,Intune,2026-06-15,2026-07-15
+WIN-CA-1065,diego.silva@contoso.com,HR,Toronto,Canada,(none),Intune,2026-06-20,2026-07-15
+WIN-US-1066,nina.patel@contoso.com,Finance,Austin,United States,M365 E3 + EMS,Both,2026-07-07,2026-07-15
+WIN-FI-1067,omar.silva@contoso.com,Legal,Helsinki,Finland,(none),Both,2026-07-03,2026-07-15
+WIN-FI-1068,ingrid.garcia@contoso.com,Marketing,Helsinki,Finland,M365 E3 + EMS,Both,2026-06-16,2026-07-15
+WIN-NL-1069,ravi.wang@contoso.com,Engineering,Amsterdam,Netherlands,Office 365 E3,Both,2026-07-08,2026-07-15
+WIN-FI-1070,diego.muller@contoso.com,Sales,Helsinki,Finland,(none),Intune,2026-07-05,2026-07-15
+WIN-SE-1071,ravi.berg@contoso.com,Sales,Stockholm,Sweden,(none),Intune,2026-06-23,2026-07-15
+WIN-US-1072,ingrid.silva@contoso.com,Engineering,Austin,United States,(none),Windows Enterprise,2026-06-30,2026-07-15
+WIN-US-1073,olivia.wang@contoso.com,HR,Austin,United States,M365 Business Premium,Both,2026-06-16,2026-07-15
+WIN-FI-1074,nina.costa@contoso.com,R&D,Helsinki,Finland,M365 Business Premium,Both,2026-06-07,2026-07-15
+WIN-SE-1075,sara.smith@contoso.com,Legal,Stockholm,Sweden,M365 E3 + EMS,Intune,2026-06-22,2026-07-15
+WIN-IN-1076,olivia.andersson@contoso.com,Marketing,Pune,India,(none),Windows Enterprise,2026-06-19,2026-07-15
+WIN-ES-1077,diego.kaur@contoso.com,Sales,Madrid,Spain,Office 365 E3,Windows Enterprise,2026-07-10,2026-07-15
+WIN-FI-1078,yuki.andersson@contoso.com,Finance,Helsinki,Finland,M365 E3 + EMS,Both,2026-06-17,2026-07-15
+WIN-ES-1079,sofia.muller@contoso.com,Marketing,Madrid,Spain,M365 Business Premium,Both,2026-06-27,2026-07-15
+WIN-US-1080,yuki.jansen@contoso.com,Operations,Austin,United States,M365 E3,Windows Enterprise,2026-07-05,2026-07-15
+WIN-SE-1081,noah.sharma@contoso.com,Finance,Stockholm,Sweden,M365 E3,Intune,2026-06-09,2026-07-15
+WIN-DE-1082,mateo.wang@contoso.com,Engineering,Munich,Germany,M365 E3,Intune,2026-06-27,2026-07-15
+WIN-US-1083,noah.silva@contoso.com,Engineering,Austin,United States,M365 E3,Both,2026-06-10,2026-07-15
+WIN-US-1084,diego.kaur@contoso.com,Finance,Austin,United States,M365 E3 + EMS,Both,2026-07-13,2026-07-15
+WIN-CA-1085,diego.rossi@contoso.com,Sales,Toronto,Canada,M365 Business Premium,Intune,2026-07-02,2026-07-15
+WIN-ES-1086,emma.wang@contoso.com,IT,Madrid,Spain,Office 365 E3,Windows Enterprise,2026-07-12,2026-07-15
+WIN-FI-1087,sara.muller@contoso.com,R&D,Helsinki,Finland,(none),Intune,2026-06-13,2026-07-15
+WIN-NL-1088,priya.sharma@contoso.com,Marketing,Amsterdam,Netherlands,Office 365 E3,Windows Enterprise,2026-07-05,2026-07-15
+WIN-DE-1089,mateo.silva@contoso.com,Sales,Munich,Germany,M365 E3 + EMS,Both,2026-06-16,2026-07-15
+WIN-IN-1090,sara.garcia@contoso.com,Operations,Pune,India,M365 E3 + EMS,Intune,2026-06-19,2026-07-15
+WIN-CA-1091,ingrid.jansen@contoso.com,HR,Toronto,Canada,M365 E3 + EMS,Intune,2026-07-01,2026-07-15
+WIN-SE-1092,liam.silva@contoso.com,Legal,Stockholm,Sweden,Office 365 E3,Intune,2026-06-19,2026-07-15
+WIN-IN-1093,lucas.berg@contoso.com,Finance,Pune,India,(none),Windows Enterprise,2026-06-28,2026-07-15
+WIN-NL-1094,yuki.korhonen@contoso.com,Sales,Amsterdam,Netherlands,Office 365 E3,Intune,2026-06-09,2026-07-15
+WIN-SE-1095,olivia.kaur@contoso.com,R&D,Stockholm,Sweden,M365 E3 + EMS,Windows Enterprise,2026-06-05,2026-07-15
+WIN-IN-1096,ravi.smith@contoso.com,Sales,Pune,India,M365 Business Premium,Both,2026-07-01,2026-07-15
+WIN-IN-1097,ingrid.costa@contoso.com,Marketing,Pune,India,Office 365 E3,Both,2026-06-18,2026-07-15
+WIN-NL-1098,diego.virtanen@contoso.com,Operations,Amsterdam,Netherlands,(none),Intune,2026-06-25,2026-07-15
+WIN-DE-1099,aino.garcia@contoso.com,R&D,Munich,Germany,M365 E3,Intune,2026-06-07,2026-07-15
+WIN-FI-1100,priya.wang@contoso.com,Legal,Helsinki,Finland,M365 Business Premium,Windows Enterprise,2026-06-25,2026-07-15
+WIN-FI-1101,sara.silva@contoso.com,Legal,Helsinki,Finland,Office 365 E3,Intune,2026-07-07,2026-07-15
+WIN-IN-1102,noah.lehto@contoso.com,R&D,Pune,India,M365 E3,Both,2026-07-04,2026-07-15
+WIN-IN-1103,sara.andersson@contoso.com,Marketing,Pune,India,(none),Intune,2026-07-05,2026-07-15
+WIN-US-1104,elin.rossi@contoso.com,Engineering,Austin,United States,M365 E3,Both,2026-06-16,2026-07-15
+WIN-CA-1105,noah.lehto@contoso.com,R&D,Toronto,Canada,M365 E3 + EMS,Windows Enterprise,2026-06-12,2026-07-15
+WIN-ES-1106,sara.wang@contoso.com,Finance,Madrid,Spain,M365 E3 + EMS,Intune,2026-07-12,2026-07-15
+WIN-NL-1107,sofia.wang@contoso.com,Marketing,Amsterdam,Netherlands,M365 E3 + EMS,Intune,2026-06-09,2026-07-15
+WIN-US-1108,sofia.lehto@contoso.com,R&D,Austin,United States,M365 E3,Both,2026-06-14,2026-07-15
+WIN-ES-1109,liam.jansen@contoso.com,Finance,Madrid,Spain,Office 365 E3,Intune,2026-06-08,2026-07-15
+WIN-ES-1110,mateo.jansen@contoso.com,Engineering,Madrid,Spain,M365 E3,Intune,2026-06-29,2026-07-15
+WIN-CA-1111,sofia.patel@contoso.com,R&D,Toronto,Canada,(none),Windows Enterprise,2026-06-11,2026-07-15
+WIN-CA-1112,aino.jansen@contoso.com,Finance,Toronto,Canada,M365 Business Premium,Both,2026-06-05,2026-07-15
+WIN-CA-1113,nina.sharma@contoso.com,HR,Toronto,Canada,M365 Business Premium,Windows Enterprise,2026-06-08,2026-07-15
+WIN-IN-1114,ingrid.sharma@contoso.com,Operations,Pune,India,M365 E3,Intune,2026-07-15,2026-07-15
+WIN-SE-1115,ingrid.andersson@contoso.com,IT,Stockholm,Sweden,(none),Intune,2026-06-23,2026-07-15
+WIN-CA-1116,aino.wang@contoso.com,Legal,Toronto,Canada,M365 Business Premium,Both,2026-06-13,2026-07-15
+WIN-SE-1117,noah.korhonen@contoso.com,Engineering,Stockholm,Sweden,(none),Windows Enterprise,2026-06-23,2026-07-15
+WIN-IN-1118,omar.muller@contoso.com,Legal,Pune,India,M365 E3,Both,2026-07-10,2026-07-15
+WIN-DE-1119,ingrid.garcia@contoso.com,IT,Munich,Germany,M365 E3 + EMS,Intune,2026-07-12,2026-07-15

@@ -5,3 +5,9 @@
 mkdocs==1.6.1
 mkdocs-material==9.6.14
 mkdocs-rss-plugin==1.19.0
+
+# Social-card (OpenGraph/Twitter preview) image generation — build-time only.
+# These render the per-page share cards; they are never shipped in the site
+# output, so they don't affect the site's own MIT licensing.
+cairosvg==2.9.0
+Pillow==11.0.0

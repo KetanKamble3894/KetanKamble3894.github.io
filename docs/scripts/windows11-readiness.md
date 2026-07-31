@@ -1,22 +1,22 @@
 ---
 title: Windows 11 Readiness
-description: Hardware-readiness across the estate — TPM, CPU, RAM — so the Windows 11 plan is grounded in data.
+description: Per-device Windows 11 hardware readiness — the exact failing check, joined to make and model.
 tags:
   - Intune
-  - Windows / Autopilot
   - Microsoft Graph
+  - Power BI
 ---
 
 # Windows 11 Readiness
 
-Hardware-readiness across the estate — TPM, CPU, RAM — so the Windows 11 plan is grounded in data.
+Per-device Windows 11 hardware readiness — the exact failing check, joined to make and model.
 
 [:material-download: Download the script](https://github.com/KetanKamble3894/zero-access-agent/blob/main/scripts/Collect-Windows11Readiness.ps1){ .md-button .md-button--primary }
 [:material-github: View on GitHub](https://github.com/KetanKamble3894/zero-access-agent/blob/main/scripts/Collect-Windows11Readiness.ps1){ .md-button }
 
 ## 1 · The script
 
-Read-only by construction — it authenticates with a Managed Identity, calls Microsoft Graph with GET only, and writes a sanitized CSV snapshot. Set the three CONFIG values at the top, then run.
+Read-only by construction — it authenticates with a Managed Identity, calls Microsoft Graph with GET only, and writes a sanitized CSV snapshot. Set the CONFIG values at the top, then run.
 
 ??? example "View the full script (17 KB)"
     ```powershell
@@ -25,18 +25,18 @@ Read-only by construction — it authenticates with a Managed Identity, calls Mi
 
 ## 2 · The Power BI template
 
-!!! note "`.pbit` goes here"
-    Drop `windows11-readiness.pbit` into `docs/assets/pbit/` and swap this note for a download button:
-    `[:material-download: Windows 11 Readiness template](../assets/pbit/windows11-readiness.pbit)`
+[:material-download: Windows 11 Readiness template (.pbit)](../assets/pbit/windows11-readiness.pbit){ .md-button .md-button--primary }
+
+Opens to a **pre-built report** — KPI cards, charts, a detail table and slicers, already wired. On open it prompts for your **Storage account / container / file**, then loads from Blob. Full details on the **[report page](../powerbi/windows11-readiness-report.md)**.
 
 ## 3 · Example report
 
-![Windows 11 Readiness — example Power BI report](../assets/img/report-placeholder.svg)
+![Windows 11 Readiness — example report (synthetic lab data)](../assets/img/windows11-readiness-report.png){ .kk-zoom }
 
-*Replace `report-placeholder.svg` with a screenshot of your own `Windows 11 Readiness` report.*
+*Built on synthetic `@contoso.com` data. Point the template at your own snapshot to see your fleet.*
 
 ## Related
 
+- :material-book-open-variant: **The story** → [Which devices can't take Windows 11](../blog/posts/windows11-readiness.md)
 - :material-chart-box: **Power BI report** → [Windows 11 Readiness report](../powerbi/windows11-readiness-report.md)
-- :material-book-open-variant: **Deep-dive teardown** → [in the Zero-Access Agent project](../projects/zero-access-agent/collectors/windows11-readiness.md)
-
+- :material-shield-lock: **Part of** → [Zero-Access Agent](../projects/zero-access-agent/index.md)
