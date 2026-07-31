@@ -54,9 +54,7 @@ only ever see a **sanitized, dated copy**.
 
 ## The architecture: collect read-only, answer from snapshots
 
-<div class="mermaid-live" markdown="0">
---8<-- "assets/diagrams/the-ai-agent-that-cant-touch-your-tenant.svg"
-</div>
+![The Zero-Access Pattern: the M365 tenant (Intune, Entra, Defender) is read by read-only collectors on Azure Automation Managed Identity, which write minimised, dated sanitized CSV snapshots to immutable Blob Storage; Azure AI Search indexes them and an AI Foundry agent answers in plain English, while Power BI reads the same snapshot — the guarantee bar reads read-only, only .Read.All Graph scopes, no write or action, the AI never touches a live system](../../assets/img/zero-access-architecture.svg){ .kk-zoom width="1280" height="640" fetchpriority=high }
 
 Five stages, and the containment lives in the seams between them:
 
