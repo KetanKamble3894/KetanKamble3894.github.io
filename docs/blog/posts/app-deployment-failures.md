@@ -123,6 +123,7 @@ fictional `App_Deployment_Failures.csv` so you can build and demo the whole repo
 - :material-script-text: **The script** → [App Deployment Failures](../../scripts/app-deployment-failures.md)
 - :material-chart-box: **The report + template** → [App Deployment Failures report](../../powerbi/app-deployment-failures-report.md)
 - :material-shield-lock: **The bigger picture** → [Zero-Access Agent](../../projects/zero-access-agent/index.md)
+- :material-robot-outline: **The capstone** → [The read-only AI agent that can't touch your tenant](../the-read-only-ai-agent-that-cant-touch-your-tenant/)
 
 ---
 

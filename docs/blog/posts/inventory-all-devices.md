@@ -197,6 +197,7 @@ test the whole report before you ever point it at real data.
 - :material-script-text: **The script** → [Inventory — All Devices](../../scripts/inventory-all-devices.md)
 - :material-chart-box: **The report + template** → [Inventory — All Devices report](../../powerbi/inventory-all-devices-report.md)
 - :material-shield-lock: **The bigger picture** → [Zero-Access Agent](../../projects/zero-access-agent/index.md) — where all ten snapshots come together.
+- :material-robot-outline: **The capstone** → [The read-only AI agent that can't touch your tenant](../the-read-only-ai-agent-that-cant-touch-your-tenant/)
 
 ---
 

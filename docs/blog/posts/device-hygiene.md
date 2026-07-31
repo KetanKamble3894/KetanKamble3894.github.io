@@ -122,6 +122,7 @@ fictional `IntuneDeviceHygiene.csv` so you can build and demo the whole report b
 - :material-script-text: **The script** → [Device Hygiene](../../scripts/device-hygiene.md)
 - :material-chart-box: **The report + template** → [Device Hygiene report](../../powerbi/device-hygiene-report.md)
 - :material-shield-lock: **The bigger picture** → [Zero-Access Agent](../../projects/zero-access-agent/index.md)
+- :material-robot-outline: **The capstone** → [The read-only AI agent that can't touch your tenant](../the-read-only-ai-agent-that-cant-touch-your-tenant/)
 
 ---
 

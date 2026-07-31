@@ -127,6 +127,7 @@ fictional `License_Compliance.csv` so you can build and demo the whole report be
 - :material-script-text: **The script** → [License Compliance](../../scripts/license-compliance.md)
 - :material-chart-box: **The report + template** → [License Compliance report](../../powerbi/license-compliance-report.md)
 - :material-shield-lock: **The bigger picture** → [Zero-Access Agent](../../projects/zero-access-agent/index.md)
+- :material-robot-outline: **The capstone** → [The read-only AI agent that can't touch your tenant](../the-read-only-ai-agent-that-cant-touch-your-tenant/)
 
 ---
 

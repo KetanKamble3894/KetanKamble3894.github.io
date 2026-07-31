@@ -212,6 +212,7 @@ Identity is just the cleanest way to run it on a schedule with no secrets.
 - :material-script-text: **The script, in detail** → [Non-Compliant Devices](../../scripts/noncompliant-devices.md)
 - :material-book-open-variant: **The full teardown** → [how the Graph calls fit together](../../projects/zero-access-agent/collectors/noncompliant-devices.md)
 - :material-chart-box: **The report** → [Non-Compliant Windows Devices — Power BI](../../powerbi/noncompliant-devices-report.md)
+- :material-robot-outline: **The capstone** → [The read-only AI agent that can't touch your tenant](../the-read-only-ai-agent-that-cant-touch-your-tenant/)
 
 ---
 

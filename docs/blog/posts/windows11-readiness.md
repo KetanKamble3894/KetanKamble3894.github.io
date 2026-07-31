@@ -127,6 +127,7 @@ fictional `Readiness.csv` so you can build and demo the whole report before poin
 - :material-script-text: **The script** → [Windows 11 Readiness](../../scripts/windows11-readiness.md)
 - :material-chart-box: **The report + template** → [Windows 11 Readiness report](../../powerbi/windows11-readiness-report.md)
 - :material-shield-lock: **The bigger picture** → [Zero-Access Agent](../../projects/zero-access-agent/index.md)
+- :material-robot-outline: **The capstone** → [The read-only AI agent that can't touch your tenant](../the-read-only-ai-agent-that-cant-touch-your-tenant/)
 
 ---
 
