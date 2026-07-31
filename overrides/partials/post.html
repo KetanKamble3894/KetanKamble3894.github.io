@@ -1,0 +1,29 @@
+{#- Overridden blog excerpt card: clean footer with date (left) + Read more (right),
+    scloud.work-style. Categories stay as a subtle line above the footer. -#}
+<article class="md-post md-post--excerpt">
+  <div class="md-post__content md-typeset">
+    {{ post.content }}
+  </div>
+  {% if post.categories %}
+    <div class="md-post__header">
+      <div class="md-post__meta md-meta">
+        <ul class="md-meta__list">
+          <li class="md-meta__item">
+            {% for category in post.categories %}
+              <a href="{{ category.url | url }}" class="md-meta__link">{{- category.title -}}</a>
+              {%- if loop.revindex > 1 %} · {% endif -%}
+            {% endfor %}
+          </li>
+        </ul>
+      </div>
+    </div>
+  {% endif %}
+  <footer class="md-post__footer">
+    <time class="md-post__date" datetime="{{ post.config.date.created }}">
+      {{- post.config.date.created | date -}}
+    </time>
+    {% if post.more %}
+      <a class="md-post__more" href="{{ post.url | url }}">{{ lang.t("blog.continue") }} →</a>
+    {% endif %}
+  </footer>
+</article>

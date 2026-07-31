@@ -12,8 +12,10 @@ theme:
   language: en
   logo: assets/logo.svg
   favicon: assets/logo.svg
+  # Clean, native-feeling humanist sans (like scloud.work's Segoe UI) but a distinct
+  # typeface, so the site reads similarly without looking identical.
   font:
-    text: Inter
+    text: IBM Plex Sans
     code: JetBrains Mono
   icon:
     repo: fontawesome/brands/github
