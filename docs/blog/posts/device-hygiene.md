@@ -23,6 +23,13 @@ Every fleet accumulates cruft: laptops that stopped checking in months ago, reco
 
 <!-- more -->
 
+<div class="hook-embed" markdown="0">
+<iframe src="/assets/hooks/device-hygiene.html" title="Animated: ghost devices counted as fleet versus a routed hygiene worklist" loading="lazy" style="width:100%;aspect-ratio:1200/470;border:0;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.35)"></iframe>
+</div>
+
+!!! success "The payoff"
+    Every stale or orphaned device left on the books clutters your inventory and skews your compliance number. A scheduled hygiene report turns hundreds of ghosts into a routed worklist — a retire / re-enrol decision with an owner — instead of a manual audit that never quite happens. *(Illustrative.)*
+
 !!! tip "The short version"
     Intune's device list treats a healthy laptop and a six-months-stale orphan the same. This read-only collector classifies each device — assigned vs orphaned, active vs inactive — joins the owner's account status, and emits a **recommended action** and an **owner team** per row. **No write access, no live tenant in the report.**
 
@@ -67,9 +74,6 @@ The report is a triage board: devices by recommended action, by owner team, and 
 
 The [synthetic fleet generator](../../scripts/synthetic-fleet.md) can emit a realistic, entirely
 fictional `IntuneDeviceHygiene.csv` so you can build and demo the whole report before pointing it at real data.
-
-!!! question "Want a hygiene worklist for your fleet?"
-    Turning stale and orphaned devices into an owned, actionable worklist is hands-on Intune/Entra work I do in the open. Running today against real fleets of several thousand devices. **[Work with me →](../../work-with-me.md)**
 
 ## FAQ
 

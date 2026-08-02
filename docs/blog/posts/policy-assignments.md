@@ -21,6 +21,13 @@ Open any compliance policy or configuration profile and Intune shows you *its* a
 
 <!-- more -->
 
+<div class="hook-embed" markdown="0">
+<iframe src="/assets/hooks/policy-assignments.html" title="Animated: invisible policy wiring versus every target mapped" loading="lazy" style="width:100%;aspect-ratio:1200/470;border:0;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.35)"></iframe>
+</div>
+
+!!! success "The payoff"
+    Tracing which groups a policy actually targets means opening each policy one at a time. The assignment map draws every policy-to-group link at once — and surfaces targets still pointing at deleted groups you’d otherwise never notice until something breaks.
+
 !!! tip "The short version"
     Intune shows assignments one policy at a time. This scheduled, read-only collector walks every **compliance policy, configuration profile, Settings Catalog policy, endpoint-security intent and ADMX template**, resolves every target group (static or dynamic), flags broken and dynamic targets, and writes one flat assignment table — **no write access, no live tenant in the report.**
 
@@ -65,9 +72,6 @@ Because the runbook already resolved every group, the Power BI side is a coverag
 
 The [synthetic fleet generator](../../scripts/synthetic-fleet.md) can emit a realistic, entirely
 fictional `PolicyAssignments.csv` so you can build and demo the whole report before pointing it at real data.
-
-!!! question "Want the full assignment map for your tenant?"
-    Flattening every policy-to-group assignment into one report is read-only tooling I build hands-on for Intune teams. In production now against real multi-thousand-device tenants. **[Work with me →](../../work-with-me.md)**
 
 ## FAQ
 

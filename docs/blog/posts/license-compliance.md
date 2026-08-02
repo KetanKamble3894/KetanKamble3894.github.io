@@ -22,6 +22,13 @@ A corporate Windows device whose primary user has no Intune (or Windows Enterpri
 
 <!-- more -->
 
+<div class="hook-embed" markdown="0">
+<iframe src="/assets/hooks/license-compliance.html" title="Animated: enrolled-but-unlicensed devices found and owned" loading="lazy" style="width:100%;aspect-ratio:1200/470;border:0;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.35)"></iframe>
+</div>
+
+!!! success "The payoff"
+    An enrolled device whose user is missing the Intune / Windows Enterprise licence is a gap you can’t spot by eye across thousands of users. The joined report surfaces each one with its manager and department, so the fix is a targeted licence assignment — not a fleet-wide audit. *(Illustrative.)*
+
 !!! tip "The short version"
     Intune manages devices; licences live on users. This read-only collector joins **user-affinity** corporate Windows devices to their primary user's licences and flags where the **Intune service plan** (or Windows Enterprise) is absent or disabled — with the manager and location for follow-up. **No write access, no live tenant in the report.**
 
@@ -72,9 +79,6 @@ The report is a remediation list: flagged devices by country, by manager's depar
 
 The [synthetic fleet generator](../../scripts/synthetic-fleet.md) can emit a realistic, entirely
 fictional `License_Compliance.csv` so you can build and demo the whole report before pointing it at real data.
-
-!!! question "Want the licence-gap list for your fleet?"
-    Joining devices to user licences to surface the reclaim and spend gaps is hands-on Intune/Entra work I take on in the open. It runs today against real multi-thousand-device tenants. **[Work with me →](../../work-with-me.md)**
 
 ## FAQ
 

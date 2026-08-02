@@ -28,6 +28,13 @@ the finding that should worry you most — **leavers who still have it installed
 
 <!-- more -->
 
+<div class="hook-embed" markdown="0">
+<iframe src="/assets/hooks/local-ai-agent-inventory.html" title="Animated: a shadow-AI blind spot versus a read-only inventory with leavers flagged" loading="lazy" style="width:100%;aspect-ratio:1200/470;border:0;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.35)"></iframe>
+</div>
+
+!!! success "The payoff"
+    You can’t manually poll every endpoint for Ollama or a local LLM. A read-only inventory turns an ungovernable blind spot into a list — and flags the leaver whose departed account still has shadow AI installed, which is the row security actually cares about. *(Illustrative.)*
+
 !!! tip "The short version"
     Local AI tooling is the new shadow IT, and the portal has no view for it. A companion **Proactive
     Remediation detection** script flags AI tools on each device; this **read-only** collector reads
@@ -140,9 +147,6 @@ belongs in front of your security team.
 The [synthetic fleet generator](../../scripts/synthetic-fleet.md) can emit a realistic, entirely
 fictional `AIAgentInventory.csv` so you can build and demo the whole governance report before pointing
 it at real detection data.
-
-!!! question "Want a shadow-AI inventory for your fleet?"
-    Turning on-device detection into a governance report — leaver join and all — is read-only Intune/Entra work I build hands-on. This runs today across real multi-thousand-device fleets. **[Work with me →](../../work-with-me.md)**
 
 ## FAQ
 

@@ -21,6 +21,13 @@ Intune's app install status is a sea of red per-device rows. What it won't tell 
 
 <!-- more -->
 
+<div class="hook-embed" markdown="0">
+<iframe src="/assets/hooks/app-deployment-failures.html" title="Animated: 10,000 per-device app errors versus a per-app triage board" loading="lazy" style="width:100%;aspect-ratio:1200/470;border:0;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.35)"></iframe>
+</div>
+
+!!! success "The payoff"
+    Triaging app-install failures device-by-device is hours of scrolling per incident. Rolling them up per app surfaces the worst offender in one view — fix a single package with a 25–40% failure rate and thousands of individual device errors clear at once. *(Illustrative.)*
+
 !!! tip "The short version"
     Intune shows app failures device-by-device. This read-only collector aggregates per app — failed vs installed vs targeted, a failure rate, and a triage category with an owner and a fix — so you act on the worst app, not scroll rows. **No write access, no live tenant in the report.**
 
@@ -68,9 +75,6 @@ The report ranks the fleet's app pain: failed installs by publisher, by platform
 
 The [synthetic fleet generator](../../scripts/synthetic-fleet.md) can emit a realistic, entirely
 fictional `App_Deployment_Failures.csv` so you can build and demo the whole report before pointing it at real data.
-
-!!! question "Want your app failures triaged like this?"
-    Rolling per-device app errors up into a ranked, owned triage board is the read-only Intune tooling I build hands-on. This is live today against real multi-thousand-device tenants. **[Work with me →](../../work-with-me.md)**
 
 ## FAQ
 

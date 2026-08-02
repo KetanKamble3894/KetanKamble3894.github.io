@@ -28,6 +28,13 @@ an AI agent that answers all of it, and holds **no access to any live system at 
 
 <!-- more -->
 
+<div class="hook-embed" markdown="0">
+<iframe src="/assets/hooks/the-ai-agent-that-cant-touch-your-tenant.html" title="Animated: the write an AI agent could make versus the write it can’t — the one-way valve" loading="lazy" style="width:100%;aspect-ratio:1200/470;border:0;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.35)"></iframe>
+</div>
+
+!!! success "The payoff"
+    Answering “which disabled users still hold a Teams Phone licence?” normally means a specialist writing a Graph query. Here anyone asks in plain English and gets a cited answer from the read-only snapshot — the insight without granting an AI any power to change your tenant. That last part is the point: there is no write path back.
+
 !!! tip "The short version"
     An Azure AI Foundry agent answers natural-language questions about the entire endpoint estate — but it
     has **no Graph scopes, no keys, no connection to Intune or Entra**, and it cannot act. It reads only from
@@ -177,11 +184,6 @@ Every answer the agent gives traces back to one of these read-only collectors �
 
 The full walkthrough — empty subscription to read-only runbooks, the two indexes, and the agent — lives on
 the project page.
-
-!!! question "Want a zero-access endpoint agent in your tenant?"
-    Ask your fleet anything in plain English — and hand it access to nothing. Standing up the read-only
-    collectors, the Search indexes and a governed Foundry agent is exactly the work I do in the open, running
-    today against real multi-thousand-device tenants. **[Work with me →](../../work-with-me.md)**
 
 ## FAQ
 

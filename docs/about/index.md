@@ -105,10 +105,6 @@ From presenting to the Workplace Ninja community in Finland to sitting in the au
 
 The idea I'm best known for is the **[Zero-Access Agent](../projects/zero-access-agent/index.md)** — an AI that answers questions about an endpoint fleet **without ever touching a live system**. Read-only collectors export sanitized snapshots; Power BI and the agent read only those. The permission boundary is enforced by *architecture*, not by asking a model to behave. Give the AI the reports — never the systems.
 
-## Work with me
-
-Open to **speaking, collaboration, and sponsorship**. If your product helps EUC and security teams and you'd like it in front of Intune/Entra practitioners, see **[Contact](../work-with-me.md)** for how partnership works here.
-
 ## Connect
 
 - :material-linkedin: **[LinkedIn](https://www.linkedin.com/in/ketan-kamble-012a1582)** — say hello

@@ -141,8 +141,13 @@ nav:
       - Apps, licensing & lifecycle:
           - App Deployment Failures: scripts/app-deployment-failures.md
           - License Compliance: scripts/license-compliance.md
+          - Teams Phone License Usage: scripts/teams-phone-license-usage.md
           - Windows 11 Readiness: scripts/windows11-readiness.md
           - Autopilot Operations: scripts/autopilot-operations.md
+          - Unrenamed Device Report: scripts/unrenamed-desktop-devices.md
+          - Lenovo Warranty Enrichment: scripts/lenovo-warranty-enrichment.md
+      - Monitoring and alerting:
+          - AVD Connection-Failure Alert: scripts/avd-connection-failure-alert.md
       - AI & data:
           - Local AI Agent Inventory: scripts/local-ai-agent-inventory.md
           - Synthetic Fleet Generator: scripts/synthetic-fleet.md

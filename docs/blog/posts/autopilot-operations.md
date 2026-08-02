@@ -21,6 +21,13 @@ When an Autopilot build fails, the technician sees a spinning ESP and a vague er
 
 <!-- more -->
 
+<div class="hook-embed" markdown="0">
+<iframe src="/assets/hooks/autopilot-operations.html" title="Animated: identical Autopilot spinners versus failures named by phase and cause" loading="lazy" style="width:100%;aspect-ratio:1200/470;border:0;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.35)"></iframe>
+</div>
+
+!!! success "The payoff"
+    Chasing Autopilot / ESP failures one device at a time can burn a day and still leave you guessing. Classified by phase and cause, one blocking step — say an app install timing out — explains the bulk, so you fix it once instead of reprovisioning blind. *(Illustrative.)*
+
 !!! tip "The short version"
     Autopilot failures are opaque one device at a time. This read-only collector reads deployment events and ESP state, classifies each into a **phase** and a **failure category** with a likely cause, and flags what's still **in flight** — so you fix the pattern, not the panic. **No write access, no live tenant in the report.**
 
@@ -68,9 +75,6 @@ The report is an operations dashboard: deployments by status, failures by catego
 
 The [synthetic fleet generator](../../scripts/synthetic-fleet.md) can emit a realistic, entirely
 fictional `Autopilot_Operations_Detailed.csv` so you can build and demo the whole report before pointing it at real data.
-
-!!! question "Want your Autopilot failures broken down like this?"
-    Turning ESP failures into a phase-and-cause operations report is hands-on Intune work I do in the open. This runs today against real multi-thousand-device tenants. **[Work with me →](../../work-with-me.md)**
 
 ## FAQ
 

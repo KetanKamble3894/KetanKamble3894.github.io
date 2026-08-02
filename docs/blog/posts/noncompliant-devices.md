@@ -26,6 +26,13 @@ model they're on. To learn that, you open the device. Then the next one. Then th
 
 <!-- more -->
 
+<div class="hook-embed" markdown="0">
+<iframe src="/assets/hooks/noncompliant-devices.html" title="Animated: a non-compliance verdict with no reason versus the exact failed setting" loading="lazy" style="width:100%;aspect-ratio:1200/470;border:0;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.35)"></iframe>
+</div>
+
+!!! success "The payoff"
+    “Non-compliant” with no reason means opening each device to hunt the setting that failed — minutes each, across thousands of devices. The setting-level report names the cause (BitLocker, firewall, min-OS…) up front, so you fix the policy instead of chasing devices. *(Illustrative.)*
+
 !!! tip "The short version"
     Intune tells you a device is non-compliant — not *which setting*. This is a scheduled, read-only collector that turns setting-level failures into a sliceable Power BI report: **no write access, no standing credentials, no live tenant connection.**
 
@@ -165,9 +172,6 @@ policy states but no setting states (the script handles that case).
 
 **Can I run it without Azure Automation?** Yes — it's plain PowerShell 7. Automation + Managed
 Identity is just the cleanest way to run it on a schedule with no secrets.
-
-!!! question "Want setting-level compliance in your tenant?"
-    Setting-level failure reporting like this is exactly the hands-on Intune/Entra work I take on — a limited amount at a time. These collectors run today against real multi-thousand-device tenants. **[Work with me →](../../work-with-me.md)**
 
 ## More in this series
 

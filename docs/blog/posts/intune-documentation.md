@@ -24,6 +24,13 @@ into one always-current, human-readable document.
 
 <!-- more -->
 
+<div class="hook-embed" markdown="0">
+<iframe src="/assets/hooks/intune-documentation.html" title="Animated: a config map redrawn by hand versus documentation that reads itself" loading="lazy" style="width:100%;aspect-ratio:1200/470;border:0;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.35)"></iframe>
+</div>
+
+!!! success "The payoff"
+    Hand-documenting a full Intune / Windows 365 configuration is days of screenshotting each quarter — and stale the moment you finish. This regenerates the whole snapshot on a schedule, so audit and handover docs are always current at essentially zero manual effort. *(Illustrative.)*
+
 !!! tip "The short version"
     Nobody hand-documents Intune, because it's stale before you save the file. This runbook injects a
     **read-only** Graph token into the community **M365Documentation** module, walks the config section
@@ -107,9 +114,6 @@ and holds no live connection to either.
   stops at import.
 - **Token refresh mid-collection matters.** A full tenant walk can outlast a single token; the runbook
   refreshes as it goes, so long collections don't die halfway.
-
-!!! question "Want your whole tenant documented on a schedule?"
-    Standing up read-only, always-current documentation like this is hands-on Intune work I do in the open — for a limited number of teams. It's running today against real multi-thousand-device tenants. **[Work with me →](../../work-with-me.md)**
 
 ## FAQ
 

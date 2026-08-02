@@ -21,6 +21,13 @@ tags:
 
 <!-- more -->
 
+<div class="hook-embed" markdown="0">
+<iframe src="/assets/hooks/windows11-readiness.html" title="Animated: an identical not-capable stamp versus the exact blocker per device" loading="lazy" style="width:100%;aspect-ratio:1200/470;border:0;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.35)"></iframe>
+</div>
+
+!!! success "The payoff"
+    “39% not capable” with no reason turns a hardware-refresh budget into a guess. The per-device blocker splits a free BIOS toggle (TPM, Secure Boot) from a genuine replacement — often reclaiming a large share of devices from the “buy new” pile before a single PO is raised. *(Illustrative.)*
+
 !!! tip "The short version"
     Windows 11 readiness is a per-device hardware verdict. This read-only collector pulls each device's readiness state and the **exact failing check** (TPM 2.0, CPU family, Secure Boot, RAM, storage), enriched with make/model, so you can size and target the refresh. **No write access, no live tenant in the report.**
 
@@ -72,9 +79,6 @@ The report is a refresh planner: devices by readiness reason, not-capable by man
 
 The [synthetic fleet generator](../../scripts/synthetic-fleet.md) can emit a realistic, entirely
 fictional `Readiness.csv` so you can build and demo the whole report before pointing it at real data.
-
-!!! question "Want your Windows 11 refresh plan as data?"
-    Turning per-device hardware blockers into a costed refresh plan is the read-only Intune tooling I build hands-on. Running now against real fleets of several thousand devices. **[Work with me →](../../work-with-me.md)**
 
 ## FAQ
 

@@ -26,6 +26,13 @@ row per device** you can actually slice.
 
 <!-- more -->
 
+<div class="hook-embed" markdown="0">
+<iframe src="/assets/hooks/inventory-all-devices.html" title="Animated: four portals and a VLOOKUP versus one row per device" loading="lazy" style="width:100%;aspect-ratio:1200/470;border:0;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.35)"></iframe>
+</div>
+
+!!! success "The payoff"
+    Answering “how many Dell, out-of-warranty, Windows 10 devices in Madrid?” by hand means three exports and a VLOOKUP every single time. One dated row-per-device turns that into a single slicer click — minutes of ad-hoc analysis instead of an afternoon. *(Illustrative.)*
+
 !!! tip "The short version"
     Intune's **All devices** list is a *screen*, not a *dataset*. This scheduled, read-only collector
     joins managed devices with the user's location (Entra), OEM warranty (Notes) and Defender agent
@@ -142,9 +149,6 @@ has the `.pbit` and the exact build kit.*
 No tenant required. The [synthetic fleet generator](../../scripts/synthetic-fleet.md) produces a
 realistic `Inventory_AllDevices.csv` — the same schema, entirely fictional — so you can build and
 test the whole report before you ever point it at real data.
-
-!!! question "Want this one-row-per-device inventory in your tenant?"
-    The enriched inventory table and its Power BI are the kind of read-only tooling I build hands-on for Intune/Entra teams. This runs in production against real fleets of several thousand devices. **[Work with me →](../../work-with-me.md)**
 
 ## FAQ
 

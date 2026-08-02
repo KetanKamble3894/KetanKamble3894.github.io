@@ -1,6 +1,6 @@
 ---
 title: Contact
-description: Work with Ketan Kamble — sponsorship, collaboration, speaking, and consulting for Intune, Entra and endpoint teams.
+description: Connect with Ketan Kamble — independent, open Intune / Entra / endpoint content from a personal lab.
 hide:
   - navigation
   - toc
@@ -24,28 +24,15 @@ hide:
   </div>
 </div>
 
-## What you can reach out about
+This site is a personal lab and an independent, open knowledge-sharing project. Everything here is
+shared freely — it isn't a commercial service, and nothing on this site is for sale.
 
-This is where the meaningful conversations start. I regularly hear from IT teams and organisations modernising endpoint management, tightening their security posture, or planning Intune and Windows 365 rollouts — and I'm always happy to talk shop.
+If you'd like to connect or just talk shop about Intune, Entra, Graph and read-only tooling, the best
+places are **LinkedIn** and **GitHub** above. Always happy to swap notes with people building in the same
+space.
 
-- **Speaking & conference sessions** — Intune, Entra, Automation, and the read-only / zero-access approach.
-- **Intune, Windows 365 & security discussions** — real-world architecture, reporting, and what the portal is actually doing underneath.
-- **Content collaborations & community projects** — in the open, always.
-- **Selective partnerships & sponsorship** — if your product genuinely helps EUC and security teams.
+---
 
-## Ways to partner
-
-- **Sponsored deep-dive** — a clearly-labelled post on a topic relevant to my readers, written to my usual first-hand, honest standard.
-- **LinkedIn newsletter placement** — a mention to the same practitioner audience on LinkedIn (launching soon).
-- **Display placement** — a tasteful banner or in-content slot on high-traffic articles.
-- **Tool reviews / affiliate** — genuine, disclosed reviews of tools I'd actually use.
-- **Consulting & advisory** — hands-on help with Intune / Entra / endpoint architecture and reporting.
-
-## The audience
-
-- **Core topics:** Intune, Entra ID, Microsoft Graph, Autopilot, Defender, Power BI reporting.
-- **Typical reader:** endpoint admin / EUC engineer / consultant — often the person who chooses the tools.
-- **What they come for:** first-hand, reproduced-in-a-lab detail they can't get from the portal docs.
-- **Traffic & reach:** shared on request as the audience grows.
-
-*All sponsored content is clearly labelled. I only take on partners whose product I'd be comfortable recommending to my own readers.*
+*Independent content — not affiliated with, sponsored by, or endorsed by Microsoft. Microsoft, Intune,
+Entra, Microsoft Graph, Azure and Power BI are trademarks of the Microsoft group of companies.
+Everything here comes from a personal lab.*
