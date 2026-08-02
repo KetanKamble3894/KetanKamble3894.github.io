@@ -3,6 +3,14 @@
   --md-primary-fg-color: #0EA5A0;
   --md-accent-fg-color: #0EA5A0;
 }
+
+/* Base type scale — tightened from Material's default 137.5% to a denser reading layout
+   (body ≈16px, h1 ≈41px) to match the reference density. Uses % so browser-zoom / user
+   font-size preferences are still respected (accessibility). */
+html { font-size: 118.75%; }
+
+/* Keep the search field ≥16px so mobile Safari doesn't auto-zoom the page on focus. */
+.md-search__input { font-size: 16px; }
 [data-md-color-scheme="slate"] {
   --md-primary-fg-color: #2DD4BF;
   --md-accent-fg-color: #2DD4BF;
@@ -73,8 +81,25 @@
 /* 1) remove the right-hand table of contents; centre + widen the article */
 .md-sidebar--secondary { display: none !important; }
 @media screen and (min-width: 76.25em) {
-  .md-content { max-width: 780px; margin-left: auto; margin-right: auto; }
+  .md-content { max-width: 840px; margin-left: auto; margin-right: auto; }
 }
+
+/* Inline code a touch larger for legibility (cmdlet names, GUIDs, paths) —
+   ~14px on a 16px body, matching editorial references. Block code unaffected. */
+.md-typeset :not(pre) > code { font-size: .9em; }
+
+/* Editorial byline under the post H1 — date · category · reading time.
+   Built client-side from the sidebar meta (see javascripts/post-meta.js). */
+.kk-byline {
+  display: flex; flex-wrap: wrap; align-items: center; gap: .3rem 1.1rem;
+  margin: -.2rem 0 1.5rem; padding-bottom: 1rem;
+  border-bottom: 1px solid var(--md-default-fg-color--lightest);
+  font-size: .78rem; color: var(--md-default-fg-color--light);
+}
+.kk-byline__item { display: inline-flex; align-items: center; gap: .35rem; line-height: 1.3; }
+.kk-byline__item svg { width: 1.05em; height: 1.05em; fill: currentColor; flex: none; opacity: .8; }
+.kk-byline__item a { color: inherit; text-decoration: none; border-bottom: 1px solid transparent; }
+.kk-byline__item a:hover { color: var(--md-primary-fg-color); border-bottom-color: currentColor; }
 
 /* 2) bigger, bolder section headings — no underline (scloud style) */
 .md-typeset h1 { font-size: 2.15rem; font-weight: 800; letter-spacing: -0.03em; line-height: 1.12; }
@@ -108,7 +133,7 @@
 
 /* ============ blog: scloud-style card grid ============ */
 /* cover banner on the full article page */
-.md-typeset img.post-cover { width: 100%; border-radius: 12px; margin: .2rem 0 1.6rem; }
+.md-typeset img.post-cover { width: 100%; max-width: 84%; display: block; margin: .2rem auto 1.6rem; border-radius: 12px; }
 
 /* each post excerpt becomes a card */
 .md-post--excerpt {
