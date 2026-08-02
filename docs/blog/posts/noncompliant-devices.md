@@ -27,7 +27,7 @@ model they're on. To learn that, you open the device. Then the next one. Then th
 <!-- more -->
 
 <div class="hook-embed" markdown="0">
-<iframe src="/assets/hooks/noncompliant-devices.html" title="Animated: a non-compliance verdict with no reason versus the exact failed setting" loading="lazy" style="width:100%;aspect-ratio:1200/470;border:0;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.35)"></iframe>
+<iframe scrolling="no" src="/assets/hooks/noncompliant-devices.html" title="Animated: a non-compliance verdict with no reason versus the exact failed setting" loading="lazy" style="display:block;width:100%;aspect-ratio:1200/470;border:0;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.35)"></iframe>
 </div>
 
 !!! success "The payoff"

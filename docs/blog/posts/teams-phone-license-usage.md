@@ -23,7 +23,7 @@ A Teams Phone license on a **disabled account**, a user with **no number provisi
 <!-- more -->
 
 <div class="hook-embed" markdown="0">
-<iframe src="/assets/hooks/teams-phone-license-usage.html" title="Animated: Teams Phone licences leaking money monthly — versus a tiered, costed reclaim report" loading="lazy" style="width:100%;aspect-ratio:1200/470;border:0;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.35)"></iframe>
+<iframe scrolling="no" src="/assets/hooks/teams-phone-license-usage.html" title="Animated: Teams Phone licences leaking money monthly — versus a tiered, costed reclaim report" loading="lazy" style="display:block;width:100%;aspect-ratio:1200/470;border:0;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.35)"></iframe>
 </div>
 
 !!! success "The payoff"

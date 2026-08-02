@@ -22,7 +22,7 @@ Lenovo warranty isn't a field Intune gives you — so this tool looks it up by s
 <!-- more -->
 
 <div class="hook-embed" markdown="0">
-<iframe src="/assets/hooks/lenovo-warranty-enrichment.html" title="Animated: warranty by hand, one device at a time — versus one runbook that writes it into Notes for the whole fleet" loading="lazy" style="width:100%;aspect-ratio:1200/470;border:0;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.35)"></iframe>
+<iframe scrolling="no" src="/assets/hooks/lenovo-warranty-enrichment.html" title="Animated: warranty by hand, one device at a time — versus one runbook that writes it into Notes for the whole fleet" loading="lazy" style="display:block;width:100%;aspect-ratio:1200/470;border:0;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.35)"></iframe>
 </div>
 
 !!! success "The payoff"

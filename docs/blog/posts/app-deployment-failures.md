@@ -22,7 +22,7 @@ Intune's app install status is a sea of red per-device rows. What it won't tell 
 <!-- more -->
 
 <div class="hook-embed" markdown="0">
-<iframe src="/assets/hooks/app-deployment-failures.html" title="Animated: 10,000 per-device app errors versus a per-app triage board" loading="lazy" style="width:100%;aspect-ratio:1200/470;border:0;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.35)"></iframe>
+<iframe scrolling="no" src="/assets/hooks/app-deployment-failures.html" title="Animated: 10,000 per-device app errors versus a per-app triage board" loading="lazy" style="display:block;width:100%;aspect-ratio:1200/470;border:0;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.35)"></iframe>
 </div>
 
 !!! success "The payoff"

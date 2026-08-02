@@ -88,6 +88,10 @@ html { font-size: 118.75%; }
    ~14px on a 16px body, matching editorial references. Block code unaffected. */
 .md-typeset :not(pre) > code { font-size: .9em; }
 
+/* Hook embeds: never show a scrollbar (belt-and-suspenders with the iframe's
+   scrolling="no"); block display kills the inline-iframe descender gap. */
+.hook-embed iframe { display: block; overflow: hidden; }
+
 /* Editorial byline under the post H1 — date · category · reading time.
    Built client-side from the sidebar meta (see javascripts/post-meta.js). */
 .kk-byline {

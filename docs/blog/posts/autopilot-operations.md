@@ -22,7 +22,7 @@ When an Autopilot build fails, the technician sees a spinning ESP and a vague er
 <!-- more -->
 
 <div class="hook-embed" markdown="0">
-<iframe src="/assets/hooks/autopilot-operations.html" title="Animated: identical Autopilot spinners versus failures named by phase and cause" loading="lazy" style="width:100%;aspect-ratio:1200/470;border:0;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.35)"></iframe>
+<iframe scrolling="no" src="/assets/hooks/autopilot-operations.html" title="Animated: identical Autopilot spinners versus failures named by phase and cause" loading="lazy" style="display:block;width:100%;aspect-ratio:1200/470;border:0;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.35)"></iframe>
 </div>
 
 !!! success "The payoff"

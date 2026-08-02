@@ -24,7 +24,7 @@ Every fleet accumulates cruft: laptops that stopped checking in months ago, reco
 <!-- more -->
 
 <div class="hook-embed" markdown="0">
-<iframe src="/assets/hooks/device-hygiene.html" title="Animated: ghost devices counted as fleet versus a routed hygiene worklist" loading="lazy" style="width:100%;aspect-ratio:1200/470;border:0;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.35)"></iframe>
+<iframe scrolling="no" src="/assets/hooks/device-hygiene.html" title="Animated: ghost devices counted as fleet versus a routed hygiene worklist" loading="lazy" style="display:block;width:100%;aspect-ratio:1200/470;border:0;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.35)"></iframe>
 </div>
 
 !!! success "The payoff"

@@ -21,7 +21,7 @@ When Azure Virtual Desktop stops letting people in, you usually find out the wor
 <!-- more -->
 
 <div class="hook-embed" markdown="0">
-<iframe src="/assets/hooks/avd-connection-failure-alert.html" title="Animated: AVD failures found from the ticket wave — versus an alert that fires from the logs first" loading="lazy" style="width:100%;aspect-ratio:1200/470;border:0;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.35)"></iframe>
+<iframe scrolling="no" src="/assets/hooks/avd-connection-failure-alert.html" title="Animated: AVD failures found from the ticket wave — versus an alert that fires from the logs first" loading="lazy" style="display:block;width:100%;aspect-ratio:1200/470;border:0;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.35)"></iframe>
 </div>
 
 !!! success "The payoff"

@@ -22,7 +22,7 @@ A Windows device that enrols and *keeps* its out-of-the-box `DESKTOP-XXXXX` name
 <!-- more -->
 
 <div class="hook-embed" markdown="0">
-<iframe src="/assets/hooks/unrenamed-desktop-devices.html" title="Animated: DESKTOP- stragglers scrolled past — versus a read-only report that sorts and routes them" loading="lazy" style="width:100%;aspect-ratio:1200/470;border:0;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.35)"></iframe>
+<iframe scrolling="no" src="/assets/hooks/unrenamed-desktop-devices.html" title="Animated: DESKTOP- stragglers scrolled past — versus a read-only report that sorts and routes them" loading="lazy" style="display:block;width:100%;aspect-ratio:1200/470;border:0;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.35)"></iframe>
 </div>
 
 !!! success "The payoff"
