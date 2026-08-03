@@ -131,6 +131,7 @@ nav:
       - Jarvis: projects/jarvis.md
   - Scripts:
       - Library: scripts/index.md
+      - Read-Only Gate: scripts/read-only-gate.md
       - Inventory & documentation:
           - Device Inventory: scripts/device-inventory.md
           - Inventory — All Devices: scripts/inventory-all-devices.md
