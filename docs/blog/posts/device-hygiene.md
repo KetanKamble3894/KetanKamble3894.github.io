@@ -64,6 +64,19 @@ The report is a triage board: devices by recommended action, by owner team, and 
 
 *Template + build kit on the **[Device Hygiene report page](../../powerbi/device-hygiene-report.md)**.*
 
+
+## Set it up, step by step
+
+You don't build this one from scratch. Every collector shares the same read-only plumbing, so you set that up **once** — after that, adding this report is about a five-minute job.
+
+1. **One-time — stand up the collection layer.** Follow **[Setting up the collection layer](../../projects/zero-access-agent/azure-automation-setup.md)**: an Azure Automation account, a system-assigned **Managed Identity** (no secrets, no app registration), and a storage account for the CSV snapshots. You only do this once, however many collectors you end up running.
+2. **Grant this collector's read-only scopes.** In that guide's role-assignment step, add the scopes this one needs — `DeviceManagementManagedDevices.Read.All`, `Directory.Read.All` and `User.Read.All`. Every one ends in `.Read.All`: it reads, and never writes to your tenant. (Running more than one collector? Scopes are **additive** — add the new ones, don't replace what's already granted.)
+3. **Import the script as a runbook.** Take **[the script](../../scripts/device-hygiene.md)**, import it into the Automation Account as a PowerShell 7 runbook, and publish it.
+4. **Schedule it.** Attach a daily (or weekly) schedule the same way the setup guide shows. It then runs unattended, dropping a dated CSV into your `root/` container each time.
+5. **Point Power BI at the CSV.** Open the **[report template](../../powerbi/device-hygiene-report.md)** in Power BI Desktop and start with the bundled **synthetic sample**, so you can build the whole thing before touching real data. To switch to live data, use **Get Data → Azure Blob Storage** and point it at the dated CSV in your `root/` container (the setup guide has the storage account and connection details). Refresh, and that's your dashboard.
+
+No secrets, no app registration, nothing that can change your tenant — just a scheduled read and a CSV that Power BI draws from.
+
 ## Gotchas from the lab
 
 - **Inactivity is a threshold, not a fact.** Pick a day count and own it — 30 days for laptops may be wrong for rarely-used kiosks.

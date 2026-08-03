@@ -105,6 +105,19 @@ split at the heart of the Zero-Access Agent: **structured CSV snapshots** answer
 where"*; this **prose documentation** answers *"how is it configured, and why"*. The agent reads both,
 and holds no live connection to either.
 
+
+## Set it up, step by step
+
+You don't build this one from scratch. Every collector shares the same read-only plumbing, so you set that up **once** — after that, adding this report is about a five-minute job.
+
+1. **One-time — stand up the collection layer.** Follow **[Setting up the collection layer](../../projects/zero-access-agent/azure-automation-setup.md)**: an Azure Automation account, a system-assigned **Managed Identity** (no secrets, no app registration), and a storage account for the CSV snapshots. You only do this once, however many collectors you end up running.
+2. **Grant this collector's read-only scopes.** In that guide's role-assignment step, add the scopes this one needs — `DeviceManagementApps.Read.All`, `DeviceManagementConfiguration.Read.All`, `DeviceManagementManagedDevices.Read.All`, `Directory.Read.All` and `Organization.Read.All`. Every one ends in `.Read.All`: it reads, and never writes to your tenant. (Running more than one collector? Scopes are **additive** — add the new ones, don't replace what's already granted.)
+3. **Import the script as a runbook.** Take **[the script](../../scripts/intune-documentation.md)**, import it into the Automation Account as a PowerShell 7 runbook, and publish it.
+4. **Schedule it.** Attach a daily (or weekly) schedule the same way the setup guide shows. It then runs unattended, dropping a dated CSV into your `root/` container each time.
+5. **Point Power BI at the CSV.** In Power BI Desktop, start with the **synthetic sample** so you can build before touching real data. For live data, use **Get Data → Azure Blob Storage** and point it at the dated CSV in your `root/` container (the setup guide has the storage account and connection details). Refresh to get your dashboard.
+
+No secrets, no app registration, nothing that can change your tenant — just a scheduled read and a CSV that Power BI draws from.
+
 ## Gotchas from the lab
 
 - **It's a document, not a dashboard.** There's no Power BI here on purpose — the output is prose you

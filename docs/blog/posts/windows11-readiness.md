@@ -69,6 +69,19 @@ The report is a refresh planner: devices by readiness reason, not-capable by man
 
 *Template + build kit on the **[Windows 11 Readiness report page](../../powerbi/windows11-readiness-report.md)**.*
 
+
+## Set it up, step by step
+
+You don't build this one from scratch. Every collector shares the same read-only plumbing, so you set that up **once** — after that, adding this report is about a five-minute job.
+
+1. **One-time — stand up the collection layer.** Follow **[Setting up the collection layer](../../projects/zero-access-agent/azure-automation-setup.md)**: an Azure Automation account, a system-assigned **Managed Identity** (no secrets, no app registration), and a storage account for the CSV snapshots. You only do this once, however many collectors you end up running.
+2. **Grant this collector's read-only scopes.** In that guide's role-assignment step, add the scopes this one needs — `DeviceManagementManagedDevices.Read.All`. Every one ends in `.Read.All`: it reads, and never writes to your tenant. (Running more than one collector? Scopes are **additive** — add the new ones, don't replace what's already granted.)
+3. **Import the script as a runbook.** Take **[the script](../../scripts/windows11-readiness.md)**, import it into the Automation Account as a PowerShell 7 runbook, and publish it.
+4. **Schedule it.** Attach a daily (or weekly) schedule the same way the setup guide shows. It then runs unattended, dropping a dated CSV into your `root/` container each time.
+5. **Point Power BI at the CSV.** Open the **[report template](../../powerbi/windows11-readiness-report.md)** in Power BI Desktop and start with the bundled **synthetic sample**, so you can build the whole thing before touching real data. To switch to live data, use **Get Data → Azure Blob Storage** and point it at the dated CSV in your `root/` container (the setup guide has the storage account and connection details). Refresh, and that's your dashboard.
+
+No secrets, no app registration, nothing that can change your tenant — just a scheduled read and a CSV that Power BI draws from.
+
 ## Gotchas from the lab
 
 - **TPM "not detected" is often a BIOS setting.** Before you budget a replacement, check whether TPM is merely disabled in firmware — that's a config fix, not a purchase.
