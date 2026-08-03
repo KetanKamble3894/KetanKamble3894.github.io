@@ -80,6 +80,22 @@ Wire the query into a **Log Analytics scheduled query alert** (Azure Monitor): s
     a few real rows in *Logs* first. And tune the **threshold and frequency**: `rows > 0` catches every
     occurrence — raise it (`> 1`, or a count over a window) if a busy tenant makes it chatty.
 
+## Set it up, step by step
+
+Four parts, all in the Azure portal. Only the last one *creates* anything — the rest are read-only wiring, and the alert itself only ever reads the logs.
+
+1. **Send AVD errors to a workspace.** On your **AVD host pool → Diagnostic settings → Add diagnostic setting**, tick the **Errors** category (that's the one that fills the `WVDErrors` table) and send it to your **Log Analytics workspace**. Repeat for any other host pools you want covered. Give it a few minutes, then open **Logs** and run the query above to confirm rows are landing.
+2. **Create the action group (who gets emailed).** In **Azure Monitor → Alerts → Action groups → Create**, add an **Email** action pointing at your AVD-admin distribution list, and name it something like `ag-avd-admins`. This is the "email the admins" half of the alert.
+3. **Create the scheduled query alert rule.** In **Azure Monitor → Alerts → Create → Alert rule**:
+    - **Scope** → your AVD Log Analytics workspace.
+    - **Condition** → **Custom log search**, and paste the KQL from above.
+    - **Measurement** → *Table rows*; **Alert logic** → *Number of results* **greater than 0** (raise it later if a busy tenant makes it chatty).
+    - **Evaluation** → check every **5 minutes** over a 5–10 minute window.
+    - **Severity** → **Critical** (Sev 0 or 1) — this is a "users are blocked" signal.
+    - **Actions** → select the `ag-avd-admins` group from step 2.
+    - **Details** → name it e.g. `WVD-ConnectionFailure`, pick a resource group, and **Create**.
+4. **Test before you trust it.** Point the query at a window you know had failures (or temporarily loosen the filter), confirm the email arrives with the host pool, machine and user already filled in, then set the threshold back to `> 0`. From here on the session hosts do the logging, Azure Monitor does the watching, and the rule changes nothing.
+
 ## Gotchas from the lab
 
 - **`contains` is broad on purpose, but check it.** `CodeSymbolic contains` matches substrings — fine
@@ -96,10 +112,10 @@ Wire the query into a **Log Analytics scheduled query alert** (Azure Monitor): s
 
 ## Reproduce it yourself
 
-Confirm AVD diagnostics are flowing to a workspace, paste the KQL into **Logs** and run it against a
-recent window to see the shape of the results, then create the scheduled alert rule around it and test
-with a low threshold. No portal screenshots here on purpose — the query and the rule settings are the
-whole recipe, and they're yours to point at your own workspace.
+The four steps above are the whole recipe — no portal screenshots, because the KQL and the rule
+settings are what matter, and they're yours to point at your own workspace. Validate the query in
+**Logs** first so you can see the shape of the results, then build the rule around it and test with a
+low threshold before you set it live.
 
 ## FAQ
 

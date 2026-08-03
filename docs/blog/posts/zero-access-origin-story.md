@@ -15,6 +15,8 @@ tags:
 
 # The 403 that started it: how a Sites.Selected error became the Zero-Access Pattern
 
+![Cover: a Sites.Selected 403 became the Zero-Access Pattern — read-only by architecture, not by trust](../../assets/img/banners/zero-access-origin-story.webp){ .post-cover width="1200" height="630" fetchpriority=high }
+
 Everything else on this site — the ten read-only collectors, the Power BI reports, the AI agent that
 answers questions about a fleet without touching it — points back to one moment in a lab tenant: a
 **403** I fully expected to be a **200**. Not a bug. The system working exactly as designed. That 403 is

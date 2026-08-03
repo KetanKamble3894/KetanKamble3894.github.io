@@ -99,8 +99,8 @@ fictional `Autopilot_Operations_Detailed.csv` so you can build and demo the whol
 
 ## More in this series
 
-- [Which app is failing, and why](../app-deployment-failures/)
-- [Which devices can't take Windows 11](../windows11-readiness/)
+- [Which app is failing, and why](../which-app-is-failing-and-why-turning-intune-app-errors-into-a-triage-board/)
+- [Which devices can't take Windows 11](../which-devices-cant-take-windows-11--the-hardware-blocker-per-device/)
 
 <script type="application/ld+json">
 {

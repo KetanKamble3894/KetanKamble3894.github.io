@@ -103,8 +103,8 @@ fictional `License_Compliance.csv` so you can build and demo the whole report be
 
 ## More in this series
 
-- [The devices no one owns](../device-hygiene/)
-- [One row per device](../inventory-all-devices/)
+- [The devices no one owns](../the-devices-no-one-owns-anymore-a-read-only-hygiene-report-with-recommended-actions/)
+- [One row per device](../one-row-per-device-building-the-inventory-intune-wont-hand-you/)
 
 <script type="application/ld+json">
 {

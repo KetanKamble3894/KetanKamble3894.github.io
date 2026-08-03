@@ -96,8 +96,8 @@ fictional `PolicyAssignments.csv` so you can build and demo the whole report bef
 
 ## More in this series
 
-- [Which setting actually failed?](../noncompliant-devices/)
-- [One row per device](../inventory-all-devices/)
+- [Which setting actually failed?](../which-setting-actually-failed-turning-intune-non-compliance-into-a-report/)
+- [One row per device](../one-row-per-device-building-the-inventory-intune-wont-hand-you/)
 
 <script type="application/ld+json">
 {

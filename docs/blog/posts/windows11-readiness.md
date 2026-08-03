@@ -103,8 +103,8 @@ fictional `Readiness.csv` so you can build and demo the whole report before poin
 
 ## More in this series
 
-- [Where Autopilot actually breaks](../autopilot-operations/)
-- [One row per device](../inventory-all-devices/)
+- [Where Autopilot actually breaks](../where-autopilot-actually-breaks-esp-phase-failure-category-per-deployment/)
+- [One row per device](../one-row-per-device-building-the-inventory-intune-wont-hand-you/)
 
 <script type="application/ld+json">
 {

@@ -138,8 +138,8 @@ No secrets, no app registration, nothing that can change your tenant — just a 
 
 ## More in this series
 
-- [Every policy, every target](../policy-assignments/)
-- [One row per device](../inventory-all-devices/)
+- [Every policy, every target](../every-policy-every-target-the-assignment-map-intune-wont-draw-for-you/)
+- [One row per device](../one-row-per-device-building-the-inventory-intune-wont-hand-you/)
 
 <script type="application/ld+json">
 {

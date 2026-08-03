@@ -59,6 +59,7 @@ extra_css:
 extra_javascript:
   - javascripts/lightbox.js
   - javascripts/post-meta.js
+  - javascripts/reveal.js
 
 plugins:
   - search

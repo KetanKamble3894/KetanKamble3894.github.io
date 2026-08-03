@@ -98,8 +98,8 @@ fictional `IntuneDeviceHygiene.csv` so you can build and demo the whole report b
 
 ## More in this series
 
-- [Who's missing an Intune license](../license-compliance/)
-- [One row per device](../inventory-all-devices/)
+- [Who's missing an Intune license](../whos-missing-an-intune-license-finding-the-devices-slipping-through/)
+- [One row per device](../one-row-per-device-building-the-inventory-intune-wont-hand-you/)
 
 <script type="application/ld+json">
 {

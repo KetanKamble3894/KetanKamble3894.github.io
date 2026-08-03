@@ -99,8 +99,8 @@ fictional `App_Deployment_Failures.csv` so you can build and demo the whole repo
 
 ## More in this series
 
-- [Where Autopilot actually breaks](../autopilot-operations/)
-- [Which devices can't take Windows 11](../windows11-readiness/)
+- [Where Autopilot actually breaks](../where-autopilot-actually-breaks-esp-phase-failure-category-per-deployment/)
+- [Which devices can't take Windows 11](../which-devices-cant-take-windows-11--the-hardware-blocker-per-device/)
 
 <script type="application/ld+json">
 {

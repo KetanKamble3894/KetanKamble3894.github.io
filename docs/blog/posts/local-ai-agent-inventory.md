@@ -171,8 +171,8 @@ it at real detection data.
 
 ## More in this series
 
-- [The devices no one owns](../device-hygiene/)
-- [Which setting actually failed?](../noncompliant-devices/)
+- [The devices no one owns](../the-devices-no-one-owns-anymore-a-read-only-hygiene-report-with-recommended-actions/)
+- [Which setting actually failed?](../which-setting-actually-failed-turning-intune-non-compliance-into-a-report/)
 
 <script type="application/ld+json">
 {

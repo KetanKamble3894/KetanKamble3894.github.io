@@ -173,8 +173,8 @@ test the whole report before you ever point it at real data.
 
 ## More in this series
 
-- [The devices no one owns](../device-hygiene/)
-- [Who's missing an Intune license](../license-compliance/)
+- [The devices no one owns](../the-devices-no-one-owns-anymore-a-read-only-hygiene-report-with-recommended-actions/)
+- [Who's missing an Intune license](../whos-missing-an-intune-license-finding-the-devices-slipping-through/)
 
 <script type="application/ld+json">
 {

@@ -188,8 +188,8 @@ Identity is just the cleanest way to run it on a schedule with no secrets.
 
 ## More in this series
 
-- [The devices no one owns](../device-hygiene/)
-- [Every policy, every target](../policy-assignments/)
+- [The devices no one owns](../the-devices-no-one-owns-anymore-a-read-only-hygiene-report-with-recommended-actions/)
+- [Every policy, every target](../every-policy-every-target-the-assignment-map-intune-wont-draw-for-you/)
 
 <script type="application/ld+json">
 {
