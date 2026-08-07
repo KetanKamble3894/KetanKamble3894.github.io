@@ -1,5 +1,6 @@
 ---
-description: A Log Analytics alert that catches Azure Virtual Desktop session failures from the logs and emails the AVD admins before the tickets pile up.
+title: "When AVD won't connect: alert first"
+description: "A Log Analytics alert that catches Azure Virtual Desktop session failures from the logs and emails the AVD admins before the tickets pile up."
 date: 2026-11-03
 slug: when-avd-wont-connect-alerting-before-the-tickets
 draft: false
@@ -166,6 +167,18 @@ low threshold before you set it live.
 
 - :material-script-text: **The query** → [AVD Connection-Failure Alert](../../scripts/avd-connection-failure-alert.md)
 - :material-robot-outline: **The capstone** → [The read-only AI agent that can't touch your tenant](../the-read-only-ai-agent-that-cant-touch-your-tenant/)
+
+
+## References — Microsoft documentation
+
+The Microsoft Learn documentation behind this one, if you want to go to the source:
+
+- **AVD diagnostics** — send AVD diagnostics to a workspace: [Azure Virtual Desktop diagnostics with Log Analytics](https://learn.microsoft.com/en-us/azure/virtual-desktop/diagnostics-log-analytics)
+- **WVDErrors table** — the schema for connection-error records: [Azure Monitor Logs reference — WVDErrors](https://learn.microsoft.com/en-us/azure/azure-monitor/reference/tables/wvderrors)
+- **AVD Insights** — monitoring AVD connections and errors: [Enable Insights to monitor Azure Virtual Desktop](https://learn.microsoft.com/en-us/azure/virtual-desktop/insights)
+- **Log search alert rules** — creating the scheduled query alert: [Create Azure Monitor log search alert rules](https://learn.microsoft.com/en-us/azure/azure-monitor/alerts/alerts-create-log-alert-rule)
+- **Action groups** — emailing admins when it fires: [Create and manage action groups](https://learn.microsoft.com/en-us/azure/azure-monitor/alerts/action-groups)
+- **KQL** — the query language behind the alert: [Kusto Query Language (KQL) overview](https://learn.microsoft.com/en-us/kusto/query/)
 
 ---
 

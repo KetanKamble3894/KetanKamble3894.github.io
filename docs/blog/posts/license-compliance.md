@@ -1,5 +1,7 @@
 ---
-description: Find corporate Windows devices whose user is missing the Intune or Windows Enterprise licence — joined to manager and department, read-only.
+title: "Who's missing an Intune license?"
+slug: whos-missing-an-intune-license-finding-the-devices-slipping-through
+description: "Find corporate Windows devices whose user is missing the Intune or Windows Enterprise licence — joined to manager and department, read-only."
 date: 2026-09-15
 draft: false
 comments: true
@@ -145,6 +147,18 @@ fictional `License_Compliance.csv` so you can build and demo the whole report be
 - :material-chart-box: **The report + template** → [License Compliance report](../../powerbi/license-compliance-report.md)
 - :material-shield-lock: **The bigger picture** → [Zero-Access Agent](../../projects/zero-access-agent/index.md)
 - :material-robot-outline: **The capstone** → [The read-only AI agent that can't touch your tenant](../the-read-only-ai-agent-that-cant-touch-your-tenant/)
+
+
+## References — Microsoft documentation
+
+The Microsoft Learn documentation behind this one, if you want to go to the source:
+
+- **Assign Intune licenses** — how licenses are granted: [Assign Microsoft Intune licenses](https://learn.microsoft.com/en-us/intune/fundamentals/licensing/assign-licenses)
+- **License requirements** — the plans that qualify for Intune: [Microsoft Intune licensing](https://learn.microsoft.com/en-us/intune/fundamentals/licensing)
+- **Group-based licensing** — assigning licenses at scale: [What is group-based licensing in Microsoft Entra?](https://learn.microsoft.com/en-us/entra/fundamentals/concept-group-based-licensing)
+- **assignLicense (Graph)** — add/remove a license via API: [user: assignLicense](https://learn.microsoft.com/en-us/graph/api/user-assignlicense?view=graph-rest-1.0)
+- **List subscribedSkus (Graph)** — enumerate tenant SKUs: [List subscribedSkus](https://learn.microsoft.com/en-us/graph/api/subscribedsku-list?view=graph-rest-1.0)
+- **List licenseDetails (Graph)** — per-user assigned licenses: [List licenseDetails](https://learn.microsoft.com/en-us/graph/api/user-list-licensedetails?view=graph-rest-1.0)
 
 ---
 

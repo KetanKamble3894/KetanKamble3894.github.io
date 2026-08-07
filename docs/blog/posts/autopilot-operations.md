@@ -1,5 +1,7 @@
 ---
-description: Turn Autopilot and ESP failures into an ops report — classified by phase, category and cause per deployment — so you fix the pattern, read-only.
+title: "Where Autopilot actually breaks"
+slug: where-autopilot-actually-breaks-esp-phase-failure-category-per-deployment
+description: "Turn Autopilot and ESP failures into an ops report — classified by phase, category and cause per deployment — so you fix the pattern, read-only."
 date: 2026-09-29
 draft: false
 comments: true
@@ -141,6 +143,18 @@ fictional `Autopilot_Operations_Detailed.csv` so you can build and demo the whol
 - :material-chart-box: **The report + template** → [Autopilot Operations report](../../powerbi/autopilot-operations-report.md)
 - :material-shield-lock: **The bigger picture** → [Zero-Access Agent](../../projects/zero-access-agent/index.md)
 - :material-robot-outline: **The capstone** → [The read-only AI agent that can't touch your tenant](../the-read-only-ai-agent-that-cant-touch-your-tenant/)
+
+
+## References — Microsoft documentation
+
+The Microsoft Learn documentation behind this one, if you want to go to the source:
+
+- **Windows Autopilot** — the deployment fundamentals: [Overview of Windows Autopilot](https://learn.microsoft.com/en-us/autopilot/overview)
+- **Enrollment Status Page** — the ESP phases a deployment moves through: [Windows Autopilot Enrollment Status Page](https://learn.microsoft.com/en-us/autopilot/enrollment-status)
+- **Set up ESP** — configuring ESP behaviour: [Set up the Enrollment Status Page](https://learn.microsoft.com/en-us/intune/device-enrollment/windows/setup-status-page)
+- **Troubleshoot ESP** — diagnosing which phase failed: [Troubleshoot the Enrollment Status Page](https://learn.microsoft.com/en-us/troubleshoot/mem/intune/device-enrollment/understand-troubleshoot-esp)
+- **Autopilot troubleshooting** — failure categories and fixes: [Windows Autopilot troubleshooting FAQ](https://learn.microsoft.com/en-us/autopilot/troubleshooting-faq)
+- **Autopilot known issues** — documented break points: [Windows Autopilot known issues](https://learn.microsoft.com/en-us/autopilot/known-issues)
 
 ---
 

@@ -46,3 +46,32 @@ jobs:
     steps:
       - id: deployment
         uses: actions/deploy-pages@v4
+      # Instant-indexing ping for Bing / Yandex (and Copilot's index) via IndexNow.
+      # Non-fatal: if the submit fails it never blocks a deploy. Reads the live
+      # sitemap and submits every URL. Key file: /<key>.txt (in docs/, hosted at root).
+      - name: Ping IndexNow (Bing/Yandex instant indexing)
+        continue-on-error: true
+        run: |
+          python3 - <<'PY'
+          import urllib.request, json, re, time
+          KEY  = "17e755307b58b3dbe3e0d44a9c7f9014"
+          HOST = "ketankamble.com"
+          time.sleep(15)  # let the Pages deploy propagate
+          try:
+              sm = urllib.request.urlopen(f"https://{HOST}/sitemap.xml", timeout=30).read().decode()
+          except Exception as e:
+              print("sitemap fetch failed (non-fatal):", e); raise SystemExit(0)
+          urls = re.findall(r"<loc>(.*?)</loc>", sm)[:10000]  # IndexNow per-request cap
+          if not urls:
+              print("no URLs in sitemap; nothing to submit"); raise SystemExit(0)
+          body = json.dumps({"host": HOST, "key": KEY,
+                             "keyLocation": f"https://{HOST}/{KEY}.txt",
+                             "urlList": urls}).encode()
+          req = urllib.request.Request("https://api.indexnow.org/indexnow", data=body,
+                                       headers={"Content-Type": "application/json; charset=utf-8"})
+          try:
+              r = urllib.request.urlopen(req, timeout=30)
+              print(f"IndexNow OK: HTTP {r.status}, submitted {len(urls)} URLs")
+          except Exception as e:
+              print("IndexNow submit failed (non-fatal):", e)
+          PY

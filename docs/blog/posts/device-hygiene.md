@@ -1,5 +1,7 @@
 ---
-description: Turn stale, orphaned and inactive Intune devices into a read-only hygiene worklist — each row with a recommended action and an owner team.
+title: "The devices no one owns anymore"
+slug: the-devices-no-one-owns-anymore-a-read-only-hygiene-report-with-recommended-actions
+description: "Turn stale, orphaned and inactive Intune devices into a read-only hygiene worklist — each row with a recommended action and an owner team."
 date: 2026-09-01
 draft: false
 comments: true
@@ -140,6 +142,18 @@ fictional `IntuneDeviceHygiene.csv` so you can build and demo the whole report b
 - :material-chart-box: **The report + template** → [Device Hygiene report](../../powerbi/device-hygiene-report.md)
 - :material-shield-lock: **The bigger picture** → [Zero-Access Agent](../../projects/zero-access-agent/index.md)
 - :material-robot-outline: **The capstone** → [The read-only AI agent that can't touch your tenant](../the-read-only-ai-agent-that-cant-touch-your-tenant/)
+
+
+## References — Microsoft documentation
+
+The Microsoft Learn documentation behind this one, if you want to go to the source:
+
+- **Cleanup rules** — auto-remove inactive Intune devices: [Automatically clean up devices with cleanup rules](https://learn.microsoft.com/en-us/intune/governance/configure-cleanup-rules)
+- **Manage stale devices** — identify and retire stale Entra devices: [How to manage stale devices in Microsoft Entra ID](https://learn.microsoft.com/en-us/entra/identity/devices/manage-stale-devices)
+- **Retire action** — remove company data from a device: [Device action: Retire](https://learn.microsoft.com/en-us/intune/device-management/actions/retire)
+- **Delete action** — delete an orphaned device record: [Device action: Delete](https://learn.microsoft.com/en-us/intune/device-management/actions/delete)
+- **Device actions** — the full remediation action set: [Device actions in Intune](https://learn.microsoft.com/en-us/intune/device-management/actions/)
+- **Manage device identities** — reviewing devices in Entra: [Manage devices in Microsoft Entra ID](https://learn.microsoft.com/en-us/entra/identity/devices/manage-device-identities)
 
 ---
 

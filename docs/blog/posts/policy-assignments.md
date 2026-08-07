@@ -1,5 +1,7 @@
 ---
-description: Map every Intune compliance policy and profile to every group it targets — dynamic rules and broken targets included — in a read-only report.
+title: "Every policy, every target"
+slug: every-policy-every-target-the-assignment-map-intune-wont-draw-for-you
+description: "Map every Intune compliance policy and profile to every group it targets — dynamic rules and broken targets included — in a read-only report."
 date: 2026-08-25
 draft: false
 comments: true
@@ -138,6 +140,17 @@ fictional `PolicyAssignments.csv` so you can build and demo the whole report bef
 - :material-chart-box: **The report + template** → [Policy Assignments report](../../powerbi/policy-assignments-report.md)
 - :material-shield-lock: **The bigger picture** → [Zero-Access Agent](../../projects/zero-access-agent/index.md)
 - :material-robot-outline: **The capstone** → [The read-only AI agent that can't touch your tenant](../the-read-only-ai-agent-that-cant-touch-your-tenant/)
+
+
+## References — Microsoft documentation
+
+The Microsoft Learn documentation behind this one, if you want to go to the source:
+
+- **Assign device profiles** — how Intune assigns profiles to groups: [Assign device profiles in Microsoft Intune](https://learn.microsoft.com/en-us/intune/device-configuration/assign-device-profile)
+- **Include/exclude assignments** — the include/exclude group model: [Include and exclude assignments in Microsoft Intune](https://learn.microsoft.com/en-us/intune/app-management/deployment/configure-assignment-scope)
+- **Assignment filters** — narrowing targets with filters: [Create assignment filters in Microsoft Intune](https://learn.microsoft.com/en-us/intune/fundamentals/filters/overview)
+- **List assignments (Graph)** — reading assignments from Graph: [List deviceConfigurationAssignments](https://learn.microsoft.com/en-us/graph/api/intune-deviceconfig-deviceconfigurationassignment-list?view=graph-rest-1.0)
+- **Assignment resource (Graph)** — the assignment object and its target: [Get deviceConfigurationAssignment](https://learn.microsoft.com/en-us/graph/api/intune-deviceconfig-deviceconfigurationassignment-get?view=graph-rest-1.0)
 
 ---
 

@@ -1,5 +1,7 @@
 ---
-description: Intune says a device is non-compliant — not which setting failed. A read-only Graph collector turns setting-level failures into a Power BI report.
+title: "Which setting actually failed?"
+slug: which-setting-actually-failed-turning-intune-non-compliance-into-a-report
+description: "Intune says a device is non-compliant — not which setting failed. A read-only Graph collector turns setting-level failures into a Power BI report."
 date: 2026-07-28
 draft: false
 comments: true
@@ -230,6 +232,18 @@ Identity is just the cleanest way to run it on a schedule with no secrets.
 - :material-book-open-variant: **The full teardown** → [how the Graph calls fit together](../../projects/zero-access-agent/collectors/noncompliant-devices.md)
 - :material-chart-box: **The report** → [Non-Compliant Windows Devices — Power BI](../../powerbi/noncompliant-devices-report.md)
 - :material-robot-outline: **The capstone** → [The read-only AI agent that can't touch your tenant](../the-read-only-ai-agent-that-cant-touch-your-tenant/)
+
+
+## References — Microsoft documentation
+
+The Microsoft Learn documentation behind this one, if you want to go to the source:
+
+- **Monitor compliance** — where compliance results surface in Intune: [Monitor device compliance policy results](https://learn.microsoft.com/en-us/intune/device-security/compliance/monitor-policy)
+- **Compliance policies** — what a compliance policy evaluates: [Device compliance policies in Microsoft Intune](https://learn.microsoft.com/en-us/intune/device-security/compliance/overview)
+- **deviceComplianceSettingState** — the per-setting failure resource: [deviceComplianceSettingState resource type](https://learn.microsoft.com/en-us/graph/api/resources/intune-deviceconfig-devicecompliancesettingstate?view=graph-rest-1.0)
+- **List setting states** — pull which setting failed, at scale: [List deviceComplianceSettingStates](https://learn.microsoft.com/en-us/graph/api/intune-deviceconfig-devicecompliancesettingstate-list?view=graph-rest-1.0)
+- **Setting-state summary** — aggregate per-setting compliance counts: [deviceCompliancePolicySettingStateSummary](https://learn.microsoft.com/en-us/graph/api/resources/intune-deviceconfig-devicecompliancepolicysettingstatesummary?view=graph-rest-1.0)
+- **complianceState enum** — decoding the per-device value: [complianceState enum type](https://learn.microsoft.com/en-us/graph/api/resources/intune-devices-compliancestate?view=graph-rest-1.0)
 
 ---
 

@@ -1,5 +1,6 @@
 ---
-description: A Sites.Selected 403 in a lab tenant turned into a design rule — read-only by architecture, not by trust — and the small script that proves it. The origin of the Zero-Access Pattern.
+title: "The 403 that started Zero-Access"
+description: "A Sites.Selected 403 in a lab became a design rule — read-only by architecture, not trust — and the small script that proves it. The Zero-Access origin story."
 date: 2026-11-10
 slug: the-403-that-started-the-zero-access-pattern
 draft: false
@@ -121,6 +122,17 @@ script can prove.
 - :material-script-text: **The artifact** → [Read-Only Gate](../../scripts/read-only-gate.md)
 - :material-shield-lock: **The architecture** → [Zero-Access Agent](../../projects/zero-access-agent/index.md)
 - :material-cog-outline: **Stand it up** → [Setting up the collection layer](../../projects/zero-access-agent/azure-automation-setup.md)
+
+
+## References — Microsoft documentation
+
+The Microsoft Learn documentation behind this one, if you want to go to the source:
+
+- **Sites.Selected** — site-level app permissions in SharePoint: [Overview of Selected permissions in OneDrive and SharePoint](https://learn.microsoft.com/en-us/graph/permissions-selected-overview)
+- **Graph permissions reference** — look up Sites.Selected and scopes: [Microsoft Graph permissions reference](https://learn.microsoft.com/en-us/graph/permissions-reference)
+- **Permissions and consent** — application vs delegated, and admin consent: [Permissions and consent in the Microsoft identity platform](https://learn.microsoft.com/en-us/entra/identity-platform/permissions-consent-overview)
+- **Grant admin consent** — consenting to app-only permissions: [Grant tenant-wide admin consent to an application](https://learn.microsoft.com/en-us/entra/identity/enterprise-apps/grant-admin-consent)
+- **Managed identities** — app-only auth without secrets: [Managed identities for Azure resources](https://learn.microsoft.com/en-us/entra/identity/managed-identities-azure-resources/overview)
 
 ---
 

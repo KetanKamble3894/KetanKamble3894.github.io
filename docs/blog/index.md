@@ -1,6 +1,6 @@
 ---
 title: Blog
-description: Writing about the Modern Workplace, from a personal lab.
+description: "Writing about the Modern Workplace from a personal lab — Intune, Entra, Microsoft Graph and endpoint management, decoded from first principles."
 hide:
   - navigation
   - toc

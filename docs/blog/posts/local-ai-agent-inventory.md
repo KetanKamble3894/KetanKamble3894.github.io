@@ -1,5 +1,7 @@
 ---
-description: A read-only inventory of local AI tools (Ollama, LM Studio, Copilot) by device and user — flagging leavers who still have shadow AI installed.
+title: "Who's running Ollama on your fleet?"
+slug: whos-running-ollama-on-your-fleet-a-read-only-shadow-ai-inventory
+description: "A read-only inventory of local AI tools (Ollama, LM Studio, Copilot) by device and user — flagging leavers who still have shadow AI installed."
 date: 2026-08-18
 draft: false
 comments: true
@@ -213,6 +215,17 @@ it at real detection data.
 - :material-chart-box: **The report + template** → [Local AI Agent Inventory report](../../powerbi/local-ai-agent-inventory-report.md)
 - :material-shield-lock: **The bigger picture** → [Zero-Access Agent](../../projects/zero-access-agent/index.md)
 - :material-robot-outline: **The capstone** → [The read-only AI agent that can't touch your tenant](../the-read-only-ai-agent-that-cant-touch-your-tenant/)
+
+
+## References — Microsoft documentation
+
+The Microsoft Learn documentation behind this one, if you want to go to the source:
+
+- **Discovered apps** — the read-only installed-app inventory: [Discovered apps in Microsoft Intune](https://learn.microsoft.com/en-us/intune/app-management/discovered-apps)
+- **Windows app inventory** — enhanced per-device inventory: [App inventory for Windows devices](https://learn.microsoft.com/en-us/intune/app-management/deployment/enhanced-app-inventory)
+- **Defender software inventory** — installed software across the fleet: [Software inventory — Defender Vulnerability Management](https://learn.microsoft.com/en-us/defender-vulnerability-management/tvm-software-inventory)
+- **Advanced hunting** — query installed software by name: [DeviceTvmSoftwareInventory table](https://learn.microsoft.com/en-us/defender-xdr/advanced-hunting-devicetvmsoftwareinventory-table)
+- **Export software inventory (API)** — pull inventory programmatically: [Export software inventory per device](https://learn.microsoft.com/en-us/defender-endpoint/api/get-assessment-software-inventory)
 
 ---
 

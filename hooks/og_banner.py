@@ -21,6 +21,7 @@ import datetime
 import json
 import os
 import posixpath
+import re
 
 from mkdocs.plugins import event_priority
 
@@ -103,12 +104,25 @@ def on_page_content(html, page, config, files, **kwargs):
         }
         return html + _script(graph)
 
-    # ---- About page: authoritative Person node ------------------------------
+    # ---- About page: ProfilePage wrapping the authoritative Person node ------
+    # Google supports ProfilePage for an "About Me" page on a blog; mainEntity is
+    # the Person the page is about (required), with a recommended description
+    # (byline / credential). Strengthens author-entity / E-E-A-T signals.
     if src == "about/index.md":
         person = dict(PERSON)
-        person["@context"] = "https://schema.org"
-        person["mainEntityOfPage"] = {"@type": "WebPage", "@id": page.canonical_url}
-        return html + _script(person)
+        person["description"] = (
+            "Modern Workplace Architect with 10 years in end-user computing; "
+            "MD-102 and SC-300 certified; Workplace Ninja User Group Finland "
+            "speaker. Builds read-only Intune, Entra and Microsoft Graph tooling "
+            "in the open."
+        )
+        profile = {
+            "@context": "https://schema.org",
+            "@type": "ProfilePage",
+            "@id": page.canonical_url,
+            "mainEntity": person,
+        }
+        return html + _script(profile)
 
     # ---- Blog posts: banner rewrite + article meta + BlogPosting ------------
     if not src.startswith("blog/posts/"):
@@ -167,8 +181,21 @@ def on_page_content(html, page, config, files, **kwargs):
     description = page.meta.get("description")
     if description:
         node["description"] = description
+    # BlogPosting needs an image for Article rich-result eligibility. Prefer the
+    # filename-matched banner; otherwise fall back to the post's own .post-cover
+    # image (resolved to an absolute URL) so no post is ever left without one.
     if have_banner:
         node["image"] = banner
+    else:
+        cover = None
+        cm = re.search(r'!\[[^\]]*\]\(([^)]+)\)\{[^}]*\.post-cover', page.markdown or "")
+        if not cm:
+            cm = re.search(r'<img[^>]*class="[^"]*post-cover[^"]*"[^>]*src="([^"]+)"', page.markdown or "")
+        if cm:
+            rel = re.sub(r'^(\.\./)+', "", cm.group(1).strip())  # strip leading ../
+            cover = posixpath.join(base, rel)
+        if cover:
+            node["image"] = cover
     if published:
         node["datePublished"] = published
         node["dateModified"] = published

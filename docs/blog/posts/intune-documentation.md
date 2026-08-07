@@ -1,5 +1,7 @@
 ---
-description: Always-current, read-only documentation of your whole Intune and Windows 365 config — built on the community M365Documentation module.
+title: "Documentation that writes itself"
+slug: documentation-that-writes-itself-a-read-only-snapshot-of-your-whole-intune-config
+description: "Always-current, read-only documentation of your whole Intune and Windows 365 config — built on the community M365Documentation module."
 date: 2026-08-11
 draft: false
 comments: true
@@ -180,6 +182,17 @@ No secrets, no app registration, nothing that can change your tenant — just a 
 - :material-shield-lock: **The bigger picture** → [Zero-Access Agent](../../projects/zero-access-agent/index.md) — where the prose and the snapshots come together.
 - :material-robot-outline: **The capstone** → [The read-only AI agent that can't touch your tenant](../the-read-only-ai-agent-that-cant-touch-your-tenant/)
 - :material-open-source-initiative: **Credit** → [M365Documentation by Thomas Kurth](https://github.com/ThomasKur/M365Documentation)
+
+
+## References — Microsoft documentation
+
+The Microsoft Learn documentation behind this one, if you want to go to the source:
+
+- **Device configuration** — the profiles/features/settings surface: [Device features and settings in Microsoft Intune](https://learn.microsoft.com/en-us/intune/device-configuration/overview)
+- **Settings catalog** — the enumerable per-setting policy model: [Create a policy using the settings catalog](https://learn.microsoft.com/en-us/intune/device-configuration/settings-catalog/)
+- **Intune in Microsoft Graph** — how Graph exposes Intune config: [Working with Intune in Microsoft Graph](https://learn.microsoft.com/en-us/graph/api/resources/intune-graph-overview?view=graph-rest-1.0)
+- **Devices/apps API overview** — reading config across devices and apps: [Intune devices and apps API overview](https://learn.microsoft.com/en-us/graph/intune-concept-overview)
+- **deviceConfiguration resource** — the config object being snapshotted: [deviceConfiguration resource type](https://learn.microsoft.com/en-us/graph/api/resources/intune-deviceconfig-deviceconfiguration?view=graph-rest-1.0)
 
 ---
 

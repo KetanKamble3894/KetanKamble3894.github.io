@@ -1,5 +1,7 @@
 ---
-description: See which devices can't take Windows 11 and exactly why — TPM, CPU, Secure Boot, RAM — per device, from Endpoint Analytics, read-only.
+title: "Which devices can't take Windows 11"
+slug: which-devices-cant-take-windows-11--the-hardware-blocker-per-device
+description: "See which devices can't take Windows 11 and exactly why — TPM, CPU, Secure Boot, RAM — per device, from Endpoint Analytics, read-only."
 date: 2026-09-22
 draft: false
 comments: true
@@ -145,6 +147,17 @@ fictional `Readiness.csv` so you can build and demo the whole report before poin
 - :material-chart-box: **The report + template** → [Windows 11 Readiness report](../../powerbi/windows11-readiness-report.md)
 - :material-shield-lock: **The bigger picture** → [Zero-Access Agent](../../projects/zero-access-agent/index.md)
 - :material-robot-outline: **The capstone** → [The read-only AI agent that can't touch your tenant](../the-read-only-ai-agent-that-cant-touch-your-tenant/)
+
+
+## References — Microsoft documentation
+
+The Microsoft Learn documentation behind this one, if you want to go to the source:
+
+- **Windows 11 requirements** — the TPM/CPU/Secure Boot minimum bar: [Windows 11 requirements](https://learn.microsoft.com/en-us/windows/whats-new/windows-11-requirements)
+- **Supported processors** — the CPU allow-list that blocks devices: [Windows 11 supported Intel processors](https://learn.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-supported-intel-processors)
+- **TPM 2.0** — the TPM requirement detail: [TPM recommendations](https://learn.microsoft.com/en-us/windows/security/hardware-security/tpm/tpm-recommendations)
+- **Endpoint analytics** — where the per-device readiness data is collected: [Endpoint analytics overview](https://learn.microsoft.com/en-us/intune/endpoint-analytics/)
+- **Upgrade to Windows 11** — acting on the ready devices: [Upgrade devices to Windows 11 using feature updates](https://learn.microsoft.com/en-us/intune/device-updates/windows/upgrade-to-windows-11)
 
 ---
 

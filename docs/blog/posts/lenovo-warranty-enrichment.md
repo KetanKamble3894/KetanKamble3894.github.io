@@ -1,5 +1,6 @@
 ---
-description: The one script in my read-only Intune project that actually writes — enriching Lenovo warranty into device Notes, opt-in and surgically.
+title: "Enriching Lenovo warranty in Intune"
+description: "The one script in my read-only Intune project that actually writes — enriching Lenovo warranty into device Notes, opt-in and surgically."
 date: 2026-10-13
 slug: the-one-script-that-writes-lenovo-warranty-into-notes
 draft: false
@@ -135,6 +136,16 @@ Run it in **report-only mode** first — no write scope, no risk. Run it interac
 - :material-script-text: **The script** → [Lenovo Warranty Enrichment](../../scripts/lenovo-warranty-enrichment.md)
 - :material-book-open-variant: **The full teardown** → [Enrichment tool — the one that writes](../../projects/zero-access-agent/lenovo-warranty-enrichment.md)
 - :material-robot-outline: **The capstone** → [The read-only AI agent that can't touch your tenant](../the-read-only-ai-agent-that-cant-touch-your-tenant/)
+
+
+## References — Microsoft documentation
+
+The Microsoft Learn documentation behind this one, if you want to go to the source:
+
+- **managedDevice resource** — the Notes property on an Intune device: [managedDevice resource type](https://learn.microsoft.com/en-us/graph/api/resources/intune-devices-manageddevice?view=graph-rest-1.0)
+- **Update managedDevice** — PATCH the device Notes field: [Update managedDevice](https://learn.microsoft.com/en-us/graph/api/intune-devices-manageddevice-update?view=graph-rest-1.0)
+- **Get managedDevice** — read a single device's details: [Get managedDevice](https://learn.microsoft.com/en-us/graph/api/intune-devices-manageddevice-get?view=graph-rest-1.0)
+- **List managedDevices** — enumerate enrolled devices: [List managedDevices](https://learn.microsoft.com/en-us/graph/api/intune-devices-manageddevice-list?view=graph-rest-1.0)
 
 ---
 

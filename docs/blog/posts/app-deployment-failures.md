@@ -1,5 +1,7 @@
 ---
-description: Roll every Intune app-install failure up per app — with a failure rate and a triage category — so you fix the worst app, not scroll per-device errors.
+title: "Which app is failing, and why"
+slug: which-app-is-failing-and-why-turning-intune-app-errors-into-a-triage-board
+description: "Roll every Intune app-install failure up per app — with a failure rate and a triage category — so you fix the worst app, not scroll per-device errors."
 date: 2026-09-08
 draft: false
 comments: true
@@ -141,6 +143,18 @@ fictional `App_Deployment_Failures.csv` so you can build and demo the whole repo
 - :material-chart-box: **The report + template** → [App Deployment Failures report](../../powerbi/app-deployment-failures-report.md)
 - :material-shield-lock: **The bigger picture** → [Zero-Access Agent](../../projects/zero-access-agent/index.md)
 - :material-robot-outline: **The capstone** → [The read-only AI agent that can't touch your tenant](../the-read-only-ai-agent-that-cant-touch-your-tenant/)
+
+
+## References — Microsoft documentation
+
+The Microsoft Learn documentation behind this one, if you want to go to the source:
+
+- **Monitor app assignments** — per-app install/status monitoring: [Monitor app information and assignments](https://learn.microsoft.com/en-us/intune/app-management/monitor-assignments)
+- **Troubleshoot app installs** — diagnosing failed installs: [Troubleshoot app installation issues with Intune](https://learn.microsoft.com/en-us/troubleshoot/mem/intune/app-management/troubleshoot-app-install)
+- **Win32 app troubleshooting** — Win32 install-failure detail: [Troubleshoot Win32 apps in Microsoft Intune](https://learn.microsoft.com/en-us/intune/app-management/deployment/troubleshoot-win32)
+- **App install error codes** — mapping codes to causes: [Application installation error reference](https://learn.microsoft.com/en-us/intune/configmgr/tenant-attach/app-install-error-reference)
+- **Install status (Graph)** — the per-device app-install state: [mobileAppInstallStatus resource type](https://learn.microsoft.com/en-us/graph/api/resources/intune-apps-mobileappinstallstatus?view=graph-rest-beta)
+- **mobileApp resource (Graph)** — the app object being triaged: [mobileApp resource type](https://learn.microsoft.com/en-us/graph/api/resources/intune-apps-mobileapp?view=graph-rest-1.0)
 
 ---
 

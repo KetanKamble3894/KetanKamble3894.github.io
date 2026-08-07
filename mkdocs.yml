@@ -170,7 +170,7 @@ nav:
           - Windows 11 Readiness report: powerbi/windows11-readiness-report.md
           - Autopilot Operations report: powerbi/autopilot-operations-report.md
   - About: about/index.md
-  - Contact: work-with-me.md
+  - Contact: contact.md
 
 extra:
   generator: false

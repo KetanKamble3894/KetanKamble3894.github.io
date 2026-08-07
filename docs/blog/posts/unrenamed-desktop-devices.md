@@ -1,5 +1,6 @@
 ---
-description: Find the Windows devices still on their default DESKTOP- name in Intune — a read-only report of provisioning stragglers, emailed to the team.
+title: "Finding the DESKTOP- stragglers"
+description: "Find the Windows devices still on their default DESKTOP- name in Intune — a read-only report of provisioning stragglers, emailed to the team."
 date: 2026-10-20
 slug: the-devices-that-never-got-renamed-desktop-stragglers
 draft: false
@@ -158,6 +159,17 @@ the device table logs to output as well as email. Point the SMTP and recipient C
 
 - :material-script-text: **The script** → [Unrenamed Device Report](../../scripts/unrenamed-desktop-devices.md)
 - :material-robot-outline: **The capstone** → [The read-only AI agent that can't touch your tenant](../the-read-only-ai-agent-that-cant-touch-your-tenant/)
+
+
+## References — Microsoft documentation
+
+The Microsoft Learn documentation behind this one, if you want to go to the source:
+
+- **Rename device action** — rename a managed device remotely: [Remote action: Rename device](https://learn.microsoft.com/en-us/intune/intune-service/remote-actions/device-rename)
+- **Device actions** — where the rename action lives: [Device actions in Intune](https://learn.microsoft.com/en-us/intune/device-management/actions/)
+- **Autopilot profiles** — apply a name template at enrollment: [Configure Windows Autopilot profiles](https://learn.microsoft.com/en-us/autopilot/profiles)
+- **Rename via Company Portal** — the end-user rename path: [Rename a device in the Company Portal](https://learn.microsoft.com/en-us/intune/user-help/device-actions/update-device-name-company-portal-app)
+- **Intune core concepts** — device-management fundamentals: [Microsoft Intune core concepts](https://learn.microsoft.com/en-us/intune/fundamentals/manage-devices)
 
 ---
 

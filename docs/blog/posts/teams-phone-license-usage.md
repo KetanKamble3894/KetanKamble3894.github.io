@@ -1,5 +1,6 @@
 ---
-description: Find the Teams Phone licenses nobody's using — disabled accounts, no number, no 90-day calls — joined to the manager, as a read-only reclaim report.
+title: "Teams Phone licenses, paid & unused"
+description: "Find the Teams Phone licenses nobody's using — disabled accounts, no number, no 90-day calls — joined to the manager, as a read-only reclaim report."
 date: 2026-10-27
 slug: teams-phone-licenses-paid-for-and-never-used
 draft: false
@@ -166,6 +167,17 @@ Run it read-only against a **lab tenant**, confirm the risk-tier counts in the v
 
 - :material-script-text: **The script** → [Teams Phone License Usage](../../scripts/teams-phone-license-usage.md)
 - :material-robot-outline: **The capstone** → [The read-only AI agent that can't touch your tenant](../the-read-only-ai-agent-that-cant-touch-your-tenant/)
+
+
+## References — Microsoft documentation
+
+The Microsoft Learn documentation behind this one, if you want to go to the source:
+
+- **Teams Phone licensing** — what Teams Phone requires: [Teams Phone licensing](https://learn.microsoft.com/en-us/microsoftteams/teams-phone-licensing)
+- **Assign Teams add-on licenses** — assigning Phone add-ons: [Assign Teams add-on licenses to users](https://learn.microsoft.com/en-us/microsoftteams/teams-add-on-licensing/assign-teams-add-on-licenses)
+- **subscribedSku (Graph)** — read purchased vs consumed counts: [subscribedSku resource type](https://learn.microsoft.com/en-us/graph/api/resources/subscribedsku?view=graph-rest-1.0)
+- **assignLicense (Graph)** — programmatic license changes: [user: assignLicense](https://learn.microsoft.com/en-us/graph/api/user-assignlicense?view=graph-rest-1.0)
+- **PSTN usage report** — see actual calling activity: [Microsoft Teams PSTN usage report](https://learn.microsoft.com/en-us/microsoftteams/teams-analytics-and-reports/pstn-usage-report)
 
 ---
 

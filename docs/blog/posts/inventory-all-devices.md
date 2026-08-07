@@ -1,5 +1,7 @@
 ---
-description: Build the enriched inventory Intune's All-devices list won't give you — device, Entra location, OEM warranty and Defender health, per device.
+title: "One row per device"
+slug: one-row-per-device-building-the-inventory-intune-wont-hand-you
+description: "Build the enriched inventory Intune's All-devices list won't give you — device, Entra location, OEM warranty and Defender health, per device."
 date: 2026-08-04
 draft: false
 comments: true
@@ -215,6 +217,18 @@ test the whole report before you ever point it at real data.
 - :material-chart-box: **The report + template** → [Inventory — All Devices report](../../powerbi/inventory-all-devices-report.md)
 - :material-shield-lock: **The bigger picture** → [Zero-Access Agent](../../projects/zero-access-agent/index.md) — where all ten snapshots come together.
 - :material-robot-outline: **The capstone** → [The read-only AI agent that can't touch your tenant](../the-read-only-ai-agent-that-cant-touch-your-tenant/)
+
+
+## References — Microsoft documentation
+
+The Microsoft Learn documentation behind this one, if you want to go to the source:
+
+- **List managedDevices** — the core Graph call for Intune device inventory: [List managedDevices — Microsoft Graph](https://learn.microsoft.com/en-us/graph/api/intune-devices-manageddevice-list?view=graph-rest-1.0)
+- **managedDevice resource** — the per-device fields you join on: [managedDevice resource type](https://learn.microsoft.com/en-us/graph/api/resources/intune-devices-manageddevice?view=graph-rest-1.0)
+- **Graph permissions** — the read scopes needed for device data: [Microsoft Graph permissions reference](https://learn.microsoft.com/en-us/graph/permissions-reference)
+- **Entra device identity** — the Entra device half of the join: [What is device identity in Microsoft Entra ID?](https://learn.microsoft.com/en-us/entra/identity/devices/overview)
+- **Intune device details** — hardware/OEM details per device: [View device details with Microsoft Intune](https://learn.microsoft.com/en-us/intune/device-management/inventory-and-status/device-details)
+- **Defender machine resource** — Defender health/exposure per device: [Machine resource type — Defender for Endpoint](https://learn.microsoft.com/en-us/defender-endpoint/api/machine)
 
 ---
 

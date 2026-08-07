@@ -1,5 +1,6 @@
 ---
-description: An AI agent that answers questions about your whole endpoint fleet in plain English — with zero access to Intune, Graph or any live system.
+title: "The AI agent that can't touch your tenant"
+description: "An AI agent for endpoint management: ask your whole Intune fleet in plain English, with zero access to any live system — unlike Microsoft's Copilot agents."
 date: 2026-10-06
 slug: the-read-only-ai-agent-that-cant-touch-your-tenant
 draft: false
@@ -24,7 +25,9 @@ tags:
 "Is Ollama installed anywhere, and is it approved?" You want to *ask* your fleet those questions in plain
 English and get an answer in seconds. The obvious way to build that — hand an AI model live access to
 Intune and Microsoft Graph — is also the most dangerous. This is the capstone of everything on this site:
-an AI agent that answers all of it, and holds **no access to any live system at all**.
+an **AI agent for endpoint management** that answers questions about your whole Intune fleet —
+and holds **no access to any live system at all**. (For how it compares to Microsoft's native
+Intune Copilot agents, jump to [Where this fits](#where-this-fits-microsofts-own-intune-copilot-agents).)
 
 <!-- more -->
 
@@ -50,8 +53,8 @@ Because "give the AI access to Graph" quietly grants three things you can't take
   creep it to ReadWrite "just for this one action"). That token now exists, refreshes forever, and is one
   prompt-injection away from being misused.
 - **The ability to act.** The moment the agent can call Graph, "remediate that" or "wipe that device" is a
-  function call away — an LLM one injected instruction from *wipe that device* is not a tool, it's a hazard
-  wired straight into production.
+  function call away — and an LLM that sits one injected instruction from *wipe that device* is not a tool,
+  it's a hazard wired straight into production.
 - **Live data in the model's context.** Every question pulls real tenant data — names, emails, device IDs —
   through the model. That's a data-governance surface you now own on every single query.
 
@@ -86,6 +89,27 @@ Five stages, and the containment lives in the seams between them:
 It trades **freshness for containment**: answers are as current as the last snapshot, not live. For "who
 owns this device / why did it fail / how many of X" that trade is invisible — and it's the whole point.
 
+The `documents` index is the only part with any real shape to it — a vector field for semantic search over
+the config docs, and nothing that can write. The core of its schema, verbatim:
+
+```json
+{
+  "name": "fleet-docs",
+  "fields": [
+    { "name": "id",           "type": "Edm.String", "key": true },
+    { "name": "title",        "type": "Edm.String", "searchable": true },
+    { "name": "content",      "type": "Edm.String", "searchable": true },
+    { "name": "snapshotDate", "type": "Edm.DateTimeOffset", "filterable": true, "sortable": true },
+    { "name": "contentVector","type": "Collection(Edm.Single)",
+      "searchable": true, "dimensions": 1536, "vectorSearchProfile": "fleet-docs-hnsw-profile" }
+  ]
+}
+```
+
+Both full index definitions (structured + documents), the indexer wiring, and the agent's own instructions
+are in the [Zero-Access Agent repo](https://github.com/KetanKamble3894/zero-access-agent) — this post is the
+*why*; that's the copy-paste *how*.
+
 ## The two halves of the fleet's knowledge
 
 The split between the two indexes is deliberate, and it maps exactly onto the ten spokes:
@@ -103,6 +127,17 @@ The split between the two indexes is deliberate, and it maps exactly onto the te
 - **Prose documentation** — the [Intune Documentation](../documentation-that-writes-itself-a-read-only-snapshot-of-your-whole-intune-config/)
   collector's HTML feeds the documents index, so "how does compliance work here" is answered from *your*
   documentation, not the model's general knowledge.
+
+### Following one question end to end
+
+Take *"How many devices can't take Windows 11?"* — here is every hop it makes, and where the containment sits:
+
+1. The **Windows 11 Readiness collector** already ran, under a Managed Identity with only `DeviceManagementManagedDevices.Read.All`, reading each device's reported hardware (TPM, CPU, Secure Boot). It wrote a sanitized CSV **and** a `Win11Readiness_Stats` file with the count of ineligible devices — broken down by blocker — already computed.
+2. An **Azure AI Search indexer** loaded those rows into `fleet-structured`. Nothing in this path can write to the tenant.
+3. You ask the question. The **agent searches** `fleet-structured` for the `Win11Readiness_Stats` rows (`Category = Blocker`, keys like `TPM 2.0`, `Unsupported CPU`, `Secure Boot`).
+4. It answers **from those stat values** — never by counting the device rows it happened to retrieve (rule 2) — and states the source report and snapshot date.
+
+The number the agent gives is the same number the Power BI report shows, because both read the *same* pre-computed stat. At no point did anything hold a token, a write scope, or a live connection — the question was answered entirely from a dated copy.
 
 ## The safety layer is the system prompt
 
@@ -128,12 +163,76 @@ count wrong, or over-share. So the agent's **instructions** are the second half 
 - **Everything is dated, and cited.** Every answer states the snapshot date and names the report or document
   the fact came from, and ends with a plain-language summary for non-technical readers.
 
+Those rules aren't prose in a README — they're the agent's actual instructions. A sanitized excerpt of the
+system prompt that enforces them:
+
+```text
+# Zero-Access Agent — system instructions (sanitized excerpt)
+
+ROLE
+You answer questions about an endpoint fleet from read-only, dated snapshots only.
+You have NO access to Intune, Microsoft Graph, Entra, Defender or any live system,
+and you CANNOT make changes. You never use web search.
+
+TOOLS
+Your only tool is Azure AI Search over two indexes:
+  - fleet-structured : one document per report row (inventory, compliance, apps, ...)
+  - fleet-docs       : vector-embedded Intune configuration documentation
+Answer ONLY from what these searches return this turn.
+
+RULES
+1. Search every turn. Never say something "doesn't exist" unless you searched THIS
+   turn and got zero rows. Do not answer from a previous turn's memory.
+2. Counts come only from the *_Stats reports (Category / Key / Count). Never count
+   search results by hand — you only see the rows you retrieved. If no matching stat
+   exists, say the exact count isn't available.
+3. Absence is not evidence. A device with no rows is "unknown", never "clean" —
+   clean devices are excluded from the index to keep it small.
+4. Detected != used; on-baseline != approved. Distinguish a running process from an
+   installed binary, and "on the Microsoft AI baseline" from "approved by the board".
+5. Every answer states the snapshot date and names the report or document it came
+   from, and ends with a one-line, plain-language summary.
+6. If asked to remediate, explain you cannot and name the team that can.
+```
+
+*(Representative, from a personal lab — trimmed and sanitized, not a tenant dump.)*
+
 ## What it looks like in use
 
 Ask it a real operational question and it searches the snapshots, answers, and tells you which report it
 used — with a plain-language summary underneath.
 
 ![The Zero-Access Agent answering an endpoint question from the read-only snapshots — the answer cites its source report and dates the snapshot (synthetic lab data)](../../assets/img/zero-access-agent-answer.png){ .kk-zoom loading=lazy width="1512" height="880" }
+
+A representative exchange against the synthetic lab fleet — note the cited source and snapshot date on every answer:
+
+```text
+You:   How many devices fail the Firewall compliance setting in Finland?
+
+Agent: 87 devices in the Finland region are Not compliant on the Firewall setting
+       (Windows-Compliance-Baseline).
+       Source: NonCompliant_Stats — Category "Setting", Key "Firewall", Region "FI".
+       Snapshot: 2026-08-04.
+       In plain terms: a focused set of Finnish devices with the firewall failing —
+       worth a targeted fix, not a fleet-wide push.
+
+You:   How many of those are also missing an Intune licence?
+
+Agent: I can't give you an exact overlap. There's no pre-computed stat for
+       "Firewall-failing AND unlicensed", and I only see the rows a search returns —
+       a partial set — so counting the intersection by hand would be wrong. What I
+       can do is give you both cited lists to cross-reference: the Firewall failures
+       (NonCompliant_Stats) and the licence gaps (LicenseCompliance_Stats).
+       In plain terms: I won't guess a number I can't ground — here are the two lists.
+
+You:   Then just wipe the unlicensed devices.
+
+Agent: I can't do that. I hold no access to Intune, Graph or any live system and
+       cannot make changes — I only read snapshots. The team that can action this is
+       your endpoint operations group.
+```
+
+Two payoffs in one exchange: the agent **refuses to hand-count** an intersection it can't ground (the guardrail, working), and then the request to *act* has nowhere to go — there is no tool that can.
 
 ## Why "zero access" is the point, not a limitation
 
@@ -165,6 +264,70 @@ and **cannot** surprise you. For an endpoint estate, that's the right trade.
     human-run enrichment utility that can write device warranty into the Notes field — it's fenced off,
     opt-in, defaults to a read-only report, and named openly rather than hidden. The agent never touches it.
 
+## Where this fits: Microsoft's own Intune Copilot agents
+
+In 2026, "an AI agent for endpoint management" usually means Microsoft's **Security Copilot agents in
+Intune** — purpose-built agents that live in the admin center and *act* on your tenant, with human review.
+Today that's the **Policy Configuration**, **Vulnerability Remediation** and **Change Review** agents, plus
+the **Copilot** assistant that writes KQL and summarises. (There was a fourth — Device Offboarding —
+[removed from the admin center on 1 June 2026](https://learn.microsoft.com/en-us/intune/copilot/agents/device-offboarding-agent);
+Microsoft's overview page still lists it, but its own agent page documents the removal.) Microsoft's model is
+"observe, reason, and act with oversight and review" — the agents read,
+analyse and *recommend*, and every change that actually writes to your tenant is gated behind a human. If
+you're licensed for Security Copilot, they're the fastest way to get agentic help inside Intune, and they're
+genuinely good.
+
+This project is the opposite philosophy on purpose. Microsoft's agents are built to *act* — scoped tightly
+and approval-gated, but they hold real permissions and can change your tenant. The Zero-Access Agent is built
+so it *can't*: it answers questions about the estate and holds no token, no scope, and no connection to any
+live system. Not because acting is wrong — that's the right call for remediation — but because most of what
+admins want from "chat with my fleet" is *answers*, and answering shouldn't require handing an LLM the keys.
+**Native agents to act; a zero-access agent to ask. Use both.**
+
+The two designs side by side:
+
+| | Microsoft's native Intune agents | This Zero-Access Agent |
+|---|---|---|
+| **What it's for** | Act on the tenant — create policy, remediate, review changes | Answer questions about the fleet |
+| **Access it holds** | Least-privileged roles + an Entra agentic identity (newer agents) | None — no token, no scope, no connection |
+| **Can it change your tenant?** | Yes — gated behind human approval | No — there is nothing to act on |
+| **Data it sees** | Live tenant data | Sanitized, dated snapshots only |
+| **Runs on** | Security Copilot compute (SCUs) | Two read-only search indexes |
+| **Worst case if compromised** | Blast radius is your production fleet | It reads a snapshot you could already export |
+
+## How you give an AI agent access to your endpoints — and why this one needs none
+
+It's worth being concrete about what "give an AI agent access" actually involves, because it's more than
+flipping a switch. For Microsoft's native Intune agents the path is, roughly:
+
+- **Stand up the capacity.** You need **Intune Plan 1** and **Security Copilot enabled with provisioned
+  Security Compute Units (SCUs)** — the agents run on that capacity, billed per SCU-hour on provisioned
+  capacity (E5/E7 tenants instead get a monthly SCU allowance auto-provisioned). No SCUs, no agents.
+- **Grant least-privileged roles.** Setting an agent up needs a **Copilot Owner** role plus an Intune
+  **read-only** role; running it needs **Copilot Contributor**; and a **write** role is added *only* for the
+  specific action the agent takes — e.g. creating a policy. Reading is the default; writing is separately
+  permissioned.
+- **Give the agent an identity.** Newer agents provision a dedicated **Entra "agentic identity"** in your
+  directory that you delegate permissions to (older ones run under the admin who set them up); the agent
+  stays disabled until a **readiness check** confirms the permissions are in place. That check is the real
+  consent gate.
+- **Keep a human in the loop.** Scope each agent to device groups / scope tags to limit blast radius, and
+  remember every enforcing action — create the policy, approve the change — still requires a person to click.
+
+That's the honest cost of an agent that can *act*: capacity, standing roles, an identity with real
+permissions, and careful scoping — all things you now own and must audit.
+
+Now line it up against this one:
+
+!!! success "The most secure access is no access"
+    The Zero-Access Agent is granted **none** of the above. No SCUs against your tenant, no Copilot role, no
+    Entra agentic identity, no Graph scope, no device scoping to get wrong. There is no token to leak, no
+    write role to creep, and no live system on the other end. "How do you give this agent access to your
+    endpoints?" — you don't, and that's the whole design.
+
+*A full, hands-on walkthrough of enabling Microsoft's native Security Copilot agents in Intune — roles, SCUs
+and all — is a post of its own; this one is about the agent you can run with nothing granted at all.*
+
 ## The ten collectors that feed it
 
 Every answer the agent gives traces back to one of these read-only collectors — the ten spokes of this series:
@@ -187,6 +350,8 @@ the project page.
 
 ## FAQ
 
+**What is an AI agent for endpoint management?** It's software that answers questions about — or takes action on — your managed device fleet (Intune, Entra, Defender) in plain language. Microsoft's native ones, the [Security Copilot agents in Intune](https://learn.microsoft.com/en-us/intune/copilot/agents/), *act* on the tenant under scoped, approval-gated permissions. This project is a **zero-access** variant that only *answers* — from read-only, dated snapshots, holding no live access to any system at all.
+
 **Does the agent connect to Intune or Graph?** No. Its only tool is Azure AI Search over two read-only
 indexes. It holds no Graph scope, no key, and no live connection, and it cannot make changes.
 
@@ -201,6 +366,17 @@ key with RBAC, with the agent's no-enumeration / no-profiling rules as a second 
 
 - :material-rocket-launch: **Build it yourself** → [Zero-Access Agent](../../projects/zero-access-agent/index.md)
 - :material-format-list-bulleted: **The full series** → [Behind the portal](../index.md)
+
+## References — Microsoft documentation
+
+The primary Microsoft Learn sources behind this build, if you want to go to the source:
+
+- **Foundry Agent Service** — the agent and its tool model: [What is Microsoft Foundry Agent Service?](https://learn.microsoft.com/en-us/azure/foundry/agents/overview)
+- **Azure AI Search — vector search** — the vector-embedded documents index: [Vector search in Azure AI Search](https://learn.microsoft.com/en-us/azure/search/vector-search-overview)
+- **Azure AI Search — semantic ranking** — how retrieved results are re-ranked: [Semantic ranking in Azure AI Search](https://learn.microsoft.com/en-us/azure/search/semantic-search-overview)
+- **Azure Automation — managed identity** — how the collectors run with no stored secrets: [Managed identities for an Azure Automation account](https://learn.microsoft.com/en-us/azure/automation/enable-managed-identity-for-automation)
+- **Microsoft Graph permissions** — the `.Read.All` application scopes the collectors hold: [Microsoft Graph permissions reference](https://learn.microsoft.com/en-us/graph/permissions-reference)
+- **Security Copilot agents in Intune** — Microsoft's native endpoint agents: [AI agents in the Intune admin center](https://learn.microsoft.com/en-us/intune/copilot/agents/)
 
 ---
 

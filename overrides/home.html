@@ -6,25 +6,30 @@
 <title>Ketan Kamble — Microsoft Modern Workplace, in the open</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
 <!-- COOKIELESS-ANALYTICS-BEACON -->
 <style>
   :root{
     --bg:#F6F8FC;--surface:#FFFFFF;--surface-2:#F0F4FA;
     --border:#E4EAF2;--border-2:#D6DEEA;
-    --text:#0E1A2B;--muted:#4B586F;--muted-2:#7A869C;
+    --text:#0E1A2B;--muted:#4B586F;--muted-2:#5F6B82;
     --brand:#0EA5A0;--brand-2:#2563EB;--brand-3:#10B981;
     --ink:#0B1220;--radius:18px;--maxw:1160px;
     --shadow:0 20px 50px -24px rgba(20,40,80,.28);--shadow-sm:0 8px 24px -14px rgba(20,40,80,.25);
   }
   body.dark{
     --bg:#070B16;--surface:#0F172A;--surface-2:#0B1120;--border:#1E2A44;--border-2:#26324f;
-    --text:#E8EDF6;--muted:#93A2BE;--muted-2:#6B7A96;--brand:#2DD4BF;--brand-2:#38BDF8;--brand-3:#34D399;
+    --text:#E8EDF6;--muted:#93A2BE;--muted-2:#8B99B5;--brand:#2DD4BF;--brand-2:#38BDF8;--brand-3:#34D399;
     --shadow:0 40px 80px -40px rgba(0,0,0,.7);--shadow-sm:0 20px 40px -28px rgba(0,0,0,.7);
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
-  body{background:var(--bg);color:var(--text);font-family:'Inter',system-ui,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;transition:background .3s,color .3s}
+  /* Metric-matched fallback for Inter (Arial-based) so the async font swap
+     causes no layout shift — keeps the render-block win without a CLS hit. */
+  @font-face{font-family:'Inter Fallback';src:local('Arial');ascent-override:90.44%;descent-override:22.52%;line-gap-override:0%;size-adjust:107.12%}
+  body{background:var(--bg);color:var(--text);font-family:'Inter','Inter Fallback',system-ui,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;transition:background .3s,color .3s}
   .mono{font-family:'JetBrains Mono',monospace}
   a{color:inherit;text-decoration:none}
   .wrap{max-width:var(--maxw);margin:0 auto;padding:0 26px}
@@ -113,8 +118,8 @@
   .stage .meta{margin-left:auto;font-size:10.5px;color:var(--muted-2);font-weight:600}
   .stage .meta.ro{color:var(--brand-3)}
   .arrow{height:8px;display:grid;place-items:center;color:var(--border-2);font-size:11px}
-  .packet{position:absolute;left:29px;width:10px;height:10px;border-radius:50%;background:var(--brand);box-shadow:0 0 12px 3px color-mix(in srgb,var(--brand) 70%,transparent);z-index:3;opacity:0;animation:travel 5s linear infinite}
-  @keyframes travel{0%{top:26px;opacity:0}5%{opacity:1}95%{opacity:1}100%{top:300px;opacity:0}}
+  .packet{position:absolute;left:29px;top:26px;width:10px;height:10px;border-radius:50%;background:var(--brand);box-shadow:0 0 12px 3px color-mix(in srgb,var(--brand) 70%,transparent);z-index:3;opacity:0;will-change:transform;animation:travel 5s linear infinite}
+  @keyframes travel{0%{transform:translateY(0);opacity:0}5%{opacity:1}95%{opacity:1}100%{transform:translateY(274px);opacity:0}}
 
   /* explore cards — neutral surfaces, single teal accent (no rainbow) */
   .explore{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
@@ -136,7 +141,7 @@
   .post{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:24px;transition:transform .18s,border-color .18s,box-shadow .18s}
   .post:hover{transform:translateY(-4px);border-color:color-mix(in srgb,var(--brand) 45%,var(--border));box-shadow:var(--shadow-sm)}
   .post .meta{font-size:12px;color:var(--muted-2);font-weight:600;letter-spacing:.03em;text-transform:uppercase}
-  .post h4{font-size:17px;font-weight:800;margin:10px 0 8px;letter-spacing:-.01em}
+  .post h3{font-size:17px;font-weight:800;margin:10px 0 8px;letter-spacing:-.01em}
   .post p{font-size:13.5px;color:var(--muted)}
   .post .soon{display:inline-block;margin-top:14px;font-size:11.5px;font-weight:700;color:var(--brand);background:color-mix(in srgb,var(--brand) 10%,var(--surface));border:1px solid color-mix(in srgb,var(--brand) 26%,var(--surface));padding:3px 10px;border-radius:999px}
 
@@ -154,12 +159,14 @@
   .disc{max-width:640px;line-height:1.55}
   .post.feature{border-color:color-mix(in srgb,var(--brand) 48%,var(--border));background:linear-gradient(180deg,color-mix(in srgb,var(--brand) 7%,var(--surface)),var(--surface))}
   .post.feature .meta{color:var(--brand)}
-  .post.feature h4{font-size:20px}
+  .post.feature h3{font-size:20px}
   .collectors{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;max-width:940px;margin:16px auto 0}
   .collectors a{font-size:12.5px;font-weight:600;color:var(--muted);background:var(--surface);border:1px solid var(--border);padding:6px 12px;border-radius:999px;transition:border-color .15s,color .15s}
   .collectors a:hover{border-color:var(--brand);color:var(--text)}
   .cred{margin-top:12px;display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:600;color:var(--brand);background:color-mix(in srgb,var(--brand) 9%,var(--surface));border:1px solid color-mix(in srgb,var(--brand) 24%,var(--surface));padding:5px 12px;border-radius:999px}
 </style>
+<meta name="description" content="Ketan Kamble builds Microsoft endpoint-management tooling in the open — Intune, Entra, Graph — and writes about how it actually works underneath the portal.">
+<link rel="canonical" href="https://ketankamble.com/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Ketan Kamble">
 <meta property="og:title" content="Ketan Kamble — Modern Workplace, in the open">
@@ -192,7 +199,7 @@
       <a href="scripts/">Scripts</a>
       <a href="powerbi/">Power BI</a>
       <a href="about/">About</a>
-      <a href="work-with-me/">Contact</a>
+      <a href="contact/">Contact</a>
     </div>
     <div class="nav-right">
       <button class="theme-btn" id="themeBtn" title="Toggle light / dark" aria-label="Toggle theme"><svg id="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1111.2 3 7 7 0 0021 12.8z"/></svg></button>
@@ -217,7 +224,7 @@
       </div>
 
       <div class="profile">
-        <div class="pfp">KK<img src="assets/headshot/ketan.jpg" alt="Ketan Kamble" onerror="this.style.display='none'"></div>
+        <div class="pfp">KK<img src="assets/headshot/ketan.webp" alt="Ketan Kamble" width="176" height="176" onerror="this.style.display='none'"></div>
         <div class="nm">Ketan Kamble</div>
         <div class="role">Modern Workplace Architect</div>
         <div class="loc"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Finland</div>
@@ -225,7 +232,7 @@
         <div class="socials">
           <a class="soc" href="https://github.com/KetanKamble3894" title="GitHub"><svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 014 0c1.53-1.03 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0016 8c0-4.42-3.58-8-8-8z"/></svg></a>
           <a class="soc" href="https://www.linkedin.com/in/ketan-kamble-012a1582/" title="LinkedIn" target="_blank" rel="noopener"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 110-4.13 2.06 2.06 0 010 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg></a>
-          <a class="soc" href="work-with-me/" title="Contact"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></a>
+          <a class="soc" href="contact/" title="Contact"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></a>
         </div>
         <div class="nowline"><b>Zero-Access Agent</b> — live · open source (MIT)</div>
       </div>
@@ -233,6 +240,7 @@
   </div>
 </header>
 
+<main>
 <!-- FEATURED PROJECT -->
 <section id="projects">
   <div class="wrap">
@@ -308,14 +316,14 @@
 
     <a class="post feature" href="blog/the-read-only-ai-agent-that-cant-touch-your-tenant/" style="display:block;margin-bottom:18px">
       <div class="meta">★ Start here · the main story</div>
-      <h4>The read-only AI agent that can't touch your tenant</h4>
+      <h3>The read-only AI agent that can't touch your tenant</h3>
       <p>Ask your whole endpoint fleet in plain English — from an agent that holds zero access to Intune, Graph or any live system. This is the capstone the ten read-only collectors feed.</p>
     </a>
 
     <div class="posts">
-      <a class="post" href="blog/which-setting-actually-failed-turning-intune-non-compliance-into-a-report/"><div class="meta">Jul 28, 2026 · Compliance</div><h4>Which setting actually failed?</h4><p>Intune says Not compliant — but not <em>which</em> setting, at scale. The read-only collector that names it, per device.</p></a>
-      <a class="post" href="blog/one-row-per-device-building-the-inventory-intune-wont-hand-you/"><div class="meta">Aug 4, 2026 · Behind the portal</div><h4>One row per device</h4><p>Device, Entra location, OEM warranty and Defender health — joined into one sliceable inventory row.</p></a>
-      <a class="post" href="blog/whos-running-ollama-on-your-fleet-a-read-only-shadow-ai-inventory/"><div class="meta">Aug 18, 2026 · Behind the portal</div><h4>Who's running Ollama?</h4><p>Copilot, local LLMs and shadow-AI tools across the fleet — inventoried read-only, before they surprise you.</p></a>
+      <a class="post" href="blog/which-setting-actually-failed-turning-intune-non-compliance-into-a-report/"><div class="meta">Jul 28, 2026 · Compliance</div><h3>Which setting actually failed?</h3><p>Intune says Not compliant — but not <em>which</em> setting, at scale. The read-only collector that names it, per device.</p></a>
+      <a class="post" href="blog/one-row-per-device-building-the-inventory-intune-wont-hand-you/"><div class="meta">Aug 4, 2026 · Behind the portal</div><h3>One row per device</h3><p>Device, Entra location, OEM warranty and Defender health — joined into one sliceable inventory row.</p></a>
+      <a class="post" href="blog/whos-running-ollama-on-your-fleet-a-read-only-shadow-ai-inventory/"><div class="meta">Aug 18, 2026 · Behind the portal</div><h3>Who's running Ollama?</h3><p>Copilot, local LLMs and shadow-AI tools across the fleet — inventoried read-only, before they surprise you.</p></a>
     </div>
 
     <p style="text-align:center;color:var(--muted-2);font-size:13px;margin:30px 0 0">The ten read-only collectors that feed the agent</p>
@@ -346,6 +354,7 @@
     </div>
   </div>
 </section>
+</main>
 
 <footer>
   <div class="wrap foot-in">
