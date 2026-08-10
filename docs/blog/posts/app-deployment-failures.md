@@ -2,7 +2,7 @@
 title: "Which app is failing, and why"
 slug: which-app-is-failing-and-why-turning-intune-app-errors-into-a-triage-board
 description: "Roll every Intune app-install failure up per app — with a failure rate and a triage category — so you fix the worst app, not scroll per-device errors."
-date: 2026-09-08
+date: 2026-06-08
 draft: false
 comments: true
 categories:

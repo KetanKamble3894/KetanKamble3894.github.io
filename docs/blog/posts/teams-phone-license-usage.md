@@ -1,7 +1,7 @@
 ---
 title: "Teams Phone licenses, paid & unused"
 description: "Find the Teams Phone licenses nobody's using — disabled accounts, no number, no 90-day calls — joined to the manager, as a read-only reclaim report."
-date: 2026-10-27
+date: 2026-07-27
 slug: teams-phone-licenses-paid-for-and-never-used
 draft: false
 comments: true

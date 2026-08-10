@@ -2,7 +2,7 @@
 title: "Which setting actually failed?"
 slug: which-setting-actually-failed-turning-intune-non-compliance-into-a-report
 description: "Intune says a device is non-compliant — not which setting failed. A read-only Graph collector turns setting-level failures into a Power BI report."
-date: 2026-07-28
+date: 2026-04-27
 draft: false
 comments: true
 categories:

@@ -1,7 +1,7 @@
 ---
 title: "When AVD won't connect: alert first"
 description: "A Log Analytics alert that catches Azure Virtual Desktop session failures from the logs and emails the AVD admins before the tickets pile up."
-date: 2026-11-03
+date: 2026-08-03
 slug: when-avd-wont-connect-alerting-before-the-tickets
 draft: false
 comments: true

@@ -2,7 +2,7 @@
 title: "Where Autopilot actually breaks"
 slug: where-autopilot-actually-breaks-esp-phase-failure-category-per-deployment
 description: "Turn Autopilot and ESP failures into an ops report — classified by phase, category and cause per deployment — so you fix the pattern, read-only."
-date: 2026-09-29
+date: 2026-06-29
 draft: false
 comments: true
 categories:

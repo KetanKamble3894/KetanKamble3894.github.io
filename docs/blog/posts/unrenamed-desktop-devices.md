@@ -1,7 +1,7 @@
 ---
 title: "Finding the DESKTOP- stragglers"
 description: "Find the Windows devices still on their default DESKTOP- name in Intune — a read-only report of provisioning stragglers, emailed to the team."
-date: 2026-10-20
+date: 2026-07-20
 slug: the-devices-that-never-got-renamed-desktop-stragglers
 draft: false
 comments: true

@@ -2,7 +2,7 @@
 title: "Who's running Ollama on your fleet?"
 slug: whos-running-ollama-on-your-fleet-a-read-only-shadow-ai-inventory
 description: "A read-only inventory of local AI tools (Ollama, LM Studio, Copilot) by device and user — flagging leavers who still have shadow AI installed."
-date: 2026-08-18
+date: 2026-05-18
 draft: false
 comments: true
 categories:
@@ -83,34 +83,6 @@ For example, a row might read **LAT-2093 · Ollama (llama3) · shadow / unsancti
 <div class="mermaid-live" markdown="0">
 --8<-- "assets/diagrams/local-ai-agent-inventory.svg"
 </div>
-
-??? note "Want a prettier diagram? Paste this into eraser.io"
-    Eraser's AI turns this prompt into an editable cloud-architecture diagram:
-
-    ```text
-    Create a cloud architecture diagram titled
-    "Local AI Agent Inventory — the Zero-Access Pattern".
-
-    Nodes (use Azure/Microsoft icons):
-    - Managed Device (Windows) running a Proactive Remediation detection script
-    - Microsoft Intune / Microsoft Graph
-    - Entra ID
-    - Azure Automation Runbook (system-assigned Managed Identity)
-    - Azure Blob Storage
-    - Power BI
-
-    Flows (label each; every Graph/Entra call is READ-ONLY, GET only):
-    1. Managed Device → Intune: detection script reports installed AI tools
-    2. Runbook → Microsoft Graph: GET deviceHealthScripts/{id}/deviceRunStates (read-only)
-    3. Microsoft Graph → Runbook: per-device detection output
-    4. Runbook → Entra ID: GET /users/{id} — department, location, accountEnabled (read-only)
-    5. Runbook (internal): parse tools, join account status, count devices not rows
-    6. Runbook → Blob Storage: write AIAgentInventory.csv + stats
-    7. Blob Storage → Power BI: report refresh
-
-    Style: dark background, teal accent (#2dd4bf), red for "unsanctioned",
-    a callout box reading "no write scopes · no live tenant in the report".
-    ```
 
 The read-only Graph roles are all `.Read.All`: `DeviceManagementConfiguration.Read.All` for the
 remediation run states, `DeviceManagementManagedDevices.Read.All` as a device fallback, and

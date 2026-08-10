@@ -1,7 +1,7 @@
 ---
 title: "Enriching Lenovo warranty in Intune"
 description: "The one script in my read-only Intune project that actually writes — enriching Lenovo warranty into device Notes, opt-in and surgically."
-date: 2026-10-13
+date: 2026-07-13
 slug: the-one-script-that-writes-lenovo-warranty-into-notes
 draft: false
 comments: true

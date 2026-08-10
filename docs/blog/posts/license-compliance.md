@@ -2,7 +2,7 @@
 title: "Who's missing an Intune license?"
 slug: whos-missing-an-intune-license-finding-the-devices-slipping-through
 description: "Find corporate Windows devices whose user is missing the Intune or Windows Enterprise licence — joined to manager and department, read-only."
-date: 2026-09-15
+date: 2026-06-15
 draft: false
 comments: true
 categories:

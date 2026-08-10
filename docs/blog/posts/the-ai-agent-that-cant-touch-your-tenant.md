@@ -1,7 +1,7 @@
 ---
 title: "The AI agent that can't touch your tenant"
 description: "An AI agent for endpoint management: ask your whole Intune fleet in plain English, with zero access to any live system — unlike Microsoft's Copilot agents."
-date: 2026-10-06
+date: 2026-07-06
 slug: the-read-only-ai-agent-that-cant-touch-your-tenant
 draft: false
 comments: true

@@ -15,7 +15,7 @@ need a human/browser pass and are intentionally OUT of scope: rendered visual
 regressions ("too big at 100%") and how an animated hook *looks* frozen on a
 phone. Do those with the Chrome pass on the live pages after deploy.
 """
-import json, pathlib, re, struct, sys
+import datetime, json, pathlib, re, struct, sys
 from urllib.parse import urldefrag, urlsplit
 
 ROOT  = pathlib.Path(__file__).resolve().parent.parent
@@ -27,7 +27,7 @@ FAILS, WARNS = [], []
 def fail(who, msg): FAILS.append(f"[FAIL] {who}: {msg}")
 def warn(who, msg): WARNS.append(f"[WARN] {who}: {msg}")
 
-PLACEHOLDERS = re.compile(r'\b(TODO|FIXME|lorem ipsum|coming soon|xxx placeholder)\b', re.I)
+PLACEHOLDERS = re.compile(r'\bTODO\b|\bFIXME\b|lorem ipsum|coming soon|xxx placeholder|eraser\.io|prettier diagram|paste this into eraser', re.I)
 
 def image_size(path: pathlib.Path):
     """Return (w,h) for png/webp without external deps, else None."""
@@ -69,6 +69,11 @@ for md in sorted(POSTS.glob("*.md")):
 
     if not re.search(r'^\s*date:\s*\S', fm, re.M):
         fail(name, "no frontmatter `date:`")
+    dfut = re.search(r'^\s*date:\s*(\d{4})-(\d{2})-(\d{2})', fm, re.M)
+    if dfut:
+        _pd = datetime.date(int(dfut.group(1)), int(dfut.group(2)), int(dfut.group(3)))
+        if _pd > datetime.date.today():
+            warn(name, f"date {_pd.isoformat()} is in the FUTURE — it publishes now but shows a future date (MkDocs doesn't hide future posts)")
     # categories: block list OR inline flow list, with at least one item
     has_cat = re.search(r'^\s*categories:\s*\n\s*-\s*\S', fm, re.M) or re.search(r'^\s*categories:\s*\[[^\]]*\S[^\]]*\]', fm, re.M)
     if not has_cat:
@@ -158,6 +163,19 @@ else:
             fsp = resolve(base, u)
             if fsp and not fsp.exists():
                 fail(str(f.relative_to(SITE)), f"dead link/image: {u}")
+
+    # title / meta-description length (SERP display — WARN, not a blocker)
+    for f in SITE.rglob("index.html"):
+        html = f.read_text(encoding="utf-8", errors="ignore")
+        tm = re.search(r"<title>(.*?)</title>", html, re.S)
+        dm = re.search(r'<meta name="description" content="([^"]*)"', html)
+        rel = str(f.relative_to(SITE))
+        if tm and len(tm.group(1).strip()) > 60:
+            warn(rel, f"<title> is {len(tm.group(1).strip())} chars (>60 truncates in search)")
+        if dm:
+            dl = len(dm.group(1).strip())
+            if dl > 160 or (0 < dl < 70):
+                warn(rel, f"meta description is {dl} chars (aim 70-160)")
 
     # every real blog post: JSON-LD parses AND BlogPosting has required fields
     for f in (SITE / "blog").rglob("index.html"):

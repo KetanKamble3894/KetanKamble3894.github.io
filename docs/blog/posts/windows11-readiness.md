@@ -2,7 +2,7 @@
 title: "Which devices can't take Windows 11"
 slug: which-devices-cant-take-windows-11--the-hardware-blocker-per-device
 description: "See which devices can't take Windows 11 and exactly why — TPM, CPU, Secure Boot, RAM — per device, from Endpoint Analytics, read-only."
-date: 2026-09-22
+date: 2026-06-22
 draft: false
 comments: true
 categories:

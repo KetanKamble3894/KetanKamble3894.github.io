@@ -2,7 +2,7 @@
 title: "One row per device"
 slug: one-row-per-device-building-the-inventory-intune-wont-hand-you
 description: "Build the enriched inventory Intune's All-devices list won't give you — device, Entra location, OEM warranty and Defender health, per device."
-date: 2026-08-04
+date: 2026-05-04
 draft: false
 comments: true
 categories:

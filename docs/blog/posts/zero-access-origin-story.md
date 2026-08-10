@@ -1,7 +1,7 @@
 ---
 title: "The 403 that started Zero-Access"
 description: "A Sites.Selected 403 in a lab became a design rule — read-only by architecture, not trust — and the small script that proves it. The Zero-Access origin story."
-date: 2026-11-10
+date: 2026-08-10
 slug: the-403-that-started-the-zero-access-pattern
 draft: false
 comments: true

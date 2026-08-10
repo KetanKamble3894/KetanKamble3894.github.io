@@ -2,7 +2,7 @@
 title: "The devices no one owns anymore"
 slug: the-devices-no-one-owns-anymore-a-read-only-hygiene-report-with-recommended-actions
 description: "Turn stale, orphaned and inactive Intune devices into a read-only hygiene worklist — each row with a recommended action and an owner team."
-date: 2026-09-01
+date: 2026-06-01
 draft: false
 comments: true
 categories:

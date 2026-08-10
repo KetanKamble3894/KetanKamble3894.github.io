@@ -2,7 +2,7 @@
 title: "Documentation that writes itself"
 slug: documentation-that-writes-itself-a-read-only-snapshot-of-your-whole-intune-config
 description: "Always-current, read-only documentation of your whole Intune and Windows 365 config — built on the community M365Documentation module."
-date: 2026-08-11
+date: 2026-05-11
 draft: false
 comments: true
 categories:
