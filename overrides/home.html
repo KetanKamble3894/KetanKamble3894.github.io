@@ -4,13 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ketan Kamble — Microsoft Modern Workplace, in the open</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<!-- Render-blocking + display=optional: the font-face is known before first paint,
-     so `optional` truly prevents any post-paint swap => zero font-driven CLS on every
-     platform (incl. Android, where the local() metric fallback is absent). preconnect
-     above keeps the one blocking request fast. -->
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=optional" rel="stylesheet">
+<!-- Self-hosted variable fonts: preloaded (non-blocking, high priority) and applied via
+     inline @font-face below. No external Google round-trip, no render-blocking CSS; with
+     font-display:optional the preloaded font is ready at first paint => zero CLS. -->
+<link rel="preload" href="/assets/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/jetbrains-mono-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 <!-- COOKIELESS-ANALYTICS-BEACON -->
 <style>
   :root{
@@ -28,8 +26,10 @@
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
-  /* Metric-matched fallback for Inter (Arial-based) so the async font swap
-     causes no layout shift — keeps the render-block win without a CLS hit. */
+  /* Self-hosted variable fonts (latin subset, all weights in one file each). */
+  @font-face{font-family:'Inter';font-style:normal;font-weight:100 900;font-display:optional;src:url('/assets/fonts/inter-latin-wght-normal.woff2') format('woff2')}
+  @font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:100 800;font-display:optional;src:url('/assets/fonts/jetbrains-mono-latin-wght-normal.woff2') format('woff2')}
+  /* Metric-matched fallback for Inter (Arial-based) — backstop if the woff2 is slow. */
   @font-face{font-family:'Inter Fallback';src:local('Arial');ascent-override:90.44%;descent-override:22.52%;line-gap-override:0%;size-adjust:107.12%}
   body{background:var(--bg);color:var(--text);font-family:'Inter','Inter Fallback',system-ui,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;transition:background .3s,color .3s}
   .mono{font-family:'JetBrains Mono',monospace}
