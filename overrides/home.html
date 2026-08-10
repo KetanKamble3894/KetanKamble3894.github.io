@@ -6,22 +6,22 @@
 <title>Ketan Kamble — Microsoft Modern Workplace, in the open</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-<noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=optional">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=optional" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=optional" rel="stylesheet"></noscript>
 <!-- COOKIELESS-ANALYTICS-BEACON -->
 <style>
   :root{
     --bg:#F6F8FC;--surface:#FFFFFF;--surface-2:#F0F4FA;
     --border:#E4EAF2;--border-2:#D6DEEA;
-    --text:#0E1A2B;--muted:#4B586F;--muted-2:#5F6B82;
+    --text:#0E1A2B;--muted:#4B586F;--muted-2:#5F6B82;--brand-text:#0B7370;--ro-text:#15803D;
     --brand:#0EA5A0;--brand-2:#2563EB;--brand-3:#10B981;
     --ink:#0B1220;--radius:18px;--maxw:1160px;
     --shadow:0 20px 50px -24px rgba(20,40,80,.28);--shadow-sm:0 8px 24px -14px rgba(20,40,80,.25);
   }
   body.dark{
     --bg:#070B16;--surface:#0F172A;--surface-2:#0B1120;--border:#1E2A44;--border-2:#26324f;
-    --text:#E8EDF6;--muted:#93A2BE;--muted-2:#8B99B5;--brand:#2DD4BF;--brand-2:#38BDF8;--brand-3:#34D399;
+    --text:#E8EDF6;--muted:#93A2BE;--muted-2:#8B99B5;--brand:#2DD4BF;--brand-2:#38BDF8;--brand-3:#34D399;--brand-text:#2DD4BF;--ro-text:#34D399;
     --shadow:0 40px 80px -40px rgba(0,0,0,.7);--shadow-sm:0 20px 40px -28px rgba(0,0,0,.7);
   }
   *{box-sizing:border-box;margin:0;padding:0}
@@ -58,7 +58,7 @@
   .grid-lines{position:absolute;inset:0;opacity:.5;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:54px 54px;mask-image:radial-gradient(ellipse 75% 55% at 50% 0%,#000 35%,transparent 76%);-webkit-mask-image:radial-gradient(ellipse 75% 55% at 50% 0%,#000 35%,transparent 76%)}
   .hero-in{position:relative;z-index:1;display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center}
   @media(max-width:920px){.hero-in{grid-template-columns:1fr;gap:34px}}
-  .eyebrow{display:inline-flex;align-items:center;gap:9px;padding:7px 14px;border-radius:999px;border:1px solid var(--border);background:var(--surface);font-size:12.5px;font-weight:600;color:var(--brand);margin-bottom:22px;box-shadow:var(--shadow-sm)}
+  .eyebrow{display:inline-flex;align-items:center;gap:9px;padding:7px 14px;border-radius:999px;border:1px solid var(--border);background:var(--surface);font-size:12.5px;font-weight:600;color:var(--brand-text);margin-bottom:22px;box-shadow:var(--shadow-sm)}
   .dot{width:7px;height:7px;border-radius:50%;background:var(--brand);box-shadow:0 0 0 4px color-mix(in srgb,var(--brand) 22%,transparent)}
   h1{font-size:clamp(38px,5.2vw,58px);line-height:1.03;font-weight:900;letter-spacing:-.03em;margin-bottom:20px}
   .lede{font-size:18px;color:var(--muted);max-width:560px;margin-bottom:28px}
@@ -89,7 +89,7 @@
   section{padding:60px 0}
   .sec-head{max-width:660px;margin:0 auto 40px;text-align:center}
   .sec-head.left{text-align:left;margin-left:0}
-  .kicker{font-size:13px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--brand)}
+  .kicker{font-size:13px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--brand-text)}
   h2{font-size:clamp(26px,3.4vw,38px);font-weight:900;letter-spacing:-.025em;margin:12px 0 12px}
   .sec-head p{color:var(--muted);font-size:16.5px}
 
@@ -98,7 +98,7 @@
   .feat-in{display:grid;grid-template-columns:1fr 1fr;gap:0}
   @media(max-width:880px){.feat-in{grid-template-columns:1fr}}
   .feat-txt{padding:40px}
-  .feat-badge{display:inline-flex;align-items:center;gap:7px;font-size:11.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--brand);background:color-mix(in srgb,var(--brand) 10%,var(--surface));border:1px solid color-mix(in srgb,var(--brand) 28%,var(--surface));padding:5px 12px;border-radius:999px;margin-bottom:16px}
+  .feat-badge{display:inline-flex;align-items:center;gap:7px;font-size:11.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--brand-text);background:color-mix(in srgb,var(--brand) 10%,var(--surface));border:1px solid color-mix(in srgb,var(--brand) 28%,var(--surface));padding:5px 12px;border-radius:999px;margin-bottom:16px}
   .feat-txt h3{font-size:27px;font-weight:900;letter-spacing:-.025em;margin-bottom:12px}
   .feat-txt p{color:var(--muted);font-size:15px;margin-bottom:14px}
   .feat-list{list-style:none;margin:0 0 22px;padding:0;display:flex;flex-direction:column;gap:8px}
@@ -116,7 +116,7 @@
   .stage .n{width:25px;height:25px;flex:none;border-radius:7px;display:grid;place-items:center;font-size:11px;font-weight:700;color:#fff;background:linear-gradient(135deg,var(--brand),var(--brand-2))}
   .stage .lbl{font-weight:600;font-size:13px}
   .stage .meta{margin-left:auto;font-size:10.5px;color:var(--muted-2);font-weight:600}
-  .stage .meta.ro{color:var(--brand-3)}
+  .stage .meta.ro{color:var(--ro-text)}
   .arrow{height:8px;display:grid;place-items:center;color:var(--border-2);font-size:11px}
   .packet{position:absolute;left:29px;top:26px;width:10px;height:10px;border-radius:50%;background:var(--brand);box-shadow:0 0 12px 3px color-mix(in srgb,var(--brand) 70%,transparent);z-index:3;opacity:0;will-change:transform;animation:travel 5s linear infinite}
   @keyframes travel{0%{transform:translateY(0);opacity:0}5%{opacity:1}95%{opacity:1}100%{transform:translateY(274px);opacity:0}}
@@ -128,7 +128,7 @@
   .gcard{position:relative;border-radius:16px;padding:24px 22px;min-height:170px;display:flex;flex-direction:column;justify-content:flex-start;color:var(--text);background:var(--surface);border:1px solid var(--border);overflow:hidden;box-shadow:var(--shadow-sm);transition:transform .2s,box-shadow .2s,border-color .2s}
   .gcard:hover{transform:translateY(-6px);box-shadow:var(--shadow);border-color:var(--brand)}
   .gcard::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--brand),var(--brand-2))}
-  .gcard .cat{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--brand)}
+  .gcard .cat{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--brand-text)}
   .gcard h3{font-size:18px;font-weight:800;letter-spacing:-.02em;margin:14px 0 7px;line-height:1.2}
   .gcard p{font-size:13px;color:var(--muted);line-height:1.5}
   .gcard .go{position:absolute;top:18px;right:18px;width:30px;height:30px;border-radius:50%;background:var(--surface-2);border:1px solid var(--border);display:grid;place-items:center;color:var(--muted);transition:all .2s}
@@ -256,7 +256,7 @@
             <li><span class="ck">✓</span> Run the whole pattern with <b>zero tenant access</b>, using a synthetic fleet generator.</li>
             <li><span class="ck">✓</span> Ten real read-only collectors, each with a plain-language teardown.</li>
           </ul>
-          <div class="cta-row"><a class="btn btn-primary" href="blog/the-read-only-ai-agent-that-cant-touch-your-tenant/">Read the full story →</a><a class="btn btn-ghost" href="projects/zero-access-agent/">Explore the project</a><a class="btn btn-ghost" href="https://github.com/KetanKamble3894/zero-access-agent">GitHub</a></div>
+          <div class="cta-row"><a class="btn btn-primary" href="blog/the-read-only-ai-agent-that-cant-touch-your-tenant/">Read the full story →</a><a class="btn btn-ghost" href="projects/zero-access-agent/">Explore the project</a><a class="btn btn-ghost" href="https://github.com/KetanKamble3894/zero-access-agent" aria-label="Zero-Access Agent repository on GitHub">GitHub</a></div>
         </div>
         <div class="feat-visual">
           <div class="panel">
@@ -360,7 +360,7 @@
   <div class="wrap foot-in">
     <div class="brand" style="font-size:14px"><span class="brandmark" style="width:24px;height:24px;font-size:11px">KK</span><span>Ketan Kamble</span></div>
     <p class="disc">Independent content — not affiliated with, sponsored by, or endorsed by Microsoft. Microsoft, Intune, Entra, Microsoft Graph, Azure and Power BI are trademarks of the Microsoft group of companies. Everything here comes from a personal lab.</p>
-    <p class="disc" style="margin-top:10px"><a href="privacy/" style="color:var(--brand)">Privacy &amp; Cookie Policy</a></p>
+    <p class="disc" style="margin-top:10px"><a href="privacy/" style="color:var(--brand-text)">Privacy &amp; Cookie Policy</a></p>
   </div>
 </footer>
 

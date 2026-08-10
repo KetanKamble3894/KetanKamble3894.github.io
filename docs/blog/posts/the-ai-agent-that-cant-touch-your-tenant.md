@@ -45,6 +45,14 @@ Intune Copilot agents, jump to [Where this fits](#where-this-fits-microsofts-own
     site produce. Worst case, it reads a dated, minimised snapshot — it can never see or touch the live
     tenant. That containment *is* the design.
 
+**First — what kind of AI is this?** A language model on its own (an LLM) is the brain: it reasons, but only
+from what it was trained on. Give it *your* documents to read and you have **RAG** — brain plus books — so it
+answers about your fleet, not the world in general. Give it tools that can *act* — create a policy, wipe a
+device — and you have a full **AI agent**: brain plus hands. This project is the middle one with the last
+step refused on purpose: RAG, with your fleet's read-only snapshots as the books, running as an agent whose
+only tool can *turn pages, never act*. It has the books; it was never given the hands. (This is a personal
+project — everything here is built and reproduced in my own lab.)
+
 ## Why not just give the AI access to Graph?
 
 Because "give the AI access to Graph" quietly grants three things you can't take back:
@@ -86,8 +94,9 @@ Five stages, and the containment lives in the seams between them:
 5. **Ask** — you type a question; the agent searches, grounds its answer in the retrieved rows, and always
    names the report the fact came from.
 
-It trades **freshness for containment**: answers are as current as the last snapshot, not live. For "who
-owns this device / why did it fail / how many of X" that trade is invisible — and it's the whole point.
+It trades **freshness for containment**: answers are as current as the last snapshot, not live — the
+collectors run on a schedule (daily, in my lab). For "who owns this device / why did it fail / how many of X"
+that trade is invisible — and it's the whole point.
 
 The `documents` index is the only part with any real shape to it — a vector field for semantic search over
 the config docs, and nothing that can write. The core of its schema, verbatim:
@@ -121,7 +130,7 @@ The split between the two indexes is deliberate, and it maps exactly onto the te
   and so on across all ten. (Warranty is the one field Graph doesn't hold — it's an **OEM lookup** folded
   into the inventory snapshot via the fenced enrichment utility below, not a Graph read.)
 - **Pre-computed counts** — every "how many" is answered **only** from a `_Stats` report (a
-  `Category / Key / Count` table the runbook computed), never by counting search results — because the agent
+  `Category / Key / Count` table the runbook computed, optionally dimensioned — e.g. per region), never by counting search results — because the agent
   only ever sees the rows it *retrieved*, a partial set, so a hand count is always wrong. This one rule is
   why the agent's numbers match Power BI instead of drifting.
 - **Prose documentation** — the [Intune Documentation](../documentation-that-writes-itself-a-read-only-snapshot-of-your-whole-intune-config/)
@@ -183,7 +192,8 @@ Answer ONLY from what these searches return this turn.
 RULES
 1. Search every turn. Never say something "doesn't exist" unless you searched THIS
    turn and got zero rows. Do not answer from a previous turn's memory.
-2. Counts come only from the *_Stats reports (Category / Key / Count). Never count
+2. Counts come only from the *_Stats reports (Category / Key / Count, optionally
+   dimensioned e.g. by region). Never count
    search results by hand — you only see the rows you retrieved. If no matching stat
    exists, say the exact count isn't available.
 3. Absence is not evidence. A device with no rows is "unknown", never "clean" —
@@ -249,15 +259,14 @@ You give up real-time freshness. In exchange the agent **cannot** change anythin
 and **cannot** surprise you. For an endpoint estate, that's the right trade.
 
 !!! warning "Be honest about what the prompt can and can't guarantee"
-    Two different guarantees live here, and it's worth not conflating them. **Structural** containment — no
-    token, no actions, no live connection — is enforced by the *architecture*, and it holds even if the model
-    is prompt-injected. **Personal-data** protection is different: the snapshots still carry owner, manager
-    and location because support answers need them, and a system prompt is a *soft* control — an injected
-    instruction, or anyone holding the Search query key, can bypass "don't enumerate people." So the real
-    control is **minimising at the collector**: drop the fields a report doesn't need, pre-aggregate the
-    sensitive ones (shadow-AI to counts), and lock the Search key down with RBAC — *then* let the prompt add
-    its no-profiling, no-enumeration layer on top. The prompt hardens behaviour; the collector and RBAC are
-    what actually protect the data.
+    Two guarantees live here; don't conflate them. **Structural** containment — no token, no actions, no
+    live connection — is enforced by the *architecture*, and holds even under prompt injection.
+    **Personal-data** protection is weaker: the snapshots still carry owner, manager and location, and a
+    system prompt is a *soft* control — an injected instruction, or anyone with the Search query key, can
+    bypass "don't enumerate people." So the real control is **minimising at the collector**: drop the fields
+    a report doesn't need, pre-aggregate the sensitive ones (shadow-AI to counts), and lock the Search key
+    with RBAC. Let the prompt add its no-profiling layer on *top* of that. The prompt hardens behaviour; the
+    collector and RBAC protect the data.
 
 !!! info "One honest exception"
     The zero-access guarantee covers the collection → agent path. The project ships **one** optional,
@@ -302,7 +311,7 @@ flipping a switch. For Microsoft's native Intune agents the path is, roughly:
 
 - **Stand up the capacity.** You need **Intune Plan 1** and **Security Copilot enabled with provisioned
   Security Compute Units (SCUs)** — the agents run on that capacity, billed per SCU-hour on provisioned
-  capacity (E5/E7 tenants instead get a monthly SCU allowance auto-provisioned). No SCUs, no agents.
+  capacity (E5/E7 tenants instead get a [monthly SCU allowance auto-provisioned](https://learn.microsoft.com/en-us/copilot/security/security-copilot-inclusion)). No SCUs, no agents.
 - **Grant least-privileged roles.** Setting an agent up needs a **Copilot Owner** role plus an Intune
   **read-only** role; running it needs **Copilot Contributor**; and a **write** role is added *only* for the
   specific action the agent takes — e.g. creating a policy. Reading is the default; writing is separately
