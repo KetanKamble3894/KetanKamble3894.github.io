@@ -10,6 +10,13 @@ Standalone, read-only PowerShell for Intune, Entra and Graph. Each script is gra
 its `.pbit`, and an example report** — plus the topic tags so you can find it again. Many of these are the
 same collectors that **club together** into [Zero-Access Agent](../projects/zero-access-agent/index.md).
 
+!!! info "What these scripts are — and aren't"
+    Each one is standard, publicly-documented **Microsoft Graph** usage: read-only (`.Read.All`) API calls
+    stitched together in PowerShell and joined into a report — the kind any admin can write from Microsoft's
+    own documentation. They're **not** proprietary software, and **not** derived from any employer's or
+    customer's code, environment or data. Everything here was written and tested in a **personal lab**
+    against synthetic (`@contoso`) data.
+
 !!! tip "New here? Start with the worked example"
     **[Device Inventory](device-inventory.md)** shows the full template end to end.
 
