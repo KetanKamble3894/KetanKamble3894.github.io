@@ -17,7 +17,7 @@ Finds every non-compliant Windows device and — the part the portal won't hand 
 
 ## 1 · The script
 
-It authenticates with a Managed Identity, queries Microsoft Graph with GET-only requests
+It authenticates with a Managed Identity, queries Microsoft Graph with read-only (`.Read.All`) requests
 (`managedDevices` → `deviceCompliancePolicyStates` → `settingStates`), enriches with per-user context,
 and writes a sanitized CSV snapshot. Set the three CONFIG values at the top, then run.
 

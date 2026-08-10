@@ -1,3 +1,7 @@
+---
+description: "The Intune Documentation collector captures your configuration as prose snapshots — the document side of the read-only zero-access pattern."
+---
+
 # Collector teardown — Intune Documentation (the prose side)
 
 Most of this pattern is about *structured* data — CSV snapshots the agent counts. This

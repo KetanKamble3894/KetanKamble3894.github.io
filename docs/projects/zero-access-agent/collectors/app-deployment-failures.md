@@ -1,3 +1,7 @@
+---
+description: "How the App Deployment Failures collector turns Intune install errors into read-only, pre-aggregated snapshots the zero-access agent answers from."
+---
+
 # Collector teardown — App Deployment Failures (expertise as data)
 
 This is the collector that best shows *why* the zero-access pattern is worth building: it

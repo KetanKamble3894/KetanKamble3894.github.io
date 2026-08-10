@@ -1,3 +1,7 @@
+---
+description: "The Device Hygiene collector finds ghost and offboarded devices across the fleet — read-only snapshots the zero-access agent answers from."
+---
+
 # Collector teardown — Device Hygiene (the offboarding / ghost-device finder)
 
 Every fleet accumulates ghosts: laptops still enrolled under people who left, corporate

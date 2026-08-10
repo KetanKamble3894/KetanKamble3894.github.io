@@ -1,3 +1,7 @@
+---
+description: "The shadow-AI collector — inventories local AI tooling across managed devices as read-only snapshots for the zero-access agent."
+---
+
 # Collector teardown — Local AI Agent Inventory (shadow-AI governance)
 
 The most *timely* collector in the set: it inventories **local AI tooling** across the fleet —

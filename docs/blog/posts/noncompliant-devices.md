@@ -101,7 +101,7 @@ Each failing `settingState` becomes **one row** — `DeviceName`, the failing `S
 plus the user's city, country, department, and the device's make and model, enriched from a single
 cached `users` lookup. The runbook writes the result to a sanitized CSV in Blob storage.
 
-![The read-only Graph calls behind the report — a GET-only sequence, Managed Identity, nothing written back](../../assets/img/noncompliant-graph-flow.webp){ width="1200" height="520" loading=lazy }
+![The read-only Graph calls behind the report — a read-only sequence, Managed Identity, nothing written back](../../assets/img/noncompliant-graph-flow.webp){ width="1200" height="520" loading=lazy }
 
 ### The permissions (least-privilege, read-only)
 

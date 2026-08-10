@@ -1,6 +1,6 @@
 ---
 title: Device Inventory — Power BI
-description: The Power BI report built on the Device Inventory snapshot.
+description: "The Power BI report built on the read-only Device Inventory snapshot — one clean row per managed device, from a sanitized CSV, no live tenant."
 tags:
   - Intune
   - Power BI

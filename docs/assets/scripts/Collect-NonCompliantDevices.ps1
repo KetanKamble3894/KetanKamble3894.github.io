@@ -3,7 +3,7 @@
     Zero-Access collector — Non-Compliant Windows Devices.
 
     Read-only Azure Automation runbook. Authenticates with a Managed Identity, queries Microsoft
-    Graph with GET-only requests to find non-compliant Windows devices and the exact settings that
+    Graph with read-only (.Read.All) requests to find non-compliant Windows devices and the exact settings that
     failed, enriches with user context, pre-aggregates DISTINCT-DEVICE stats, and writes sanitized
     CSV snapshots to Blob storage. Nothing is ever written back to the tenant.
 

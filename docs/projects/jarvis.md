@@ -1,6 +1,6 @@
 ---
 title: Jarvis
-description: A second project, coming to the shelf soon.
+description: "Jarvis — a second in-the-open project on the shelf, coming soon. Part of a Modern Workplace lab spanning Intune, Entra and read-only tooling."
 ---
 
 

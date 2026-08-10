@@ -1,6 +1,6 @@
 ---
 title: Power BI
-description: Endpoint reports built on read-only snapshots.
+description: "Power BI endpoint reports built on read-only, sanitized snapshots — compliance, inventory, licensing and Windows 11 readiness, with templates."
 ---
 
 

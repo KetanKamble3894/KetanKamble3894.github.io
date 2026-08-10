@@ -16,7 +16,7 @@ Every Intune policy mapped to every group it targets — dynamic rules and broke
 
 ## 1 · The script
 
-Read-only by construction — it authenticates with a Managed Identity, calls Microsoft Graph with GET only, and writes a sanitized CSV snapshot. Set the CONFIG values at the top, then run.
+Read-only by construction — it authenticates with a Managed Identity, calls Microsoft Graph read-only (`.Read.All` scopes), and writes a sanitized CSV snapshot. Set the CONFIG values at the top, then run.
 
 ??? example "View the full script (26 KB)"
     ```powershell

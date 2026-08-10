@@ -1,6 +1,6 @@
 ---
 title: License Compliance — collector teardown
-description: How the read-only runbook finds corporate Windows devices whose primary user is missing an Intune or Windows Enterprise licence — the Graph calls behind the report.
+description: "How the read-only runbook finds corporate Windows devices whose primary user is missing an Intune or Windows Enterprise licence — the Graph calls."
 tags:
   - Intune
   - Entra ID

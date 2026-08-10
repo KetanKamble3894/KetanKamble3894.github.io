@@ -14,7 +14,7 @@ Generates fake-but-realistic fleet CSVs — duplicates, missing values, reimaged
 
 ## 1 · The script
 
-Read-only by construction — it authenticates with a Managed Identity, calls Microsoft Graph with GET only, and writes a sanitized CSV snapshot. Set the three CONFIG values at the top, then run.
+Read-only by construction — it authenticates with a Managed Identity, calls Microsoft Graph read-only (`.Read.All` scopes), and writes a sanitized CSV snapshot. Set the three CONFIG values at the top, then run.
 
 ```powershell
 --8<-- "assets/scripts/New-SyntheticFleet.ps1"

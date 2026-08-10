@@ -1,3 +1,7 @@
+---
+description: "The Windows 11 Readiness collector turns per-device hardware blockers into read-only snapshots the zero-access agent can answer from."
+---
+
 # Collector teardown — Windows 11 Readiness
 
 Answers the migration-planning question every Windows shop is living with: "how many devices

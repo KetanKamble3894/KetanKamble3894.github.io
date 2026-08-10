@@ -1,3 +1,7 @@
+---
+description: "Hands-on guide to building the read-only collection layer end to end — Azure Automation runbooks, Managed Identity and CSV snapshots."
+---
+
 # Build it yourself — the read-only collection layer, end to end
 
 This is the hands-on guide. By the end you'll have Azure Automation runbooks pulling

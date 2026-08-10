@@ -1,6 +1,6 @@
 ---
 title: Topics
-description: Browse everything by Modern Workplace topic.
+description: "Browse every post by Modern Workplace topic — Intune, Entra, Microsoft Graph, Autopilot, Power BI and the Zero-Access read-only agent."
 hide:
   - navigation
 ---

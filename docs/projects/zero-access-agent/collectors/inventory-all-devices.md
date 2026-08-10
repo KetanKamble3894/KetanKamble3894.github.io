@@ -1,3 +1,7 @@
+---
+description: "The first and largest collector: one row per managed device, pre-aggregated read-only snapshots that back every other zero-access report."
+---
+
 # Collector teardown — Inventory: All Devices
 
 This is the first and largest collector in the pattern. It answers the deceptively simple

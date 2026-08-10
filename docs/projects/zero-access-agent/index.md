@@ -20,7 +20,7 @@ sanitized, pre-aggregated snapshots; the agent answers only from those.
 
 ## The pattern, in one screen
 
-1. **Source** — Intune / Entra. GET-only via Managed Identity; the AI never touches it.
+1. **Source** — Intune / Entra. read-only (`.Read.All`) via Managed Identity; the AI never touches it.
 2. **Collect** — scheduled Azure Automation runbooks pull read-only from Graph and *pre-aggregate* into slim CSV snapshots.
 3. **Store** — Azure Blob: full CSVs for Power BI, slim snapshots for the agent.
 4. **Retrieve** — Azure AI Search over the snapshots, RBAC read-only.

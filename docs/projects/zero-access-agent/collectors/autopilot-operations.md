@@ -1,3 +1,7 @@
+---
+description: "Inside the Autopilot Operations collector — reporting ESP and enrolment health truthfully as read-only snapshots for the zero-access agent."
+---
+
 # Collector teardown — Autopilot Operations (the honest one)
 
 Autopilot / ESP reporting is genuinely hard to do truthfully, and this collector is the one that

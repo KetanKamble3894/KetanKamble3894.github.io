@@ -1,6 +1,6 @@
 ---
 title: About
-description: Ketan Kamble — Modern Workplace Architect. 10 years in EUC, MD-102 & SC-300, speaker at Workplace Ninja User Group Finland. Building Intune, Entra and the Zero-Access AI agent in the open.
+description: "Ketan Kamble — Modern Workplace Architect: 10 years in EUC, MD-102 & SC-300, WNUG Finland speaker, building Intune and Entra tooling in the open."
 hide:
   - navigation
   - toc

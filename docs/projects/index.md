@@ -1,6 +1,6 @@
 ---
 title: Projects
-description: Things I've built, in the open.
+description: "Projects built in the open — the Zero-Access read-only endpoint-intelligence agent and the tooling around it, all reproducible from a personal lab."
 ---
 
 

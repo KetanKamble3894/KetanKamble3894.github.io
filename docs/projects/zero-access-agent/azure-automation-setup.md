@@ -1,3 +1,7 @@
+---
+description: "Stand up the read-only COLLECT stage of the Zero-Access Pattern: Azure Automation, a Managed Identity and scheduled CSV snapshots — no secrets."
+---
+
 # Setting up the collection layer — Azure Automation, read-only
 
 This guide stands up the **COLLECT** stage of the Zero-Access Pattern: scheduled

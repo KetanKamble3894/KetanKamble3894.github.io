@@ -1,3 +1,7 @@
+---
+description: "The one write tool in the project, fenced off and opt-in: enrich Lenovo device warranty into Intune Notes, read-only by default."
+---
+
 # Enrichment tool — Lenovo warranty into Notes (the one that writes)
 
 > **Read this first.** Everything else in this project is read-only. **This tool is the one

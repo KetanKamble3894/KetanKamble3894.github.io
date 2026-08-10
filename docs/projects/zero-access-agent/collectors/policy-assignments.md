@@ -1,3 +1,7 @@
+---
+description: "The Policy Assignments collector resolves which Intune policies target which groups and members — read-only snapshots for the zero-access agent."
+---
+
 # Collector teardown — Policy Assignments (the "who is this assigned to" collector)
 
 "Which policies target which groups, and who's actually in those groups?" is one of the
