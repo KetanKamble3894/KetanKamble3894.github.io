@@ -1,6 +1,6 @@
 ---
 title: Zero-Access Agent
-description: The read-only AI agent pattern for endpoint intelligence.
+description: "The Zero-Access Agent — a read-only AI that answers questions about an endpoint fleet without ever touching a live tenant. The pattern, scripts and collectors."
 tags:
   - Intune
   - Entra ID
@@ -33,16 +33,16 @@ It trades freshness for containment — snapshots are as current as the last run
 Each is a real read-only runbook, and each pairs with a script page and a Power BI report in the library.
 
 <div class="za-grid" markdown>
-    <a class="za-card" href="collectors/inventory-all-devices/"><b>Inventory — All Devices</b><span>Full managed-device inventory across the fleet — the backbone dataset every other report leans on.</span></a>
-    <a class="za-card" href="collectors/intune-documentation/"><b>Intune Documentation</b><span>Snapshots your Intune configuration — profiles, policies and settings — as documentation you can diff over time.</span></a>
-    <a class="za-card" href="collectors/policy-assignments/"><b>Policy Assignments</b><span>Resolves which policies land on which groups, so 'why did this device get that setting?' has an answer.</span></a>
-    <a class="za-card" href="collectors/device-hygiene/"><b>Device Hygiene</b><span>Compliance, encryption, stale check-ins and the small signals that separate a healthy fleet from a drifting one.</span></a>
-    <a class="za-card" href="collectors/app-deployment-failures/"><b>App Deployment Failures</b><span>Surfaces app installs that failed and where, so remediation targets the real devices, not the whole ring.</span></a>
-    <a class="za-card" href="collectors/license-compliance/"><b>License Compliance</b><span>Maps assigned vs consumed licences across the tenant — the report finance and IT both ask for.</span></a>
-    <a class="za-card" href="collectors/windows11-readiness/"><b>Windows 11 Readiness</b><span>Hardware-readiness across the estate — TPM, CPU, RAM — so the Windows 11 plan is grounded in data.</span></a>
-    <a class="za-card" href="collectors/autopilot-operations/"><b>Autopilot Operations</b><span>Autopilot registrations, profiles and deployment health — the enrolment funnel, made visible.</span></a>
-    <a class="za-card" href="collectors/local-ai-agent-inventory/"><b>Local AI Agent Inventory</b><span>Inventories local AI-agent tooling across managed devices — a modern-workspace signal most fleets can't see yet.</span></a>
-    <a class="za-card" href="collectors/noncompliant-devices/"><b>Non-Compliant Devices</b><span>Every non-compliant Windows device and the exact settings that failed — the flagship report.</span></a>
+<a class="za-card" href="collectors/inventory-all-devices/"><b>Inventory — All Devices</b><span>Full managed-device inventory across the fleet — the backbone dataset every other report leans on.</span></a>
+<a class="za-card" href="collectors/intune-documentation/"><b>Intune Documentation</b><span>Snapshots your Intune configuration — profiles, policies and settings — as documentation you can diff over time.</span></a>
+<a class="za-card" href="collectors/policy-assignments/"><b>Policy Assignments</b><span>Resolves which policies land on which groups, so 'why did this device get that setting?' has an answer.</span></a>
+<a class="za-card" href="collectors/device-hygiene/"><b>Device Hygiene</b><span>Compliance, encryption, stale check-ins and the small signals that separate a healthy fleet from a drifting one.</span></a>
+<a class="za-card" href="collectors/app-deployment-failures/"><b>App Deployment Failures</b><span>Surfaces app installs that failed and where, so remediation targets the real devices, not the whole ring.</span></a>
+<a class="za-card" href="collectors/license-compliance/"><b>License Compliance</b><span>Maps assigned vs consumed licences across the tenant — the report finance and IT both ask for.</span></a>
+<a class="za-card" href="collectors/windows11-readiness/"><b>Windows 11 Readiness</b><span>Hardware-readiness across the estate — TPM, CPU, RAM — so the Windows 11 plan is grounded in data.</span></a>
+<a class="za-card" href="collectors/autopilot-operations/"><b>Autopilot Operations</b><span>Autopilot registrations, profiles and deployment health — the enrolment funnel, made visible.</span></a>
+<a class="za-card" href="collectors/local-ai-agent-inventory/"><b>Local AI Agent Inventory</b><span>Inventories local AI-agent tooling across managed devices — a modern-workspace signal most fleets can't see yet.</span></a>
+<a class="za-card" href="collectors/noncompliant-devices/"><b>Non-Compliant Devices</b><span>Every non-compliant Windows device and the exact settings that failed — the flagship report.</span></a>
 </div>
 
 ## Start with the walkthrough

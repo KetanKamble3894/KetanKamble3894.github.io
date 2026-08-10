@@ -6,9 +6,11 @@
 <title>Ketan Kamble — Microsoft Modern Workplace, in the open</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=optional">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=optional" rel="stylesheet" media="print" onload="this.media='all'">
-<noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=optional" rel="stylesheet"></noscript>
+<!-- Render-blocking + display=optional: the font-face is known before first paint,
+     so `optional` truly prevents any post-paint swap => zero font-driven CLS on every
+     platform (incl. Android, where the local() metric fallback is absent). preconnect
+     above keeps the one blocking request fast. -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=optional" rel="stylesheet">
 <!-- COOKIELESS-ANALYTICS-BEACON -->
 <style>
   :root{
@@ -224,7 +226,7 @@
       </div>
 
       <div class="profile">
-        <div class="pfp">KK<img src="assets/headshot/ketan.webp" alt="Ketan Kamble" width="176" height="176" onerror="this.style.display='none'"></div>
+        <div class="pfp">KK<img src="assets/headshot/ketan.webp" srcset="assets/headshot/ketan-176.webp 176w, assets/headshot/ketan.webp 352w" sizes="176px" alt="Ketan Kamble" width="176" height="176" onerror="this.style.display='none'"></div>
         <div class="nm">Ketan Kamble</div>
         <div class="role">Modern Workplace Architect</div>
         <div class="loc"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Finland</div>
