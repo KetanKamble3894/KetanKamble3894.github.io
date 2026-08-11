@@ -14,9 +14,7 @@ theme:
   favicon: assets/logo.svg
   # Clean, native-feeling humanist sans (like scloud.work's Segoe UI) but a distinct
   # typeface, so the site reads similarly without looking identical.
-  font:
-    text: IBM Plex Sans
-    code: JetBrains Mono
+  font: false   # self-hosted Inter/JetBrains Mono via extra.css — no Google Fonts (privacy + CWV)
   icon:
     repo: fontawesome/brands/github
   features:

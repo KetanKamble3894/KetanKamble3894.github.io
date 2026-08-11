@@ -11,8 +11,11 @@
 
 {% block extrahead %}
   {{ super() }}
+  {# Self-hosted fonts (preload => ready at first paint, zero CLS; no Google Fonts). #}
+  <link rel="preload" href="/assets/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/jetbrains-mono-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
   {# Cookieless analytics — GoatCounter. No cookies, no consent banner needed. #}
   {# GoatCounter dashboard: ketankamble.goatcounter.com #}
   <script data-goatcounter="https://ketankamble.goatcounter.com/count"
-          async src="//gc.zgo.at/count.js"></script>
+          async src="/javascripts/count.js"></script>
 {% endblock %}

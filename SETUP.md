@@ -34,8 +34,7 @@ See `ADDING-CONTENT.md` — adding a new script or post is a 2-minute Markdown e
 
 ## Optional add-ons (free, documented, not enabled yet)
 - **Comments** on blog posts via giscus (GitHub Discussions).
-- **Newsletter** signup (Buttondown / MailerLite embed).
-Ask and I'll wire any of these in.
+Ask and I'll wire this in.
 
 ## Analytics
 Cookieless **GoatCounter** beacon, wired into `overrides/main.html` + `overrides/home.html`
@@ -53,9 +52,6 @@ country, referrers, and top pages. See the privacy page for the visitor-facing e
   3. Go to https://giscus.app, enter your repo, copy the 4 values.
   4. In `overrides/partials/comments.html`, replace `data-repo`, `PLACEHOLDER_REPO_ID`,
      `data-category`, and `PLACEHOLDER_CATEGORY_ID`. Done — comments appear on every post.
-- **Newsletter** — a signup form is on the Blog and About pages. It's wired for **Buttondown**
-  (free tier): create an account, then replace `YOUR-BUTTONDOWN-USERNAME` (2 spots each in
-  `docs/blog/index.md` and `docs/about/index.md`). Prefer MailerLite/Substack? Say the word.
 
 ## Non-commercial by design
 This is a personal, non-commercial knowledge-sharing site — no ads, no sponsors, no paid

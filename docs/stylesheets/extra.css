@@ -4,6 +4,15 @@
   --md-accent-fg-color: #0EA5A0;
 }
 
+/* Self-hosted fonts for ALL (Material) pages — no Google Fonts request, no IP
+   sent to Google. Matches the homepage (Inter). theme.font is false in mkdocs.yml. */
+@font-face{font-family:'Inter';font-style:normal;font-weight:100 900;font-display:optional;src:url('/assets/fonts/inter-latin-wght-normal.woff2') format('woff2')}
+@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:100 800;font-display:optional;src:url('/assets/fonts/jetbrains-mono-latin-wght-normal.woff2') format('woff2')}
+:root, [data-md-color-scheme]{
+  --md-text-font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  --md-code-font-family: 'JetBrains Mono', SFMono-Regular, Consolas, 'Liberation Mono', monospace;
+}
+
 /* Base type scale — tightened from Material's default 137.5% to a denser reading layout
    (body ≈16px, h1 ≈41px) to match the reference density. Uses % so browser-zoom / user
    font-size preferences are still respected (accessibility). */
