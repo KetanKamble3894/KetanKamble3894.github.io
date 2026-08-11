@@ -8,3 +8,11 @@
   removed to avoid duplicate og:image tags. The custom homepage (home.html)
   keeps its own bespoke card.
 #}
+
+{% block extrahead %}
+  {{ super() }}
+  {# Cookieless analytics — GoatCounter. No cookies, no consent banner needed. #}
+  {# GoatCounter dashboard: ketankamble.goatcounter.com #}
+  <script data-goatcounter="https://ketankamble.goatcounter.com/count"
+          async src="//gc.zgo.at/count.js"></script>
+{% endblock %}

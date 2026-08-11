@@ -170,12 +170,20 @@ nav:
           - Windows 11 Readiness report: powerbi/windows11-readiness-report.md
           - Autopilot Operations report: powerbi/autopilot-operations-report.md
   - About: about/index.md
+  - Sources & credits: resources.md
   - Contact: contact.md
 
 extra:
   generator: false
   social:
+    - icon: fontawesome/brands/linkedin
+      name: Ketan Kamble on LinkedIn
+      link: https://www.linkedin.com/in/ketan-kamble-012a1582/
     - icon: fontawesome/brands/github
+      name: Ketan Kamble on GitHub
       link: https://github.com/KetanKamble3894
-  # Analytics + cookie consent are handled by docs/javascripts/consent.js
-  # (one unified banner; Google Analytics loads ONLY after the visitor clicks Accept).
+  # Analytics: cookieless GoatCounter beacon (no cookies, no consent banner,
+  # counts every visitor). Beacon lives in overrides/main.html + overrides/home.html.
+  # No consent banner needed: nothing is stored on / read from the visitor's device
+  # (ePrivacy 5(3) not triggered); transient IP->country processing runs on
+  # legitimate interest, disclosed on the privacy page.

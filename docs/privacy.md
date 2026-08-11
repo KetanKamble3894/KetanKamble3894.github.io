@@ -18,13 +18,14 @@ No tracking cookies. No advertising. No cross-site tracking. No selling of data.
 
 ## Analytics
 
-To understand how the site is used (which posts are read, roughly where visitors come from), I use **cookieless, privacy-first web analytics**. This means:
+To understand how the site is used (which posts are read, roughly where visitors come from), I use **GoatCounter**, a cookieless, privacy-first web analytics service. This means:
 
-- **No cookies are set** for analytics, and nothing is stored on your device.
-- **No personal profiles** are built, and you are **not** tracked across other websites.
-- Only **aggregate, non-identifying** measurements are collected — such as page views, referring sites, and country-level location derived without storing your IP address.
+- **No cookies and no local storage** are used — nothing is stored on, or read from, your device. Because nothing is placed on or read from your device, the EU "cookie law" (ePrivacy) consent requirement isn't triggered, so there's no cookie-consent banner to click through.
+- **No personal profiles** are built, and you are **not** tracked across other websites. Only **aggregate, non-identifying** measurements are collected — page views, referring sites, browser/OS, and country.
+- Your **IP address is used only momentarily** to derive the country, then **discarded** — it is never stored. Visits are de-duplicated with a temporary, non-reversible daily identifier that isn't linkable to you and isn't kept.
+- **Do Not Track is respected.** If your browser sends a "Do Not Track" signal, GoatCounter doesn't count your visit at all — a simple, built-in opt-out.
 
-Because this analytics does not use cookies or process personal data in an identifying way, there is no cookie-consent banner to click through.
+This small amount of transient processing is done on the basis of my legitimate interest in understanding basic, anonymous audience trends; it does not rely on, or require, your consent.
 
 ## Cookies
 

@@ -260,7 +260,7 @@ html { font-size: 118.75%; }
 .md-post--excerpt .md-post__content h2 a.toclink { color: var(--md-default-fg-color) !important; font-weight: 750; }
 .md-post--excerpt .md-post__content h2 a:hover { color: var(--md-accent-fg-color) !important; }
 
-/* ============ post footer: author card + sponsor slot ============ */
+/* ============ post footer: author card ============ */
 .post-author { display: flex; gap: 1rem; align-items: flex-start; padding: 1.2rem; margin: 1.6rem 0 1rem; border: 1px solid var(--md-default-fg-color--lightest); border-radius: 14px; background: var(--md-default-bg-color); }
 .post-author .pa-photo { width: 62px; height: 62px; border-radius: 50%; object-fit: cover; flex: none; }
 .post-author .pa-name { font-weight: 800; font-size: 1rem; }
@@ -268,13 +268,6 @@ html { font-size: 118.75%; }
 .post-author .pa-bio { font-size: .82rem; color: var(--md-default-fg-color--light); margin: .5rem 0 .6rem; line-height: 1.5; }
 .post-author .pa-links { display: flex; gap: 1.1rem; font-size: .8rem; font-weight: 600; }
 .post-author .pa-links a { color: var(--md-primary-fg-color); }
-.post-sponsor { display: block; padding: 1rem 1.2rem; margin: 0 0 1.3rem; border-radius: 12px; text-decoration: none;
-  border: 1px dashed color-mix(in srgb, var(--md-primary-fg-color) 45%, var(--md-default-fg-color--lightest));
-  background: color-mix(in srgb, var(--md-primary-fg-color) 5%, transparent); transition: border-color .15s, background .15s; }
-.post-sponsor:hover { border-color: var(--md-primary-fg-color); background: color-mix(in srgb, var(--md-primary-fg-color) 9%, transparent); }
-.post-sponsor .ps-eyebrow { display: block; font-size: .66rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--md-primary-fg-color); }
-.post-sponsor .ps-title { display: block; font-weight: 750; font-size: .95rem; margin-top: .2rem; color: var(--md-default-fg-color); }
-.post-sponsor .ps-sub { display: block; font-size: .78rem; color: var(--md-default-fg-color--light); margin-top: .15rem; }
 
 /* ============ About page ============ */
 .about-hero{display:flex;gap:1.8rem;align-items:center;flex-wrap:wrap;margin:.5rem 0 1.6rem}
@@ -313,13 +306,13 @@ html { font-size: 118.75%; }
 
 /* ============================================================
    BLOG POST RIGHT-HAND RAIL (scloud-style)
-   Author + badges + sponsor in the right sidebar, focused reading.
+   Author + badges in the right sidebar, focused reading.
    The secondary sidebar is hidden globally (line ~74); re-show it
    only when it carries our .post-rail, and clear the left sidebar
    on those pages so the reading column is centered.
    ============================================================ */
 /* show the right author rail ONLY on wide screens; on mobile it stays hidden
-   and the author/sponsor cards fall to the bottom of the post instead */
+   and the author card falls to the bottom of the post instead */
 @media screen and (min-width:76.25em){
   .md-sidebar--secondary:has(.post-rail){ display:block !important; }
 }
@@ -342,16 +335,11 @@ html { font-size: 118.75%; }
 .post-rail .pr-badges{ display:flex; gap:.35rem; flex-wrap:wrap; justify-content:center; margin:.9rem 0; }
 .post-rail .pr-badge{ font-size:.64rem; font-weight:700; letter-spacing:.04em; color:var(--md-default-fg-color--light);
   border:1px solid var(--md-default-fg-color--lighter); border-radius:6px; padding:.2rem .45rem; }
-.post-rail .pr-sponsor{ display:block; border:1px dashed var(--md-default-fg-color--lighter); border-radius:14px;
-  padding:.9rem 1rem; text-decoration:none; background:var(--md-default-bg-color); }
-.post-rail .prs-eyebrow{ display:block; font-size:.6rem; font-weight:800; letter-spacing:.14em; text-transform:uppercase; color:var(--md-primary-fg-color); }
-.post-rail .prs-title{ display:block; font-size:.82rem; font-weight:700; color:var(--md-default-fg-color); margin:.3rem 0 .25rem; line-height:1.35; }
-.post-rail .prs-sub{ display:block; font-size:.72rem; color:var(--md-default-fg-color--light); }
 
-/* the bottom author + sponsor cards are redundant on desktop (now in the rail);
+/* the bottom author card is redundant on desktop (now in the rail);
    keep them only for narrow screens where the right rail collapses */
 @media screen and (min-width:76.25em){
-  .post-author, .post-sponsor{ display:none !important; }
+  .post-author{ display:none !important; }
 }
 
 /* ============================================================
@@ -407,7 +395,7 @@ html { font-size: 118.75%; }
 /* the post cover banner sits flush inside the card */
 [data-md-color-scheme="default"] .md-content .md-typeset img.post-cover { margin-top: .3rem; }
 
-/* gradient primary buttons + author-rail sponsor accent, like the home */
+/* gradient primary buttons, like the home */
 .md-typeset .md-button--primary {
   background: linear-gradient(135deg, #0EA5A0, #2563EB); border: none; color: #fff;
   border-radius: 11px; box-shadow: 0 12px 26px -12px rgba(37,99,235,.55);
@@ -486,7 +474,7 @@ html { font-size: 118.75%; }
   .md-main__inner { justify-content: center !important; }
   .md-content { flex-grow: 0 !important; }
 }
-/* consent banner never overlaps the lightbox close, etc. — handled inline in consent.js */
+/* (cookieless analytics; no consent banner) */
 
 /* ---- blog index: centred, comfortable column + centred intro (Florian-style) ---- */
 @media screen and (min-width: 76.25em) {
