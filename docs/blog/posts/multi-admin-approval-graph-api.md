@@ -176,8 +176,8 @@ don't pin either down and I'd like to.
 
 ## Related
 
-- :material-shield-lock: **The pattern** → [The 403 that started Zero-Access](the-403-that-started-the-zero-access-pattern.md)
-- :material-robot-outline: **The capstone** → [The read-only AI agent that can't touch your tenant](the-read-only-ai-agent-that-cant-touch-your-tenant.md)
+- :material-shield-lock: **The pattern** → [The 403 that started Zero-Access](zero-access-origin-story.md)
+- :material-robot-outline: **The capstone** → [The read-only AI agent that can't touch your tenant](the-ai-agent-that-cant-touch-your-tenant.md)
 
 ## References — Microsoft documentation and community
 
