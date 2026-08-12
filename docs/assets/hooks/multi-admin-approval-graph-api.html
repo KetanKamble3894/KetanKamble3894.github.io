@@ -1,0 +1,92 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>multi-admin-approval-graph-api — hook</title>
+<style>
+:root{--dur:9s}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:#0B1220;overflow:hidden}
+.stage{position:relative;width:100%;aspect-ratio:1200/470;background:
+  radial-gradient(120% 90% at 50% -10%,#12203a 0%,#0B1220 60%);
+  font-family:Inter,-apple-system,"Segoe UI",Roboto,sans-serif;color:#E5E7EB;border-radius:16px}
+.node{position:absolute;top:50%;transform:translateY(-50%);width:15%;text-align:center}
+.node .box{border:1.5px solid #28364F;background:#111A2C;border-radius:12px;padding:7% 4%;font-weight:600;font-size:clamp(9px,1.5vw,17px)}
+.node .sub{color:#8aa0bf;font-weight:500;font-size:clamp(7px,1.1vw,12px);margin-top:4%}
+#app{left:3%}
+#graph{right:3%}
+/* the MAA gate */
+#gate{left:50%;top:0;height:100%;width:0;transform:translateX(-50%);border-left:3px dashed #f0b429;opacity:.85}
+#gate .lbl{position:absolute;left:50%;top:6%;transform:translateX(-50%);white-space:nowrap;color:#f0b429;
+  font-weight:700;font-size:clamp(8px,1.25vw,14px);letter-spacing:.5px}
+#gate .shield{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:clamp(26px,3.4vw,42px);height:clamp(30px,4vw,50px);
+  background:#1a1205;border:2px solid #f0b429;border-radius:8px 8px 14px 14px}
+/* lanes */
+.lane{position:absolute;left:18%;width:64%;height:0}
+#laneGet{top:34%}
+#lanePost{top:66%}
+.lane .lbl{position:absolute;left:0;top:50%;transform:translate(-4%,-50%);font-size:clamp(8px,1.2vw,13px);color:#8aa0bf;font-weight:600}
+/* packets */
+.pkt{position:absolute;top:50%;left:0;transform:translate(-50%,-50%);padding:1.5% 3%;border-radius:20px;
+  font-weight:700;font-size:clamp(8px,1.2vw,14px);white-space:nowrap;box-shadow:0 4px 14px rgba(0,0,0,.4)}
+.get{background:#0f3d2e;color:#34d399;border:1px solid #1f7a5c}
+.post{background:#3a2c0a;color:#f0b429;border:1px solid #7a5a12}
+/* GET: travels all the way through, then a 200 badge pops at graph */
+#getPkt{animation:getMove var(--dur) cubic-bezier(.4,0,.5,1) infinite}
+@keyframes getMove{
+  0%{left:0;opacity:0}
+  6%{opacity:1}
+  46%{left:100%;opacity:1}
+  52%{left:100%;opacity:0}
+  100%{left:100%;opacity:0}
+}
+#getBadge{right:-2%;left:auto;opacity:0;background:#0f3d2e;color:#34d399;border:1px solid #1f7a5c;
+  animation:badge var(--dur) linear infinite}
+@keyframes badge{0%,44%{opacity:0;transform:translate(-50%,-50%) scale(.7)}
+  50%{opacity:1;transform:translate(-50%,-50%) scale(1)}
+  70%{opacity:1}82%{opacity:0}100%{opacity:0}}
+/* POST: travels to gate, stops, turns into 403 + queued */
+#postPkt{animation:postMove var(--dur) cubic-bezier(.4,0,.4,1) infinite}
+@keyframes postMove{
+  0%{left:0;opacity:0}
+  6%{opacity:1}
+  40%{left:48%;opacity:1}         /* reaches the gate (~mid of 18%..82% => 50%) */
+  46%{left:48%;transform:translate(-50%,-50%) scale(1.06)}
+  100%{left:48%;opacity:1}
+}
+#postResult{left:48%;opacity:0;background:#3a2c0a;color:#f0b429;border:1px solid #7a5a12;
+  animation:postRes var(--dur) linear infinite}
+@keyframes postRes{0%,44%{opacity:0}52%{opacity:1;transform:translate(-50%,-50%) scale(1)}100%{opacity:1}}
+#queued{left:48%;top:calc(50% + 34px);opacity:0;font-size:clamp(7px,1vw,12px);color:#8aa0bf;font-weight:600;
+  transform:translate(-50%,-50%);animation:q var(--dur) linear infinite}
+@keyframes q{0%,54%{opacity:0}62%{opacity:1}100%{opacity:1}}
+.cap{position:absolute;left:50%;bottom:4%;transform:translateX(-50%);color:#6b7f9e;font-size:clamp(8px,1.1vw,13px);text-align:center;width:90%}
+.cap b{color:#cbd5e1}
+/* Respect reduced-motion: freeze on the resolved end state (200 + 403 queued). */
+@media (prefers-reduced-motion:reduce){
+  #getPkt,#getBadge,#postPkt,#postResult,#queued{animation:none!important}
+  #getPkt{opacity:0}
+  #getBadge{opacity:1;transform:translate(-50%,-50%) scale(1)}
+  #postPkt{left:48%;opacity:1}
+  #postResult{opacity:1;transform:translate(-50%,-50%)}
+  #queued{opacity:1}
+}
+</style></head>
+<body>
+<div class="stage" role="img" aria-label="Animation: a Graph GET request passes the Multi Admin Approval gate and returns 200 OK, while a POST is stopped at the gate and returns 403 ApprovalRequired, queued for review.">
+  <div class="node" id="app"><div class="box">Your app</div><div class="sub">app-only token</div></div>
+  <div class="node" id="graph"><div class="box">Microsoft&nbsp;Graph</div><div class="sub">/deviceManagementScripts</div></div>
+
+  <div id="gate"><div class="lbl">MULTI ADMIN APPROVAL</div><div class="shield"></div></div>
+
+  <div class="lane" id="laneGet">
+    <div class="lbl">GET</div>
+    <div class="pkt get" id="getPkt">GET&nbsp;·&nbsp;read</div>
+    <div class="pkt" id="getBadge">200 OK</div>
+  </div>
+  <div class="lane" id="lanePost">
+    <div class="lbl">POST</div>
+    <div class="pkt post" id="postPkt">POST&nbsp;·&nbsp;write</div>
+    <div class="pkt" id="postResult">403 ApprovalRequired</div>
+    <div id="queued">queued · needs review</div>
+  </div>
+
+  <div class="cap">MAA gates <b>writes</b>, never <b>reads</b> — a read-only layer is never in its blast radius.</div>
+</div>
+</body></html>
