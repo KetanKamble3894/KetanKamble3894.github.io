@@ -104,12 +104,16 @@ One rename worth flagging: this endpoint used to accept `DeviceManagementConfigu
 deprecated for scripts as of mid-2025. If your automation is old enough, the permission name itself might
 be your first symptom — before MAA is even the story.
 
-## The approval loop
+## How it works: the approval loop
 
 1. `POST` with the justification header.
 2. `403 ApprovalRequired` + the approval code.
 3. A **separate** interactive admin in the approver group approves it in the admin center.
 4. Resubmit the identical request, swapping the justification header for `x-msft-approval-code`.
+
+<div class="mermaid-live" markdown="0">
+--8<-- "assets/diagrams/multi-admin-approval-graph-api.svg"
+</div>
 
 Step 3 is where Microsoft's own documentation contradicts itself, and it's worth stopping on. The how-to
 guide says flatly: *"Applications can't approve or reject MAA requests."* But the API reference page for
@@ -162,6 +166,24 @@ around the feature — it's the design holding up under a stress test I didn't b
 Don't conflate those last two. `ApprovalRequired` means "a human needs to sign off." `Authorization_RequestDenied`
 means "you never had the scope." They send you down completely different paths.
 
+## Set it up, step by step
+
+Reproducing this in your own **personal lab tenant** — note that only step 2 and the write in step 3 change anything; the reads and the gate check are read-only.
+
+1. **Give the app least-privilege script scopes.** On the app registration, grant `DeviceManagementScripts.Read.All` (the read control) and `DeviceManagementScripts.ReadWrite.All` (the write MAA gates), and admin-consent them.
+2. **Have an admin switch on an MAA access policy for Scripts.** In **Intune → Tenant administration → Multi Admin Approval**, create an access policy over the **Scripts** profile type with an **approver group**. Nothing is gated until this policy exists.
+3. **Fire the write.** `POST /beta/deviceManagement/deviceManagementScripts` with the Base64 `x-msft-approval-justification` header. Expect `403 ApprovalRequired` and an `x-msft-approval-code` — returned in both the response header and the message.
+4. **Approve as a second admin.** A different admin in the approver group approves the request in the MAA portal (it appears as *Needs review*).
+5. **Resubmit.** Send the identical request, swapping the justification header for `x-msft-approval-code`. It completes.
+6. **Confirm the read is untouched.** `GET` the same resource — plain `200 OK`, no header, no queue.
+
+## Gotchas from the lab
+
+- **`ApprovalRequired` is not `Authorization_RequestDenied`.** One means "a human needs to sign off," the other means "you never had the scope." Completely different fixes.
+- **Miss the header and you get a *different* error.** Leaving off `x-msft-approval-justification` fails in its own way that flags the missing header — a useful signpost that MAA is in play. I haven't pinned that exact status code in the lab yet, so I'm deliberately not quoting one.
+- **App-only `/approve` is unproven.** Microsoft's docs contradict themselves on whether an application can approve; I validated the *two-admin* flow but did **not** test app-only `/approve`. Don't assume it works.
+- **It's beta.** These are `beta` Graph endpoints — behaviour can change without notice. Verify in your own tenant before you depend on any of it.
+
 ## The takeaway
 
 Multi Admin Approval changes how Intune treats writes, not how it treats reads. In my lab tenant,
@@ -174,10 +196,20 @@ If you've hit this in your own tenant, I'd genuinely like to compare notes — e
 code on the missing-header case, and whether an app-only token can drive `/approve`, because the docs
 don't pin either down and I'd like to.
 
-## Related
+## FAQ
 
-- :material-shield-lock: **The pattern** → [The 403 that started Zero-Access](zero-access-origin-story.md)
-- :material-robot-outline: **The capstone** → [The read-only AI agent that can't touch your tenant](the-ai-agent-that-cant-touch-your-tenant.md)
+**Does MAA break my read-only reporting or monitoring?** No. MAA only fires on `POST` / `PATCH` / `PUT` / `DELETE`. `GET` is never gated — a read-only layer is untouched.
+
+**Is this on by default?** No. It's opt-in, per workload, per tenant — nothing changes until an admin creates an MAA access policy on a protected resource.
+
+**Which permission does the gated write need?** `DeviceManagementScripts.ReadWrite.All` on `beta` for the script create; `DeviceManagementScripts.Read.All` for the read control.
+
+**Can my app approve its own request?** Unverified. Microsoft's how-to guide and the API reference disagree, and I haven't reproduced app-only `/approve` end to end — treat it as an open question.
+
+## More in this series
+
+- :material-shield-lock: [The 403 that started Zero-Access](zero-access-origin-story.md) — where the read-only-by-architecture rule came from.
+- :material-robot-outline: [The read-only AI agent that can't touch your tenant](the-ai-agent-that-cant-touch-your-tenant.md) — the capstone the pattern builds toward.
 
 ## References — Microsoft documentation and community
 
