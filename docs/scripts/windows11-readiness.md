@@ -1,6 +1,6 @@
 ---
 title: Windows 11 Readiness
-description: Per-device Windows 11 hardware readiness — the exact failing check, joined to make and model.
+description: "Per-device Windows 11 hardware readiness from Intune data — the exact failing check (TPM, Secure Boot, CPU, RAM) joined to each device's make and model, read-only."
 tags:
   - Intune
   - Microsoft Graph

@@ -18,4 +18,12 @@
   {# GoatCounter dashboard: ketankamble.goatcounter.com #}
   <script data-goatcounter="https://ketankamble.goatcounter.com/count"
           async src="/javascripts/count.js"></script>
+  {# SEO: keep thin, auto-generated taxonomy/pagination pages (blog categories,
+     archives, tag index, and paginated pages) out of the search index. These
+     inherit the site-wide description and short titles, which otherwise trip
+     "duplicate meta description" / "title too short" reports. Links are still
+     followed, so link equity flows to the real posts. #}
+  {% if page and page.url and ('category/' in page.url or 'archive/' in page.url or '/page/' in page.url or page.url.rstrip('/') == 'tags') %}
+  <meta name="robots" content="noindex, follow">
+  {% endif %}
 {% endblock %}

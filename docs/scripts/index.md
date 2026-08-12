@@ -1,6 +1,6 @@
 ---
-title: Scripts
-description: A library of standalone, read-only PowerShell for the Modern Workplace.
+title: "PowerShell scripts — read-only Intune reporting"
+description: "A library of standalone, read-only PowerShell scripts for the Modern Workplace — Intune, Entra and Graph reporting you can run against a personal lab and reuse."
 ---
 
 

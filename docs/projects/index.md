@@ -1,5 +1,5 @@
 ---
-title: Projects
+title: "Projects — Zero-Access endpoint intelligence"
 description: "Projects built in the open — the Zero-Access read-only endpoint-intelligence agent and the tooling around it, all reproducible from a personal lab."
 ---
 

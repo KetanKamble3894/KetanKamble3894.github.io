@@ -1,5 +1,5 @@
 ---
-title: Blog
+title: "Intune, Entra & Graph — decoded in the open"
 description: "Writing about the Modern Workplace from a personal lab — Intune, Entra, Microsoft Graph and endpoint management, decoded from first principles."
 hide:
   - navigation
