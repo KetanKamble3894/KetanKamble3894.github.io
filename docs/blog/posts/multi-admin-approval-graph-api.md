@@ -1,6 +1,6 @@
 ---
 title: "Graph 412 Precondition Failed: Intune MAA gates writes"
-description: "Intune's Multi Admin Approval gates app-only Graph writes with a 412 Precondition Failed — while GET stays 200. A personal-lab walkthrough of the exact status codes."
+description: "Intune's Multi Admin Approval gates app-only Graph writes with a 412 Precondition Failed — GET stays 200. A personal-lab walkthrough of the status codes."
 date: 2026-08-12
 slug: multi-admin-approval-graph-api
 draft: false
