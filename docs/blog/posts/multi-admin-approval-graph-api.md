@@ -107,9 +107,10 @@ Permission-wise, least privilege is precise:
 | Read scripts (the control, below) | `DeviceManagementScripts.Read.All` | `beta` |
 | Poll approval status | `DeviceManagementRBAC.Read.All` | `beta` |
 
-One rename worth flagging: this endpoint used to accept `DeviceManagementConfiguration.ReadWrite.All`,
-deprecated for scripts as of mid-2025. If your automation is old enough, the permission name itself might
-be your first symptom — before MAA is even the story.
+A note on scopes: the least-privilege permission here is the granular `DeviceManagementScripts.ReadWrite.All`
+(that's what I consented and what the write ran under). Plenty of older automation instead uses the broad
+`DeviceManagementConfiguration.ReadWrite.All` — if yours does, moving to the granular scope is worth doing
+regardless of MAA.
 
 ## How it works: the approval loop
 
@@ -122,8 +123,8 @@ be your first symptom — before MAA is even the story.
 --8<-- "assets/diagrams/multi-admin-approval-graph-api.svg"
 </div>
 
-Step 3 has a genuine open question worth stopping on. Microsoft's how-to guide says flatly:
-*"Applications can't approve or reject MAA requests."* But the API reference page for the `approve` action
+Step 3 has a genuine open question worth stopping on. Microsoft's how-to guidance indicates that
+applications can't approve or reject MAA requests — yet the API reference page for the `approve` action
 itself lists **Application** permissions as valid for that exact call. Those can't both be true — and it's
 the kind of thing you can only settle by firing the request, not by reading whichever doc you hit first.
 
