@@ -1,7 +1,6 @@
 ---
-title: "Every policy, every target"
-slug: every-policy-every-target-the-assignment-map-intune-wont-draw-for-you
-description: "Map every Intune compliance policy and profile to every group it targets — dynamic rules and broken targets included — in a read-only report."
+title: "Intune policy assignments at scale: every target"
+description: "Intune policy assignments at scale — map every policy and profile to every group it targets, with dynamic rules and broken assignments, in a read-only report."
 date: 2026-05-25
 draft: false
 comments: true
