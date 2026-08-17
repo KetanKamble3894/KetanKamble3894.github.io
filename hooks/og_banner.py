@@ -55,6 +55,44 @@ def _script(obj):
     return '\n<script type="application/ld+json">' + payload + "</script>\n"
 
 
+@event_priority(100)
+def on_page_markdown(markdown, page, config, files, **kwargs):
+    """Set the RSS enclosure image to the post's own banner.
+
+    Runs early (before any on_page_content) so the mkdocs-rss-plugin — which
+    reads page.meta["image"] first — uses the real 1200x630 banner that exists,
+    instead of the Material social-card path it computes by default (which is
+    never generated for blog posts, so every feed enclosure 404s).
+    """
+    src = page.file.src_uri
+    if not src.startswith("blog/posts/"):
+        return markdown
+    base = (config.site_url or "/").rstrip("/") + "/"
+
+    # 1) Prefer the banner whose filename matches the post's source stem.
+    stem = os.path.splitext(os.path.basename(src))[0]
+    banner_src = f"assets/img/banners/{stem}.png"
+    if files.get_file_from_path(banner_src) is None:
+        # 2) Fall back to the post's own .post-cover image (some posts use a
+        #    banner whose name doesn't match the source filename). Prefer the
+        #    .png sibling over .webp for the widest feed-reader support.
+        banner_src = None
+        cm = re.search(r'!\[[^\]]*\]\(([^)]+)\)\{[^}]*\.post-cover', markdown or "")
+        if not cm:
+            cm = re.search(r'<img[^>]*class="[^"]*post-cover[^"]*"[^>]*src="([^"]+)"', markdown or "")
+        if cm:
+            rel = re.sub(r'^(\.\./)+', "", cm.group(1).strip())  # strip leading ../
+            png = re.sub(r'\.webp$', ".png", rel)
+            if files.get_file_from_path(png) is not None:
+                banner_src = png
+            elif files.get_file_from_path(rel) is not None:
+                banner_src = rel
+
+    if banner_src is not None:
+        page.meta["image"] = posixpath.join(base, banner_src)
+    return markdown
+
+
 def _iso(value):
     # Full ISO 8601 with timezone (Google & OG prefer datetime over date-only).
     if isinstance(value, datetime.datetime):
@@ -128,11 +166,12 @@ def on_page_content(html, page, config, files, **kwargs):
     if not src.startswith("blog/posts/"):
         return html
 
-    stem = os.path.splitext(os.path.basename(src))[0]
     base = (config.site_url or "/").rstrip("/") + "/"
-    banner = posixpath.join(base, f"assets/img/banners/{stem}.png")
-    banner_src = f"assets/img/banners/{stem}.png"
-    have_banner = files.get_file_from_path(banner_src) is not None
+    # Reuse the resolved banner from on_page_markdown (stem-matched banner, or
+    # the post's .post-cover fallback) so the share image and the RSS enclosure
+    # always agree and always point at a file that exists.
+    banner = page.meta.get("image")
+    have_banner = bool(banner)
 
     published = _post_date(page)
 
