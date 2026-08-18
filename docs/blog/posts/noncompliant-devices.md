@@ -10,6 +10,7 @@ categories:
   - Compliance
   - Power BI
 tags:
+  - PowerShell
   - Intune
   - Microsoft Graph
   - Defender / Security

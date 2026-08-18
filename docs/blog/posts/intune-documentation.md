@@ -8,6 +8,7 @@ comments: true
 categories:
   - Behind the portal
 tags:
+  - PowerShell
   - Intune
   - Microsoft Graph
   - Azure Automation

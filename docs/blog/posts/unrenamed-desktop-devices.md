@@ -8,6 +8,7 @@ comments: true
 categories:
   - Provisioning
 tags:
+  - PowerShell
   - Intune
   - Windows Autopilot
   - Microsoft Graph

@@ -9,6 +9,7 @@ categories:
   - Telephony
   - Power BI
 tags:
+  - PowerShell
   - Microsoft Teams
   - Microsoft Graph
   - Entra ID

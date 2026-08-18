@@ -9,6 +9,7 @@ categories:
   - Compliance
   - Power BI
 tags:
+  - PowerShell
   - Intune
   - Microsoft Graph
   - Entra ID

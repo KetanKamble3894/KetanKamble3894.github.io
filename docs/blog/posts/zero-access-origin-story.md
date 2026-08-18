@@ -8,6 +8,7 @@ comments: true
 categories:
   - Behind the portal
 tags:
+  - PowerShell
   - Microsoft Graph
   - Managed Identity
   - Defender / Security

@@ -8,6 +8,7 @@ comments: true
 categories:
   - Device lifecycle
 tags:
+  - PowerShell
   - Intune
   - Lenovo
   - Microsoft Graph

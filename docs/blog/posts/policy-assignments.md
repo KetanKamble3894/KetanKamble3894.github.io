@@ -1,5 +1,6 @@
 ---
 title: "Intune policy assignments at scale: every target"
+slug: every-policy-every-target-the-assignment-map-intune-wont-draw-for-you
 description: "Intune policy assignments at scale — map every policy and profile to every group it targets, with dynamic rules and broken assignments, in a read-only report."
 date: 2026-05-25
 draft: false
@@ -8,6 +9,7 @@ categories:
   - Behind the portal
   - Power BI
 tags:
+  - PowerShell
   - Intune
   - Microsoft Graph
   - Azure Automation
