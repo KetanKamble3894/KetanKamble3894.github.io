@@ -50,6 +50,7 @@ theme:
 
 hooks:
   - hooks/og_banner.py
+  - hooks/tag_feed.py
 
 extra_css:
   - stylesheets/extra.css
