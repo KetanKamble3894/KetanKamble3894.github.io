@@ -17,6 +17,16 @@ Nothing on this site was invented in a vacuum. The endpoint-management community
 - **[Ugur Koc](https://ugurkoc.de/)** — Intune and Security Copilot, and genuinely useful free open-source tools.
 - **[Peter van der Woude](https://www.petervanderwoude.nl/)** — long-running, precise Intune configuration write-ups.
 
+## Community aggregators & newsletters
+
+Feeds and newsletters that curate endpoint-management and PowerShell writing from across the community — good places to keep up with the whole space:
+
+- **[IntuneFans](https://intunefans.com/)** — a live community "radar" of Intune blogs, news and conferences.
+- **[EndpointWeekly](https://endpointweekly.com/)** — a free weekly roundup of MVP and community endpoint-management posts.
+- **[Planet PowerShell](https://planetpowershell.com/)** — the long-running aggregator of PowerShell community content.
+
+[![Featured on Planet PowerShell — Featured Community Blog](assets/img/planetpowershell-featured-badge.png){ .off-glb width="215" loading=lazy }](https://planetpowershell.com/)
+
 ## Microsoft's own docs
 
 - **[Microsoft Learn — Intune](https://learn.microsoft.com/en-us/intune/)** — the source of truth; every claim here should trace back to it.
