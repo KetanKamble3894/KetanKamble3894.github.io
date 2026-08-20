@@ -66,6 +66,44 @@
         if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); trigger(); }
       });
     });
+
+    // Inline diagram SVGs (mermaid --8<-- includes) are <svg>, not <img>, so the
+    // loop above skips them. Wire the diagram container up for click/Enter zoom too,
+    // serializing the live SVG to a data URL on first open.
+    var diagrams = document.querySelectorAll('.md-content .mermaid-live svg, .md-content .mermaid svg');
+    Array.prototype.forEach.call(diagrams, function (svg) {
+      var wrap = svg.closest('.mermaid-live, .mermaid') || svg;
+      if (wrap.getAttribute('data-zoomable') === '1') return; // guard against double-wiring
+      wrap.setAttribute('data-zoomable', '1');
+      wrap.style.cursor = 'zoom-in';
+      wrap.setAttribute('tabindex', '0');
+      wrap.setAttribute('role', 'button');
+      wrap.setAttribute('aria-label', 'Zoom diagram to full size');
+      var cached = null;
+      function toURL() {
+        if (cached) return cached;
+        var clone = svg.cloneNode(true);
+        if (!clone.getAttribute('xmlns')) clone.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+        // A standalone SVG needs concrete pixel dimensions to render at full size —
+        // width="100%" collapses to nothing outside its flow container.
+        var vb = (clone.getAttribute('viewBox') || '0 0 1200 630').split(/[\s,]+/);
+        var w = Math.round(parseFloat(vb[2]) || 1200), h = Math.round(parseFloat(vb[3]) || 630);
+        clone.setAttribute('width', w);
+        clone.setAttribute('height', h);
+        // Dark rounded padding so the light-on-transparent diagram stays legible when zoomed.
+        clone.style.background = '#0B1220';
+        clone.style.padding = '24px';
+        clone.style.borderRadius = '12px';
+        var s = new XMLSerializer().serializeToString(clone);
+        cached = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(s);
+        return cached;
+      }
+      function trigger() { open(toURL(), 'Diagram, full size', wrap); }
+      wrap.addEventListener('click', trigger);
+      wrap.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); trigger(); }
+      });
+    });
   }
 
   if (document.readyState === 'loading') {
