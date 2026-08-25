@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 540" role="img" aria-labelledby="t d" font-family="Inter, -apple-system, 'Segoe UI', Roboto, sans-serif">
+<title id="t">Read-only audit of new Intune Suite capabilities</title>
+<desc id="d">Advanced Intune Suite features arrive switched on at the license level with their state unknown. A read-only audit holding only dot-Read-All scopes issues GET calls and returns an inventory of which features are present or enabled. Nothing in the path can enable, configure or change a feature.</desc>
+<style>
+  .box{fill:#0f1a2e;stroke:#26364f;stroke-width:2;rx:14}
+  .teal{stroke:#2dd4bf;stroke-width:2.5}
+  .h{fill:#e9eef7;font-size:22px;font-weight:700}
+  .sub{fill:#94a3b8;font-size:16px}
+  .chip{fill:#131f36;stroke:#2a3a58;stroke-width:1.5;rx:9}
+  .ct{fill:#cbd5e1;font-size:17px;font-weight:600}
+  .none{fill:#94a3b8;font-size:16px;font-weight:700}
+  .amber{fill:#f0b429;font-size:16px;font-weight:700}
+  .arrow{stroke:#2dd4bf;stroke-width:3;fill:none;marker-end:url(#a)}
+  .note{fill:#2dd4bf;font-size:17px;font-weight:600}
+  .qmark{fill:#f0b429;font-size:16px;font-weight:700}
+</style>
+<defs><marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2dd4bf"/></marker></defs>
+
+<!-- Stage A: license -->
+<rect class="box" x="36" y="96" width="356" height="320" rx="14"/>
+<text class="h" x="60" y="134">Arrived with the license</text>
+<text class="sub" x="60" y="158">E5 (and some in E3), switched on</text>
+<g>
+  <rect class="chip" x="60" y="180" width="308" height="40" rx="9"/><text class="ct" x="76" y="206">Endpoint Privilege Mgmt</text><text class="qmark" x="330" y="206" text-anchor="end">?</text>
+  <rect class="chip" x="60" y="228" width="308" height="40" rx="9"/><text class="ct" x="76" y="254">Cloud PKI</text><text class="qmark" x="330" y="254" text-anchor="end">?</text>
+  <rect class="chip" x="60" y="276" width="308" height="40" rx="9"/><text class="ct" x="76" y="302">Enterprise App Mgmt</text><text class="qmark" x="330" y="302" text-anchor="end">?</text>
+  <rect class="chip" x="60" y="324" width="308" height="40" rx="9"/><text class="ct" x="76" y="350">Advanced Analytics</text><text class="qmark" x="330" y="350" text-anchor="end">?</text>
+  <rect class="chip" x="60" y="372" width="308" height="32" rx="9"/><text class="ct" x="76" y="394">Remote Help</text><text class="qmark" x="330" y="394" text-anchor="end">?</text>
+</g>
+
+<!-- arrow A -> B -->
+<path class="arrow" d="M400,256 L470,256"/>
+
+<!-- Stage B: read-only audit -->
+<rect class="box teal" x="474" y="176" width="300" height="160" rx="14"/>
+<text class="h" x="498" y="214">Read-only audit</text>
+<text class="sub" x="498" y="240">App with only *.Read.All</text>
+<text class="sub" x="498" y="264">Five GET calls</text>
+<text class="note" x="498" y="300">GET only. No writes.</text>
+<text class="sub" x="498" y="322">Even Global Admin is bound to the scope</text>
+
+<!-- arrow B -> C -->
+<path class="arrow" d="M782,256 L852,256"/>
+
+<!-- Stage C: inventory result -->
+<rect class="box" x="856" y="96" width="388" height="320" rx="14"/>
+<text class="h" x="880" y="134">Inventory result</text>
+<text class="sub" x="880" y="158">what is actually on, per feature</text>
+<g font-size="17">
+  <text class="ct" x="880" y="204">Endpoint Privilege Mgmt</text><text class="none" x="1220" y="204" text-anchor="end">none</text>
+  <text class="ct" x="880" y="252">Cloud PKI</text><text class="none" x="1220" y="252" text-anchor="end">none</text>
+  <text class="ct" x="880" y="300">Enterprise App Mgmt</text><text class="none" x="1220" y="300" text-anchor="end">none</text>
+  <text class="ct" x="880" y="348">Advanced Analytics</text><text class="none" x="1220" y="348" text-anchor="end">none</text>
+  <text class="ct" x="880" y="394">Remote Help</text><text class="amber" x="1220" y="394" text-anchor="end">disabled</text>
+</g>
+
+<!-- footer note -->
+<text class="note" x="640" y="470" text-anchor="middle">Nothing in this path can enable, configure or change a feature. It can only read.</text>
+</svg>
