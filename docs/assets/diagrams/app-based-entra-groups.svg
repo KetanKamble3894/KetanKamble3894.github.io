@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 560" role="img" aria-labelledby="t d" font-family="Inter, -apple-system, 'Segoe UI', Roboto, sans-serif">
+<title id="t">App-based Entra groups from Intune inventory</title>
+<desc id="d">Intune detected-apps inventory feeds two Azure Automation runbooks running as a Managed Identity. The creator runbook makes one assigned Entra group per app. The refresh runbook maps each device across the three-hop id chain and reconciles group membership, adding freely and removing only after three safety gates. The resulting assigned Entra groups are used by Intune assignments, policies, and deployment tools.</desc>
+<style>
+ .box{fill:#0f1a2e;stroke:#26364f;stroke-width:2}
+ .teal{stroke:#2dd4bf;stroke-width:2.5}
+ .h{fill:#e9eef7;font-size:21px;font-weight:700}
+ .sub{fill:#94a3b8;font-size:15px}
+ .mono{fill:#8be9df;font-size:14px;font-family:'DejaVu Sans Mono',monospace}
+ .amber{fill:#f0b429;font-size:14px;font-weight:700}
+ .arrow{stroke:#2dd4bf;stroke-width:3;fill:none;marker-end:url(#a)}
+ .note{fill:#2dd4bf;font-size:15px;font-weight:600}
+</style>
+<defs><marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2dd4bf"/></marker></defs>
+
+<!-- Left: inventory -->
+<rect class="box" x="34" y="150" width="270" height="150" rx="14"/>
+<text class="h" x="56" y="196">Intune inventory</text>
+<text class="sub" x="56" y="222">detected apps</text>
+<text class="sub" x="56" y="248">which device</text>
+<text class="sub" x="56" y="270">has which app</text>
+
+<path class="arrow" d="M312,225 L372,225"/>
+
+<!-- Middle: two runbooks -->
+<rect class="box" x="376" y="70" width="360" height="120" rx="14"/>
+<text class="h" x="400" y="108">Creator runbook</text>
+<text class="sub" x="400" y="134">one ASSIGNED Entra group per app</text>
+<text class="mono" x="400" y="162">"MDM Apps Discovered - App (CG)"</text>
+
+<rect class="box teal" x="376" y="212" width="360" height="188" rx="14"/>
+<text class="h" x="400" y="250">Refresh runbook</text>
+<text class="sub" x="400" y="276">map device across the 3-hop id chain,</text>
+<text class="sub" x="400" y="297">reconcile membership</text>
+<text class="mono" x="400" y="328">detectedApp -&gt; azureADDeviceId</text>
+<text class="mono" x="400" y="348">-&gt; Entra deviceId -&gt; object id</text>
+<text class="amber" x="400" y="378">add freely · remove only past 3 gates</text>
+
+<path class="arrow" d="M740,300 L800,300"/>
+
+<!-- Right: groups -->
+<rect class="box" x="804" y="150" width="442" height="150" rx="14"/>
+<text class="h" x="828" y="196">Assigned Entra groups</text>
+<text class="sub" x="828" y="224">one per app, kept in sync</text>
+<text class="sub" x="828" y="252">used by Intune app assignments,</text>
+<text class="sub" x="828" y="274">policies, and your deploy tool</text>
+
+<!-- footer -->
+<rect class="box" x="300" y="430" width="680" height="66" rx="12"/>
+<text class="note" x="640" y="458" text-anchor="middle">Runs as a Managed Identity, on a schedule, dry-run by default.</text>
+<text class="note" x="640" y="481" text-anchor="middle" font-size="14">Creator scope Group.ReadWrite.All  ·  refresh scope GroupMember.ReadWrite.All</text>
+</svg>
