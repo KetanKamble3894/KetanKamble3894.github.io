@@ -141,6 +141,7 @@ nav:
           - Non-Compliant Devices: scripts/noncompliant-devices.md
           - Device Hygiene: scripts/device-hygiene.md
       - Apps, licensing & lifecycle:
+          - App-Based Entra Groups: scripts/app-based-entra-groups.md
           - App Deployment Failures: scripts/app-deployment-failures.md
           - License Compliance: scripts/license-compliance.md
           - Teams Phone License Usage: scripts/teams-phone-license-usage.md
