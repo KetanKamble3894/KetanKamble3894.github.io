@@ -1,0 +1,19 @@
+AUTH METHOD READINESS GROUPS - deploy bundle
+=============================================
+Upload the docs/ folder and mkdocs.yml via GitHub web (Add file -> Upload files,
+drag the docs folder so paths are kept). mkdocs.yml goes at repo root.
+
+Files in this bundle:
+  docs/blog/posts/auth-method-readiness-groups.md   - the post (slug: passkey-readiness-entra-auth-method-groups)
+  docs/scripts/auth-method-readiness-groups.md       - the scripts-library page
+  docs/assets/scripts/Report-AuthMethodReadiness.ps1 - the runbook (sanitized, denylist-clean)
+  docs/assets/img/banners/*.png / *.webp             - cover banner
+  docs/assets/img/banners/*.gif                      - animated hook (labels, no live numbers)
+  docs/assets/hooks/auth-method-readiness-groups.html- static hook
+  docs/assets/diagrams/auth-method-readiness-groups.svg - 4-phase how-it-works flowchart
+  mkdocs.yml                                          - ONLY change vs origin: one nav line
+                                                        under "Compliance & security"
+
+SEPARATE STEP (so the GitHub button on the scripts page resolves):
+  push docs/assets/scripts/Report-AuthMethodReadiness.ps1 to the zero-access-agent
+  repo at scripts/Report-AuthMethodReadiness.ps1
