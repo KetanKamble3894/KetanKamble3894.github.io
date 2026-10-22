@@ -18,26 +18,26 @@ tags:
   - Managed Identity
 ---
 
-# Before SMS and voice MFA retire, know who is passkey-ready, as a group
+# Before Microsoft-provided SMS and voice retire, know who is passkey-ready, as a group
 
-![Cover: Microsoft retiring SMS and voice MFA and defaulting to passkeys, and a read-only runbook that sorts every Entra user into method-strength groups so the telephony-only list is ready to act on](../../assets/img/banners/auth-method-readiness-groups.webp){ .post-cover width="1200" height="630" fetchpriority=high }
+![Cover: Microsoft retiring its own SMS and voice delivery and defaulting to passkeys, and a read-only runbook that sorts every Entra user into method-strength groups so the telephony-only list is ready to act on](../../assets/img/banners/auth-method-readiness-groups.webp){ .post-cover width="1200" height="630" fetchpriority=high }
 
-Microsoft has put a date on something a lot of us have been meaning to get to. Passkeys are becoming the default, and Microsoft-provided SMS and voice are being retired as authentication methods. So the question stops being "should we move people off text-message codes" and becomes "who is still on one, and can we see that list today."
+Microsoft has put a date on something a lot of us have been meaning to get to. Passkeys are becoming the default, and Microsoft is retiring its own delivery of the SMS and voice codes, so Microsoft stops sending the text and the phone call. So the question stops being "should we move people off text-message codes" and becomes "who is still on one, and can we see that list today."
 
 We needed an honest answer to that, as a thing we could act on and not just a number in a dashboard. Not just a count of how many people are on phone-based MFA, but the actual users, split by how strong their method really is, kept current, and sitting in groups we can point a Conditional Access policy or a comms campaign at. This is the read-only runbook we built to produce that, and the way it keeps the groups in sync without ever being allowed to break anyone's sign-in.
 
 <!-- more -->
 
 <div class="hook-embed" markdown="0">
-<iframe scrolling="no" src="/assets/hooks/auth-method-readiness-groups.html" title="Before and after: authentication method registration data sitting flat, then sorted into live Entra groups per method strength, with the telephony-only group ready to target before SMS MFA retires" loading="lazy" style="display:block;width:100%;aspect-ratio:1200/470;border:0;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.35)"></iframe>
+<iframe scrolling="no" src="/assets/hooks/auth-method-readiness-groups.html" title="Before and after: authentication method registration data sitting flat, then sorted into live Entra groups per method strength, with the telephony-only group ready to target before Microsoft-provided SMS and voice retire" loading="lazy" style="display:block;width:100%;aspect-ratio:1200/470;border:0;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.35)"></iframe>
 </div>
 
 !!! success "The payoff"
-    Microsoft is making passkeys the default and retiring Microsoft-provided SMS and voice MFA on 1 February 2027 for most users. This is a read-only runbook that reads the Entra authentication-method registration report, sorts every in-scope user into one group by their strongest method (phishing-resistant, strong, telephony-only, nothing), and keeps those assigned groups in sync. It defaults to a dry run, writes a CSV of every change, and has four gates before it removes anyone. The telephony-only group is the one that matters right now: it is your migration list, ready to target.
+    Microsoft is making passkeys the default and retiring its own SMS and voice delivery on 1 February 2027 for most users. This is a read-only runbook that reads the Entra authentication-method registration report, sorts every in-scope user into one group by their strongest method (phishing-resistant, strong, telephony-only, nothing), and keeps those assigned groups in sync. It defaults to a dry run, writes a CSV of every change, and has four gates before it removes anyone. The telephony-only group is the one that matters right now: it is your migration list, ready to target.
 
 ## The deadline that makes this worth doing now
 
-Microsoft announced in message center post MC1426371 that it is turning passkeys on by default and retiring Microsoft-provided SMS and voice as authentication methods. The reasoning they give is blunt: text-message and phone-call codes do not hold up against modern phishing and AI-assisted attacks. The dates are set. Passkeys become the default on 1 September 2026, and Microsoft-provided SMS and voice are retired on 1 February 2027 for everyone except global administrators and external users, who get until 1 July 2027. That split is the reason the runbook keeps members and internal guests in scope and drops external guests, their deadline is the later one.
+Microsoft announced in message center post MC1426371 that it is turning passkeys on by default and retiring Microsoft-provided SMS and voice delivery. The reasoning they give is blunt: text-message and phone-call codes do not hold up against modern phishing and AI-assisted attacks. To be exact about what goes away: it is Microsoft's own delivery of the codes, not telephony as a method in the abstract. The text and the call that Microsoft sends stop, and unless you have wired up an external telephony provider, anyone whose only method is Microsoft-provided SMS or voice loses their way in. That is the population this runbook finds. The dates are set. Passkeys become the default on 1 September 2026, and Microsoft-provided SMS and voice are retired on 1 February 2027 for everyone except global administrators and external users, who get until 1 July 2027. That split is the reason the runbook keeps members and internal guests in scope and drops external guests, their deadline is the later one.
 
 The practical problem is that you can't move people you can't see. "Turn off SMS" is easy. Knowing which 600 or 6,000 accounts will lose their only working method the day you do it is the hard part, and that's a reporting problem before it's a policy problem.
 
@@ -47,7 +47,7 @@ A flat count isn't enough. For every active user we want their strongest registe
 
 - phishing-resistant: a passkey, FIDO2 key, Windows Hello for Business, a platform credential. These people are already where Microsoft wants everyone.
 - strong but not phishing-resistant: Authenticator push or passwordless, a software or hardware one-time passcode, a third-party MFA like Duo. Fine today, not the end state.
-- telephony-only: the only thing registered is a phone number, SMS or voice. This is the group that breaks when the method retires.
+- telephony-only: the only thing registered is a phone number, SMS or voice. This is the group that breaks when Microsoft-provided delivery stops.
 - nothing usable: no method, or only self-service password reset answers, which aren't MFA.
 
 Sort every person into exactly one of those by their strongest method and the telephony-only bucket becomes your migration list. That is the whole point.
@@ -60,7 +60,7 @@ The thing that reads your entire directory and everyone's registered methods is 
 
 The natural instinct is a dynamic group: "members where their strongest method is a phone number." You can't write that rule. Dynamic membership rules run on directory attributes on the user object, and a person's registered authentication methods aren't attributes on the user, they come from a separate report. There's no dynamic rule that can read registration state, the same way there wasn't a dynamic rule for "has this app installed" in the Intune world.
 
-So these are assigned groups, created once by hand, and kept in sync by the runbook off the report. From where you sit the result behaves like a dynamic group, the membership updates itself on every run, it just gets driven by the runbook instead of a membership rule, because no rule can read registration state. This is the operational-groups idea, a group you maintain by automation because a dynamic rule cannot express what you need. Nathan McNulty has shared scripts and writing on operational groups in Entra, and his GitHub is worth a read for the broader pattern. This runbook was built on our own for our own requirement, I did not take code or logic from there, but credit to him for putting the idea out in the open. The runbook here never creates, renames or deletes a group. It only ever adds and removes members, and only to groups you made first.
+So these are assigned groups, created once by hand, and kept in sync by the runbook off the report. From where you sit the result behaves like a dynamic group, the membership updates itself on every run, it just gets driven by the runbook instead of a membership rule, because no rule can read registration state. This is the operational-groups idea, a group you maintain by automation because a dynamic rule cannot express what you need. This runbook was written on our own for our own requirement. The runbook here never creates, renames or deletes a group. It only ever adds and removes members, and only to groups you made first.
 
 One setup choice worth knowing: you can nest the phishing-resistant and strong groups inside a parent "System Preferred MFA" group and point the system-preferred MFA policy at the parent, so the two already-fine groups drive that policy together. The nesting is a one-time manual step. The runbook does not touch the parent, it just keeps the two leaf groups current underneath it.
 
@@ -150,14 +150,14 @@ NoRegistrationData   12       0         Auth - No Registration Data Users
 Review               6        0         Auth - Manual Review Users
 ```
 
-That TelephonyOnly row is the headline. 430 people, 22 of them non-human accounts that get excluded, so 408 real users to move before the method retires. The run ends by saying exactly that in a line you can drop into a status update, and it tracks the number down over time as the campaign runs.
+That TelephonyOnly row is the headline. 430 people, 22 of them non-human accounts that get excluded, so 408 real users to move before Microsoft-provided delivery stops. The run ends by saying exactly that in a line you can drop into a status update, and it tracks the number down over time as the campaign runs.
 
 !!! note "Coming next: the Power BI report"
     These CSVs are the raw material. A detailed Power BI report that sits on top of them is coming soon, so you can watch the telephony-only number trend down week over week and slice it by department and account type. This post is the groups and the runbook that keep them current, the report is the next piece.
 
 ## The telephony-only list is the one that matters right now
 
-Every other group is useful, but the telephony-only group is the one with a clock on it. Point a Conditional Access report-only policy at it to see who would be affected. Hand it to the service desk as the call list. Drive a registration campaign at it and watch it shrink run over run. When SMS and voice retire, the people in that group are exactly the ones who would have lost access, and you dealt with them on your schedule instead of on the cutover morning.
+Every other group is useful, but the telephony-only group is the one with a clock on it. Point a Conditional Access report-only policy at it to see who would be affected. Hand it to the service desk as the call list. Drive a registration campaign at it and watch it shrink run over run. When Microsoft-provided SMS and voice stop, the people in that group are exactly the ones who would have lost access, and you dealt with them on your schedule instead of on the cutover morning.
 
 ## What each group is for
 
@@ -184,7 +184,6 @@ This is the same move as everything else here. The part that reads your whole di
 - **MC1426371, Passkeys by default and retirement of Microsoft-provided SMS and voice** (Microsoft Entra message center): [mc.merill.net/message/MC1426371](https://mc.merill.net/message/MC1426371)
 - **Passkeys by default and retirement of Microsoft-provided SMS and voice authentication** (Microsoft Learn, the authoritative dates): [learn.microsoft.com](https://learn.microsoft.com/en-us/entra/identity/authentication/concept-sms-voice-retirement)
 - **userRegistrationDetails resource type** (Microsoft Graph, the report this reads): [learn.microsoft.com](https://learn.microsoft.com/en-us/graph/api/resources/userregistrationdetails)
-- **Nathan McNulty on GitHub** (scripts and writing on operational groups in Entra, independent prior art on the pattern, this runbook took no code from it): [github.com/nathanmcnulty/nathanmcnulty](https://github.com/nathanmcnulty/nathanmcnulty)
 - **Operational groups in Entra** (entra.news, related reading on maintaining assigned groups by automation): [entra.news/p/operational-groups-in-entra-with](https://entra.news/p/operational-groups-in-entra-with)
 
 <script type="application/ld+json">
@@ -205,7 +204,7 @@ This is the same move as everything else here. The part that reads your whole di
       "name": "Is Microsoft really retiring SMS and voice MFA?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. In message center post MC1426371 Microsoft announced passkeys becoming the default and the retirement of Microsoft-provided SMS and voice as authentication methods, with a timeline running into 2027. The authoritative dates are on Microsoft Learn under the SMS and voice retirement concept page."
+        "text": "Microsoft is retiring its own delivery of SMS and voice codes, announced in message center post MC1426371 alongside passkeys becoming the default. Telephony is not deleted as a method in the abstract, but the text messages and calls Microsoft sends stop, so anyone whose only method is Microsoft-provided SMS or voice loses access unless an external telephony provider is wired up. The timeline runs into 2027 and the authoritative dates are on Microsoft Learn under the SMS and voice retirement concept page."
       }
     },
     {
@@ -221,7 +220,7 @@ This is the same move as everything else here. The part that reads your whole di
       "name": "What counts as phishing-resistant versus strong?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Phishing-resistant means passkeys, FIDO2 security keys, Windows Hello for Business and platform credentials. Strong-but-not-phishing-resistant means Authenticator push or passwordless, software or hardware one-time passcodes, and third-party MFA such as Duo. Telephony means SMS or voice only, which is the method being retired."
+        "text": "Phishing-resistant means passkeys, FIDO2 security keys, Windows Hello for Business and platform credentials. Strong-but-not-phishing-resistant means Authenticator push or passwordless, software or hardware one-time passcodes, and third-party MFA such as Duo. Telephony means SMS or voice only, which is the delivery Microsoft is retiring."
       }
     }
   ]

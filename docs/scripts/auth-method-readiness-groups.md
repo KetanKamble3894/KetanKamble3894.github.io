@@ -1,6 +1,6 @@
 ---
 title: Auth Method Readiness Groups
-description: A read-only Entra runbook that sorts users by their strongest auth method and keeps assigned readiness groups in sync, before SMS and voice MFA retire.
+description: A read-only Entra runbook that sorts users by strongest auth method and keeps the readiness groups in sync, before Microsoft-provided SMS and voice retire.
 tags:
   - Entra ID
   - Microsoft Graph
@@ -37,7 +37,7 @@ Create the six readiness groups plus the exclusion group by hand first (the runb
 set the storage config at the top, then run with `-DryRun $true` and read the proposed changes before you
 ever let it write.
 
-??? example "View Report-AuthMethodReadiness.ps1"
+???+ example "The complete runbook: Report-AuthMethodReadiness.ps1"
     ```powershell
     --8<-- "assets/scripts/Report-AuthMethodReadiness.ps1"
     ```

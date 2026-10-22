@@ -23,7 +23,15 @@
     closeBtn.setAttribute('aria-label', 'Close image preview');
     closeBtn.innerHTML = '&times;';
 
+    // Animated hooks are iframes, not images. The overlay carries a second zoom
+    // target, an iframe, so a hook can open at full size the same way an image does.
+    var bigFrame = document.createElement('iframe');
+    bigFrame.setAttribute('title', 'Zoomed preview');
+    bigFrame.setAttribute('scrolling', 'no');
+    bigFrame.style.cssText = 'display:none;width:min(94vw,1200px);aspect-ratio:1200/470;border:0;border-radius:16px;background:#0B1220;box-shadow:0 20px 60px rgba(0,0,0,.5)';
+
     overlay.appendChild(big);
+    overlay.appendChild(bigFrame);
     overlay.appendChild(closeBtn);
     document.body.appendChild(overlay);
 
@@ -31,8 +39,21 @@
 
     function open(src, alt, trigger) {
       lastFocus = trigger || document.activeElement;
+      bigFrame.style.display = 'none';
+      bigFrame.src = '';
+      big.style.display = '';
       big.src = src;
       big.alt = alt || '';
+      overlay.classList.add('open');
+      overlay.setAttribute('aria-hidden', 'false');
+      closeBtn.focus();
+    }
+    function openFrame(src, trigger) {
+      lastFocus = trigger || document.activeElement;
+      big.style.display = 'none';
+      big.src = '';
+      bigFrame.style.display = 'block';
+      bigFrame.src = src;
       overlay.classList.add('open');
       overlay.setAttribute('aria-hidden', 'false');
       closeBtn.focus();
@@ -41,11 +62,12 @@
       overlay.classList.remove('open');
       overlay.setAttribute('aria-hidden', 'true');
       big.src = '';
+      bigFrame.src = '';
       if (lastFocus && lastFocus.focus) lastFocus.focus();
     }
 
     overlay.addEventListener('click', function (e) {
-      if (e.target !== big) close(); // click backdrop or the × closes; clicking the image itself doesn't
+      if (e.target !== big && e.target !== bigFrame) close(); // backdrop or × closes; the media itself doesn't
     });
     closeBtn.addEventListener('click', close);
     document.addEventListener('keydown', function (e) {
@@ -99,6 +121,26 @@
         return cached;
       }
       function trigger() { open(toURL(), 'Diagram, full size', wrap); }
+      wrap.addEventListener('click', trigger);
+      wrap.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); trigger(); }
+      });
+    });
+
+    // Animated hooks are embedded as iframes inside .hook-embed. The iframe would
+    // swallow the click, so pointer events are turned off on it and the wrapper
+    // itself opens the same hook full-size in the overlay.
+    var hooks = document.querySelectorAll('.md-content .hook-embed');
+    Array.prototype.forEach.call(hooks, function (wrap) {
+      var fr = wrap.querySelector('iframe');
+      if (!fr || wrap.getAttribute('data-zoomable') === '1') return;
+      wrap.setAttribute('data-zoomable', '1');
+      fr.style.pointerEvents = 'none';
+      wrap.style.cursor = 'zoom-in';
+      wrap.setAttribute('tabindex', '0');
+      wrap.setAttribute('role', 'button');
+      wrap.setAttribute('aria-label', 'Zoom to full size');
+      function trigger() { openFrame(fr.src, wrap); }
       wrap.addEventListener('click', trigger);
       wrap.addEventListener('keydown', function (e) {
         if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); trigger(); }
