@@ -646,3 +646,15 @@ html { font-size: 118.75%; }
   html.js-reveal .reveal { opacity: 0; transform: translateY(12px); transition: opacity .5s var(--ease-out), transform .5s var(--ease-out); }
   html.js-reveal .reveal.in-view { opacity: 1; transform: none; }
 }
+
+/* Diagram labels: never clip text at the box edge. Boxes are sized when the diagram is
+   rendered; if a visitor's font is a pixel or two wider, the text shows in full instead
+   of being cut off ("validat", "defau"). */
+.md-typeset .mermaid-live svg foreignObject{overflow:visible}
+
+/* Phones: keep diagram text readable. Below 700px the diagram keeps a minimum width and
+   the card scrolls sideways (like a code block) instead of shrinking labels to ~4px. */
+@media (max-width: 700px){
+  .mermaid-live{justify-content:flex-start;-webkit-overflow-scrolling:touch}
+  .mermaid-live svg{min-width:600px;max-width:none}
+}

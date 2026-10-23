@@ -1,6 +1,6 @@
 ---
 title: Auth Method Readiness Groups
-description: A read-only Entra runbook that sorts users by strongest auth method and keeps the readiness groups in sync, before Microsoft-provided SMS and voice retire.
+description: An Entra runbook, read-only by default, that sorts users by strongest auth method and keeps readiness groups in sync before Microsoft SMS and voice retire.
 tags:
   - Entra ID
   - Microsoft Graph
@@ -11,12 +11,12 @@ tags:
 
 # Auth Method Readiness Groups
 
-One Azure Automation runbook that answers "who is still on SMS" as a group you can act on. It reads the Entra authentication-method registration report, sorts every in-scope user into one group by their strongest method (phishing-resistant, strong, telephony-only, nothing), and keeps those assigned groups in sync. It runs as a Managed Identity and defaults to a dry run.
+One Azure Automation runbook that answers "who is still on SMS or voice" as a group you can act on. It reads the Entra authentication-method registration report, sorts every in-scope user into one group by their strongest method (phishing-resistant, strong, telephony-only, nothing), and keeps those assigned groups in sync. It runs as a Managed Identity and defaults to a dry run.
 
 [:material-github: Runbook on GitHub](https://github.com/KetanKamble3894/zero-access-agent/blob/main/scripts/Report-AuthMethodReadiness.ps1){ .md-button .md-button--primary }
 
 !!! warning "Write-capable - the exception to the read-only pattern"
-    The report half is read-only. The optional group sync writes: it adds and removes members of
+    Reading and classifying is read-only. The optional group sync writes: it adds and removes members of
     assigned Entra groups (`GroupMember.ReadWrite.All`). It defaults to `DryRun = $true` and changes
     nothing until you set it to `$false`. It never creates, renames or deletes a group, only groups you
     made first are ever touched, every run writes a CSV of what it did or would do, and removals only
@@ -32,6 +32,11 @@ Read-only to classify, and one write scope only when you turn the dry run off:
 - `AuditLog.Read.All` - read the authentication-method registration report
 - `GroupMember.Read.All` - read current group membership for the diff (needed even in a dry run)
 - `GroupMember.ReadWrite.All` - add and remove members, only used when `DryRun = $false`
+
+Optional, for the CSV upload to storage: the `Az.Accounts` and `Az.Storage` modules in the runbook's
+runtime, and an Azure role on the storage account that can list its keys (for example Storage Account
+Contributor), because the upload uses the account's key-based context. Without it the runbook still
+classifies and syncs the groups, it just skips the upload and says so in the job output.
 
 Create the six readiness groups plus the exclusion group by hand first (the runbook never creates them),
 set the storage config at the top, then run with `-DryRun $true` and read the proposed changes before you
