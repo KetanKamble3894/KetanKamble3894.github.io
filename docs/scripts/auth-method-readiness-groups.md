@@ -33,13 +33,17 @@ Read-only to classify, and one write scope only when you turn the dry run off:
 - `GroupMember.Read.All` - read current group membership for the diff (needed even in a dry run)
 - `GroupMember.ReadWrite.All` - add and remove members, only used when `DryRun = $false`
 
-Optional, for the CSV upload to storage: the `Az.Accounts` and `Az.Storage` modules in the runbook's
+The registration report needs an Entra ID P1 or P2 licence in the tenant, and its data can lag by up
+to 36 hours, so a method registered this morning may not show yet.
+
+Optional, for the CSV upload to storage: replace the three placeholder storage names at the top
+(`<your-resource-group>`, `<yourstorageaccount>`, `<your-container>`), have the `Az.Accounts` and `Az.Storage` modules in the runbook's
 runtime, and an Azure role on the storage account that can list its keys (for example Storage Account
 Contributor), because the upload uses the account's key-based context. Without it the runbook still
 classifies and syncs the groups, it just skips the upload and says so in the job output.
 
 Create the six readiness groups plus the exclusion group by hand first (the runbook never creates them),
-set the storage config at the top, then run with `-DryRun $true` and read the proposed changes before you
+keep `ExcludeDisabledAccounts` on (disabled users have no registration row and would trip the coverage gate), then run with `-DryRun $true` and read the proposed changes before you
 ever let it write.
 
 ???+ example "The complete runbook: Report-AuthMethodReadiness.ps1"

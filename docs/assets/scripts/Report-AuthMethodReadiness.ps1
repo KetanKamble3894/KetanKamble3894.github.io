@@ -8,7 +8,7 @@ param(
     [Parameter(Mandatory = $false, HelpMessage = "Skip disabled accounts.")]
     [bool]$ExcludeDisabledAccounts = $true,
 
-    [Parameter(Mandatory = $false, HelpMessage = "Skip external B2B guests (#EXT# in the UPN). Internal guests stay in scope; their deadline is the same as members.")]
+    [Parameter(Mandatory = $false, HelpMessage = "Skip external users: #EXT# in the UPN, or an externalUserState from a B2B invitation. Internal guests stay in scope; Microsoft keeps them on the 1 February 2027 date with members.")]
     [bool]$ExcludeExternalGuests = $true,
 
     [Parameter(Mandatory = $false, HelpMessage = "Comma separated name fragments that mark a non-human account. Matched against the UPN local part; fragments of 5+ characters are also matched against the display name.")]
@@ -32,9 +32,12 @@ param(
 
 #-- Step 1 - Variables ---------------------------------------------------------------------
 $GraphBase          = "https://graph.microsoft.com"
-$ResourceGroup      = "rg-intune-reporting"
-$StorageAccount     = "stintunereports"
-$Container          = "intune-reports"
+# Storage for the CSV upload. Replace all three with your own names, or leave them as they are
+# and the runbook skips the upload and still classifies and syncs. Storage account names are
+# globally unique, so never publish your real one.
+$ResourceGroup      = "<your-resource-group>"
+$StorageAccount     = "<yourstorageaccount>"
+$Container          = "<your-container>"
 $BlobFolder         = "auth-method-groups"
 $ExportLocation     = if ($env:TEMP) { $env:TEMP } else { [IO.Path]::GetTempPath() }
 $Today              = Get-Date -Format 'yyyy-MM-dd'
@@ -230,19 +233,21 @@ Write-Verbose "Graph token obtained"
 # Az context for the CSV upload. Harmless if the sandbox is already connected. A failure here
 # does not stop classification; it only disables the upload, and says so.
 $script:StorageCtx = $null
-try {
+if ("$ResourceGroup$StorageAccount$Container" -match '<') {
+    Write-Warning "Storage names are still placeholders; CSVs will be written to the job but not uploaded."
+} else { try {
     Connect-AzAccount -Identity -ErrorAction Stop | Out-Null
     $script:StorageCtx = (Get-AzStorageAccount -ResourceGroupName $ResourceGroup -Name $StorageAccount -ErrorAction Stop).Context
     Write-Verbose "Storage context obtained"
 } catch {
     Write-Warning "Azure storage context unavailable; CSVs will be written to the job but not uploaded. $_"
-}
+} }
 
 #-- Step 3b - Permission preflight -----------------------------------------------------------
 Write-Output "Checking Graph permissions..."
 $okUsers  = Test-GraphAccess -Url "$GraphBase/v1.0/users?`$top=1&`$select=id" -Needs 'User.Read.All' -For 'List users'
 Write-Output "  $(if ($okUsers)  { 'OK     ' } else { 'FAILED ' }) List users"
-$okReg    = Test-GraphAccess -Url "$GraphBase/v1.0/reports/authenticationMethods/userRegistrationDetails?`$top=1" -Needs 'AuditLog.Read.All' -For 'Read registration details'
+$okReg    = Test-GraphAccess -Url "$GraphBase/v1.0/reports/authenticationMethods/userRegistrationDetails?`$top=1" -Needs 'AuditLog.Read.All (and an Entra ID P1 or P2 licence in the tenant)' -For 'Read registration details'
 Write-Output "  $(if ($okReg)    { 'OK     ' } else { 'FAILED ' }) Read authentication method registration details"
 $okGroups = Test-GraphAccess -Url "$GraphBase/v1.0/groups?`$top=1&`$select=id" -Needs 'GroupMember.Read.All' -For 'Read groups'
 Write-Output "  $(if ($okGroups) { 'OK     ' } else { 'FAILED ' }) Read groups and members (needed for the diff, even in DryRun)"
@@ -252,14 +257,15 @@ if (-not ($okUsers -and $okReg -and $okGroups)) {
 if (-not $DryRun) { Write-Output "  (write)  GroupMember.ReadWrite.All cannot be probed without writing; a 403 on the first change aborts the apply step." }
 
 #-- Step 4 - Classification helpers ----------------------------------------------------------
-# Explicit map of the documented methodsRegistered values. Anything not listed is tried against
-# the regex fallback and, if still unknown, counted and reported. Order of precedence is decided
-# in Step 7, not here.
+# Explicit map of the documented methodsRegistered values. Anything not listed is Unknown: it
+# goes to Review, never to a group on a pattern guess, and the summary names it with a best
+# guess so a person adds it here on purpose. Order of precedence is decided in Step 7.
 $script:MethodClassMap = @{
     'fido2SecurityKey'                  = 'PhishingResistant'
     'passKeyDeviceBound'                = 'PhishingResistant'
     'passKeyDeviceBoundAuthenticator'   = 'PhishingResistant'
     'passKeyDeviceBoundWindowsHello'    = 'PhishingResistant'
+    'passKeySynced'                     = 'PhishingResistant'   # synced passkey, works across the user's devices
     'windowsHelloForBusiness'           = 'PhishingResistant'
     'macOsSecureEnclaveKey'             = 'PhishingResistant'
     'microsoftAuthenticatorPush'        = 'Strong'
@@ -274,24 +280,33 @@ $script:MethodClassMap = @{
     'email'                             = 'SsprOnly'
     'securityQuestion'                  = 'SsprOnly'
     'none'                              = 'None'
-    'qrCodePin'                         = 'Unknown'     # frontline primary credential, not an MFA method
+    'qrCodePin'                         = 'NotMfa'      # QR code + PIN, Microsoft documents it as single-factor
     'unknownFutureValue'                = 'Unknown'
 }
 # Portable phishing-resistant methods work from any device. Device-bound ones (Hello, Secure
 # Enclave) do not help on a phone browser or a replacement laptop. Reported, not yet a group.
-$script:PortablePR = @('fido2SecurityKey','passKeyDeviceBound','passKeyDeviceBoundAuthenticator')
+$script:PortablePR = @('fido2SecurityKey','passKeyDeviceBound','passKeyDeviceBoundAuthenticator','passKeySynced')
 
 function Get-MethodClass {
     param([string]$Method)
     if ([string]::IsNullOrWhiteSpace($Method)) { return 'Unknown' }
     if ($script:MethodClassMap.ContainsKey($Method)) { return $script:MethodClassMap[$Method] }
-    $m = $Method.ToLowerInvariant()
-    if ($m -match 'passkey|fido2|windowshello|secureenclave|x509|certificate') { return 'PhishingResistant' }
-    if ($m -match 'authenticator|oath|onetimepasscode|totp')                   { return 'Strong' }
-    if ($m -match 'phone|sms|voice')                                           { return 'Telephony' }
-    if ($m -match 'temporaryaccesspass')                                       { return 'Temporary' }
-    if ($m -match '^email$|securityquestion|alternateemail')                   { return 'SsprOnly' }
-    return 'Unknown'
+    return 'Unknown'   # not in the map: Review, never a pattern guess
+}
+
+# Best guess for an unmapped value, used ONLY in the warning and summary so a person can add it to
+# the map. It never decides a group. Certificate auth can be single- or multi-factor depending on
+# your CBA policy, so it is never guessed as phishing-resistant.
+function Get-MethodGuess {
+    param([string]$Method)
+    $m = ([string]$Method).ToLowerInvariant()
+    if ($m -match 'x509|certificate')                          { return 'certificate, check your CBA policy (single- or multi-factor)' }
+    if ($m -match 'passkey|fido2|windowshello|secureenclave')  { return 'PhishingResistant' }
+    if ($m -match 'authenticator|oath|onetimepasscode|totp')   { return 'Strong' }
+    if ($m -match 'phone|sms|voice')                           { return 'Telephony' }
+    if ($m -match 'temporaryaccesspass')                       { return 'Temporary' }
+    if ($m -match '^email$|securityquestion|alternateemail|qrcode') { return 'NotMfa' }
+    return 'no guess'
 }
 
 # Builds a token-aware regex from a comma list, or $null when the list is empty. An empty regex
@@ -359,7 +374,7 @@ function Export-CsvSafe {
 
 #-- Step 5 - Users (bulk) --------------------------------------------------------------------
 Write-Verbose "Fetching users..."
-$UserSelect = "id,userPrincipalName,displayName,accountEnabled,userType,employeeType,department,jobTitle,companyName,createdDateTime"
+$UserSelect = "id,userPrincipalName,displayName,accountEnabled,userType,externalUserState,employeeType,department,jobTitle,companyName,createdDateTime"
 $Users = Invoke-MyGraphGetRequest -URL "$GraphBase/v1.0/users?`$select=$UserSelect&`$top=999"
 if ($null -eq $Users -or $Users.Count -eq 0) { throw "Failed to fetch users (or the directory returned none). Aborting." }
 Write-Output "Users fetched: $($Users.Count)"
@@ -384,9 +399,10 @@ $skippedDisabled = 0; $skippedExternal = 0; $noRegRow = 0
 
 foreach ($u in $Users) {
     if ($ExcludeDisabledAccounts -and -not $u.accountEnabled) { $skippedDisabled++; continue }
-    # Only external B2B guests are out of scope. Internal guests (userType Guest, no #EXT#) sign
-    # in here with methods registered here, and lose SMS on the same date as members.
-    $isExternalGuest = [string]$u.userPrincipalName -like '*#EXT#*'
+    # Only external users are out of scope: #EXT# in the UPN, or an externalUserState, which Graph
+    # sets on B2B-invited accounts. Internal guests (userType Guest, neither signal) sign in here with
+    # methods registered here, and Microsoft keeps them on the 1 February 2027 date with members.
+    $isExternalGuest = ([string]$u.userPrincipalName -like '*#EXT#*') -or (-not [string]::IsNullOrEmpty([string]$u.externalUserState))
     if ($ExcludeExternalGuests -and $isExternalGuest) { $skippedExternal++; continue }
 
     $reg     = if ($RegMap.ContainsKey($u.id)) { $RegMap[$u.id] } else { $null }
@@ -409,6 +425,7 @@ foreach ($u in $Users) {
     $hasUnk  = $classes.ContainsKey('Unknown')
     $hasTap  = $classes.ContainsKey('Temporary')
     $hasSspr = $classes.ContainsKey('SsprOnly')
+    $hasNotMfa = $classes.ContainsKey('NotMfa')   # single-factor sign-in such as QR code + PIN
     $hasPortablePR = @($methods | Where-Object { $_ -in $script:PortablePR }).Count -gt 0
 
     # Precedence. Strongest first. An unrecognised value never decides a safe group on its own:
@@ -421,7 +438,8 @@ foreach ($u in $Users) {
         elseif ($hasTel)                 { 'TelephonyOnly' }
         elseif (-not $reg)               { 'NoRegistrationData' }
         elseif ($methods.Count -eq 0)    { $reason = 'NothingRegistered'; 'NoMfa' }
-        elseif ($hasTap -and -not $hasSspr) { $reason = 'TapOnly'; 'Review' }
+        elseif ($hasTap -and -not ($hasSspr -or $hasNotMfa)) { $reason = 'TapOnly'; 'Review' }
+        elseif ($hasNotMfa)              { $reason = 'SingleFactorOnly'; 'NoMfa' }
         elseif ($hasSspr)                { $reason = 'SsprMethodsOnly'; 'NoMfa' }
         else                             { 'Review' }
 
@@ -467,7 +485,7 @@ if ($script:UnmappedEmpTypes.Count -gt 0) {
 }
 if ($UnknownMethods.Count -gt 0) {
     Write-Warning "Unrecognised authentication method values found. Holders went to Review (Reason=UnknownMethod). Add them to MethodClassMap:"
-    foreach ($k in ($UnknownMethods.Keys | Sort-Object)) { Write-Warning "  $k  ($($UnknownMethods[$k]) users)" }
+    foreach ($k in ($UnknownMethods.Keys | Sort-Object)) { Write-Warning "  $k  ($($UnknownMethods[$k]) users) - looks like: $(Get-MethodGuess $k)" }
 }
 
 #-- Step 8 - Summary and reconciliation ------------------------------------------------------
@@ -485,7 +503,7 @@ Add-SummaryRow $ExclusionKey $ExclusionName $excl.Count $excl.Count
 Add-SummaryRow 'Info:PR_DeviceBoundOnly' 'PhishingResistant users whose only PR method is device-bound (Hello/Secure Enclave)' @($Rows | Where-Object { $_.MembershipGroup -eq 'PhishingResistant' -and -not $_.HasPortablePR }).Count 0
 Add-SummaryRow 'Info:AdminsTelephonyOnly' 'Admin accounts (isAdmin) still telephony-only - raise ahead of the SMS and voice retirement' @($Rows | Where-Object { $_.IsAdmin -and $_.MembershipGroup -eq 'TelephonyOnly' }).Count 0
 Add-SummaryRow 'Info:TelephonyOnlyUnder14Days' 'Telephony-only accounts created in the last 14 days (likely still onboarding)' @($Rows | Where-Object { $_.MembershipGroup -eq 'TelephonyOnly' -and $_.AccountAgeDays -ne '' -and [int]$_.AccountAgeDays -lt 14 }).Count 0
-foreach ($k in ($UnknownMethods.Keys | Sort-Object)) { Add-SummaryRow "Info:UnknownMethod" "Unrecognised method value: $k" $UnknownMethods[$k] 0 }
+foreach ($k in ($UnknownMethods.Keys | Sort-Object)) { Add-SummaryRow "Info:UnknownMethod" "Unrecognised method value: $k (looks like: $(Get-MethodGuess $k))" $UnknownMethods[$k] 0 }
 foreach ($k in ($script:UnmappedEmpTypes.Keys | Sort-Object)) { Add-SummaryRow "Info:EmployeeTypeUnmapped" "employeeType '$k' is not in EmployeeTypeMap; name patterns were used for these users" $script:UnmappedEmpTypes[$k] 0 }
 $Rows | Where-Object { $_.MembershipGroup -eq 'TelephonyOnly' } | Group-Object { if ($_.EmployeeType) { [string]$_.EmployeeType } else { '(empty)' } } | Sort-Object Count -Descending | ForEach-Object {
     Add-SummaryRow "Info:TelephonyOnlyByEmployeeType" "TelephonyOnly with employeeType = $($_.Name)" $_.Count @($_.Group | Where-Object ExclusionNonHuman).Count
