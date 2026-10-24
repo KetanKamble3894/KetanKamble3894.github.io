@@ -14,7 +14,7 @@ tags:
   - Microsoft Graph
   - Authentication methods
   - Passkey
-  - Conditional Access
+  - Registration campaign
   - Managed Identity
 ---
 
@@ -22,7 +22,7 @@ tags:
 
 ![Cover: Microsoft retiring its own SMS and voice delivery and defaulting to passkeys, and a runbook, read-only by default, that sorts every Entra user into method-strength groups so the telephony-only list is ready to act on](../../assets/img/banners/auth-method-readiness-groups.webp){ .post-cover width="1200" height="630" fetchpriority=high }
 
-Microsoft has put dates on retiring its own SMS and voice delivery for MFA, and the first question that comes up is who is still on a phone code. Microsoft's analyzer tells you if the tenant is in scope, this runbook tells you who, and keeps those people in Entra groups you can point a Conditional Access policy or a comms campaign at.
+Microsoft has put dates on retiring its own SMS and voice delivery for MFA, and the first question that comes up is who is still on a phone code. Microsoft's analyzer tells you if the tenant is in scope, this runbook tells you who, and keeps those people in Entra groups you can use for a registration campaign and for system-preferred authentication.
 
 <!-- more -->
 
@@ -113,20 +113,24 @@ Review               6        0         Auth - Manual Review Users (CG)
 ExclusionNonHuman    22       22        Auth - Non-human Accounts Exclusion (CG)
 ```
 
-Here that's 408 real people on phone codes once the 22 service accounts are excluded, and each run compares against the last one so you can watch the number come down.
+Here that's 408 real people on phone codes once the 22 non-human accounts are taken out, and each run compares against the last one, so you can watch the number come down and get a warning if any group moves more than 15 percent in a day.
 
 <div class="mermaid-live" markdown="0">
 --8<-- "assets/diagrams/auth-method-readiness-groups-use.svg"
 </div>
 
-For the parent group, everyone in it already has something stronger than a phone registered, so a Conditional Access policy with a custom authentication strength that leaves out SMS and voice moves them off phone codes now without locking anyone out (run it in report-only first). Leave system-preferred authentication on All users, which is Microsoft's default, because narrowing it to the parent would drop Review users, people on a Temporary Access Pass and anyone the report hasn't caught up with yet. A Power BI report on top of the CSVs is in the works.
+We use the groups in two places in the authentication methods policy. The telephony-only group is the include target of the registration campaign, so everyone in it gets nudged at sign-in to set up a passkey or Microsoft Authenticator, and with limited snoozes on they can skip it three times before they have to register. The phishing-resistant and strong groups are nested inside one parent, System Preferred MFA Users (CG), because system-preferred authentication takes only one include group, and pointing it at the parent means people who already have something stronger than a phone get asked for that instead of a code.
+
+Non-human Accounts Exclusion (CG) works differently, it's an overlay. Service, shared, room, kiosk, system and test accounts stay in whatever method group they land in and are also added to this group, which is the exclude target of the registration campaign. Nobody sits behind those accounts to register a passkey or Authenticator, and once the snoozes run out the prompt can't be skipped, so a shared or kiosk account would get stuck on a registration screen. The runbook decides it from `employeeType` first, where Common, System and test mean non-human and Employee and Partner mean a person, and it only falls back to name patterns like svc or room when `employeeType` is empty or unmapped. Admin accounts are excluded the same way, and the summary has its own line for admins still on phone codes, so you move those on purpose and not through a nudge.
+
+Microsoft-managed system-preferred authentication covers all users by default, so scoping it to the parent is a choice to switch it on as people become ready. With the report lagging up to 36 hours, someone who registers a passkey today joins the parent a run or two later. A Power BI report on top of the CSVs is in the works.
 
 ## Gotchas from the lab
 
 - The registration report can lag by up to 36 hours, so a passkey registered this morning can still show as telephony-only.
 - Windows Hello for Business on one laptop counts as phishing-resistant, but it won't help that person on a phone browser. The runbook flags people whose only strong credential is tied to one machine.
-- Microsoft's FAQ says passkey support for internal guests and B2B users only arrives by the end of 2026, so those people may need Authenticator for now.
-- `employeeType` is the cleanest way to spot service and admin accounts when HR fills it in. The name-pattern fallback is kept narrow because short fragments like "sa" match real names, and anything it can't place goes to Review.
+- Microsoft's FAQ says passkey support for internal guests and B2B users only arrives by the end of 2026, and the registration campaign nudges guests for Authenticator rather than a passkey, so plan on Authenticator for those people for now.
+- The name-pattern fallback can catch real people. Short fragments like "sa" aren't checked against display names, but with `employeeType` empty a person signing in as sa.nguyen still lands in the exclusion group. `employeeType` always wins over the patterns, so filling it in for people is the fix.
 
 ## Get the complete runbook
 
@@ -145,6 +149,9 @@ Read `userRegistrationDetails` from Microsoft Graph and take each user's stronge
 **Can a dynamic group target users by their authentication method?**
 No, membership rules only see user attributes and methods come from the registration report, so you need assigned groups kept in sync by automation.
 
+**Which groups should the registration campaign and system-preferred authentication target?**
+Include the telephony-only group in the registration campaign and the parent of the phishing-resistant and strong groups in system-preferred authentication, and exclude the non-human accounts group from the registration campaign. System-preferred authentication takes only one include group, which is why the two are nested under a parent.
+
 **Does this runbook change anything in my tenant?**
 Not by default. It starts as a dry run, and when you turn that off it only changes membership of groups you created, after four gates pass.
 
@@ -155,6 +162,7 @@ Not by default. It starts as a dry run, and when you turn that off it only chang
 - [MC1519855](https://mc.merill.net/message/MC1519855), Choose your own telephony provider for SMS and voice (message center)
 - [entra-sms-voice-usage-analyzer](https://github.com/microsoft/entra-sms-voice-usage-analyzer) (Microsoft, tells you if the tenant is in scope)
 - [Authentication methods activity](https://learn.microsoft.com/en-us/entra/identity/authentication/howto-authentication-methods-activity) (P1 or P2 licence, 36-hour latency) and [userRegistrationDetails](https://learn.microsoft.com/en-us/graph/api/resources/userregistrationdetails) (Microsoft Graph)
+- [Registration campaign](https://learn.microsoft.com/en-us/entra/identity/authentication/how-to-mfa-registration-campaign) for a passkey or Microsoft Authenticator (Microsoft Learn)
 - [System-preferred authentication](https://learn.microsoft.com/en-us/entra/identity/authentication/concept-system-preferred-authentication) and [QR code authentication](https://learn.microsoft.com/en-us/entra/identity/authentication/concept-authentication-qr-code) (Microsoft Learn)
 - [Operational groups in Entra](https://entra.news/p/operational-groups-in-entra-with) (entra.news, related reading)
 
@@ -185,6 +193,14 @@ Not by default. It starts as a dry run, and when you turn that off it only chang
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "No, membership rules only see user attributes and methods come from the registration report, so you need assigned groups kept in sync by automation."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which groups should the registration campaign and system-preferred authentication target?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Include the telephony-only group in the registration campaign and the parent of the phishing-resistant and strong groups in system-preferred authentication, and exclude the non-human accounts group from the registration campaign. System-preferred authentication takes only one include group, which is why the two are nested under a parent."
       }
     },
     {
