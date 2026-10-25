@@ -1,5 +1,5 @@
 site_name: Ketan Kamble
-site_description: Microsoft Modern Workplace, in the open — Intune, Entra, Graph, and how it actually works underneath the portal.
+site_description: Microsoft Modern Workplace, in the open. Intune, Entra, Graph, and how it actually works underneath the portal.
 site_url: https://ketankamble.com/
 site_author: Ketan Kamble
 copyright: "© 2026 Ketan Kamble · Independent content, built in the open."
@@ -117,7 +117,7 @@ nav:
           - Build it yourself: projects/zero-access-agent/build-it-yourself.md
           - Collection layer setup: projects/zero-access-agent/azure-automation-setup.md
           - Collectors:
-              - Inventory — All Devices: projects/zero-access-agent/collectors/inventory-all-devices.md
+              - Inventory - All Devices: projects/zero-access-agent/collectors/inventory-all-devices.md
               - Intune Documentation: projects/zero-access-agent/collectors/intune-documentation.md
               - Policy Assignments: projects/zero-access-agent/collectors/policy-assignments.md
               - Device Hygiene: projects/zero-access-agent/collectors/device-hygiene.md
@@ -134,7 +134,7 @@ nav:
       - Read-Only Gate: scripts/read-only-gate.md
       - Inventory & documentation:
           - Device Inventory: scripts/device-inventory.md
-          - Inventory — All Devices: scripts/inventory-all-devices.md
+          - Inventory - All Devices: scripts/inventory-all-devices.md
           - Intune Documentation: scripts/intune-documentation.md
           - Policy Assignments: scripts/policy-assignments.md
       - Compliance & security:
@@ -159,7 +159,7 @@ nav:
       - Overview: powerbi/index.md
       - Inventory & documentation:
           - Device Inventory report: powerbi/device-inventory-report.md
-          - Inventory — All Devices report: powerbi/inventory-all-devices-report.md
+          - Inventory - All Devices report: powerbi/inventory-all-devices-report.md
           - Policy Assignments report: powerbi/policy-assignments-report.md
           - Local AI Agent Inventory report: powerbi/local-ai-agent-inventory-report.md
       - Compliance & security:
