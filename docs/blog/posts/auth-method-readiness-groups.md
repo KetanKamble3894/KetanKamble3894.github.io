@@ -37,7 +37,7 @@ Microsoft has put dates on retiring its own SMS and voice delivery for MFA, and 
 
 ## What's retiring, and when
 
-Passkeys became the default on 1 September 2026. Microsoft stops delivering SMS and voice codes itself on 1 February 2027, and Global Administrators and external users follow on 1 July 2027 ([MC1426371](https://learn.microsoft.com/en-us/entra/identity/authentication/concept-sms-voice-retirement), [FAQ](https://learn.microsoft.com/en-us/entra/identity/authentication/concept-sms-voice-retirement-faq)). Internal guests stay on the February date with members, so the runbook keeps them in scope. SMS and voice stay available as methods if you configure your own telephony provider through the Microsoft Security Store, which opens on 30 October 2026, and if you don't, anyone whose only method is a phone number loses their way in.
+Passkeys became the default on 1 September 2026. Microsoft stops delivering SMS and voice codes itself on 1 February 2027, and Global Administrators and external users follow on 1 July 2027 ([MC1426371](https://learn.microsoft.com/en-us/entra/identity/authentication/concept-sms-voice-retirement), [FAQ](https://learn.microsoft.com/en-us/entra/identity/authentication/concept-sms-voice-retirement-faq)). Internal guests stay on the February date with members, so the runbook keeps them in scope. The SMS and voice methods themselves aren't being removed, only Microsoft's delivery service for them. They keep working if you configure your own telephony provider through the Microsoft Security Store, which opens on 30 October 2026, and if you don't, anyone whose only method is a phone number loses their way in.
 
 Microsoft's [entra-sms-voice-usage-analyzer](https://github.com/microsoft/entra-sms-voice-usage-analyzer) gives you a yes or no for the tenant. To act on it you need the people, so for every active user we take their strongest registered method and put them in one of four buckets:
 
@@ -52,7 +52,7 @@ A dynamic membership rule only sees attributes on the user object, and registere
 
 ## Permissions
 
-The runbook runs as an Azure Automation managed identity. Reading and classifying needs `User.Read.All`, `AuditLog.Read.All` and `GroupMember.Read.All`, and the registration report needs an Entra ID P1 or P2 licence. Changing membership needs `GroupMember.ReadWrite.All`, and that's the only write it can do. It starts as a dry run (GET calls only) and changes nothing until you set one parameter, so if you only want the lists, don't grant the write scope at all.
+The runbook runs as an Azure Automation managed identity. Reading and classifying needs `User.Read.All`, `AuditLog.Read.All` and `GroupMember.Read.All`, and the registration report needs an Entra ID P1 or P2 licence. These are application permissions, and a managed identity has no consent button in the portal, so an admin assigns them as app roles with Microsoft Graph PowerShell or a Graph call. Changing membership needs `GroupMember.ReadWrite.All`, and that's the only write it can do. It starts as a dry run (GET calls only) and changes nothing until you set one parameter, so if you only want the lists, don't grant the write scope at all.
 
 ## How the runbook works
 
@@ -134,7 +134,7 @@ System-preferred authentication only changes which registered method Entra promp
 ## Gotchas from the lab
 
 - The registration report can lag by up to 36 hours, so a passkey registered this morning can still show as telephony-only.
-- Windows Hello for Business on one laptop counts as phishing-resistant, but it won't help that person on a phone browser. The runbook flags people whose only strong credential is tied to one machine.
+- Windows Hello for Business on one laptop counts as phishing-resistant, but it won't help that person on a phone browser. The runbook flags people whose only strong credential is tied to one machine. The practical fix for them is a passkey on their phone, in Microsoft Authenticator or as a synced passkey if your tenant allows them, or a FIDO2 security key if they sign in from mobile browsers a lot.
 - Passkeys for internal guests start rolling out in late October 2026 and should be complete by late November 2026 ([MC1459133](https://mc.merill.net/message/MC1459133)). Microsoft Authenticator app passkeys are coming to internal guests but not to external users, and Microsoft hasn't announced the timing for external users yet. Until the rollout reaches your tenant, the registration campaign nudges guests for Authenticator rather than a passkey.
 - The name-pattern fallback can catch real people. Short fragments like "sa" aren't checked against display names, but with `employeeType` empty a person signing in as sa.nguyen still lands in the exclusion group. `employeeType` always wins over the patterns, so filling it in for people is the fix.
 
@@ -143,6 +143,8 @@ System-preferred authentication only changes which registered method Entra promp
 Create the seven groups by hand, put your own storage names in (or leave the placeholders and skip the upload), grant the read scopes and run it with DryRun on. When the output looks right, schedule it daily in Azure Automation.
 
 Pilot the registration campaign on a small group of telephony-only users first. Keep snoozes unlimited during the pilot and check the sign-in and registration logs, then turn on limited snoozes, which force registration after three skips, only once the group is stable.
+
+After go-live, check weekly until the people count in the run summary reaches zero: the telephony-only membership, how many people completed registration through the campaign (the authentication methods registration report shows it), and, once you're enforcing, Conditional Access sign-in failures. That people count already leaves out non-human accounts, which stay in the group by design.
 
 [:material-file-code: The complete runbook and setup](../../scripts/auth-method-readiness-groups.md){ .md-button .md-button--primary } [:material-github: Runbook on GitHub](https://github.com/KetanKamble3894/zero-access-agent/blob/main/scripts/Report-AuthMethodReadiness.ps1){ .md-button }
 
