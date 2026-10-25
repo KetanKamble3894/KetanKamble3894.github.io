@@ -24,6 +24,7 @@
 
     var row = document.createElement('div');
     row.className = 'kk-byline';
+    var datesSeen = 0;
 
     Array.prototype.forEach.call(items, function (item) {
       var text = (item.textContent || '').trim();
@@ -31,6 +32,14 @@
       var span = document.createElement('span');
       span.className = 'kk-byline__item';
       span.innerHTML = item.innerHTML; // icon + label, already styled upstream
+      // Material lists the published date first and, when the post sets
+      // date.updated, the updated date second, both as a bare date. Label the
+      // second one so readers can tell which is which.
+      var time = span.querySelector('time');
+      if (time) {
+        datesSeen += 1;
+        if (datesSeen === 2) time.insertAdjacentText('beforebegin', 'Updated ');
+      }
       // Strip any cloned id/for attributes so we don't create duplicate DOM IDs.
       Array.prototype.forEach.call(span.querySelectorAll('[id]'), function (el) {
         el.removeAttribute('id');
