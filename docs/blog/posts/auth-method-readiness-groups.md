@@ -1,7 +1,9 @@
 ---
 title: "Entra SMS/voice MFA retirement: find phone-only users"
 description: "Microsoft-provided SMS and voice MFA retires 1 Feb 2027 (MC1426371). This runbook finds phone-only Entra users and groups them by passkey readiness."
-date: 2026-10-22
+date:
+  created: 2026-10-22
+  updated: 2026-10-25
 slug: passkey-readiness-entra-auth-method-groups
 draft: false
 comments: true
@@ -27,7 +29,7 @@ Microsoft has put dates on retiring its own SMS and voice delivery for MFA, and 
 <!-- more -->
 
 <div class="hook-embed" markdown="0">
-<iframe scrolling="no" src="/assets/hooks/auth-method-readiness-groups.html" title="Before and after: authentication method registration data sitting flat, then sorted into live Entra groups per method strength, with the telephony-only group ready to target before Microsoft-provided SMS and voice retire" loading="lazy" style="display:block;width:100%;aspect-ratio:1200/470;border:0;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.35)"></iframe>
+<iframe scrolling="no" src="/assets/hooks/auth-method-readiness-groups.html" title="Before and after: authentication method registration data sitting flat, then sorted into live Entra groups per method strength, with the telephony-only group ready to target before Microsoft-provided SMS and voice retire" loading="lazy" style="display:block;width:100%;aspect-ratio:1200/470;border:0;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.35)">Before and after: a flat authentication-method registration report sorted into Entra readiness groups, with the telephony-only group as the migration list.</iframe>
 </div>
 
 !!! success "The payoff"
