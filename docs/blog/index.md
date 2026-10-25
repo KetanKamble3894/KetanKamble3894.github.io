@@ -1,12 +1,12 @@
 ---
-title: "Intune, Entra & Graph — decoded in the open"
+title: "Intune, Entra & Graph, decoded in the open"
 description: "Writing about the Modern Workplace from a personal lab — Intune, Entra, Microsoft Graph and endpoint management, decoded from first principles."
 hide:
   - navigation
   - toc
 ---
 
-# Intune, Entra & Graph — decoded in the open
+# Intune, Entra & Graph, decoded in the open
 
 Decoding the Modern Workplace from first principles — Intune, Entra, Graph, and what the portal actually does underneath. Every claim is reproduced in a lab first.
 

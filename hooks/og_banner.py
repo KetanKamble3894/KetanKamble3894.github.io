@@ -119,6 +119,20 @@ def _post_date(page):
     return _iso(created)
 
 
+def _post_updated(page):
+    # "date: {created: ..., updated: ...}" in a post's front matter. Falls back to None,
+    # so posts without an updated date keep dateModified == datePublished.
+    value = page.meta.get("date")
+    updated = value.get("updated") if isinstance(value, dict) else None
+    if updated is None:
+        cfg = getattr(page, "config", None)
+        date_obj = getattr(cfg, "date", None) if cfg is not None else None
+        updated = getattr(date_obj, "updated", None) if date_obj is not None else None
+        if updated is None and isinstance(date_obj, dict):
+            updated = date_obj.get("updated")
+    return _iso(updated)
+
+
 @event_priority(-50)
 def on_page_content(html, page, config, files, **kwargs):
     src = page.file.src_uri
@@ -174,6 +188,7 @@ def on_page_content(html, page, config, files, **kwargs):
     have_banner = bool(banner)
 
     published = _post_date(page)
+    modified = _post_updated(page) or published
 
     # Rewrite the share image + promote og:type; add article:published_time.
     meta = page.meta.get("meta", [])
@@ -192,6 +207,8 @@ def on_page_content(html, page, config, files, **kwargs):
         meta.append({"property": "og:type", "content": "article"})
     if published:
         meta.append({"property": "article:published_time", "content": published})
+        if modified and modified != published:
+            meta.append({"property": "article:modified_time", "content": modified})
     meta.append({"property": "article:author", "content": PERSON["url"]})
     page.meta["meta"] = meta
 
@@ -237,7 +254,7 @@ def on_page_content(html, page, config, files, **kwargs):
             node["image"] = cover
     if published:
         node["datePublished"] = published
-        node["dateModified"] = published
+        node["dateModified"] = modified or published
 
     # BreadcrumbList — Home › Blog › Post (matches what mature MVP blogs emit;
     # eligible for Google breadcrumb rich results, and helps AI map structure).
