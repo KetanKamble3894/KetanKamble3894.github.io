@@ -52,7 +52,7 @@ A dynamic membership rule only sees attributes on the user object, and registere
 
 ## Permissions
 
-The runbook runs as an Azure Automation managed identity. Reading and classifying needs `User.Read.All`, `AuditLog.Read.All` and `GroupMember.Read.All`, and the registration report needs an Entra ID P1 or P2 licence. These are application permissions, and a managed identity has no consent button in the portal, so an admin assigns them as app roles with Microsoft Graph PowerShell or a Graph call. Changing membership needs `GroupMember.ReadWrite.All`, and that's the only write it can do. It starts as a dry run (GET calls only) and changes nothing until you set one parameter, so if you only want the lists, don't grant the write scope at all.
+The runbook runs as an Azure Automation managed identity. Reading and classifying needs `User.Read.All`, `AuditLog.Read.All` and `GroupMember.Read.All`, and the registration report needs an Entra ID P1 or P2 licence. These are application permissions, and a managed identity has no consent button in the portal, so an admin assigns them as app roles with Microsoft Graph PowerShell, using `New-MgServicePrincipalAppRoleAssignment` as in [Microsoft's managed identity guide](https://learn.microsoft.com/en-us/entra/identity/managed-identities-azure-resources/how-to-assign-app-role-managed-identity), or with a Graph call. Changing membership needs `GroupMember.ReadWrite.All`, and that's the only write it can do. It starts as a dry run (GET calls only) and changes nothing until you set one parameter, so if you only want the lists, don't grant the write scope at all.
 
 ## How the runbook works
 
@@ -123,7 +123,7 @@ Here that's 408 real people on phone codes once the 22 non-human accounts are ta
 --8<-- "assets/diagrams/auth-method-readiness-groups-use.svg"
 </div>
 
-We use the groups in two places in the authentication methods policy. The telephony-only group is the include target of the registration campaign, so everyone in it gets nudged at sign-in to set up a passkey or Microsoft Authenticator, and with limited snoozes on they can skip it three times before they have to register. The phishing-resistant and strong groups are nested inside one parent, System Preferred MFA Users (CG), because system-preferred authentication takes only one include group, and pointing it at the parent means people who already have something stronger than a phone get asked for that instead of a code.
+We use the groups in two places in the authentication methods policy. The telephony-only group is the include target of the registration campaign, so everyone in it gets nudged at sign-in to set up a passkey or Microsoft Authenticator, and with limited snoozes on they can skip it three times before they have to register. A campaign targets one method at a time, passkey or Microsoft Authenticator, so pick the one you want this group to land on. The phishing-resistant and strong groups are nested inside one parent, System Preferred MFA Users (CG), because system-preferred authentication takes only one include group, and pointing it at the parent means people who already have something stronger than a phone get asked for that instead of a code.
 
 A registration campaign only asks people to register, it doesn't stop anyone signing in with SMS or voice. Once the telephony-only group is close to empty, enforce it with Conditional Access, using an authentication strength or phishing-resistant MFA for the apps that matter, and exclude your break-glass accounts and test them before you switch it on.
 
@@ -144,7 +144,7 @@ Create the seven groups by hand, put your own storage names in (or leave the pla
 
 Pilot the registration campaign on a small group of telephony-only users first. Keep snoozes unlimited during the pilot and check the sign-in and registration logs, then turn on limited snoozes, which force registration after three skips, only once the group is stable.
 
-After go-live, check weekly until the people count in the run summary reaches zero: the telephony-only membership, how many people completed registration through the campaign (the authentication methods registration report shows it), and, once you're enforcing, Conditional Access sign-in failures. That people count already leaves out non-human accounts, which stay in the group by design.
+After go-live, check weekly until the people count in the run summary reaches zero: the telephony-only membership, how many people completed registration through the campaign (the authentication methods registration report shows it), and, once you're enforcing, sign-ins that failed on Conditional Access in the sign-in logs, either blocked by a policy (error 53003) or because the user had no method that meets the required authentication strength. That people count already leaves out non-human accounts, which stay in the group by design.
 
 [:material-file-code: The complete runbook and setup](../../scripts/auth-method-readiness-groups.md){ .md-button .md-button--primary } [:material-github: Runbook on GitHub](https://github.com/KetanKamble3894/zero-access-agent/blob/main/scripts/Report-AuthMethodReadiness.ps1){ .md-button }
 
