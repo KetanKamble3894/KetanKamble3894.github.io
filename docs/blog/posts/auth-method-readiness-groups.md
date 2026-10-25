@@ -100,6 +100,8 @@ Before it changes any membership, four gates have to pass:
 
 Then it adds and removes members in Graph batches of 20 and writes a CSV of every change.
 
+Before you switch to apply mode, export the current membership of the seven groups. If the classification or the coverage looks wrong after a run, set `DryRun` back to `$true`, and the change CSV lists every add and remove so you can put membership back by hand.
+
 ## What you get, and what each group is for
 
 A run starts with the counts. These are synthetic numbers on a sample tenant:
@@ -123,20 +125,24 @@ Here that's 408 real people on phone codes once the 22 non-human accounts are ta
 
 We use the groups in two places in the authentication methods policy. The telephony-only group is the include target of the registration campaign, so everyone in it gets nudged at sign-in to set up a passkey or Microsoft Authenticator, and with limited snoozes on they can skip it three times before they have to register. The phishing-resistant and strong groups are nested inside one parent, System Preferred MFA Users (CG), because system-preferred authentication takes only one include group, and pointing it at the parent means people who already have something stronger than a phone get asked for that instead of a code.
 
+A registration campaign only asks people to register, it doesn't stop anyone signing in with SMS or voice. Once the telephony-only group is close to empty, enforce it with Conditional Access, using an authentication strength or phishing-resistant MFA for the apps that matter, and exclude your break-glass accounts and test them before you switch it on.
+
 Non-human Accounts Exclusion (CG) works differently, it's an overlay. Service, shared, room, kiosk, system and test accounts stay in whatever method group they land in and are also added to this group, which is the exclude target of the registration campaign. Nobody sits behind those accounts to register a passkey or Authenticator, and once the snoozes run out the prompt can't be skipped, so a shared or kiosk account would get stuck on a registration screen. The runbook decides it from `employeeType` first, where Common, System and test mean non-human and Employee and Partner mean a person, and it only falls back to name patterns like svc or room when `employeeType` is empty or unmapped. Admin accounts are excluded the same way, and the summary has its own line for admins still on phone codes, so you move those on purpose and not through a nudge.
 
-Microsoft-managed system-preferred authentication covers all users by default, so scoping it to the parent is a choice to switch it on as people become ready. With the report lagging up to 36 hours, someone who registers a passkey today joins the parent a run or two later. A Power BI report on top of the CSVs is in the works.
+System-preferred authentication only changes which registered method Entra prompts for first. It doesn't remove SMS or voice and it doesn't guarantee a phishing-resistant sign-in, so someone whose only method is SMS still gets SMS, and if a user is in both the include and the exclude group, the exclude wins. Microsoft-managed system-preferred authentication covers all users by default, so scoping it to the parent is a choice to switch it on as people become ready. With the report lagging up to 36 hours, someone who registers a passkey today joins the parent a run or two later. A Power BI report on top of the CSVs is in the works.
 
 ## Gotchas from the lab
 
 - The registration report can lag by up to 36 hours, so a passkey registered this morning can still show as telephony-only.
 - Windows Hello for Business on one laptop counts as phishing-resistant, but it won't help that person on a phone browser. The runbook flags people whose only strong credential is tied to one machine.
-- Microsoft's FAQ says passkey support for internal guests and B2B users only arrives by the end of 2026, and the registration campaign nudges guests for Authenticator rather than a passkey, so plan on Authenticator for those people for now.
+- Passkeys for internal guests start rolling out in late October 2026 and should be complete by late November 2026 ([MC1459133](https://mc.merill.net/message/MC1459133)). Microsoft Authenticator app passkeys are coming to internal guests but not to external users, and Microsoft hasn't announced the timing for external users yet. Until the rollout reaches your tenant, the registration campaign nudges guests for Authenticator rather than a passkey.
 - The name-pattern fallback can catch real people. Short fragments like "sa" aren't checked against display names, but with `employeeType` empty a person signing in as sa.nguyen still lands in the exclusion group. `employeeType` always wins over the patterns, so filling it in for people is the fix.
 
 ## Get the complete runbook
 
 Create the seven groups by hand, put your own storage names in (or leave the placeholders and skip the upload), grant the read scopes and run it with DryRun on. When the output looks right, schedule it daily in Azure Automation.
+
+Pilot the registration campaign on a small group of telephony-only users first. Keep snoozes unlimited during the pilot and check the sign-in and registration logs, then turn on limited snoozes, which force registration after three skips, only once the group is stable.
 
 [:material-file-code: The complete runbook and setup](../../scripts/auth-method-readiness-groups.md){ .md-button .md-button--primary } [:material-github: Runbook on GitHub](https://github.com/KetanKamble3894/zero-access-agent/blob/main/scripts/Report-AuthMethodReadiness.ps1){ .md-button }
 
@@ -162,6 +168,7 @@ Not by default. It starts as a dry run, and when you turn that off it only chang
 - [MC1426371](https://mc.merill.net/message/MC1426371), Passkeys by default and retirement of Microsoft-provided SMS and voice (message center)
 - [SMS and voice retirement](https://learn.microsoft.com/en-us/entra/identity/authentication/concept-sms-voice-retirement) and its [FAQ](https://learn.microsoft.com/en-us/entra/identity/authentication/concept-sms-voice-retirement-faq) (Microsoft Learn, the authoritative dates)
 - [MC1519855](https://mc.merill.net/message/MC1519855), Choose your own telephony provider for SMS and voice (message center)
+- [MC1459133](https://mc.merill.net/message/MC1459133), Passkey support for B2B users, including the internal-guest rollout dates (message center)
 - [entra-sms-voice-usage-analyzer](https://github.com/microsoft/entra-sms-voice-usage-analyzer) (Microsoft, tells you if the tenant is in scope)
 - [Authentication methods activity](https://learn.microsoft.com/en-us/entra/identity/authentication/howto-authentication-methods-activity) (P1 or P2 licence, 36-hour latency) and [userRegistrationDetails](https://learn.microsoft.com/en-us/graph/api/resources/userregistrationdetails) (Microsoft Graph)
 - [Registration campaign](https://learn.microsoft.com/en-us/entra/identity/authentication/how-to-mfa-registration-campaign) for a passkey or Microsoft Authenticator (Microsoft Learn)
