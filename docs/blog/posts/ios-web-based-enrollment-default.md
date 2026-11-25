@@ -19,54 +19,52 @@ tags:
 
 ![Web-based iOS/iPadOS enrollment becomes the Intune default for new enrollment profiles in early 2027. Existing profiles stay as they are, Company Portal stays, and web-based enrollment needs iOS/iPadOS 15 or later](../../assets/img/banners/ios-web-based-enrollment-default.webp){ .post-cover width="1200" height="630" fetchpriority=high }
 
-Short answer, Microsoft updates the web-based enrollment flow for iOS/iPadOS in late January 2027, and from early 2027 web-based device enrollment becomes the default when you create a new iOS/iPadOS enrollment profile in Intune. Existing profiles aren't touched and Company Portal isn't being deprecated for iOS/iPadOS. What I'd check now is Microsoft Authenticator, the SSO extension policy for Just-in-Time registration, and any personal iPhones or iPads still below iOS/iPadOS 15.
+If you enroll personal iPhones and iPads in Intune, the starting point is moving away from the Company Portal app. Microsoft updates the web-based enrollment flow in late January 2027, and from early 2027 web-based enrollment is the default when you create a new iOS/iPadOS enrollment profile. Existing profiles aren't touched and Company Portal isn't being deprecated on iOS/iPadOS. Before then I'd look at Microsoft Authenticator, the SSO extension policy for Just-in-Time registration, and any personal iPhones or iPads still below iOS/iPadOS 15.
 
-Rishita Sarin, Product Manager 2 on Microsoft Intune, wrote it up on the Intune Customer Success blog on 23 November 2026, and two message center posts carry the detail, MC1476216 for the new default and MC1565959 for the updated experience.
+Microsoft announced it on the Intune Customer Success blog on 23 November 2026, and the details are in MC1476216 for the new default and MC1565959 for the updated flow.
 
 <!-- more -->
 
 <div class="hook-embed" markdown="0">
-<iframe scrolling="no" src="/assets/hooks/ios-web-based-enrollment-default.html" title="Before and after: today a personal iPhone enrollment starts in the Company Portal app and sign-in isn't reduced to one prompt; from early 2027 new iOS/iPadOS enrollment profiles default to web-based enrollment that starts from Teams, Outlook or Safari and aims for one sign-in prompt, and existing profiles stay as they are" loading="lazy" style="display:block;width:100%;aspect-ratio:1200/470;border:0;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.35)"></iframe>
+<iframe scrolling="no" src="/assets/hooks/ios-web-based-enrollment-default.html" title="Today a personal iPhone enrollment starts in the Company Portal app. From early 2027, new iOS/iPadOS enrollment profiles default to web-based enrollment, started from Teams, Outlook or Safari with the aim of one sign-in prompt, and existing profiles stay as they are" loading="lazy" style="display:block;width:100%;aspect-ratio:1200/470;border:0;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.35)"></iframe>
 </div>
 
-## What changes and when
-
-There are really two things here, and they land at slightly different times.
+## The new flow first, then the new default
 
 ### The updated web-based flow, late January 2027 (MC1565959)
 
-MC1565959 says Intune updates the web-based device enrollment experience for iOS/iPadOS in late January 2027 (the blog says early 2027). Per the blog, users can start enrollment from Microsoft Teams or Microsoft Outlook, or from an enrollment URL in Safari, and guided steps walk them through enrolling, installing the management profile, completing registration and getting back to the work app.
+MC1565959 dates the updated flow to late January 2027, the blog is less exact and says early 2027. Users can start enrollment from Teams or Outlook, or from an enrollment URL in Safari, and guided steps take them through enrolling, installing the management profile, finishing registration and getting back to the work app. The update only reaches tenants already using a web-based profile.
 
-Registration uses Just-in-Time (JIT) registration, with Microsoft Authenticator and the Microsoft Entra ID SSO extension, and the aim is one authentication prompt during enrollment. The Company Portal app isn't needed as the starting point anymore.
+Device registration happens through Just-in-Time (JIT) registration, using Microsoft Authenticator and the Microsoft Entra ID SSO extension, and the idea is that users get one sign-in prompt during enrollment.
 
 ### Web-based becomes the default, early 2027 (MC1476216)
 
-MC1476216 says that from early 2027, web-based device enrollment is the default when you create a new iOS/iPadOS enrollment profile. Existing enrollment profiles aren't affected. For the no-profile case the message center post is narrower than the blog, it says new tenants that haven't created an enrollment profile will enroll with web-based enrollment.
+From early 2027, web-based enrollment is the default when you create a new iOS/iPadOS enrollment profile, and existing profiles aren't affected. The no-profile case is less clear. The blog reads as if any tenant without a profile gets web-based enrollment, but the message center post only says that for new tenants that haven't created an enrollment profile.
 
-Company Portal isn't being deprecated on iOS/iPadOS. It stays available after enrollment and you can keep deploying it as a required or available app.
+Company Portal stays. It's still there after enrollment and you can keep deploying it as a required or available app.
 
-There are two details on Microsoft Learn that the blog doesn't repeat. Safari is the only supported browser for this type of enrollment, and it's what downloads the management profile. The flow also still goes through the Company Portal website, so "no Company Portal app" doesn't mean nothing from Company Portal is involved.
+Safari is the only supported browser for this kind of enrollment, Learn says it's needed to download the management profile and finish enrolling. The flow also still goes through the Company Portal website, so users don't need the app but the website is still part of it.
 
-## Who it affects
+## Who will notice
 
 - Admins who create new iOS/iPadOS enrollment profiles after the change lands.
 - New tenants without an iOS/iPadOS enrollment profile.
-- Help desks and onboarding guides, because the steps users see will look different. MC1565959 says no admin action is needed but user guidance may need an update, and the updated flow only reaches tenants already using a web-based profile.
+- Help desks and onboarding guides, because the steps users see will look different. MC1565959 says there's nothing for admins to do, but you may need to update what you tell users.
 
-Neither the blog nor the message center posts mention a licensing change. The message center archive I used notes it has only seen both posts in Education tenants so far, so check Message center in your own tenant.
+I didn't see any licensing change in the blog or either message center post. On the message center archive I follow, both posts have only shown up in Education tenants so far, which it says could mean licensing or just a rollout that hasn't reached other tenants yet. Check Message center in your own tenant.
 
-## What to check first
+## What I'd check before web-based becomes the default
 
 1. **Your enrollment profiles.** List your iOS/iPadOS enrollment type profiles with their default enrollment type, priority and assignments. Intune applies them in priority order, so if a user is assigned more than one profile, the higher priority profile wins.
-2. **Microsoft Authenticator.** The blog recommends deploying it as a required app for users who enroll iOS/iPadOS devices. Learn says the device isn't ready for work until Authenticator is on it, which can take a few minutes.
-3. **The SSO extension policy for JIT.** Configure or update the Microsoft Entra ID SSO extension policy, with the `device_registration` key set to `{{DEVICEREGISTRATION}}`. Learn also recommends `browser_sso_interaction_enabled` set to `1`, says to remove trailing spaces around keys and values or JIT registration won't work, and says not to add Microsoft apps, Authenticator included, to the policy. MC1476216 says admins need to deploy this policy for web enrollment, and that without JIT registration and Authenticator users may be unable to complete device registration and access protected organizational resources.
-4. **Conditional Access.** The blog recommends configuring it consistently, so I'd check your policies before the new flow reaches users.
-5. **OS versions.** Web-based enrollment needs iOS/iPadOS 15 or later. If a web-based profile reaches a device on 14.9 or earlier, Intune enrolls it with app-based device enrollment instead, and that needs the Company Portal app. If you already track Apple OS versions for compliance, the [Apple OS release watch](apple-os-release-watch.md) covers that side.
-6. **Safari.** Update your user guidance if people use a different default browser.
+2. **Microsoft Authenticator.** Microsoft recommends deploying it as a required app for users who enroll iOS/iPadOS devices. The device isn't ready for work until Authenticator is on it, and that can take a few minutes.
+3. **The SSO extension policy for JIT.** MC1476216 says you need this policy for web enrollment, without JIT registration and Authenticator users may not be able to finish device registration and get to protected company resources. Set the `device_registration` key to `{{DEVICEREGISTRATION}}`, and Learn also recommends `browser_sso_interaction_enabled` set to `1`. Watch for trailing spaces around keys or values, they break JIT registration, and don't add Microsoft apps to the policy, Authenticator included.
+4. **Conditional Access.** Microsoft recommends setting it up consistently for enrollment. Review your policies before the new flow reaches users.
+5. **OS versions.** Web-based enrollment needs iOS/iPadOS 15 or later. If a web-based profile reaches a device on 14.9 or earlier, Intune enrolls it with app-based device enrollment instead, and that needs the Company Portal app. I keep an [Apple OS release watch](apple-os-release-watch.md) if you want to follow which versions are current.
+6. **Safari.** If people use a different default browser, tell them to open the enrollment link in Safari.
 
-## A read-only check
+## A read-only script to see where you stand
 
-This lists your iOS/iPadOS enrollment type profiles and any personal iPhones or iPads still below 15.0. It only reads, like the [read-only Intune Suite audit](intune-suite-read-only-audit.md). The profile endpoint is Graph beta, which Microsoft says can change more often, so I wouldn't build anything permanent on it.
+This lists your iOS/iPadOS enrollment type profiles and any personal iPhones or iPads still below 15.0. It doesn't change anything, same as my [read-only Intune Suite audit](intune-suite-read-only-audit.md). The profile endpoint is Graph beta, and beta endpoints change more often, I wouldn't build anything permanent on it.
 
 ```powershell
 # Read-only. Lists iOS/iPadOS enrollment type profiles and personal iPhones/iPads below version 15.
@@ -76,7 +74,7 @@ Connect-MgGraph -Scopes 'DeviceManagementServiceConfig.Read.All','DeviceManageme
 
 function Get-GraphAll([string]$Uri) {
     $items = @()
-    while ($Uri) {
+    while ($Uri) {   # follows @odata.nextLink until there's none (a server repeating the same link would still loop)
         $page   = Invoke-MgGraphRequest -Method GET -Uri $Uri -ErrorAction Stop   # stop on errors, don't loop
         if ($page.value) { $items += $page.value }
         $Uri    = $page.'@odata.nextLink'
@@ -85,7 +83,7 @@ function Get-GraphAll([string]$Uri) {
 }
 
 # 1. iOS/iPadOS enrollment type profiles, highest priority first (0 is highest)
-#    The profile platform enum has only iOS, with no separate iPadOS value.
+#    The platform enum has no separate iPadOS value, so this filters on iOS.
 $base     = 'https://graph.microsoft.com/beta/deviceManagement/appleUserInitiatedEnrollmentProfiles'
 $profiles = @(Get-GraphAll $base | Where-Object { $_.platform -eq 'iOS' } | Sort-Object { $_.priority })
 if ($profiles.Count -eq 0) { 'No iOS/iPadOS enrollment type profile found.' }
@@ -117,24 +115,18 @@ if ($unread) {
 }
 ```
 
-A few notes on how it's built:
+It only asks for read permissions, the least privileged ones the Graph docs list for these calls. Assignments are read per profile from `/assignments`, since the list call's docs don't mention `$expand`. Learn doesn't say how iPads show up in the profile or the device data, so the profile check filters on `iOS`, there's no separate iPadOS value, and the device check matches both `iOS` and `iPadOS`. I filter in PowerShell instead of using `$filter` or `$select`, so it's a bigger download but there's less to go wrong. Devices whose OS version can't be read get their own list so you can check them by hand.
 
-- It uses `Connect-MgGraph` and `Invoke-MgGraphRequest` from the Microsoft Graph PowerShell SDK, with the least privileged read permissions the Graph pages list.
-- Assignments are read per profile from the documented `/assignments` path, because the list call doesn't document `$expand`.
-- The profile `platform` enum has only `iOS`, with no iPadOS value, and Learn doesn't say how iPad profiles are reported, so the script filters on `iOS`.
-- The device check matches both `iOS` and `iPadOS`, since Learn doesn't say which value iPads report, and filters in PowerShell instead of using `$filter` or `$select`, which the managedDevices list page doesn't document. That means a bigger download, but it only relies on documented behaviour.
-- Devices whose OS version can't be read are listed separately so you can check them by hand, nothing is dropped silently.
-- It turns strict mode off for its own run and stops on the first Graph error, so a strict profile, a missing next-page link or a failed call won't leave the loop running. A server that kept repeating the same next-page link would still loop, which Graph doesn't do in practice.
-- Run it as a `.ps1` file. If you paste it into an open console, the strict mode change stays in that session.
+It turns strict mode off for its own run and stops on the first Graph error. Run it as a `.ps1` file, if you paste it into an open console the strict mode change stays in that session.
 
-I tested the logic against mock Graph responses (paging, an empty response, iOS and iPadOS, a device on exactly 15.0, company devices, a version it can't read, no old devices at all, strict mode and a failed call, all run as a script file), not against a live tenant, so run it in a test tenant first.
+I tested it against mock Graph responses, things like paging, empty results, a device on exactly 15.0 and a failed call, but not against a live tenant, so try it in a test tenant first.
 
 If part 1 comes back empty, you have no iOS/iPadOS enrollment type profile. The message center post only covers new tenants in that state, so in an existing tenant I'd create a profile on purpose rather than wait to see what the default does.
 
 ## Questions people ask
 
 **Is Company Portal being deprecated on iOS/iPadOS?**
-No. Microsoft says Company Portal isn't being deprecated on iOS/iPadOS. It's just not the starting point for web-based enrollment, and you can keep deploying it as a required or available app.
+No, it stays. You just don't start web-based enrollment from it, and you can still deploy it as a required or available app.
 
 **When does web-based enrollment become the default in Intune?**
 From early 2027, for new iOS/iPadOS enrollment profiles (MC1476216). Existing profiles aren't affected. The updated web-based experience comes first, in late January 2027 (MC1565959).
@@ -161,7 +153,7 @@ iOS/iPadOS 15 or later. Devices on 14.9 or earlier that get a web-based profile 
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
-    {"@type": "Question", "name": "Is Company Portal being deprecated on iOS/iPadOS?", "acceptedAnswer": {"@type": "Answer", "text": "No. Microsoft says Company Portal isn't being deprecated on iOS/iPadOS. It's just not the starting point for web-based enrollment, and you can keep deploying it as a required or available app."}},
+    {"@type": "Question", "name": "Is Company Portal being deprecated on iOS/iPadOS?", "acceptedAnswer": {"@type": "Answer", "text": "No, it stays. You just don't start web-based enrollment from it, and you can still deploy it as a required or available app."}},
     {"@type": "Question", "name": "When does web-based enrollment become the default in Intune?", "acceptedAnswer": {"@type": "Answer", "text": "From early 2027, for new iOS/iPadOS enrollment profiles (MC1476216). Existing profiles aren't affected. The updated web-based experience comes first, in late January 2027 (MC1565959)."}},
     {"@type": "Question", "name": "Which iOS versions support web-based device enrollment?", "acceptedAnswer": {"@type": "Answer", "text": "iOS/iPadOS 15 or later. Devices on 14.9 or earlier that get a web-based profile are enrolled with app-based device enrollment, which needs the Company Portal app."}}
   ]
